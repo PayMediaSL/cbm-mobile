@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "637677932629",
+    "project_id": "sampath-vishwa-dev",
+    "storage_bucket": "sampath-vishwa-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637677932629:android:6c45148dd9493df1a384dc",
+        "android_client_info": {
+          "package_name": "lk.directpay.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637677932629-q1720bvla1v2m31kanbo62b623ac4p2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHHImR5KBBWA0Q-wX1KKlcv2g2cz7osW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637677932629-q1720bvla1v2m31kanbo62b623ac4p2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
