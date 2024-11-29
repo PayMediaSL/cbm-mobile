@@ -1,25 +1,44 @@
-import 'package:app/routes.dart';
-import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
+
+//* Utility function to remove focus from the current input field.
+void dismissKeyboard(BuildContext context) {
+  FocusScope.of(context).unfocus();
+}
 
 void grabFocus(BuildContext context) {
   FocusScope.of(context).requestFocus(FocusNode());
 }
 
-void popScreen(BuildContext context, {result}) {
-  _onNavigateBack();
+//* Focuses the next available input field, or dismisses the keyboard if none exists.
+void focusNextField(BuildContext context) {
+  try {
+    FocusScope.of(context).nextFocus();
+  } catch (e) {
+    dismissKeyboard(context);
+  }
+}
+
+//* Checks whether the current screen can be popped from the navigation stack.
+bool canPop(BuildContext context) {
+  return Navigator.of(context).canPop();
+}
+
+//* Pops the current screen and optionally returns a result.
+void popScreen(BuildContext context, {Object? result}) {
   Navigator.of(context).pop(result);
 }
 
-Future pushScreen(BuildContext context, String route,
+//* Pushes a new screen onto the navigation stack.
+Future<T?> pushScreen<T>(BuildContext context, String route,
     {Object? arguments}) async {
-  return await Navigator.of(context).pushNamed(
+  return await Navigator.of(context).pushNamed<T>(
     route,
     arguments: arguments,
   );
 }
 
-Future pushReplacementScreen(BuildContext context, String route,
+//* Replaces the current screen with a new one.
+Future<T?> pushReplacementScreen<T>(BuildContext context, String route,
     {Object? arguments}) async {
   return await Navigator.of(context).pushReplacementNamed(
     route,
@@ -27,21 +46,23 @@ Future pushReplacementScreen(BuildContext context, String route,
   );
 }
 
-void moveToScreen(BuildContext context, String route, {Object? arguments}) {
+//* Clears the navigation stack and navigates to the specified screen.
+void navigateToScreen(BuildContext context, String route, {Object? arguments}) {
   Navigator.of(context).pushNamedAndRemoveUntil(
     route,
-    (route) => false,
+    (_) => false,
     arguments: arguments,
   );
 }
 
+//* Pops screens until the specified route is found.
 void popUntilScreen(BuildContext context, String routeName) {
-  _onNavigateBack(route: routeName);
   Navigator.of(context).popUntil((route) {
     return route.settings.name == routeName;
   });
 }
 
+//* Pushes a new screen and pops back to a specific screen in the navigation stack.
 void pushAndPopUntilScreen(
     BuildContext context, String pushName, String popUntilName,
     {Object? arguments}) {
@@ -51,16 +72,4 @@ void pushAndPopUntilScreen(
     (route) => route.settings.name == popUntilName,
     arguments: arguments,
   );
-}
-
-void moveToHome(BuildContext context) {
-  moveToScreen(context, ScreenRoutes.toHomeScreen);
-}
-
-void moveToSplash(BuildContext context) {
-  moveToScreen(context, ScreenRoutes.toSplashScreen);
-}
-
-void _onNavigateBack({String? route}) {
-  printLog(route);
 }

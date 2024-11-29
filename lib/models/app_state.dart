@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:app/helpers/parameters.dart';
 import 'package:app/models/user.dart';
-import 'package:app/parameters.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -40,16 +40,15 @@ class AppState extends ChangeNotifier {
       // moveToSplash(context!);
       // DateTime nowTime = DateTime.now();
       _timer = Timer(
-        Duration(seconds: Env.timeoutWaitSeconds),
+        Duration(seconds: Environment.timeoutWaitSeconds),
         () {
           if (_timer != null) {
-            moveToSplash(ctx!);
+            // moveToSplash(ctx!);
           } else {
             printLog('Timer is null *********** 0');
           }
         },
       );
-
 
       printLog('called timeout');
     } else {

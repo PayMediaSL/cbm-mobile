@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:app/colors.dart';
+import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/injection.dart';
+import 'package:app/helpers/parameters.dart';
 import 'package:app/models/app_language.dart';
 import 'package:app/models/app_state.dart';
 import 'package:app/models/notification_state.dart';
-import 'package:app/parameters.dart';
 import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/services/analytics_service.dart';
@@ -15,9 +16,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:app/routes.dart' as r;
-
-import 'injection.dart';
+import 'package:app/helpers/routes.dart' as router;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -116,10 +115,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     printLog('AppLocale -> ${getAppLang(context).appLocale}');
 
     return MaterialApp(
-      title: Env.appName,
+      title: Environment.appName,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: r.Router.generateRoute,
-      initialRoute: r.ScreenRoutes.toSplashScreen,
+      onGenerateRoute: router.Router.generateRoute,
+      initialRoute: router.ScreenRoutes.toOnBoardScreen,
       navigatorKey: navigatorKey,
       navigatorObservers: [
         AnalyticsService().getFirebaseAnalyticsObserver(),
@@ -127,9 +126,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       builder: (context, child) {
         final scaleFactor = MediaQuery.of(context).textScaleFactor;
         return MediaQuery(
-          data: MediaQuery.of(context).copyWith(
-              textScaler:
-              TextScaler.linear(scaleFactor > 1 ? 1.0 : scaleFactor)),
+          data: MediaQuery.of(context)
+              .copyWith(textScaleFactor: scaleFactor > 1 ? 1.0 : scaleFactor),
           child: child ?? Container(),
         );
       },
@@ -148,6 +146,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void initTime() {
     printLog("Reset idle Time *****");
     timer?.cancel();
-    timer = Timer(Duration(seconds: Env.timeoutPreSeconds), timeOutCallBack);
+    timer = Timer(
+        Duration(seconds: Environment.timeoutPreSeconds), timeOutCallBack);
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app/firebase_options.dart';
+import 'package:app/helpers/firebase_options.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:firebase_core/firebase_core.dart';
