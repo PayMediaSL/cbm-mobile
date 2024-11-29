@@ -111,6 +111,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
       // Callbacks
       onChange: (index) {
+        //! Need To change Once State Managment Fixed
         setState(() {
           currentPageIndex = index;
         });
