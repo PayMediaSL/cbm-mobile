@@ -1,13 +1,24 @@
-import 'package:app/screens/on_boarding_screen/on_boarding_Screen.dart';
-import 'package:app/screens/splash_screen.dart';
+import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
+import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
+import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/main_screens/authentication_screen.dart/sign_in_screen.dart';
 
 class ScreenRoutes {
   // Init
   static const String toSplashScreen = "toSplashScreen";
   static const String toHomeScreen = "toHomeScreen";
   static const String toOnBoardScreen = "toOnBoardScreen";
+
+  //
+  //Authentication
+
+  static const String toSignInScreen = "toSignInScreen";
+  static const String toforgetPswScreen = "toforgetPswScreen";
+
+  static const String test = "testinggggggg";
 }
 
 class Router {
@@ -32,6 +43,25 @@ class Router {
       case ScreenRoutes.toOnBoardScreen:
         return MaterialPageRoute(
           builder: (_) => const OnBoardingPage(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toSignInScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignInScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toforgetPswScreen:
+        return MaterialPageRoute(
+          builder: (_) => const OnBoardingPage(),
+          settings: settings,
+        );
+
+//!!!!!!!!!test
+      case ScreenRoutes.test:
+        return MaterialPageRoute(
+          builder: (_) => AuthenticationLayout(),
           settings: settings,
         );
 

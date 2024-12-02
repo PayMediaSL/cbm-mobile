@@ -34,6 +34,16 @@ class AppColors {
   static Color onBoardActiveColor = HexColor("#CBD5E1");
   static Color onBoardSubTextStyleColor = HexColor("#64748B");
   // static Color onBoardInActiveColor = HexColor("#FFFFFF");
+
+  //! Button Color
+  static Color mainButtonBgColor = HexColor("#3F6BD1");
+  static Color subGreyColor = HexColor("#fafafa");
+
+  //! Egt started SubHeadingColor
+  static Color getStartedSubHeading = HexColor("#CBD5E1");
+
+  //! TextField Border Color
+  static Color textFieldBorderColor = HexColor("#CBD5E1");
 }
 
 class HexColor extends Color {

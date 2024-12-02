@@ -43,16 +43,18 @@ class ApiResponseCodes {
 class ErrorMessages {
   ErrorMessages._();
 
-  static const String unexpectedError = "Please try again. If the problem persists please contact customer support";
+  static const String unexpectedError =
+      "Please try again. If the problem persists please contact customer support";
   static const String invalidTransferType = "Invalid transfer type";
 }
 
-class Ui {
-  Ui._();
+class UI {
+  UI._();
 
   static const double actionBarHeight = 75.0;
   static const double padding = 8.0;
   static const double borderRadius = 8.0;
+  static const double borderRadiusTextField = 20.0;
   static const double padding2 = padding * 2;
   static const double fontSize = 14.0;
   static const int animationDuration = 200;
@@ -60,6 +62,16 @@ class Ui {
   static getPadding(double times) => padding * times;
   static getRadius(double times) => borderRadius * times;
   static getFontSize(double times) => fontSize * times;
+
+  //Padding
+  static const double PADDING = 8.0;
+  static const double PADDING_2X = PADDING * 2;
+  static const double PADDING_3X = PADDING * 3;
+  static const double PADDING_4X = PADDING * 4;
+  static const double PADDING_8X = PADDING * 8;
+  static const double PADDING_12X = PADDING * 12;
+  static const double PADDING_16X = PADDING * 16;
+  static const double PADDING_32X = PADDING * 32;
 }
 
 class ScenarioCodes {

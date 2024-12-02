@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       title: Environment.appName,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: router.ScreenRoutes.toOnBoardScreen,
+      initialRoute: router.ScreenRoutes.toSignInScreen,
       navigatorKey: navigatorKey,
       navigatorObservers: [
         AnalyticsService().getFirebaseAnalyticsObserver(),
