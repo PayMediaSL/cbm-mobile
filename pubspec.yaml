@@ -22,7 +22,7 @@ dependencies:
   provider: ^6.1.1
   shared_preferences: ^2.2.2
   webview_flutter: ^4.4.1
-  device_info_plus: ^9.1.2
+  # device_info_plus: ^9.1.2
   package_info_plus: ^4.2.0
   intl: ^0.18.1
   dio: ^5.4.1
@@ -32,7 +32,7 @@ dependencies:
   firebase_core: ^2.17.0
   firebase_messaging: ^14.6.9
   permission_handler: ^10.2.0
-  flutter_local_notifications: ^16.3.2
+  flutter_local_notifications: ^18.0.1
   path_provider: ^2.1.2
   pin_code_fields: ^8.0.1
   otp_autofill: ^3.0.2
@@ -48,6 +48,7 @@ dependencies:
   fluttertoast: ^8.2.5
   flutter_screenutil: ^5.9.3
   introduction_screen: ^3.1.6
+  device_info_plus: ^11.1.1
 
 
 dev_dependencies:
@@ -76,6 +77,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/i18n/
+    # - assets/auth/
 
 
 
@@ -88,4 +90,14 @@ flutter:
         - asset: assets/fonts/inter/Inter_Light.ttf
           weight: 600
         - asset: assets/fonts/inter/Inter_Bold.ttf
+          weight: 600
+
+    - family: exo2
+      fonts:
+        - asset: assets/fonts/exo2/Exo2-Black.ttf
+        - asset: assets/fonts/exo2/Exo2-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/exo2/Exo2-Light.ttf
+          weight: 600
+        - asset: assets/fonts/exo2/Exo2-Bold.ttf
           weight: 600

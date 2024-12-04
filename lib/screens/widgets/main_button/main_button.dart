@@ -12,8 +12,8 @@ class MainButton extends StatelessWidget {
     Key? key,
     this.btnOnPress,
     this.buttontitle = "",
-    this.isMainButton = true,
-    this.isPaddingNeeded = true,
+    this.isMainButton = false,
+    this.isPaddingNeeded = false,
     this.backgroundColor,
     this.borderColor,
     this.borderWidth,
@@ -29,12 +29,12 @@ class MainButton extends StatelessWidget {
   final TextStyle? buttonTitleTextStyle;
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context);
     ScreenUtils.init(context);
-
     // Size size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: isPaddingNeeded ? UI.PADDING_2X : 0,
+        horizontal: isPaddingNeeded ? UI.PADDING_4X : 0,
       ),
       child: SizedBox(
         width: ScreenUtils.width,
@@ -47,12 +47,12 @@ class MainButton extends StatelessWidget {
               elevation: 0,
               fixedSize: Size(ScreenUtils.width * 0.88, 40.h),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(17),
               ),
               backgroundColor: backgroundColor ??
                   (isMainButton
                       ? AppColors.mainButtonBgColor
-                      : AppColors.primaryWhiteColor),
+                      : AppColors.primaryGreyColor),
               side: !isMainButton
                   ? BorderSide(
                       width: borderWidth ?? 0.5.w,

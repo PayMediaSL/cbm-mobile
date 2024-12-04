@@ -1,10 +1,12 @@
+import 'package:app/screens/main_screens/authentication_screen.dart/forget_psw_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_option_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/main_screens/authentication_screen.dart/sign_in_screen.dart';
+import '../screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_screen.dart';
 
 class ScreenRoutes {
   // Init
@@ -14,7 +16,7 @@ class ScreenRoutes {
 
   //
   //Authentication
-
+  static const String toSignInOptionScreen = "toSignInOptionScreen";
   static const String toSignInScreen = "toSignInScreen";
   static const String toforgetPswScreen = "toforgetPswScreen";
 
@@ -39,13 +41,22 @@ class Router {
           builder: (_) => const SplashScreen(),
           settings: settings,
         );
-
+//!On board Screen
       case ScreenRoutes.toOnBoardScreen:
         return MaterialPageRoute(
           builder: (_) => const OnBoardingPage(),
           settings: settings,
         );
 
+//! Sign in option Screen
+
+      case ScreenRoutes.toSignInOptionScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignInOptionScreen(),
+          settings: settings,
+        );
+
+//! Signin Screen
       case ScreenRoutes.toSignInScreen:
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
@@ -54,7 +65,7 @@ class Router {
 
       case ScreenRoutes.toforgetPswScreen:
         return MaterialPageRoute(
-          builder: (_) => const OnBoardingPage(),
+          builder: (_) => ForgetPasswordScreen(),
           settings: settings,
         );
 

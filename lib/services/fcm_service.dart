@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unused_local_variable
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -101,22 +103,22 @@ class FcmService {
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
-      onDidReceiveLocalNotification: (
-        int id,
-        String? title,
-        String? body,
-        String? payload,
-      ) async {
-        printLog("IOS notification handle");
-        // didReceiveLocalNotificationSubject.add(
-        //   ReceivedNotification(
-        //     id: id,
-        //     title: title ?? "",
-        //     body: body ?? "",
-        //     payload: payload ?? "",
-        //   ),
-        // );
-      },
+      // onDidReceiveLocalNotification: (
+      //   int id,
+      //   String? title,
+      //   String? body,
+      //   String? payload,
+      // ) async {
+      //   printLog("IOS notification handle");
+      //   // didReceiveLocalNotificationSubject.add(
+      //   //   ReceivedNotification(
+      //   //     id: id,
+      //   //     title: title ?? "",
+      //   //     body: body ?? "",
+      //   //     payload: payload ?? "",
+      //   //   ),
+      //   // );
+      // },
     );
 
     final initializationSettings = InitializationSettings(

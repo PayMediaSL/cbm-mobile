@@ -4,6 +4,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomLableTextField extends StatelessWidget {
   const CustomLableTextField(this.controller,
@@ -64,13 +65,14 @@ class CustomLableTextField extends StatelessWidget {
           labelText: lable,
           labelStyle: TextStyle(
               fontFamily: "inter",
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
               color: AppColors.black.withOpacity(0.7)),
           hintText: hint ?? '',
           hintStyle: TextStyle(
-            color: AppColors.textFieldBorderColor,
-            fontSize: UI.getFontSize(1),
+            fontFamily: "exo2",
+            color: HexColor("#475569"),
+            fontSize: 14.sp,
           ),
           counterText: '',
           border: OutlineInputBorder(
@@ -79,7 +81,7 @@ class CustomLableTextField extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
-            borderSide: BorderSide(color: AppColors.primaryBlueColor),
+            borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(UI.borderRadiusTextField),

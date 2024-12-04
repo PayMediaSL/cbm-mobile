@@ -21,6 +21,8 @@ class AuthenticationLayout extends StatelessWidget {
     this.isHeadingAvailable = false,
     this.isSubHeadingAvailable = false,
     this.isBodyLeadingAvailable = false,
+    this.useImage = false,
+    this.imageName = "",
     this.backgroundColor,
     this.onTap,
     this.appbarbackgroundColor,
@@ -43,6 +45,7 @@ class AuthenticationLayout extends StatelessWidget {
   bool isHeadingAvailable;
   bool isSubHeadingAvailable;
   bool isBodyLeadingAvailable;
+  bool useImage;
 
   final Color? backgroundColor;
   final Color? appbarbackgroundColor;
@@ -54,6 +57,7 @@ class AuthenticationLayout extends StatelessWidget {
   final double? container1Width;
   final String headerText;
   final String headerSubText;
+  final String imageName;
 
   @override
   Widget build(BuildContext context) {
@@ -90,14 +94,18 @@ class AuthenticationLayout extends StatelessWidget {
                   isContainer1
                       ? Container(
                           width: container1Width ?? ScreenUtils.width,
-                          height: container1Height ?? ScreenUtils.height * 0.4,
+                          height: container1Height ?? ScreenUtils.height * 0.3,
                           decoration: BoxDecoration(
-                              color: AppColors.primaryBlueColor
-                              // image: DecorationImage(
-                              //   image: AssetImage('assets/your_image.png'), // Replace with your image path
-                              //   fit: BoxFit.cover, // This makes the image cover the entire container
-                              // ),
-                              ),
+                            color: useImage ? null : AppColors.primaryBlueColor,
+                            image: useImage
+                                ? DecorationImage(
+                                    image: AssetImage(
+                                        imageName), // Replace with your image path
+                                    fit: BoxFit
+                                        .cover, // Cover the entire container
+                                  )
+                                : null,
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: UI.PADDING_4X,
@@ -195,7 +203,10 @@ class AuthenticationLayout extends StatelessWidget {
                                       ),
                                       isSubHeadingAvailable
                                           ? Text(headerSubText,
-                                              style: getStartedSubHeadingStyle)
+                                              style: getStartedSubHeadingStyle
+                                                  .copyWith(
+                                                      color: AppColors
+                                                          .primaryWhiteColor))
                                           : SizedBox.shrink(),
                                     ],
                                   ),

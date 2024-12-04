@@ -1,9 +1,11 @@
 // ignore_for_file: avoid_unnecessary_containers, unnecessary_string_interpolations
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
+import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -23,7 +25,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
     String assetName,
   ) {
     return Container(
-        height: ScreenUtils.height * 0.65,
+        height: ScreenUtils.height * 0.62,
         width: ScreenUtils.width,
         color: AppColors.primaryBlueColor,
         child: Image.asset(
@@ -68,7 +70,8 @@ class OnBoardingPageState extends State<OnBoardingPage> {
               alignment: Alignment.topRight,
               child: TextButton(
                 onPressed: () {
-                  introKey.currentState?.skipToEnd();
+                  // introKey.currentState?.skipToEnd();
+                  navigateToScreen(context, ScreenRoutes.toSignInScreen);
                 },
                 child: Text(
                   'Skip',

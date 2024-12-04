@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
 import 'package:app/helpers/colors.dart';
@@ -25,6 +27,12 @@ void main() async {
   setupInjection();
 
   await FcmService().init();
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.transparent, // navigation bar color
+
+    statusBarColor: AppColors.primaryBlueColor,
+  ));
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -118,7 +126,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       title: Environment.appName,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: router.ScreenRoutes.toSignInScreen,
+      initialRoute: router.ScreenRoutes.toOnBoardScreen,
       navigatorKey: navigatorKey,
       navigatorObservers: [
         AnalyticsService().getFirebaseAnalyticsObserver(),

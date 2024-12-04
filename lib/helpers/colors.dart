@@ -26,9 +26,13 @@ class AppColors {
 
   static Color primaryRedColor = Colors.red;
   static Color primaryAmberColor = Colors.amber;
-  static Color primaryBlueColor = Colors.blue;
+  static Color primaryBlueColor = HexColor("#103489");
   static Color primaryWhiteColor = HexColor("#FFFFFF");
   static Color primaryBlackColor = HexColor("#020617");
+  static Color primarySubBlackColor = HexColor("#475569");
+  static Color primaryGreyColor = HexColor("#E5E7EB");
+
+  //! Primary Sub BlackColor
 
   //! Onboard Indicator
   static Color onBoardActiveColor = HexColor("#CBD5E1");
@@ -36,7 +40,7 @@ class AppColors {
   // static Color onBoardInActiveColor = HexColor("#FFFFFF");
 
   //! Button Color
-  static Color mainButtonBgColor = HexColor("#3F6BD1");
+  static Color mainButtonBgColor = HexColor("#3A69CF");
   static Color subGreyColor = HexColor("#fafafa");
 
   //! Egt started SubHeadingColor
