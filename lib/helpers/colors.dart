@@ -32,6 +32,8 @@ class AppColors {
   static Color primarySubBlackColor = HexColor("#475569");
   static Color primaryGreyColor = HexColor("#E5E7EB");
 
+  static Color primaryGreyColor2 = HexColor("#DADADA");
+
   //! Primary Sub BlackColor
 
   //! Onboard Indicator
@@ -48,6 +50,9 @@ class AppColors {
 
   //! TextField Border Color
   static Color textFieldBorderColor = HexColor("#CBD5E1");
+
+  //! TextField Hint Color
+  static Color textFieldHintColor = HexColor("#94A3B8");
 }
 
 class HexColor extends Color {

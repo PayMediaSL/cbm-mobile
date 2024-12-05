@@ -1,5 +1,8 @@
 import 'package:app/screens/main_screens/authentication_screen.dart/forget_psw_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/pin_signin_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_option_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/sign_up_screen.dart';
+import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
@@ -19,6 +22,14 @@ class ScreenRoutes {
   static const String toSignInOptionScreen = "toSignInOptionScreen";
   static const String toSignInScreen = "toSignInScreen";
   static const String toforgetPswScreen = "toforgetPswScreen";
+  static const String toPinLoginScreeen = "toPinLogin";
+
+  //! Eslips
+
+  static const String toESlipsScreen = "toESlipsScreen";
+
+  //! To SignmUp Screen
+  static const String toSignUpScreen = "toSignUpScreen";
 
   static const String test = "testinggggggg";
 }
@@ -33,7 +44,7 @@ class Router {
   static Route<dynamic> getMaterialPageRoute(RouteSettings settings) {
     // Data to be passed to screens
 
-    var data = settings.arguments;
+    // var data = settings.arguments;
     printLog("Navigating to screen -> ${settings.name}");
     switch (settings.name) {
       case ScreenRoutes.toSplashScreen:
@@ -66,6 +77,28 @@ class Router {
       case ScreenRoutes.toforgetPswScreen:
         return MaterialPageRoute(
           builder: (_) => ForgetPasswordScreen(),
+          settings: settings,
+        );
+
+//! SignUp Screeen
+
+      case ScreenRoutes.toSignUpScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignUpScreen(),
+          settings: settings,
+        );
+
+//! Pin Login
+      case ScreenRoutes.toPinLoginScreeen:
+        return MaterialPageRoute(
+          builder: (_) => PinSignInScreen(),
+          settings: settings,
+        );
+
+//!ESlips
+      case ScreenRoutes.toESlipsScreen:
+        return MaterialPageRoute(
+          builder: (_) => ESlipsScreen(),
           settings: settings,
         );
 

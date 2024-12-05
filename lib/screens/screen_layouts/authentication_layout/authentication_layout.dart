@@ -4,9 +4,10 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down.dart';
+import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/services/screen_size_calculator.dart';
-import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthenticationLayout extends StatelessWidget {
   AuthenticationLayout({
@@ -21,7 +22,9 @@ class AuthenticationLayout extends StatelessWidget {
     this.isHeadingAvailable = false,
     this.isSubHeadingAvailable = false,
     this.isBodyLeadingAvailable = false,
+    this.isListChildren = false,
     this.useImage = false,
+    this.defaultButton = false,
     this.imageName = "",
     this.backgroundColor,
     this.onTap,
@@ -33,6 +36,9 @@ class AuthenticationLayout extends StatelessWidget {
     this.container1Width,
     this.headerText = "",
     this.headerSubText = "",
+    this.buttontitle = "",
+    this.children = const <Widget>[],
+    this.onBackButtonTap,
   });
 
   bool isAppBar;
@@ -46,6 +52,8 @@ class AuthenticationLayout extends StatelessWidget {
   bool isSubHeadingAvailable;
   bool isBodyLeadingAvailable;
   bool useImage;
+  bool isListChildren;
+  bool defaultButton;
 
   final Color? backgroundColor;
   final Color? appbarbackgroundColor;
@@ -58,12 +66,16 @@ class AuthenticationLayout extends StatelessWidget {
   final String headerText;
   final String headerSubText;
   final String imageName;
+  final String buttontitle;
+  final List<Widget> children;
+  final void Function()? onBackButtonTap; // Optional onTap
 
   @override
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
+    ScreenUtil.init(context);
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor ?? AppColors.primaryWhiteColor,
       appBar: isAppBar
           ? AppBar(
               backgroundColor: appbarbackgroundColor,
@@ -75,9 +87,7 @@ class AuthenticationLayout extends StatelessWidget {
                             Icons.arrow_back,
                             size: 18,
                           ),
-                          onPressed: () {
-                            popScreen(context);
-                          },
+                          onPressed: onBackButtonTap,
                         )
                       : SizedBox.shrink()
                   : SizedBox.shrink(),
@@ -117,9 +127,7 @@ class AuthenticationLayout extends StatelessWidget {
                                 isBodyLeadingAvailable
                                     ? isBodyLeadingIcon
                                         ? GestureDetector(
-                                            onTap: () {
-                                              popScreen(context);
-                                            },
+                                            onTap: onBackButtonTap,
                                             child: Icon(
                                               Icons.arrow_back,
                                               color:
@@ -218,7 +226,29 @@ class AuthenticationLayout extends StatelessWidget {
                       : SizedBox.shrink(),
                   isContainer2
                       ? Container(
-                          child: container2CustomWidget,
+                          child: defaultButton
+                              ? Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.sp, vertical: 30.sp),
+                                      child: container2CustomWidget!,
+                                    ),
+                                    // ColumnSpacer(0.5),
+                                    Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: MainButton(
+                                        buttontitle: buttontitle,
+                                        isPaddingNeeded: true,
+                                        btnOnPress: onTap,
+                                        isMainButton: true,
+                                      ),
+                                    )
+                                  ],
+                                )
+                              : container2CustomWidget,
                         )
                       : SizedBox.shrink()
                 ],

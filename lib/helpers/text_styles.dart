@@ -39,7 +39,7 @@ var getStartedHeadingStyle = TextStyle(
     fontFamily: 'inter');
 
 var getStartedSubHeadingStyle = TextStyle(
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.getStartedSubHeading,
     fontFamily: 'inter');

@@ -75,7 +75,9 @@ class SignInScreen extends StatelessWidget {
             MainButton(
               buttontitle: "Login",
               isMainButton: true,
-              btnOnPress: () {},
+              btnOnPress: () {
+                pushScreen(context, ScreenRoutes.toPinLoginScreeen);
+              },
             ),
             ColumnSpacer(0.02),
 
@@ -87,12 +89,17 @@ class SignInScreen extends StatelessWidget {
                   style: commonTextStyle.copyWith(
                       color: AppColors.primarySubBlackColor),
                 ),
-                Text(
-                  "Sign up ",
-                  style: commonTextStyle.copyWith(
-                    color: AppColors.primarySubBlackColor,
-                    fontWeight: FontWeight.w600,
-                    decoration: TextDecoration.underline,
+                GestureDetector(
+                  onTap: () {
+                    pushScreen(context, ScreenRoutes.toSignUpScreen);
+                  },
+                  child: Text(
+                    "Sign up ",
+                    style: commonTextStyle.copyWith(
+                      color: AppColors.primarySubBlackColor,
+                      fontWeight: FontWeight.w600,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ],
@@ -116,7 +123,9 @@ class SignInScreen extends StatelessWidget {
 
             MainButton(
               buttontitle: "Access eSlips",
-              btnOnPress: () {},
+              btnOnPress: () {
+                pushScreen(context, ScreenRoutes.toESlipsScreen);
+              },
             ),
             ColumnSpacer(0.07),
             RichText(

@@ -11,4 +11,12 @@ class ImageAsset {
   //! AuthBgImage
 
   final String authBg = 'assets/images/authbg.png';
+
+  final String cashImg = 'assets/images/cash.png';
+  final String chequeImg = 'assets/images/cheque.png';
+
+  //Fingerprint
+
+  final String fingerprint = 'assets/images/fingerprint.png';
+  final String deleteIconImage = 'assets/images/delete.png';
 }

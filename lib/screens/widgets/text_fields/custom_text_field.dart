@@ -25,6 +25,7 @@ class CustomLableTextField extends StatelessWidget {
       this.prefixIcon,
       this.lable,
       this.onTap,
+      this.isContentPadding = false,
       this.readOnly});
 
   final TextEditingController controller;
@@ -45,6 +46,7 @@ class CustomLableTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final void Function()? onTap;
   final bool? readOnly;
+  final bool isContentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,7 @@ class CustomLableTextField extends StatelessWidget {
           hintText: hint ?? '',
           hintStyle: TextStyle(
             fontFamily: "exo2",
-            color: HexColor("#475569"),
+            color: AppColors.textFieldHintColor,
             fontSize: 14.sp,
           ),
           counterText: '',
@@ -95,8 +97,11 @@ class CustomLableTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
-          contentPadding: contentPadding ??
-              EdgeInsets.symmetric(horizontal: UI.getPadding(2), vertical: 20),
+          contentPadding: isContentPadding
+              ? contentPadding ??
+                  EdgeInsets.symmetric(
+                      horizontal: UI.getPadding(2), vertical: 20)
+              : null,
           filled: true,
           fillColor: AppColors.white,
           suffixIcon: suffixIcon,
