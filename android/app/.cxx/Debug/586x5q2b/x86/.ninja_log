@@ -1,7 +1,4 @@
 # ninja log v5
-0	164	753607820	CMakeFiles/native-lib.dir/native-lib.c.o	41e6eb4cfb93dd9b
-166	274	753607820	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b
-4	295	754582342	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b
-5	235	754991535	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b
-5	218	755171399	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b
-9	283	755421900	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b
+1	139	755427076	CMakeFiles/native-lib.dir/native-lib.c.o	41e6eb4cfb93dd9b
+140	248	755427076	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b
+2	147	755433132	C:/Users/payme/Desktop/Paymedia/CommercialBank/cbm-mobile/build/app/intermediates/cxx/Debug/586x5q2b/obj/x86/libnative-lib.so	3052f0a7bcb5216b

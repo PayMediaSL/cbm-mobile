@@ -4,39 +4,41 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatelessWidget {
-  SignInScreen({super.key});
-
-  bool _isPasswordVisible = false; // Controls password visibility
+  const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
     ScreenUtil.init(context);
+    // final darkModeEnabled = context.isDarkMode;
     return AuthenticationLayout(
       backgroundColor: AppColors.primaryWhiteColor,
       isContainer1: true,
       isBodyLeadingAvailable: true,
       container1Height: ScreenUtils.height * 0.3,
       isHeadingAvailable: true,
-      headerText: "Login",
+      headerText: "login".tr(),
       isSubHeadingAvailable: true,
       headerSubText: "OneApp for all your banking needs",
       isContainer2: true,
       useImage: true,
       imageName: ImageAsset().authBg,
       container2CustomWidget: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20.sp),
         child: Column(
           children: [
             ColumnSpacer(0.05),
@@ -45,17 +47,23 @@ class SignInScreen extends StatelessWidget {
               hint: "Username",
             ),
             ColumnSpacer(0.02),
-            CustomLableTextField(
-              signInPasswordController,
-              hint: "Password",
-              obscureText: !_isPasswordVisible,
-              suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                  )),
+            Consumer<CommonProvider>(
+              builder:
+                  (BuildContext context, CommonProvider value, Widget? child) =>
+                      CustomLableTextField(
+                signInPasswordController,
+                hint: "Password",
+                obscureText: value.getState('obscureText'),
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      value.toggleState('obscureText');
+                    },
+                    icon: Icon(
+                      value.getState('obscureText')
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                    )),
+              ),
             ),
             ColumnSpacer(0.02),
             Align(

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:app/helpers/parameters.dart';
 import 'package:app/models/user.dart';
 import 'package:app/utils/log_util.dart';
-import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {

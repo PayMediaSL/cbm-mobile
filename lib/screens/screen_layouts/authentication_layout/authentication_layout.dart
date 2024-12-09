@@ -3,7 +3,7 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/text_styles.dart';
-import 'package:app/screens/widgets/drop_down/custom_drop_down.dart';
+import 'package:app/screens/widgets/drop_down/custom_language_dropdown.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
@@ -175,16 +175,12 @@ class AuthenticationLayout extends StatelessWidget {
                                               ),
 
                                               //! Drop Down
-                                              CustomDropdown(
+                                              CustomLanguageDropdown(
                                                 dheight:
                                                     ScreenUtils.height * 0.048,
                                                 dwidth: ScreenUtils.width * 0.3,
                                                 // dropdownHeight: 60.0,
-                                                items: [
-                                                  'English',
-                                                  'Spanish',
-                                                ],
-                                                initialValue: 'English',
+
                                                 // fillColor: Colors.blue[50]!,
                                                 // borderColor: Colors.blue,
                                               ),

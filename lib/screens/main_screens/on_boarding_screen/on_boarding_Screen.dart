@@ -71,7 +71,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
               child: TextButton(
                 onPressed: () {
                   // introKey.currentState?.skipToEnd();
-                  navigateToScreen(context, ScreenRoutes.toSignInScreen);
+                  navigateToScreen(context, ScreenRoutes.toSignInOptionScreen);
                 },
                 child: Text(
                   'Skip',

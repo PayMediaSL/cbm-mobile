@@ -1,5 +1,8 @@
 {
-    "title": "Hola",
-    "message": "¡Bienvenido a nuestra aplicación!"
+  "login": "Hola",
+  "username": "Username",
+  "password": "Password",
+  "forgotpassword": "Forgot password ?",
+  "accesselsips": "Access eSlips"
   }
   

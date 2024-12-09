@@ -5,7 +5,6 @@ import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_scre
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
-import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/screens/test_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';

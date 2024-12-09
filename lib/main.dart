@@ -11,6 +11,8 @@ import 'package:app/models/app_state.dart';
 import 'package:app/models/notification_state.dart';
 import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
+import 'package:app/providers/other_provider/common_provider.dart';
+import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/services/analytics_service.dart';
 import 'package:app/services/fcm_service.dart';
 import 'package:app/utils/log_util.dart';
@@ -24,7 +26,8 @@ import 'package:app/helpers/routes.dart' as router;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  EasyLocalization.ensureInitialized();
+  // EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   // Setup repository injection
   setupInjection();
@@ -42,6 +45,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]).then((_) {
     runApp(EasyLocalization(
+      saveLocale: false,
       supportedLocales:
           supportedLanguages.map((lang) => lang['locale'] as Locale).toList(),
       path: 'assets/translations',
@@ -57,6 +61,17 @@ void main() async {
           ChangeNotifierProvider<NotificationState>(
             create: (context) => NotificationState(),
           ),
+
+          // //? Theme Provider
+          // ChangeNotifierProvider(
+          //   create: (context) => ThemeProvider(),
+          // ),
+
+          //* Locale Provider
+          ChangeNotifierProvider(create: (_) => LocaleProvider()),
+
+          //* Common Provider
+          ChangeNotifierProvider(create: (_) => CommonProvider()),
         ],
         child: const MyApp(),
       ),
@@ -128,14 +143,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     initTime();
-
     printLog('AppLocale -> ${getAppLang(context).appLocale}');
-
     return MaterialApp(
       title: Environment.appName,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: router.ScreenRoutes.toOnBoardScreen,
+      initialRoute: router.ScreenRoutes.toSignInScreen,
       navigatorKey: navigatorKey,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
@@ -151,11 +164,14 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           child: child ?? Container(),
         );
       },
-      theme: ThemeData(
-        primarySwatch: AppColors.primaryColor,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        // fontFamily: 'SF-Pro-Display',
-      ),
+      theme: ThemeData.light(), // Light theme configuration
+      darkTheme: ThemeData.dark(), // Dark theme configuration
+      themeMode: ThemeMode.system,
+      // theme: ThemeData(
+      //   primarySwatch: AppColors.primaryColor,
+      //   visualDensity: VisualDensity.adaptivePlatformDensity,
+      //   // fontFamily: 'SF-Pro-Display',
+      // ),
     );
   }
 

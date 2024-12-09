@@ -5,6 +5,7 @@ import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
@@ -13,14 +14,17 @@ import 'package:app/utils/assest_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   ForgetPasswordScreen({super.key});
-  bool _isPasswordVisible = false; // Controls password visibility
+  // bool _isPasswordVisible = false; // Controls password visibility
 
   @override
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
+    final commonProvider = Provider.of<CommonProvider>(context);
+
     return AuthenticationLayout(
       backgroundColor: AppColors.primaryWhiteColor,
       isContainer1: true,
@@ -47,15 +51,17 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             const ColumnSpacer(0.02),
             CustomLableTextField(
-              signInPasswordController,
+              createNewPasswordController,
               hint: "New Password",
-              obscureText: !_isPasswordVisible,
+              obscureText: commonProvider.getState("obscureText1"),
               suffixIcon: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    commonProvider.toggleState('obscureText1');
+                  },
                   icon: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
+                    commonProvider.getState('obscureText1')
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                   )),
             ),
             const ColumnSpacer(0.005),
@@ -69,15 +75,17 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             const ColumnSpacer(0.02),
             CustomLableTextField(
-              signInPasswordController,
+              createRe_NewPasswordController,
               hint: "Re-enter password",
-              obscureText: !_isPasswordVisible,
+              obscureText: commonProvider.getState("obscureText2"),
               suffixIcon: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    commonProvider.toggleState('obscureText2');
+                  },
                   icon: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
+                    commonProvider.getState('obscureText2')
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                   )),
             ),
             const ColumnSpacer(0.1),
