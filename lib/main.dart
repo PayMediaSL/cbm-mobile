@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/injection.dart';
+import 'package:app/helpers/language_constants.dart';
 import 'package:app/helpers/parameters.dart';
 import 'package:app/models/app_language.dart';
 import 'package:app/models/app_state.dart';
@@ -13,6 +14,7 @@ import 'package:app/providers/app_state_provider.dart';
 import 'package:app/services/analytics_service.dart';
 import 'package:app/services/fcm_service.dart';
 import 'package:app/utils/log_util.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,7 @@ import 'package:app/helpers/routes.dart' as router;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  EasyLocalization.ensureInitialized();
 
   // Setup repository injection
   setupInjection();
@@ -38,19 +41,25 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppState>(
-          create: (context) => AppState(),
-        ),
-        ChangeNotifierProvider<AppLanguage>(
-          create: (context) => AppLanguage(),
-        ),
-        ChangeNotifierProvider<NotificationState>(
-          create: (context) => NotificationState(),
-        ),
-      ],
-      child: const MyApp(),
+    runApp(EasyLocalization(
+      supportedLocales:
+          supportedLanguages.map((lang) => lang['locale'] as Locale).toList(),
+      path: 'assets/translations',
+      fallbackLocale: Locale('en'),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<AppState>(
+            create: (context) => AppState(),
+          ),
+          ChangeNotifierProvider<AppLanguage>(
+            create: (context) => AppLanguage(),
+          ),
+          ChangeNotifierProvider<NotificationState>(
+            create: (context) => NotificationState(),
+          ),
+        ],
+        child: const MyApp(),
+      ),
     ));
   });
 
@@ -128,6 +137,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       onGenerateRoute: router.Router.generateRoute,
       initialRoute: router.ScreenRoutes.toOnBoardScreen,
       navigatorKey: navigatorKey,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       navigatorObservers: [
         AnalyticsService().getFirebaseAnalyticsObserver(),
       ],

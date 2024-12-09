@@ -24,7 +24,7 @@ dependencies:
   webview_flutter: ^4.4.1
   # device_info_plus: ^9.1.2
   package_info_plus: ^4.2.0
-  intl: ^0.18.1
+  # intl: ^0.19.0
   dio: ^5.4.1
   share_plus: ^7.2.2
   url_launcher: ^6.1.8
@@ -51,12 +51,15 @@ dependencies:
   device_info_plus: ^11.1.1
   sticky_headers: ^0.3.0+2
   equatable: ^2.0.7
-
+  flutter_localizations:
+    sdk: flutter
+  easy_localization: ^3.0.7
+  # intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -69,6 +72,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -79,7 +83,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/i18n/
-    # - assets/auth/
+    - assets/translations/
 
 
 

@@ -60,10 +60,10 @@
 @import fluttertoast;
 #endif
 
-#if __has_include(<local_auth_ios/FLTLocalAuthPlugin.h>)
-#import <local_auth_ios/FLTLocalAuthPlugin.h>
+#if __has_include(<local_auth_darwin/FLALocalAuthPlugin.h>)
+#import <local_auth_darwin/FLALocalAuthPlugin.h>
 #else
-@import local_auth_ios;
+@import local_auth_darwin;
 #endif
 
 #if __has_include(<mobile_scanner/MobileScannerPlugin.h>)
@@ -144,7 +144,7 @@
   [FlutterKeyboardVisibilityPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterKeyboardVisibilityPlugin"]];
   [FlutterLocalNotificationsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterLocalNotificationsPlugin"]];
   [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
-  [FLTLocalAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTLocalAuthPlugin"]];
+  [FLALocalAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLALocalAuthPlugin"]];
   [MobileScannerPlugin registerWithRegistrar:[registry registrarForPlugin:@"MobileScannerPlugin"]];
   [OTPPlugin registerWithRegistrar:[registry registrarForPlugin:@"OTPPlugin"]];
   [FPPPackageInfoPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPPackageInfoPlusPlugin"]];
