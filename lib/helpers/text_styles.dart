@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 //Common TextStyle
 
 var commonTextStyle = TextStyle(
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.getStartedSubHeading,
     fontFamily: 'inter');

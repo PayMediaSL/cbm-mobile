@@ -229,7 +229,7 @@ class AuthenticationLayout extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 20.sp, vertical: 30.sp),
+                                          horizontal: 20.sp, vertical: 20.sp),
                                       child: container2CustomWidget!,
                                     ),
                                     // ColumnSpacer(0.5),

@@ -31,7 +31,7 @@ class AppColors {
   static Color primaryBlackColor = HexColor("#020617");
   static Color primarySubBlackColor = HexColor("#475569");
   static Color primaryGreyColor = HexColor("#E5E7EB");
-
+  static Color secondarySubBlackColor = HexColor("#475569");
   static Color primaryGreyColor2 = HexColor("#DADADA");
 
   //! Primary Sub BlackColor
@@ -53,6 +53,9 @@ class AppColors {
 
   //! TextField Hint Color
   static Color textFieldHintColor = HexColor("#94A3B8");
+
+  //! Sub Grey Color
+  static Color SecondarysubGreyColor = HexColor("#E5E7EB");
 }
 
 class HexColor extends Color {

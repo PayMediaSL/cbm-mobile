@@ -53,15 +53,15 @@ class SignInScreen extends StatelessWidget {
                       CustomLableTextField(
                 signInPasswordController,
                 hint: "Password",
-                obscureText: value.getState('obscureText'),
+                obscureText: !value.getState('obscureText'),
                 suffixIcon: IconButton(
                     onPressed: () {
                       value.toggleState('obscureText');
                     },
                     icon: Icon(
                       value.getState('obscureText')
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                          ? Icons.visibility
+                          : Icons.visibility_off,
                     )),
               ),
             ),

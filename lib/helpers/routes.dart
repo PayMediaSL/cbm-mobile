@@ -1,7 +1,10 @@
 import 'package:app/screens/main_screens/authentication_screen.dart/forget_psw_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/pin_signin_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_option_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/about_you_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/clarify_you_identity_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/sign_up_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/signup_selfie_screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
@@ -30,6 +33,9 @@ class ScreenRoutes {
 
   //! To SignmUp Screen
   static const String toSignUpScreen = "toSignUpScreen";
+  static const String toClarifyIdentityScreen = "toClarifyIdentityScreen";
+  static const String toAboutYouScreen = "toAboutYouScreen";
+  static const String toSignUpSelfieScreen = "toSignUpSelfieScreen";
 
   static const String test = "testinggggggg";
 }
@@ -85,6 +91,24 @@ class Router {
       case ScreenRoutes.toSignUpScreen:
         return MaterialPageRoute(
           builder: (_) => SignUpScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toClarifyIdentityScreen:
+        return MaterialPageRoute(
+          builder: (_) => ClarifyYourIdentityScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toAboutYouScreen:
+        return MaterialPageRoute(
+          builder: (_) => AboutYouScreen(),
+          settings: settings,
+        );
+//? Signup Selfie Screen
+      case ScreenRoutes.toSignUpSelfieScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignUpSelfieScreen(),
           settings: settings,
         );
 

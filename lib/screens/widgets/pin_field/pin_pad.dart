@@ -6,19 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PinNumberPad extends StatelessWidget {
-  const PinNumberPad({
-    Key? key,
-    required this.controller,
-    required this.onChanged,
-    this.decimal = true,
-    this.isFingerPrintNeeded = true,
-    this.onBiometricsTap,
-  }) : super(key: key);
+  const PinNumberPad(
+      {Key? key,
+      required this.controller,
+      required this.onChanged,
+      this.decimal = true,
+      this.isFingerPrintNeeded = true,
+      this.onBiometricsTap,
+      this.isBiomentrics = true})
+      : super(key: key);
 
   final bool decimal;
   final TextEditingController? controller;
   final void Function(String pin) onChanged;
   final bool isFingerPrintNeeded;
+  final bool isBiomentrics;
 
   final void Function()? onBiometricsTap;
 
@@ -56,17 +58,18 @@ class PinNumberPad extends StatelessWidget {
             return Container();
           } else {
             return GestureDetector(
-              onTap: () {
-                // Trigger biometrics
-                onBiometricsTap?.call();
-              },
-              child: Container(
-                padding: const EdgeInsets.all(15),
-                child: Image.asset(
-                  ImageAsset().fingerprint, // Need to Change
-                ),
-              ),
-            );
+                onTap: () {
+                  // Trigger biometrics
+                  onBiometricsTap?.call();
+                },
+                child: isBiomentrics
+                    ? Container(
+                        padding: const EdgeInsets.all(15),
+                        child: Image.asset(
+                          ImageAsset().fingerprint, // Need to Change
+                        ),
+                      )
+                    : SizedBox.shrink());
           }
         }
         if (n == '.') {

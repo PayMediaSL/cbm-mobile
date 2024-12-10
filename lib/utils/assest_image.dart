@@ -19,4 +19,18 @@ class ImageAsset {
 
   final String fingerprint = 'assets/images/fingerprint.png';
   final String deleteIconImage = 'assets/images/delete.png';
+
+  //! Mail box
+  final String mailBoxImage = 'assets/images/mailbox.png';
+
+  /// Clarify Identnity
+  final String profileImage = 'assets/images/profile.png';
+  final String homeImage = 'assets/images/home.png';
+  final String penToolImage = 'assets/images/pentool.png';
+  final String userImage = 'assets/images/user.png';
+
+  //
+
+  final String selfieImage = 'assets/images/selfie.png';
+  final String checkmarkImage = 'assets/images/checkmark.png';
 }

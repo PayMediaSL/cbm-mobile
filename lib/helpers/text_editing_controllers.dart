@@ -17,3 +17,14 @@ TextEditingController createRe_NewPasswordController = TextEditingController();
 //Identity Details
 
 TextEditingController nidOrPassportController = TextEditingController();
+TextEditingController mobileNumberController = TextEditingController();
+TextEditingController otpNumberController = TextEditingController();
+TextEditingController emailrController = TextEditingController();
+TextEditingController createPinController = TextEditingController();
+
+//! Bio Data
+
+TextEditingController firstNameController = TextEditingController();
+TextEditingController lastNameController = TextEditingController();
+TextEditingController otherNameController = TextEditingController();
+TextEditingController dateOfBirthController = TextEditingController();
