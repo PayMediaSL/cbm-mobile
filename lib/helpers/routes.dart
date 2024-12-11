@@ -1,10 +1,19 @@
 import 'package:app/screens/main_screens/authentication_screen.dart/forget_psw_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/pin_signin_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_option_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/about_you_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/about_you/about_you_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/billing/signup_billing_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/billing/signup_billing_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/clarify_you_identity_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/finished_up_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/nid_upload/nid_back_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/nid_upload/nid_front_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/nid_upload/nid_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/sign_up_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/signup_selfie_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/face_image_upoad/signup_selfie_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/face_image_upoad/signup_selfie_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/signature/signup_signature_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/signature/signup_signature_screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
@@ -35,7 +44,28 @@ class ScreenRoutes {
   static const String toSignUpScreen = "toSignUpScreen";
   static const String toClarifyIdentityScreen = "toClarifyIdentityScreen";
   static const String toAboutYouScreen = "toAboutYouScreen";
+
+  //Selfie
   static const String toSignUpSelfieScreen = "toSignUpSelfieScreen";
+  static const String toSignUpSelfieCamera = "toSignUpSelfieCamera";
+
+// NID
+  static const String toNidScreen = "toNidScreen";
+  static const String toNidFrontCameraScreen = "toNidFrontCameraScreen";
+  static const String toNidBackCameraScreen = "toNidBackCameraScreen";
+
+  //Signature
+  static const String toSignatureScreen = "toSignatureScreen";
+  static const String toSignatureCameraScreen = "toSignatureCameraScreen";
+
+  // Billing
+
+  static const String toSignUpBillingScreen = "toSignUpBillingScreen";
+  static const String toSignUpBillingCameraScreen =
+      "toSignUpBillingCameraScreen";
+
+// Signup Finished up
+  static const String toSignUpFinishedUp = "toSignUpFinishedUp";
 
   static const String test = "testinggggggg";
 }
@@ -64,7 +94,6 @@ class Router {
           builder: (_) => const OnBoardingPage(),
           settings: settings,
         );
-
 //! Sign in option Screen
 
       case ScreenRoutes.toSignInOptionScreen:
@@ -111,7 +140,59 @@ class Router {
           builder: (_) => SignUpSelfieScreen(),
           settings: settings,
         );
+      case ScreenRoutes.toSignUpSelfieCamera:
+        return MaterialPageRoute(
+          builder: (_) => SignUpSelfieCameraScreen(),
+          settings: settings,
+        );
+//?NID Screen
+      case ScreenRoutes.toNidScreen:
+        return MaterialPageRoute(
+          builder: (_) => NidScreen(),
+          settings: settings,
+        );
 
+      case ScreenRoutes.toNidFrontCameraScreen:
+        return MaterialPageRoute(
+          builder: (_) => NIDFrontCameraScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toNidBackCameraScreen:
+        return MaterialPageRoute(
+          builder: (_) => NIDBackCameraScreen(),
+          settings: settings,
+        );
+
+//? Signup signature Screen
+      case ScreenRoutes.toSignatureScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignupSignatureScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toSignatureCameraScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignUpSignatureCameraScreen(),
+          settings: settings,
+        );
+
+//? Signup Billing Screen
+      case ScreenRoutes.toSignUpBillingScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignupBillingScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toSignUpBillingCameraScreen:
+        return MaterialPageRoute(
+          builder: (_) => SignupBillingCameraScreen(),
+          settings: settings,
+        );
+
+      //* Finished up
+      case ScreenRoutes.toSignUpFinishedUp:
+        return MaterialPageRoute(
+          builder: (_) => FinishedUpScreen(),
+          settings: settings,
+        );
 //! Pin Login
       case ScreenRoutes.toPinLoginScreeen:
         return MaterialPageRoute(

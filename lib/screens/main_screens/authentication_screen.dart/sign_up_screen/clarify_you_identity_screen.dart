@@ -35,7 +35,9 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
       headerSubText: "We’ll keep your information secure and confidential.",
       defaultButton: true,
       buttontitle: "Next",
-      onTap: () {},
+      onTap: () {
+        pushScreen(context, ScreenRoutes.toSignUpFinishedUp);
+      },
       container2CustomWidget: Column(
         children: [
           ClarifyIdentityContainer(
@@ -66,6 +68,9 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
                 "Processing of transactions and services that require your authorization.",
             imagePath: ImageAsset().penToolImage,
             // route: route
+            onTap: () {
+              pushScreen(context, ScreenRoutes.toSignatureScreen);
+            },
           ),
           ColumnSpacer(0.01),
           ClarifyIdentityContainer(
@@ -74,6 +79,9 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
             description:
                 "Checking to make sure you are an permanent residence.",
             imagePath: ImageAsset().homeImage,
+            onTap: () {
+              pushScreen(context, ScreenRoutes.toSignUpBillingScreen);
+            },
             // route: route
           ),
         ],

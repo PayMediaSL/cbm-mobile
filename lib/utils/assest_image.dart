@@ -33,4 +33,10 @@ class ImageAsset {
 
   final String selfieImage = 'assets/images/selfie.png';
   final String checkmarkImage = 'assets/images/checkmark.png';
+
+  final String signatureImage = 'assets/images/signature.png';
+  final String nidImage = 'assets/images/nic.png';
+  final String billingImage = 'assets/images/billing.png';
+  final String iconImage = 'assets/images/icon.png';
+  //
 }
