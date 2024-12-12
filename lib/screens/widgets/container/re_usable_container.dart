@@ -80,6 +80,12 @@ class ClarifyIdentityContainer extends StatelessWidget {
                             ),
                           ),
                         ),
+
+                        // Transform.scale(
+                        //   scale: 0.8,
+                        //   child: Checkbox(
+                        //       value: isCompleted, onChanged: (bool? value) {}),
+                        // )
                       ],
                     ),
                   ],
@@ -104,6 +110,24 @@ class ClarifyIdentityContainer extends StatelessWidget {
                   ),
                 ),
               ),
+            // Positioned(
+            //     // top: 10,
+            //     bottom: 0,
+            //     right: 5,
+            //     child: Row(
+            //       children: [
+            //         Checkbox(value: true, onChanged: (bool? value) {}),
+            //         Text("Same as NIC")
+            //       ],
+            //     )
+
+            // Text(
+            //   "Completed",
+            //   style: commonTextStyle.copyWith(
+            //     color: AppColors.secondarySubBlackColor,
+            //   ),
+            // ),
+            // ),
           ],
         ),
       ),

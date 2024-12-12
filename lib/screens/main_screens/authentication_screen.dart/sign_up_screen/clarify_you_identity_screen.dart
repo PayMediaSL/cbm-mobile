@@ -21,7 +21,7 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
     final commonProvider = Provider.of<CommonProvider>(context, listen: false);
     return AuthenticationLayout(
       onBackButtonTap: () {
-        // popScreen(context);
+        popScreen(context);
       },
       isContainer1: true,
       isContainer2: true,
@@ -31,15 +31,25 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
       isSubHeadingAvailable: true,
       useImage: true,
       imageName: ImageAsset().authBg,
-      headerText: "Let’s clarify your identity",
-      headerSubText: "We’ll keep your information secure and confidential.",
+      headerText: commonProvider.isProgressComplete
+          ? "All done"
+          : "Let’s clarify your identity",
+      headerSubText: commonProvider.isProgressComplete
+          ? "You’re all caught up here."
+          : "We’ll keep your information secure and confidential.",
       defaultButton: true,
       buttontitle: "Next",
       onTap: () {
         pushScreen(context, ScreenRoutes.toSignUpFinishedUp);
       },
+      isLinearProgress: true,
       container2CustomWidget: Column(
         children: [
+          // LinearProgressIndicator(
+          //   value: commonProvider.progress,
+          //   backgroundColor: Colors.grey[300],
+          //   color: Colors.blue,
+          // ),
           ClarifyIdentityContainer(
             isCompleted: commonProvider.getState("aboutyou"),
             title: "About you",
@@ -47,6 +57,7 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
             imagePath: ImageAsset().userImage,
             onTap: () {
               pushScreen(context, ScreenRoutes.toAboutYouScreen);
+              // commonProvider.updateState("aboutyou", true);
             },
           ),
           ColumnSpacer(0.01),

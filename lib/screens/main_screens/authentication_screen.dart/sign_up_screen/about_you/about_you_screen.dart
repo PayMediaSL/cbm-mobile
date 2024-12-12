@@ -38,6 +38,7 @@ class AboutYouScreen extends StatelessWidget {
       buttontitle: "Next",
       onTap: () {
         commonProvider.toggleState("aboutyou");
+        commonProvider.updateState("aboutyou", true);
         pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
       },
       container2CustomWidget: Column(
@@ -66,9 +67,56 @@ class AboutYouScreen extends StatelessWidget {
           ),
           ColumnSpacer(0.02),
           CustomLableTextField(
+            suffixIcon: IconButton(
+              onPressed: () async {
+                //! Need to change the Date Picker Once Date Picker UI --> Finalized
+                final pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2100),
+                );
+                if (pickedDate != null) {
+                  context
+                      .read<CommonProvider>()
+                      .setSelectedDate("sss", pickedDate);
+                  final formattedDate =
+                      "${pickedDate.day.toString().padLeft(2, '0')}/${pickedDate.month.toString().padLeft(2, '0')}/${pickedDate.year}";
+                  dateOfBirthController.text = formattedDate;
+                }
+              },
+              icon: Icon(
+                Icons.calendar_month,
+                color: AppColors.primaryGreyColor2,
+              ),
+            ),
             dateOfBirthController,
             hint: "Date of birth (DD/MM/YYYY)",
           ),
+
+          // CustomLableTextField(
+          //   suffixIcon: IconButton(
+          //       onPressed: () async {
+          //         final pickedDate = await showDatePicker(
+          //           context: context,
+          //           initialDate: DateTime.now(),
+          //           firstDate: DateTime(2000),
+          //           lastDate: DateTime(2100),
+          //         );
+          //         if (pickedDate != null) {
+          //           // Update the selected date in the provider
+          //           context
+          //               .read<CommonProvider>()
+          //               .setSelectedDate("sss", pickedDate);
+          //         }
+          //       },
+          //       icon: Icon(
+          //         Icons.calendar_month,
+          //         color: AppColors.primaryGreyColor2,
+          //       )),
+          //   dateOfBirthController,
+          //   hint: "Date of birth (DD/MM/YYYY)",
+          // ),
           ColumnSpacer(0.14),
         ],
       ),

@@ -1,37 +1,20 @@
-// import 'package:flutter/material.dart';
-
-// class CommonProvider extends ChangeNotifier {
-//   final Map<String, bool> _states = {};
-
-//   /// Get the current state for a key (default value can be passed)
-//   bool getState(String key, {bool defaultValue = true}) {
-//     if (!_states.containsKey(key)) {
-//       _states[key] = defaultValue; // Initialize the key with the default value
-//     }
-//     return _states[key]!;
-//   }
-
-//   /// Toggle the current state for a key
-//   void toggleState(String key) {
-//     _states[key] = !_states[key]!;
-//     notifyListeners();
-//   }
-
-//   /// Set a specific state for a key
-//   void setState(String key, bool value) {
-//     _states[key] = value;
-//     notifyListeners();
-//   }
-// }
-
 import 'package:flutter/material.dart';
 
 class CommonProvider extends ChangeNotifier {
+  // Maps to store states, countdown values, timer activity, and overall progress states
   final Map<String, bool> _states = {};
   final Map<String, int> _countdowns = {};
   final Map<String, bool> _isTimerActive = {};
+  final Map<String, bool> _state = {
+    "aboutyou": false,
+    "identity": false,
+    "signature": false,
+    "billingproof": false,
+  };
+  // Map to store selected dates
+  final Map<String, DateTime?> _selectedDates = {};
 
-  /// Get the current state for a key (default value is false if the key doesn't exist)
+  // Get the current state for a key (default value is false if the key doesn't exist)
   bool getState(String key) {
     if (!_states.containsKey(key)) {
       _states[key] = false; // Initialize the key with false by default
@@ -39,58 +22,38 @@ class CommonProvider extends ChangeNotifier {
     return _states[key]!;
   }
 
-  /// Toggle the current state for a key
+  // Toggle the current state for a key
   void toggleState(String key) {
     if (!_states.containsKey(key)) {
       _states[key] =
-          false; // Ensure the key is initialized with false if not already
+          false; // Initialize the key with false if not already present
     }
     _states[key] =
         !_states[key]!; // Toggle the state value (false to true or vice versa)
     notifyListeners();
   }
 
-  /// Set a specific state for a key
+  // Set a specific state for a key
   void setState(String key, bool value) {
     _states[key] = value; // Set the specific state value
     notifyListeners();
   }
 
-  /// Get the current state for a key (default value can be passed)
-  // bool getState(String key, {bool defaultValue = true}) {
-  //   if (!_states.containsKey(key)) {
-  //     _states[key] = defaultValue; // Initialize the key with the default value
-  //   }
-  //   return _states[key]!;
-  // }
-
-  // /// Toggle the current state for a key
-  // void toggleState(String key) {
-  //   _states[key] = !_states[key]!;
-  //   notifyListeners();
-  // }
-
-  // /// Set a specific state for a key
-  // void setState(String key, bool value) {
-  //   _states[key] = value;
-  //   notifyListeners();
-  // }
-
-  ///? ////
-  /// Get the current countdown value for a key
+  // Get the current countdown value for a key (default is 120 seconds)
   int getCountdown(String key, {int defaultValue = 120}) {
     if (!_countdowns.containsKey(key)) {
-      _countdowns[key] = defaultValue;
+      _countdowns[key] =
+          defaultValue; // Initialize countdown with default value
     }
     return _countdowns[key]!;
   }
 
-  /// Check if the timer is active
+  // Check if the timer is active for a key
   bool isTimerActive(String key) {
     return _isTimerActive[key] ?? false;
   }
 
-  /// Start the countdown for a key
+  // Start the countdown for a key
   void startCountdown(String key, {int duration = 120}) {
     _countdowns[key] = duration;
     _isTimerActive[key] = true;
@@ -98,7 +61,7 @@ class CommonProvider extends ChangeNotifier {
     _runCountdown(key);
   }
 
-  /// Private function to handle countdown
+  // Private function to handle countdown logic
   void _runCountdown(String key) async {
     while (_countdowns[key]! > 0) {
       await Future.delayed(const Duration(seconds: 1));
@@ -106,6 +69,31 @@ class CommonProvider extends ChangeNotifier {
       notifyListeners();
     }
     _isTimerActive[key] = false; // Mark the timer as inactive
+    notifyListeners();
+  }
+
+  // Get progress as a percentage of completed states
+  double get progress => _state.values.where((v) => v).length / _state.length;
+
+  // Check if progress is fully completed
+  bool get isProgressComplete => progress == 1.0;
+
+  // Get the state of a specific key in the progress map
+  bool getStates(String key) => _state[key] ?? false;
+
+  // Update the state of a specific key in the progress map
+  void updateState(String key, bool value) {
+    if (_state.containsKey(key)) {
+      _state[key] = value;
+      notifyListeners();
+    }
+  }
+
+  //! Date Picker
+
+  DateTime? getSelectedDate(String key) => _selectedDates[key];
+  void setSelectedDate(String key, DateTime date) {
+    _selectedDates[key] = date;
     notifyListeners();
   }
 }

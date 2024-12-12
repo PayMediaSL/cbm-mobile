@@ -3,11 +3,13 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/widgets/drop_down/custom_language_dropdown.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class AuthenticationLayout extends StatelessWidget {
   AuthenticationLayout({
@@ -25,6 +27,7 @@ class AuthenticationLayout extends StatelessWidget {
     this.isListChildren = false,
     this.useImage = false,
     this.defaultButton = false,
+    this.isLinearProgress = false,
     this.imageName = "",
     this.backgroundColor,
     this.onTap,
@@ -54,7 +57,7 @@ class AuthenticationLayout extends StatelessWidget {
   bool useImage;
   bool isListChildren;
   bool defaultButton;
-
+  bool isLinearProgress;
   final Color? backgroundColor;
   final Color? appbarbackgroundColor;
   final void Function()? onTap;
@@ -74,6 +77,7 @@ class AuthenticationLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
     ScreenUtil.init(context);
+    final commonProvider = Provider.of<CommonProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: backgroundColor ?? AppColors.primaryWhiteColor,
       appBar: isAppBar
@@ -101,6 +105,13 @@ class AuthenticationLayout extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  isLinearProgress
+                      ? LinearProgressIndicator(
+                          value: commonProvider.progress,
+                          backgroundColor: AppColors.primaryGreyColor2,
+                          color: Colors.blue,
+                        )
+                      : SizedBox.shrink(),
                   isContainer1
                       ? Container(
                           width: container1Width ?? ScreenUtils.width,
@@ -109,10 +120,8 @@ class AuthenticationLayout extends StatelessWidget {
                             color: useImage ? null : AppColors.primaryBlueColor,
                             image: useImage
                                 ? DecorationImage(
-                                    image: AssetImage(
-                                        imageName), // Replace with your image path
-                                    fit: BoxFit
-                                        .cover, // Cover the entire container
+                                    image: AssetImage(imageName),
+                                    fit: BoxFit.cover,
                                   )
                                 : null,
                           ),

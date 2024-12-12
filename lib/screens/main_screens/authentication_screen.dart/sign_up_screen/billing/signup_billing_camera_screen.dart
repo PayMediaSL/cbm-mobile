@@ -37,6 +37,7 @@ class _SignupBillingCameraScreenState extends State<SignupBillingCameraScreen> {
           onTap: () {
             pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
             commonProvider.toggleState("billingproof");
+            commonProvider.updateState("billingproof", true);
           },
         ),
       ),
