@@ -6,6 +6,7 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/text_fields/custom_search_bar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,6 +15,26 @@ class MainHomeScreen extends StatelessWidget {
     super.key,
   });
 
+  final List<Map<String, String>> cardData = [
+    {
+      'availableBalance': 'John Doe',
+      'accountNumber': '* 1234',
+      'currentBalance': '12/25',
+      'accountHold': '12/25',
+    },
+    {
+      'availableBalance': 'John Doe',
+      'accountNumber': '**** 1234',
+      'currentBalance': '12/25',
+      'accountHold': '12/25',
+    },
+    {
+      'availableBalance': 'John Doe',
+      'accountNumber': '**** 1234',
+      'currentBalance': '12/25',
+      'accountHold': '12/25',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
@@ -58,11 +79,24 @@ class MainHomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          ColumnSpacer(0.05),
-          VisaCardWidget(
-              cardHolder: "cardHolder",
-              cardNumber: "cardNumber",
-              expiryDate: "expiryDate")
+          ColumnSpacer(0.04),
+          CarouselSlider.builder(
+            disableGesture: true,
+            itemCount: 3,
+            options: CarouselOptions(
+              height: ScreenUtils.height * 0.23,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: true,
+            ),
+            itemBuilder: (context, index, realIndex) {
+              final card = cardData[index];
+              return VisaCardWidget(
+                  availableBalance: card["availableBalance"] ?? "",
+                  accountNumber: card["accountNumber"] ?? "",
+                  currentBalance: card["currentBalance"] ?? "",
+                  accountHold: card["accountHold"] ?? "");
+            },
+          ),
         ],
       ),
     );
@@ -70,14 +104,20 @@ class MainHomeScreen extends StatelessWidget {
 }
 
 class VisaCardWidget extends StatelessWidget {
-  final String cardHolder;
-  final String cardNumber;
-  final String expiryDate;
+  final String availableBalance;
+  final String accountNumber;
+  final String currentBalance;
+  final String accountHold;
+  final void Function()? onTap1;
+  final void Function()? onTap2;
 
   const VisaCardWidget({
-    required this.cardHolder,
-    required this.cardNumber,
-    required this.expiryDate,
+    required this.availableBalance,
+    required this.accountNumber,
+    required this.currentBalance,
+    required this.accountHold,
+    this.onTap1,
+    this.onTap2,
     Key? key,
   }) : super(key: key);
 
@@ -108,17 +148,23 @@ class VisaCardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Regular Saving : 890077565"),
+                  Text("Regular Saving : ${accountNumber}"),
                   Row(
                     children: [
-                      Image(
-                        image: AssetImage(ImageAsset().iconImage),
-                        height: 20.sp,
+                      GestureDetector(
+                        onTap: onTap1,
+                        child: Image(
+                          image: AssetImage(ImageAsset().iconImage),
+                          height: 20.sp,
+                        ),
                       ),
                       RowSpacer(0.03),
-                      Image(
-                        image: AssetImage(ImageAsset().iconImage),
-                        height: 20.sp,
+                      GestureDetector(
+                        onTap: onTap2,
+                        child: Image(
+                          image: AssetImage(ImageAsset().iconImage),
+                          height: 20.sp,
+                        ),
                       )
                     ],
                   ),
@@ -128,7 +174,7 @@ class VisaCardWidget extends StatelessWidget {
 
               ColumnSpacer(0.01),
               Text(
-                "Rs 4,433,000.00",
+                availableBalance,
                 style: TextStyle(fontSize: 27),
               ),
               // ColumnSpacer(0.0001),
@@ -142,13 +188,13 @@ class VisaCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Current balance"),
-                      Text("data"),
+                      Text(currentBalance),
                     ],
                   ),
                   Column(
                     children: [
                       Text("Holds"),
-                      Text("data"),
+                      Text(accountHold),
                     ],
                   ),
                 ],
