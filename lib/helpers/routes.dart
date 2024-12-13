@@ -17,7 +17,6 @@ import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_scre
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
-import 'package:app/screens/test_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +25,6 @@ import '../screens/main_screens/authentication_screen.dart/sign_in_screen/sign_i
 class ScreenRoutes {
   // Init
   static const String toSplashScreen = "toSplashScreen";
-  static const String toHomeScreen = "toHomeScreen";
   static const String toOnBoardScreen = "toOnBoardScreen";
 
   //
@@ -66,6 +64,11 @@ class ScreenRoutes {
 
 // Signup Finished up
   static const String toSignUpFinishedUp = "toSignUpFinishedUp";
+
+  // HomeScreen
+
+  static const String toBottomNavigationScreen = "toBottomNavigationScreen";
+  static const String toHomeScreen = "toHomeScreen";
 
   static const String test = "testinggggggg";
 }
@@ -208,11 +211,11 @@ class Router {
         );
 
 //!!!!!!!!!test
-      case ScreenRoutes.test:
-        return MaterialPageRoute(
-          builder: (_) => TestScreen(),
-          settings: settings,
-        );
+      // case ScreenRoutes.test:
+      //   return MaterialPageRoute(
+      //     builder: (_) => TestScreen(),
+      //     settings: settings,
+      //   );
 
       default:
         return MaterialPageRoute(
