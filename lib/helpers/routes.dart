@@ -1,26 +1,27 @@
-import 'package:app/screens/main_screens/authentication_screen.dart/forget_psw_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/pin_signin_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_option_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/about_you/about_you_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/billing/signup_billing_camera_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/billing/signup_billing_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/clarify_you_identity_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/finished_up_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/nid_upload/nid_back_camera_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/nid_upload/nid_front_camera_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/nid_upload/nid_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/sign_up_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/face_image_upoad/signup_selfie_camera_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/face_image_upoad/signup_selfie_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/signature/signup_signature_camera_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/signature/signup_signature_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/forget_psw_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_in_screen/pin_signin_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_in_screen/sign_in_option_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/about_you/about_you_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/billing/signup_billing_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/billing/signup_billing_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/clarify_you_identity_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/finished_up_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_back_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_front_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/sign_up_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/face_image_upoad/signup_selfie_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/face_image_upoad/signup_selfie_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/signature/signup_signature_camera_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/signature/signup_signature_screen.dart';
+import 'package:app/screens/main_screens/bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/main_screens/authentication_screen.dart/sign_in_screen/sign_in_screen.dart';
+import '../screens/main_screens/authentication_screen/sign_in_screen/sign_in_screen.dart';
 
 class ScreenRoutes {
   // Init
@@ -209,6 +210,12 @@ class Router {
           builder: (_) => ESlipsScreen(),
           settings: settings,
         );
+
+      //! Bottom Navigation Screen
+
+      case ScreenRoutes.toBottomNavigationScreen:
+        return MaterialPageRoute(
+            builder: (_) => BottomBavigationScreen(), settings: settings);
 
 //!!!!!!!!!test
       // case ScreenRoutes.test:

@@ -39,4 +39,10 @@ class ImageAsset {
   final String billingImage = 'assets/images/billing.png';
   final String iconImage = 'assets/images/icon.png';
   //
+
+  //Icons Images
+
+  final String iconImageMail = 'assets/icons/mail.png';
+  final String iconImageNotification = 'assets/icons/notification.png';
+  final String iconImageLocak = 'assets/icons/lock.png';
 }

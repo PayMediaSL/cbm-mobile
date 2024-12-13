@@ -11,6 +11,8 @@ import 'package:app/models/app_state.dart';
 import 'package:app/models/notification_state.dart';
 import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
+import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
+import 'package:app/providers/home_screen/home_screen_data_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/services/analytics_service.dart';
@@ -72,6 +74,22 @@ void main() async {
 
           //* Common Provider
           ChangeNotifierProvider(create: (_) => CommonProvider()),
+
+//! Home Provider
+
+          ChangeNotifierProvider<HomeScreenDataProvider>(
+            create: (context) => HomeScreenDataProvider(context),
+          ),
+
+          //! Bottom Naviagtions
+          ChangeNotifierProvider(create: (_) => BottomNavProvider()),
+
+          // ChangeNotifierProvider<BottomNavBarProvider>(
+          //   create: (context) => BottomNavBarProvider(
+          //     homeDataProvider:
+          //         Provider.of<HomeScreenDataProvider>(context, listen: false),
+          //   ),
+          // ),
         ],
         child: const MyApp(),
       ),
@@ -148,7 +166,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       title: Environment.appName,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: router.ScreenRoutes.toOnBoardScreen,
+      initialRoute: router.ScreenRoutes.toBottomNavigationScreen,
       navigatorKey: navigatorKey,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

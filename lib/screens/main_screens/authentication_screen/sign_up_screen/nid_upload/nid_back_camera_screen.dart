@@ -1,6 +1,6 @@
 import 'package:app/helpers/routes.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
-import 'package:app/screens/main_screens/authentication_screen.dart/sign_up_screen/face_capture_camera.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/face_capture_camera.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:camera/camera.dart';

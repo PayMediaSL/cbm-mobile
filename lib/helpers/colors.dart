@@ -56,6 +56,10 @@ class AppColors {
 
   //! Sub Grey Color
   static Color SecondarysubGreyColor = HexColor("#E5E7EB");
+
+  //bottom Navigation bgColor
+
+  static Color bottomNavBgColor = HexColor("#E0EBF9");
 }
 
 class HexColor extends Color {
