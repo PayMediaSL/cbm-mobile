@@ -22,11 +22,10 @@ class CustomTabBar extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              // Update the selected tab index in the provider
               tabSelectionModel.setSelectedIndex(index);
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
+              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0),
               margin: EdgeInsets.symmetric(horizontal: 8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),

@@ -19,6 +19,7 @@ class VisaCardWidget extends StatelessWidget {
   final void Function()? onTapAccounts;
   final void Function()? onTapAddMoney;
   final void Function()? onTapLastCard;
+  final int? maskindex;
 
   bool isWallet;
   final Color? gradientColor1;
@@ -39,6 +40,7 @@ class VisaCardWidget extends StatelessWidget {
     this.gradientColor2,
     this.isLastCard = false,
     this.onTapLastCard,
+    this.maskindex,
     Key? key,
   }) : super(key: key);
 
@@ -117,10 +119,12 @@ class VisaCardWidget extends StatelessWidget {
                           children: [
                             GestureDetector(
                                 onTap: () {
-                                  commonProvider.toggleState("masknumber");
+                                  commonProvider
+                                      .toggleState("masknumber_$maskindex");
                                 },
                                 child: Icon(
-                                  !commonProvider.getState("masknumber")
+                                  !commonProvider
+                                          .getState("masknumber_$maskindex")
                                       ? Icons.visibility_off
                                       : Icons.visibility,
                                   color: AppColors.primaryWhiteColor,
@@ -140,7 +144,7 @@ class VisaCardWidget extends StatelessWidget {
 
                     ColumnSpacer(0.01),
                     Text(
-                      "RS  ${!commonProvider.getState("masknumber") ? maskNumber(availableBalance) : availableBalance}",
+                      "RS  ${!commonProvider.getState("masknumber_$maskindex") ? maskNumber(availableBalance) : availableBalance}",
                       style: commonTextStyle.copyWith(
                           fontSize: 26.sp,
                           fontFamily: "spacegrotsek",

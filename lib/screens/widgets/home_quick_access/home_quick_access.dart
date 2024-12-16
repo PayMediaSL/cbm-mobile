@@ -146,7 +146,7 @@ class QuickAccessWidget extends StatelessWidget {
               ),
               _buildOptionTile(
                 context: context,
-                label: 'Favara',
+                label: 'Favara Pay',
                 assetImage: ImageAsset().iconImageFavara,
                 homeProvider: homeProvider,
               ),

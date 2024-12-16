@@ -119,6 +119,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   final card = cardData[index];
                   bool isWallet = card["isWallet"] == 'true';
                   return VisaCardWidget(
+                    maskindex: index,
                     availableBalance: card["availableBalance"] ?? "",
                     accountNumber: card["accountNumber"] ?? "",
                     currentBalance: card["currentBalance"] ?? "",
