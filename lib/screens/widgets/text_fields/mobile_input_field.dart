@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/models/sign_up/country_model.dart';
@@ -208,6 +210,7 @@ class _MobileInputFieldState extends State<MobileInputField> {
     if (widget.countryList.isNotEmpty) {
       return widget.countryList;
     }
+    return null;
 
     // await _registerRepo.fetchCountryList(
     //   context,

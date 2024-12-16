@@ -1,7 +1,6 @@
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AppFocusObserver extends WidgetsBindingObserver {
   final GlobalKey<NavigatorState> navigatorKey;

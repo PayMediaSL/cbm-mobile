@@ -14,3 +14,8 @@ Future<void> OpenEmailApp() async {
     throw 'Could not launch email app';
   }
 }
+
+//! masking Number
+String maskNumber(String number, {String maskChar = "X"}) {
+  return maskChar * number.length; // Replace each digit with the mask character
+}

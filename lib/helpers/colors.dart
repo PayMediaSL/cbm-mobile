@@ -27,6 +27,8 @@ class AppColors {
   static Color primaryRedColor = Colors.red;
   static Color primaryAmberColor = Colors.amber;
   static Color primaryBlueColor = HexColor("#103489");
+  static Color secondaryBlueColor = HexColor("#578AFA");
+
   static Color primaryWhiteColor = HexColor("#FFFFFF");
   static Color primaryBlackColor = HexColor("#020617");
   static Color primarySubBlackColor = HexColor("#475569");

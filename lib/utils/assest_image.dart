@@ -38,6 +38,8 @@ class ImageAsset {
   final String nidImage = 'assets/images/nic.png';
   final String billingImage = 'assets/images/billing.png';
   final String iconImage = 'assets/images/icon.png';
+  final String home_sn_HomeImage = 'assets/images/homeImage.png';
+
   //
 
   //Icons Images
@@ -45,4 +47,13 @@ class ImageAsset {
   final String iconImageMail = 'assets/icons/mail.png';
   final String iconImageNotification = 'assets/icons/notification.png';
   final String iconImageLocak = 'assets/icons/lock.png';
+
+  final String iconImageAdd = 'assets/icons/add.png';
+  final String iconImageBill = 'assets/icons/bill.png';
+  final String iconImageCard = 'assets/icons/card.png';
+  final String iconImageFavara = 'assets/icons/favara.png';
+  final String iconImageMoney = 'assets/icons/money.png';
+  final String iconImageQR = 'assets/icons/qr.png';
+  final String iconImageReload = 'assets/icons/reload.png';
+  final String iconImageSend = 'assets/icons/send.png';
 }

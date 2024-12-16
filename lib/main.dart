@@ -13,6 +13,8 @@ import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
 import 'package:app/providers/home_screen/home_screen_data_provider.dart';
+import 'package:app/providers/home_screen/quick_access_data_provider.dart';
+import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/services/analytics_service.dart';
@@ -77,12 +79,17 @@ void main() async {
 
 //! Home Provider
 
-          ChangeNotifierProvider<HomeScreenDataProvider>(
-            create: (context) => HomeScreenDataProvider(context),
-          ),
+          // ChangeNotifierProvider<HomeScreenDataProvider>(
+          //   create: (context) => HomeScreenDataProvider(context),
+          // ),
 
           //! Bottom Naviagtions
           ChangeNotifierProvider(create: (_) => BottomNavProvider()),
+
+//! Home Screen Providers
+          ChangeNotifierProvider(create: (_) => HomeScreenDataProvider()),
+          ChangeNotifierProvider(create: (_) => QuickAccessProvider()),
+          ChangeNotifierProvider(create: (_) => TabSelectionProvider()),
 
           // ChangeNotifierProvider<BottomNavBarProvider>(
           //   create: (context) => BottomNavBarProvider(
