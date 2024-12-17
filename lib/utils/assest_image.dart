@@ -56,4 +56,23 @@ class ImageAsset {
   final String iconImageQR = 'assets/icons/qr.png';
   final String iconImageReload = 'assets/icons/reload.png';
   final String iconImageSend = 'assets/icons/send.png';
+  final String iconArrowLeftRight = 'assets/icons/arrowleftright.png';
+  final String iconImageMoney1 = 'assets/icons/money1.png';
+
+  //? Home Screen LifeStyle
+
+  final String iconImageFood = 'assets/icons/food.png';
+  final String iconImageEntertainment = 'assets/icons/entertainment.png';
+  final String iconImageHealth = 'assets/icons/health.png';
+  final String iconImageInsurance = 'assets/icons/insurance.png';
+  final String iconImageGaming = 'assets/icons/gaming.png';
+  final String iconImageEcommerce = 'assets/icons/ecommerce.png';
+  final String iconImageTransport = 'assets/icons/transport.png';
+  final String iconImageEducation = 'assets/icons/education.png';
+
+  //? Home Dop moere
+  final String doMoreImg1 = 'assets/images/domore1.png';
+  final String doMoreImg2 = 'assets/images/domore2.png';
+  final String doMoreImg3 = 'assets/images/domore3.png';
+  final String doMoreImg4 = 'assets/images/domore4.png';
 }

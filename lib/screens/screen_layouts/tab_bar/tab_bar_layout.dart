@@ -15,9 +15,9 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
     return SizedBox(
-      height: ScreenUtils.height * 0.04, // Height of the TabBar
+      height: ScreenUtils.height * 0.04,
       child: ListView.builder(
-        scrollDirection: Axis.horizontal, // Allows horizontal scrolling
+        scrollDirection: Axis.horizontal,
         itemCount: tabs.length,
         itemBuilder: (context, index) {
           return GestureDetector(
@@ -60,9 +60,7 @@ class CustomTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: tabViews[selectedIndex],
-    );
+    return tabViews[selectedIndex];
   }
 }
 

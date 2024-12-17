@@ -62,6 +62,24 @@ class AppColors {
   //bottom Navigation bgColor
 
   static Color bottomNavBgColor = HexColor("#E0EBF9");
+  static Color iconGreyColor = HexColor("#EEEEEF");
+
+  //? Home Screen Life style Color
+
+  static Color homeLifestyleFood = HexColor("#EDB37E");
+  static Color homeLifestyleEntertainment = HexColor("#AFCCA1");
+  static Color homeLifestyleHealth = HexColor("#92B0EA");
+  static Color homeLifestyleInsurance = HexColor("#9DDDD5");
+  static Color homeLifestyleGaming = HexColor("#9DDDD5");
+  static Color homeLifestyleEcommerce = HexColor("#9ACED9");
+  static Color homeLifestyleTrabsport = HexColor("#F2A9CE");
+  static Color homeLifestyleEducation = HexColor("#CDD0CD");
+
+  //? Do moere in home Scereenm
+  static Color doDoMoreColor1 = HexColor("#FEE7FE");
+  static Color doDoMoreColor2 = HexColor("#F1EFE1");
+  static Color doDoMoreColor3 = HexColor("#EAEAEA");
+  static Color doDoMoreColor4 = HexColor("#D4EFFA");
 }
 
 class HexColor extends Color {

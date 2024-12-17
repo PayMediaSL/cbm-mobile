@@ -43,3 +43,9 @@ var getStartedSubHeadingStyle = TextStyle(
     fontWeight: FontWeight.w400,
     color: AppColors.getStartedSubHeading,
     fontFamily: 'inter');
+
+var homeScreenTitleStyle = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryBlackColor,
+    fontFamily: 'inter');

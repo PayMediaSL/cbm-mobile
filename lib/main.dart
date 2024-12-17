@@ -12,6 +12,7 @@ import 'package:app/models/notification_state.dart';
 import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
+import 'package:app/providers/home_screen/contacts_data_provider.dart';
 import 'package:app/providers/home_screen/home_screen_data_provider.dart';
 import 'package:app/providers/home_screen/quick_access_data_provider.dart';
 import 'package:app/providers/home_screen/tap_selection_provider.dart';
@@ -90,6 +91,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => HomeScreenDataProvider()),
           ChangeNotifierProvider(create: (_) => QuickAccessProvider()),
           ChangeNotifierProvider(create: (_) => TabSelectionProvider()),
+          ChangeNotifierProvider(create: (_) => ContactsProvider()),
 
           // ChangeNotifierProvider<BottomNavBarProvider>(
           //   create: (context) => BottomNavBarProvider(
