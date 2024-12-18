@@ -88,6 +88,7 @@ flutter:
     - assets/i18n/
     - assets/translations/
     - assets/icons/
+    - assets/icons/settings/
 
 
 

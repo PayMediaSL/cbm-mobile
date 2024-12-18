@@ -1,22 +1,27 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/spacers.dart';
+import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeMainLayout extends StatelessWidget {
-  HomeMainLayout({
-    super.key,
-    this.isAppBar = false,
-    this.isLeading = true,
-    this.isBgContainer1 = false,
-    this.isBgContainer2 = false,
-    this.backgroundColor,
-    this.isBgContainer1Height,
-    this.isBgContainer2Height,
-    this.children,
-  });
+  HomeMainLayout(
+      {super.key,
+      this.isAppBar = false,
+      this.isLeading = true,
+      this.isBgContainer1 = false,
+      this.isBgContainer2 = false,
+      this.backgroundColor,
+      this.isBgContainer1Height,
+      this.isBgContainer2Height,
+      this.children,
+      this.onBackIconAvailable = false,
+      this.onBackTitleAvailable = false,
+      this.backTitle = "",
+      this.onBackTap});
   bool isAppBar;
   bool isLeading;
   late bool isBgContainer1;
@@ -25,6 +30,10 @@ class HomeMainLayout extends StatelessWidget {
   late double? isBgContainer2Height;
   final Color? backgroundColor;
   final Widget? children;
+  late bool onBackIconAvailable;
+  late bool onBackTitleAvailable;
+  late String backTitle;
+  final void Function()? onBackTap;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +68,38 @@ class HomeMainLayout extends StatelessWidget {
               Padding(
                 padding:
                     EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
-                child: children,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    onBackIconAvailable
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: onBackTap,
+                                  child: Icon(
+                                    Icons.arrow_back_ios_rounded,
+                                    color: AppColors.primaryWhiteColor,
+                                  ),
+                                ),
+                                RowSpacer(0.04),
+                                onBackTitleAvailable
+                                    ? Text(
+                                        backTitle,
+                                        style: commonTextStyle.copyWith(
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w500),
+                                      )
+                                    : SizedBox.shrink()
+                              ],
+                            ),
+                          )
+                        : SizedBox.shrink(),
+                    if (children != null) children!,
+                  ],
+                ),
               )
               //! Main Text
               // Padding(

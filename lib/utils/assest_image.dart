@@ -75,4 +75,21 @@ class ImageAsset {
   final String doMoreImg2 = 'assets/images/domore2.png';
   final String doMoreImg3 = 'assets/images/domore3.png';
   final String doMoreImg4 = 'assets/images/domore4.png';
+
+  //! Setting Icons
+
+  final String settingsIconProfile = 'assets/icons/settings/detailsupdate.png';
+  final String settingsIconSecurity = 'assets/icons/settings/security.png';
+  final String settingsIconTransactionLimit =
+      'assets/icons/settings/transaction.png';
+  final String settingsIconDetailsupdate =
+      'assets/icons/settings/detailsupdate.png';
+  final String settingsIconNewAccount =
+      'assets/icons/settings/detailsupdate.png';
+  final String settingsIconSetting = 'assets/icons/settings/settings.png';
+  final String settingsIconHelp = 'assets/icons/settings/help.png';
+  final String settingsIconInviteFriend =
+      'assets/icons/settings/invitefriend.png';
+  final String settingsIconInfo = 'assets/icons/settings/info.png';
+  final String settingsIconLogout = 'assets/icons/settings/logout.png';
 }

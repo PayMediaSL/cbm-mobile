@@ -13,6 +13,7 @@ import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
+import 'package:app/providers/home_screen/drawer/toggle_provider.dart';
 import 'package:app/providers/home_screen/home_screen_data_provider.dart';
 import 'package:app/providers/home_screen/quick_access_data_provider.dart';
 import 'package:app/providers/home_screen/tap_selection_provider.dart';
@@ -92,6 +93,9 @@ void main() async {
           ChangeNotifierProvider(create: (_) => QuickAccessProvider()),
           ChangeNotifierProvider(create: (_) => TabSelectionProvider()),
           ChangeNotifierProvider(create: (_) => ContactsProvider()),
+
+          //! Drawer
+          ChangeNotifierProvider(create: (_) => ToggleSwitchProvider()),
 
           // ChangeNotifierProvider<BottomNavBarProvider>(
           //   create: (context) => BottomNavBarProvider(

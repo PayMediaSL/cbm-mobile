@@ -15,6 +15,7 @@ import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/fa
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/signature/signup_signature_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/signature/signup_signature_screen.dart';
 import 'package:app/screens/main_screens/bottom_navigation_screen/bottom_navigation_screen.dart';
+import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
@@ -70,6 +71,9 @@ class ScreenRoutes {
 
   static const String toBottomNavigationScreen = "toBottomNavigationScreen";
   static const String toHomeScreen = "toHomeScreen";
+
+  // Draweerrr
+  static const String toDrawerSettingScreen = "toDrawerSettingScreen";
 
   static const String test = "testinggggggg";
 }
@@ -197,6 +201,16 @@ class Router {
           builder: (_) => FinishedUpScreen(),
           settings: settings,
         );
+
+//? Drawer
+//* Setting Screen
+
+      case ScreenRoutes.toDrawerSettingScreen:
+        return MaterialPageRoute(
+          builder: (_) => DrawerSettingsScreen(),
+          settings: settings,
+        );
+
 //! Pin Login
       case ScreenRoutes.toPinLoginScreeen:
         return MaterialPageRoute(

@@ -1,5 +1,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
+import 'package:app/screens/main_screens/drawer/main_drawer_screen.dart';
 import 'package:app/screens/main_screens/home_screen/home_screen.dart';
 import 'package:app/screens/widgets/bottom_nav_Item/custom_bottom_navitem.dart';
 import 'package:app/screens/widgets/on_refresh/custom_refresh_indicator.dart';
@@ -13,23 +14,45 @@ class BottomBavigationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottomNavProvider = Provider.of<BottomNavProvider>(context);
 
-    return PersistentTabView(
-      context,
-      controller: PersistentTabController(
-        initialIndex: bottomNavProvider.currentIndex,
+    return Scaffold(
+      drawer: MainDrawerScreen(),
+      body: PersistentTabView(
+        context,
+        controller: PersistentTabController(
+          initialIndex: bottomNavProvider.currentIndex,
+        ),
+        screens: _buildScreens(),
+        items: _navBarsItems(bottomNavProvider),
+        confineToSafeArea: true,
+        backgroundColor: Colors.white, // Background color of the bottom nav bar
+        handleAndroidBackButtonPress: true, // Handle back button
+        resizeToAvoidBottomInset: true, // Resize screen when keyboard appears
+        stateManagement: true, // State management
+        navBarStyle:
+            NavBarStyle.style3, // Choose the style of the bottom nav bar
+        onItemSelected: (index) {
+          bottomNavProvider.updateIndex(index);
+        },
       ),
-      screens: _buildScreens(),
-      items: _navBarsItems(bottomNavProvider),
-      confineToSafeArea: true,
-      backgroundColor: Colors.white, // Background color of the bottom nav bar
-      handleAndroidBackButtonPress: true, // Handle back button
-      resizeToAvoidBottomInset: true, // Resize screen when keyboard appears
-      stateManagement: true, // State management
-      navBarStyle: NavBarStyle.style3, // Choose the style of the bottom nav bar
-      onItemSelected: (index) {
-        bottomNavProvider.updateIndex(index);
-      },
     );
+
+    // PersistentTabView(
+    //   context,
+    //   controller: PersistentTabController(
+    //     initialIndex: bottomNavProvider.currentIndex,
+    //   ),
+    //   screens: _buildScreens(),
+    //   items: _navBarsItems(bottomNavProvider),
+    //   confineToSafeArea: true,
+    //   backgroundColor: Colors.white, // Background color of the bottom nav bar
+    //   handleAndroidBackButtonPress: true, // Handle back button
+    //   resizeToAvoidBottomInset: true, // Resize screen when keyboard appears
+    //   stateManagement: true, // State management
+    //   navBarStyle: NavBarStyle.style3, // Choose the style of the bottom nav bar
+    //   onItemSelected: (index) {
+    //     bottomNavProvider.updateIndex(index);
+    //   },
+    // );
   }
 
   List<Widget> _buildScreens() {
