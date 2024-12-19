@@ -390,7 +390,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                 // style: Theme.of(context)
                                 //     .textTheme
                                 //     .displaySmall
-                                //     ?.copyWith(color: Colors.blue)
+                                //     ?.copyWith(fontSize: 11.sp)
 
                                 style: commonTextStyle.copyWith(
                                     fontSize: 11.sp, color: AppColors.black),

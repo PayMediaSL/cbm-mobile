@@ -7,6 +7,7 @@ import 'package:app/helpers/injection.dart';
 import 'package:app/helpers/language_constants.dart';
 import 'package:app/helpers/parameters.dart';
 import 'package:app/helpers/povider_helper/toggle_provider.dart';
+import 'package:app/helpers/text_styles.dart';
 import 'package:app/models/app_language.dart';
 import 'package:app/models/app_state.dart';
 import 'package:app/models/notification_state.dart';
@@ -22,6 +23,7 @@ import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/services/analytics_service.dart';
 import 'package:app/services/fcm_service.dart';
+import 'package:app/theme.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -195,42 +197,4 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     timer = Timer(
         Duration(seconds: Environment.timeoutPreSeconds), timeOutCallBack);
   }
-}
-
-// Custom Theme For Dark and Light Mode
-class CustomTheme {
-  static final ThemeData lightTheme = ThemeData(
-    fontFamily: "inter",
-    primaryTextTheme: TextTheme(displaySmall: TextStyle()),
-    brightness: Brightness.light,
-    primaryColor: AppColors.primaryBlueColor,
-    scaffoldBackgroundColor: AppColors.SecondarysubGreyColor,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.blue,
-      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
-    ),
-    textTheme: TextTheme(
-        displaySmall: const TextStyle(
-      color: Colors.red,
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-    )),
-  );
-
-  static final ThemeData darkTheme = ThemeData(
-      fontFamily: "inter",
-      brightness: Brightness.dark,
-      primaryColor: Colors.black,
-      scaffoldBackgroundColor: Colors.grey[400],
-      textTheme: TextTheme(
-          displaySmall: const TextStyle(
-        color: Colors.amber,
-        fontSize: 10,
-        fontWeight: FontWeight.bold,
-      )),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.grey,
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
-      ),
-      iconTheme: IconThemeData(color: Colors.red));
 }
