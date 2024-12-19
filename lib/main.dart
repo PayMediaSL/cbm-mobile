@@ -6,6 +6,7 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/injection.dart';
 import 'package:app/helpers/language_constants.dart';
 import 'package:app/helpers/parameters.dart';
+import 'package:app/helpers/povider_helper/toggle_provider.dart';
 import 'package:app/models/app_language.dart';
 import 'package:app/models/app_state.dart';
 import 'package:app/models/notification_state.dart';
@@ -37,14 +38,7 @@ void main() async {
 
   // Setup repository injection
   setupInjection();
-
   await FcmService().init();
-
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.transparent, // navigation bar color
-
-    statusBarColor: AppColors.primaryBlueColor,
-  ));
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -68,27 +62,16 @@ void main() async {
             create: (context) => NotificationState(),
           ),
 
-          // //? Theme Provider
-          // ChangeNotifierProvider(
-          //   create: (context) => ThemeProvider(),
-          // ),
-
           //* Locale Provider
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
 
           //* Common Provider
           ChangeNotifierProvider(create: (_) => CommonProvider()),
 
-//! Home Provider
-
-          // ChangeNotifierProvider<HomeScreenDataProvider>(
-          //   create: (context) => HomeScreenDataProvider(context),
-          // ),
-
           //! Bottom Naviagtions
           ChangeNotifierProvider(create: (_) => BottomNavProvider()),
 
-//! Home Screen Providers
+          //! Home Screen Providers
           ChangeNotifierProvider(create: (_) => HomeScreenDataProvider()),
           ChangeNotifierProvider(create: (_) => QuickAccessProvider()),
           ChangeNotifierProvider(create: (_) => TabSelectionProvider()),
@@ -96,13 +79,6 @@ void main() async {
 
           //! Drawer
           ChangeNotifierProvider(create: (_) => ToggleSwitchProvider()),
-
-          // ChangeNotifierProvider<BottomNavBarProvider>(
-          //   create: (context) => BottomNavBarProvider(
-          //     homeDataProvider:
-          //         Provider.of<HomeScreenDataProvider>(context, listen: false),
-          //   ),
-          // ),
         ],
         child: const MyApp(),
       ),
@@ -175,6 +151,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     initTime();
     printLog('AppLocale -> ${getAppLang(context).appLocale}');
+    var toggleProvider = getToggleProvider(context);
+    bool isDarkTheme = toggleProvider.getSwitchState("switch_darktheme");
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: isDarkTheme ? Colors.black : AppColors.primaryBlueColor,
+    ));
     return MaterialApp(
       title: Environment.appName,
       debugShowCheckedModeBanner: false,
@@ -195,14 +177,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           child: child ?? Container(),
         );
       },
-      theme: ThemeData.light(), // Light theme configuration
-      darkTheme: ThemeData.dark(), // Dark theme configuration
-      themeMode: ThemeMode.system,
-      // theme: ThemeData(
-      //   primarySwatch: AppColors.primaryColor,
-      //   visualDensity: VisualDensity.adaptivePlatformDensity,
-      //   // fontFamily: 'SF-Pro-Display',
-      // ),
+      themeMode: toggleProvider.getSwitchState("switch_darktheme")
+          ? ThemeMode.dark
+          : ThemeMode.light,
+      theme: CustomTheme.lightTheme,
+      darkTheme: CustomTheme.darkTheme,
     );
   }
 
@@ -216,4 +195,42 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     timer = Timer(
         Duration(seconds: Environment.timeoutPreSeconds), timeOutCallBack);
   }
+}
+
+// Custom Theme For Dark and Light Mode
+class CustomTheme {
+  static final ThemeData lightTheme = ThemeData(
+    fontFamily: "inter",
+    primaryTextTheme: TextTheme(displaySmall: TextStyle()),
+    brightness: Brightness.light,
+    primaryColor: AppColors.primaryBlueColor,
+    scaffoldBackgroundColor: AppColors.SecondarysubGreyColor,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.blue,
+      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+    ),
+    textTheme: TextTheme(
+        displaySmall: const TextStyle(
+      color: Colors.red,
+      fontSize: 10,
+      fontWeight: FontWeight.bold,
+    )),
+  );
+
+  static final ThemeData darkTheme = ThemeData(
+      fontFamily: "inter",
+      brightness: Brightness.dark,
+      primaryColor: Colors.black,
+      scaffoldBackgroundColor: Colors.grey[400],
+      textTheme: TextTheme(
+          displaySmall: const TextStyle(
+        color: Colors.amber,
+        fontSize: 10,
+        fontWeight: FontWeight.bold,
+      )),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.grey,
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+      ),
+      iconTheme: IconThemeData(color: Colors.red));
 }

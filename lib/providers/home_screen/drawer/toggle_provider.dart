@@ -2,28 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ToggleSwitchProvider with ChangeNotifier {
-  bool _isSwitched = false;
+  Map<String, bool> _switchStates = {};
 
-  bool get isSwitched => _isSwitched;
+  bool getSwitchState(String key) {
+    return _switchStates[key] ?? false; // Default to false if not set
+  }
 
   ToggleSwitchProvider() {
-    _loadSwitchState(); // Load the saved state when the app starts
+    _loadSwitchStates();
   }
 
-  void toggleSwitch(bool value) async {
-    _isSwitched = value;
+  void toggleSwitch(String key, bool value) async {
+    _switchStates[key] = value;
     notifyListeners();
-    await _saveSwitchState(); // Save the state to local storage
+    await _saveSwitchState(key);
   }
 
-  Future<void> _loadSwitchState() async {
+  Future<void> _loadSwitchStates() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _isSwitched = prefs.getBool('isSwitched') ?? false; // Default to false
+    for (String key in prefs.getKeys()) {
+      if (key.startsWith('switch_')) {
+        _switchStates[key] = prefs.getBool(key) ?? false;
+      }
+    }
     notifyListeners();
   }
 
-  Future<void> _saveSwitchState() async {
+  // Save the state of a specific switch
+  Future<void> _saveSwitchState(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isSwitched', _isSwitched);
+    await prefs.setBool(key, _switchStates[key]!);
   }
 }

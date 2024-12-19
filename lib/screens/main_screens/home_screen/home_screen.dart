@@ -361,8 +361,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
+                        // crossAxisSpacing: 2.0,
+                        // mainAxisSpacing: 8.0,
                       ),
                       itemCount: LifeStyle.length,
                       itemBuilder: (context, index) {
@@ -383,12 +383,17 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 5.0),
+                            SizedBox(height: 5.0.sp),
                             SizedBox(
                               child: Text(
                                 LifeStyle[index]["title"] ?? "",
+                                // style: Theme.of(context)
+                                //     .textTheme
+                                //     .displaySmall
+                                //     ?.copyWith(color: Colors.blue)
+
                                 style: commonTextStyle.copyWith(
-                                    fontSize: 10.sp, color: AppColors.black),
+                                    fontSize: 11.sp, color: AppColors.black),
                               ),
                             ),
                           ],

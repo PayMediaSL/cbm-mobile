@@ -28,3 +28,10 @@ TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();
 TextEditingController otherNameController = TextEditingController();
 TextEditingController dateOfBirthController = TextEditingController();
+
+// Drawer Details Update
+
+TextEditingController drawerNameController = TextEditingController();
+// TextEditingController dateOfBirthController = TextEditingController();
+// TextEditingController dateOfBirthController = TextEditingController();
+// TextEditingController dateOfBirthController = TextEditingController();

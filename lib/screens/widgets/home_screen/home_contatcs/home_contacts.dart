@@ -54,7 +54,7 @@ class ContactItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: commonTextStyle.copyWith(
                     fontWeight: FontWeight.w600,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: AppColors.primaryBlackColor),
               ),
               Text(
@@ -63,7 +63,7 @@ class ContactItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: commonTextStyle.copyWith(
                     fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: AppColors.primaryBlackColor),
               ),
             ],

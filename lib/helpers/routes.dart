@@ -15,6 +15,9 @@ import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/fa
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/signature/signup_signature_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/signature/signup_signature_screen.dart';
 import 'package:app/screens/main_screens/bottom_navigation_screen/bottom_navigation_screen.dart';
+import 'package:app/screens/main_screens/drawer/change_password_screen.dart';
+import 'package:app/screens/main_screens/drawer/details_update.dart';
+import 'package:app/screens/main_screens/drawer/security_and_safety.dart';
 import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
@@ -74,6 +77,9 @@ class ScreenRoutes {
 
   // Draweerrr
   static const String toDrawerSettingScreen = "toDrawerSettingScreen";
+  static const String toDrawerDetailsUpdate = "toDrawerDetailsUpdate";
+  static const String toDrawerSecuritySafety = "toDrawerSecuritySafety";
+  static const String toDrawerChangePassword = "toDrawerChangePassword";
 
   static const String test = "testinggggggg";
 }
@@ -208,6 +214,29 @@ class Router {
       case ScreenRoutes.toDrawerSettingScreen:
         return MaterialPageRoute(
           builder: (_) => DrawerSettingsScreen(),
+          settings: settings,
+        );
+
+      //* Details Update
+      case ScreenRoutes.toDrawerDetailsUpdate:
+        return MaterialPageRoute(
+          builder: (_) => DrawerDetailsUpdate(),
+          settings: settings,
+        );
+
+      //* Security Safety
+
+      case ScreenRoutes.toDrawerSecuritySafety:
+        return MaterialPageRoute(
+          builder: (_) => DrawerSecuritySafety(),
+          settings: settings,
+        );
+
+      //* Change Password
+
+      case ScreenRoutes.toDrawerChangePassword:
+        return MaterialPageRoute(
+          builder: (_) => DrawerChangePassword(),
           settings: settings,
         );
 

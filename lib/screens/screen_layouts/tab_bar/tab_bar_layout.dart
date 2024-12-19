@@ -3,6 +3,7 @@ import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class CustomTabBar extends StatelessWidget {
@@ -25,18 +26,19 @@ class CustomTabBar extends StatelessWidget {
               tabSelectionModel.setSelectedIndex(index);
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0),
-              margin: EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 12.0.sp, vertical: 0.0),
+              margin: EdgeInsets.symmetric(horizontal: 1.0.sp),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: tabSelectionModel.selectedIndex == index
-                    ? AppColors.primaryBlueColor
+                    ? AppColors.mainButtonBgColor
                     : AppColors.transparent,
               ),
               child: Center(
                 child: Text(
                   tabs[index],
                   style: TextStyle(
+                    fontSize: 16.sp,
                     color: tabSelectionModel.selectedIndex == index
                         ? AppColors.primaryWhiteColor
                         : AppColors.primaryBlackColor,

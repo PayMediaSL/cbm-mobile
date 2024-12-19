@@ -51,11 +51,15 @@ class MainDrawerScreen extends StatelessWidget {
                   _buildSectionTitle(ImageAsset().settingsIconProfile,
                       "My Profile", true, test),
                   _buildSectionTitle(ImageAsset().settingsIconSecurity,
-                      "Security & Safety", true, test),
+                      "Security & Safety", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerSecuritySafety);
+                  }),
                   _buildSectionTitle(ImageAsset().settingsIconTransactionLimit,
                       "Transaction Limits", true, test),
                   _buildSectionTitle(ImageAsset().settingsIconDetailsupdate,
-                      "Detail Update", true, test),
+                      "Detail Update", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
+                  }),
                   _buildSectionTitle(ImageAsset().settingsIconNewAccount,
                       "Open a New Account", false, test),
                 ],
@@ -195,7 +199,7 @@ class MainDrawerScreen extends StatelessWidget {
           Text(
             title,
             style: commonTextStyle.copyWith(
-                color: AppColors.primarySubBlackColor, fontSize: 14.sp),
+                color: AppColors.primarySubBlackColor, fontSize: 15.sp),
           ),
           padding ? ColumnSpacer(0.05) : ColumnSpacer(0)
         ],

@@ -13,7 +13,6 @@ class BalanceSummaryChart extends StatelessWidget {
         decoration: BoxDecoration(
           color: HexColor("#F8F8F8"),
           borderRadius: BorderRadius.circular(16),
-          // boxShadow: [],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,8 +58,20 @@ class BalanceSummaryChart extends StatelessWidget {
                     gridData: FlGridData(show: true),
                     titlesData: FlTitlesData(
                       leftTitles: AxisTitles(
-                        sideTitles:
-                            SideTitles(showTitles: true, reservedSize: 40),
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          reservedSize: 40,
+                          getTitlesWidget: (value, meta) {
+                            return Text(
+                              value.toInt().toString(),
+                              style: TextStyle(fontSize: 10.sp),
+                            );
+                          },
+                        ),
+                      ),
+                      rightTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                            showTitles: false), // Disable right titles
                       ),
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
@@ -84,6 +95,10 @@ class BalanceSummaryChart extends StatelessWidget {
                           },
                         ),
                       ),
+                      topTitles: AxisTitles(
+                        sideTitles:
+                            SideTitles(showTitles: false), // Disable top titles
+                      ),
                     ),
                     borderData: FlBorderData(
                       show: true,
@@ -91,17 +106,18 @@ class BalanceSummaryChart extends StatelessWidget {
                     ),
                     lineBarsData: [
                       LineChartBarData(
+                        preventCurveOverShooting: true,
+                        // preventCurveOvershootingThreshold: tr,
                         spots: [
                           FlSpot(0, 2100),
                           FlSpot(1, 2300),
                           FlSpot(2, 2700),
                           FlSpot(3, 2400),
                           FlSpot(4, 2000),
-                          FlSpot(5, 1400),
+                          FlSpot(5, 1000),
                         ],
-                        isCurved: true,
+                        isCurved: false,
                         color: HexColor("#8979FF"),
-                        // colors: [Colors.blueAccent],
                         barWidth: 3,
                         isStrokeCapRound: true,
                         dotData: FlDotData(show: true),
@@ -114,8 +130,7 @@ class BalanceSummaryChart extends StatelessWidget {
                             ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                          ), // color:
-                          // colors: [Colors.blueAccent.withOpacity(0.3)],
+                          ),
                         ),
                       ),
                     ],
