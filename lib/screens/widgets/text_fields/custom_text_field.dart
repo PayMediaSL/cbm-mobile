@@ -26,6 +26,8 @@ class CustomLableTextField extends StatelessWidget {
       this.lable,
       this.onTap,
       this.isContentPadding = false,
+      this.hintTextStyle,
+      this.hintFontFamily,
       this.readOnly});
 
   final TextEditingController controller;
@@ -47,7 +49,8 @@ class CustomLableTextField extends StatelessWidget {
   final void Function()? onTap;
   final bool? readOnly;
   final bool isContentPadding;
-
+  final TextStyle? hintTextStyle;
+  final String? hintFontFamily;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -71,11 +74,12 @@ class CustomLableTextField extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: AppColors.black.withOpacity(0.7)),
           hintText: hint ?? '',
-          hintStyle: TextStyle(
-            fontFamily: "exo2",
-            color: AppColors.textFieldHintColor,
-            fontSize: 14.sp,
-          ),
+          hintStyle: hintTextStyle ??
+              TextStyle(
+                fontFamily: hintFontFamily ?? "exo2",
+                color: AppColors.textFieldHintColor,
+                fontSize: 14.sp,
+              ),
           counterText: '',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(UI.borderRadiusTextField),

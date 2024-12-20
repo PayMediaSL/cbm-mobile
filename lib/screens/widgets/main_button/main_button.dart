@@ -18,6 +18,7 @@ class MainButton extends StatelessWidget {
     this.borderColor,
     this.borderWidth,
     this.buttonTitleTextStyle,
+    this.borderRadius,
   }) : super(key: key);
   final VoidCallback? btnOnPress;
   final String buttontitle;
@@ -27,6 +28,7 @@ class MainButton extends StatelessWidget {
   final Color? borderColor;
   final double? borderWidth;
   final TextStyle? buttonTitleTextStyle;
+  final double? borderRadius;
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
@@ -47,7 +49,8 @@ class MainButton extends StatelessWidget {
               elevation: 0,
               fixedSize: Size(ScreenUtils.width * 0.88, 40.h),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(17),
+                borderRadius: BorderRadius.circular(
+                    borderRadius ?? UI.borderRadiusButton),
               ),
               backgroundColor: backgroundColor ??
                   (isMainButton

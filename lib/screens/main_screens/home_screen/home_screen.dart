@@ -304,14 +304,14 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                             itemBuilder: (context, index) {
                               // Generate initials for contact
                               String initials = provider.getContactInitials(
-                                  provider.contacts[index].displayName);
+                                  provider.contacts[index].name);
                               // Randomly select a color from the available colors
                               Color containerColor = _getRandomColor();
                               return ContactItem(
                                 bank: "BOC",
                                 initials: initials,
                                 contactName:
-                                    provider.contacts[index].displayName ?? "",
+                                    provider.contacts[index].name ?? "",
                                 containerColor: containerColor,
                               );
                             },

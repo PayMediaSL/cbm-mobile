@@ -29,6 +29,7 @@ class AppColors {
   static Color primaryBlueColor = HexColor("#103489");
   static Color secondaryBlueColor = HexColor("#578AFA");
   static Color secondarySubBlueColor = HexColor("#C7DBF6");
+  static Color secondarySubBlueColor2 = HexColor("#3F6BD1");
 
   static Color primaryWhiteColor = HexColor("#FFFFFF");
   static Color primaryBlackColor = HexColor("#020617");
@@ -59,6 +60,7 @@ class AppColors {
 
   //! Sub Grey Color
   static Color SecondarysubGreyColor = HexColor("#E5E7EB");
+  static Color secondarysubGreyColor2 = HexColor("#64748B");
 
   //bottom Navigation bgColor
 

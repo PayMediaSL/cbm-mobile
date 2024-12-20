@@ -1,35 +1,46 @@
+import 'package:app/models/contacts/contacts_model.dart';
 import 'package:flutter/material.dart';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:permission_handler/permission_handler.dart'; // Import your contacts package
 
-class ContactsProvider extends ChangeNotifier {
-  List<Contact> _contacts = [];
-  bool _isLoading = false;
-
-  List<Contact> get contacts => _contacts;
-  bool get isLoading => _isLoading;
-
+class ContactsProvider with ChangeNotifier {
   ContactsProvider() {
-    loadContacts();
+    fetchContacts();
   }
 
-  Future<void> loadContacts() async {
-    _isLoading = true;
-    notifyListeners();
+  List<MyContact> _contacts = [];
+  final bool _isLoading = false;
+  final List<Contact> _contactsdetails = [];
 
-    // Request permission to access contacts
+  List<MyContact> get contacts => _contacts;
+  bool get isLoading => _isLoading;
+  List<Contact> get contactsdetails => _contactsdetails;
+
+  Future<void> fetchContacts() async {
     PermissionStatus status = await Permission.contacts.request();
+
     if (status.isGranted) {
-      // Fetch contacts
-      Iterable<Contact> fetchedContacts = await ContactsService.getContacts();
-      _contacts = fetchedContacts.where((c) => c.displayName != null).toList();
-    } else {
-      // Handle permission denial
-      print("Permission denied!");
+      List<Contact> getContacts = await FlutterContacts.getContacts(
+        withProperties: true,
+        withPhoto: false,
+      );
+
+      List<MyContact> newContacts = [];
+      for (var contact in getContacts) {
+        if (contact.phones.isNotEmpty) {
+          MyContact myContact = MyContact(
+            name: contact.displayName,
+            mobileNumber: contact.phones[0].number,
+            hashValue: contact.hashCode,
+          );
+          newContacts.add(myContact);
+          _contacts = newContacts;
+          notifyListeners();
+        }
+      }
     }
 
-    _isLoading = false;
-    notifyListeners();
+    // Notify listeners when the contact list is updated
   }
 
   String getContactInitials(String? name) {

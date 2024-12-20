@@ -17,8 +17,12 @@ import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/si
 import 'package:app/screens/main_screens/bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:app/screens/main_screens/drawer/change_password_screen.dart';
 import 'package:app/screens/main_screens/drawer/details_update.dart';
+import 'package:app/screens/main_screens/drawer/help_screen.dart';
+import 'package:app/screens/main_screens/drawer/info_screen.dart';
+import 'package:app/screens/main_screens/drawer/invite_friends.dart';
 import 'package:app/screens/main_screens/drawer/security_and_safety.dart';
 import 'package:app/screens/main_screens/drawer/settings_screen.dart';
+import 'package:app/screens/main_screens/drawer/transaction_limit.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
@@ -80,6 +84,10 @@ class ScreenRoutes {
   static const String toDrawerDetailsUpdate = "toDrawerDetailsUpdate";
   static const String toDrawerSecuritySafety = "toDrawerSecuritySafety";
   static const String toDrawerChangePassword = "toDrawerChangePassword";
+  static const String toDrawerInfoScreen = "toDrawerInfoScreen";
+  static const String toDrawerHelpScreen = "toDrawerHelpScreen";
+  static const String toDrawerTransactionLimit = "toDrawerTransactionLimit";
+  static const String toDrawerInviteFriends = "toDrawerInviteFriends";
 
   static const String test = "testinggggggg";
 }
@@ -148,7 +156,7 @@ class Router {
           builder: (_) => AboutYouScreen(),
           settings: settings,
         );
-//? Signup Selfie Screen
+      //? Signup Selfie Screen
       case ScreenRoutes.toSignUpSelfieScreen:
         return MaterialPageRoute(
           builder: (_) => SignUpSelfieScreen(),
@@ -159,7 +167,7 @@ class Router {
           builder: (_) => SignUpSelfieCameraScreen(),
           settings: settings,
         );
-//?NID Screen
+      //?Sign Up NID Screen
       case ScreenRoutes.toNidScreen:
         return MaterialPageRoute(
           builder: (_) => NidScreen(),
@@ -177,7 +185,7 @@ class Router {
           settings: settings,
         );
 
-//? Signup signature Screen
+      //? Signup signature Screen
       case ScreenRoutes.toSignatureScreen:
         return MaterialPageRoute(
           builder: (_) => SignupSignatureScreen(),
@@ -210,7 +218,6 @@ class Router {
 
 //? Drawer
 //* Setting Screen
-
       case ScreenRoutes.toDrawerSettingScreen:
         return MaterialPageRoute(
           builder: (_) => DrawerSettingsScreen(),
@@ -225,7 +232,6 @@ class Router {
         );
 
       //* Security Safety
-
       case ScreenRoutes.toDrawerSecuritySafety:
         return MaterialPageRoute(
           builder: (_) => DrawerSecuritySafety(),
@@ -233,13 +239,39 @@ class Router {
         );
 
       //* Change Password
-
       case ScreenRoutes.toDrawerChangePassword:
         return MaterialPageRoute(
           builder: (_) => DrawerChangePassword(),
           settings: settings,
         );
 
+      //* Drawer Help Screen
+      case ScreenRoutes.toDrawerHelpScreen:
+        return MaterialPageRoute(
+          builder: (_) => DrawerHelpScreen(),
+          settings: settings,
+        );
+
+      //* Drawer Info Screen
+      case ScreenRoutes.toDrawerInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => DrawerInfoScreen(),
+          settings: settings,
+        );
+
+      //* Drawer Transaction Limit  Screen
+      case ScreenRoutes.toDrawerTransactionLimit:
+        return MaterialPageRoute(
+          builder: (_) => DrawerTransactionLimit(),
+          settings: settings,
+        );
+
+      //* Drawer Invite Friends  Screen
+      case ScreenRoutes.toDrawerInviteFriends:
+        return MaterialPageRoute(
+          builder: (_) => DrawerInviteFriendsScreen(),
+          settings: settings,
+        );
 //! Pin Login
       case ScreenRoutes.toPinLoginScreeen:
         return MaterialPageRoute(

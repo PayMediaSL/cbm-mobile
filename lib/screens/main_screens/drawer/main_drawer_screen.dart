@@ -48,14 +48,18 @@ class MainDrawerScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp)),
               child: Column(
                 children: [
-                  _buildSectionTitle(ImageAsset().settingsIconProfile,
-                      "My Profile", true, test),
+                  _buildSectionTitle(
+                      ImageAsset().settingsIconProfile, "My Profile", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
+                  }),
                   _buildSectionTitle(ImageAsset().settingsIconSecurity,
                       "Security & Safety", true, () {
                     pushScreen(context, ScreenRoutes.toDrawerSecuritySafety);
                   }),
                   _buildSectionTitle(ImageAsset().settingsIconTransactionLimit,
-                      "Transaction Limits", true, test),
+                      "Transaction Limits", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerTransactionLimit);
+                  }),
                   _buildSectionTitle(ImageAsset().settingsIconDetailsupdate,
                       "Detail Update", true, () {
                     pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
@@ -85,11 +89,17 @@ class MainDrawerScreen extends StatelessWidget {
                     pushScreen(context, ScreenRoutes.toDrawerSettingScreen);
                   }),
                   _buildSectionTitle(
-                      ImageAsset().settingsIconSetting, "Help", true, test),
+                      ImageAsset().settingsIconSetting, "Help", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerHelpScreen);
+                  }),
                   _buildSectionTitle(ImageAsset().settingsIconInviteFriend,
-                      "Invite Friends", true, test),
+                      "Invite Friends", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerInviteFriends);
+                  }),
                   _buildSectionTitle(
-                      ImageAsset().settingsIconSetting, "Info", true, test),
+                      ImageAsset().settingsIconSetting, "Info", true, () {
+                    pushScreen(context, ScreenRoutes.toDrawerInfoScreen);
+                  }),
                 ],
               ),
             ),
@@ -193,7 +203,7 @@ class MainDrawerScreen extends StatelessWidget {
         children: [
           Image(
             image: AssetImage(image),
-            height: 30.sp,
+            height: 35.sp,
           ),
           RowSpacer(0.04),
           Text(

@@ -1,3 +1,4 @@
+import 'package:app/helpers/colors.dart';
 import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
@@ -10,6 +11,7 @@ class SearchTextField extends StatelessWidget {
   final double heightFactor;
   final double widthFactor;
   final double borderRadius;
+  final isBorderAvilable;
 
   const SearchTextField({
     Key? key,
@@ -22,6 +24,7 @@ class SearchTextField extends StatelessWidget {
     this.heightFactor = 0.12,
     this.widthFactor = 0.5,
     this.borderRadius = 30.0,
+    this.isBorderAvilable = false,
   }) : super(key: key);
 
   @override
@@ -31,9 +34,11 @@ class SearchTextField extends StatelessWidget {
       height: screenWidth * heightFactor,
       width: screenWidth * widthFactor,
       decoration: BoxDecoration(
-        color: fillColor.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(borderRadius),
-      ),
+          color: fillColor.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: isBorderAvilable
+              ? Border.all(color: HexColor("#E2E8F0"))
+              : Border.all(color: Colors.transparent)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: TextField(
