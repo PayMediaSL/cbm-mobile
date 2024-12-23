@@ -37,7 +37,7 @@ class AboutYouScreen extends StatelessWidget {
       defaultButton: true,
       buttontitle: "Next",
       onTap: () {
-        commonProvider.toggleState("aboutyou");
+        commonProvider.toggleStates("aboutyou");
         commonProvider.updateState("aboutyou", true);
         pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
       },

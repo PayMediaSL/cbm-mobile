@@ -58,6 +58,11 @@ class ImageAsset {
   final String iconImageSend = 'assets/icons/send.png';
   final String iconArrowLeftRight = 'assets/icons/arrowleftright.png';
   final String iconImageMoney1 = 'assets/icons/money1.png';
+  final String iconImageGlobe = 'assets/icons/globe.png';
+  final String iconImageCalendar = 'assets/icons/calendar.png';
+  final String iconImageDollarBill = 'assets/icons/dollarbill.png';
+  final String iconImagearrowupanddown = 'assets/icons/arrowupdown.png';
+  final String iconImageFilter = 'assets/icons/filter.png';
 
   //? Home Screen LifeStyle
 

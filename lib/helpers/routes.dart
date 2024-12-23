@@ -25,6 +25,7 @@ import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/drawer/transaction_limit.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
+import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +89,10 @@ class ScreenRoutes {
   static const String toDrawerHelpScreen = "toDrawerHelpScreen";
   static const String toDrawerTransactionLimit = "toDrawerTransactionLimit";
   static const String toDrawerInviteFriends = "toDrawerInviteFriends";
+
+  // PAyment
+
+  static const String toPaymentScreen = "toPaymentScreen";
 
   static const String test = "testinggggggg";
 }
@@ -292,7 +297,15 @@ class Router {
         return MaterialPageRoute(
             builder: (_) => BottomBavigationScreen(), settings: settings);
 
-//!!!!!!!!!test
+      //? Payment Screen
+
+      case ScreenRoutes.toPaymentScreen:
+        return MaterialPageRoute(
+          builder: (_) => PaymentScreen(),
+          settings: settings,
+        );
+
+      //!!!!!!!!!test
       // case ScreenRoutes.test:
       //   return MaterialPageRoute(
       //     builder: (_) => TestScreen(),

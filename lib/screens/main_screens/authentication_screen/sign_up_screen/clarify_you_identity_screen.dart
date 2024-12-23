@@ -51,7 +51,7 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
           //   color: Colors.blue,
           // ),
           ClarifyIdentityContainer(
-            isCompleted: commonProvider.getState("aboutyou"),
+            isCompleted: commonProvider.getStates("aboutyou"),
             title: "About you",
             description: "Your citizenship and personal details.",
             imagePath: ImageAsset().userImage,
@@ -62,7 +62,7 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
           ),
           ColumnSpacer(0.01),
           ClarifyIdentityContainer(
-            isCompleted: commonProvider.getState("identity"),
+            isCompleted: commonProvider.getStates("identity"),
             title: "Your identity",
             description: "Checking to make sure you and your ID match.",
             imagePath: ImageAsset().profileImage,
@@ -73,7 +73,7 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
           ),
           ColumnSpacer(0.01),
           ClarifyIdentityContainer(
-            isCompleted: commonProvider.getState("signature"),
+            isCompleted: commonProvider.getStates("signature"),
             title: "Your signature",
             description:
                 "Processing of transactions and services that require your authorization.",
@@ -85,7 +85,7 @@ class ClarifyYourIdentityScreen extends StatelessWidget {
           ),
           ColumnSpacer(0.01),
           ClarifyIdentityContainer(
-            isCompleted: commonProvider.getState("billingproof"),
+            isCompleted: commonProvider.getStates("billingproof"),
             title: "Billing proof",
             description:
                 "Checking to make sure you are an permanent residence.",

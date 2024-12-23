@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       valueListenable: _progressNotifier,
       builder: (BuildContext context, value, Widget? child) {
         return Form(
-          autovalidateMode: commonProvider.getState("autovalidate")
+          autovalidateMode: commonProvider.getStates("autovalidate")
               ? AutovalidateMode.onUserInteraction
               : AutovalidateMode.disabled,
           key: _formKey,
@@ -73,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             onBackPress: (currentPage) {
               if (currentPage == 0) {
               } else if (currentPage == createPasscodeId) {
-                commonProvider.toggleState("passcode");
+                commonProvider.toggleStates("passcode");
                 _wizardController.updateWizardPage(currentPage - 1);
               } else {
                 if (currentPage > 0) {
@@ -107,10 +107,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 _wizardController.updateWizardPage(nextPage);
                 //! Need
               } else if (page == createPasscodeId) {
-                if (!commonProvider.getState("passcode")) {
+                if (!commonProvider.getStates("passcode")) {
                   passcode = createPinController.text;
                   createPinController.clear();
-                  commonProvider.toggleState("passcode");
+                  commonProvider.toggleStates("passcode");
                 } else {
                   if (createPinController.text == passcode) {
                     //! Passcodes match, proceed to the next step
@@ -341,13 +341,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     CustomLableTextField(
                       createNewPasswordController,
                       hint: "New Password",
-                      obscureText: !commonProvider.getState("obscureText1"),
+                      obscureText: !commonProvider.getStates("obscureText1"),
                       suffixIcon: IconButton(
                           onPressed: () {
-                            commonProvider.toggleState('obscureText1');
+                            commonProvider.toggleStates('obscureText1');
                           },
                           icon: Icon(
-                            commonProvider.getState('obscureText1')
+                            commonProvider.getStates('obscureText1')
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                           )),
@@ -366,13 +366,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     CustomLableTextField(
                       createRe_NewPasswordController,
                       hint: "Re-enter password",
-                      obscureText: !commonProvider.getState("obscureText2"),
+                      obscureText: !commonProvider.getStates("obscureText2"),
                       suffixIcon: IconButton(
                           onPressed: () {
-                            commonProvider.toggleState('obscureText2');
+                            commonProvider.toggleStates('obscureText2');
                           },
                           icon: Icon(
-                            commonProvider.getState('obscureText2')
+                            commonProvider.getStates('obscureText2')
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                           )),
@@ -383,7 +383,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               //! Wizard 7 : Create Pass Code
 
               WizardItem(
-                  title: commonProvider.getState("passcode")
+                  title: commonProvider.getStates("passcode")
                       ? "Re-enter passcode"
                       : "Create a passcode",
                   subtitle:
@@ -393,7 +393,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Center(
                       child: Text(
-                        commonProvider.getState("passcode")
+                        commonProvider.getStates("passcode")
                             ? "Re-enter password"
                             : "Enter password",
                         style: commonTextStyle.copyWith(

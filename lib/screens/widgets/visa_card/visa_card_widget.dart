@@ -124,11 +124,11 @@ class VisaCardWidget extends StatelessWidget {
                             GestureDetector(
                                 onTap: () {
                                   commonProvider
-                                      .toggleState("masknumber_$maskindex");
+                                      .toggleStates("masknumber_$maskindex");
                                 },
                                 child: Icon(
                                   !commonProvider
-                                          .getState("masknumber_$maskindex")
+                                          .getStates("masknumber_$maskindex")
                                       ? Icons.visibility_off
                                       : Icons.visibility,
                                   color: AppColors.primaryWhiteColor,
@@ -148,7 +148,7 @@ class VisaCardWidget extends StatelessWidget {
 
                     ColumnSpacer(0.01),
                     Text(
-                      "RS  ${!commonProvider.getState("masknumber_$maskindex") ? maskNumber(availableBalance) : availableBalance}",
+                      "RS  ${!commonProvider.getStates("masknumber_$maskindex") ? maskNumber(availableBalance) : availableBalance}",
                       style: commonTextStyle.copyWith(
                           fontSize: 26.sp,
                           fontFamily: "spacegrotsek",

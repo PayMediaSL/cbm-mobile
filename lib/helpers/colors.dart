@@ -24,7 +24,7 @@ class AppColors {
   static const Color black = Colors.black;
   static const Color transparent = Colors.transparent;
 
-  static Color primaryRedColor = Colors.red;
+  // static Color primaryRedColor = Colors.red;
   static Color primaryAmberColor = Colors.amber;
   static Color primaryBlueColor = HexColor("#103489");
   static Color secondaryBlueColor = HexColor("#578AFA");
@@ -37,6 +37,11 @@ class AppColors {
   static Color primaryGreyColor = HexColor("#E5E7EB");
   static Color secondarySubBlackColor = HexColor("#475569");
   static Color primaryGreyColor2 = HexColor("#DADADA");
+
+  static Color? primaryRedShadeColor = Colors.red[50];
+  static Color? primaryGreenShadeColor = Colors.green[50];
+  static Color primaryRedColor = HexColor("#DC2626");
+  static Color primaryGreenColor = HexColor("#16A34A");
 
   //! Primary Sub BlackColor
 
@@ -54,6 +59,7 @@ class AppColors {
 
   //! TextField Border Color
   static Color textFieldBorderColor = HexColor("#CBD5E1");
+  static Color textFieldBorderColor2 = HexColor("#D1D5DB");
 
   //! TextField Hint Color
   static Color textFieldHintColor = HexColor("#94A3B8");
@@ -83,6 +89,16 @@ class AppColors {
   static Color doDoMoreColor2 = HexColor("#F1EFE1");
   static Color doDoMoreColor3 = HexColor("#EAEAEA");
   static Color doDoMoreColor4 = HexColor("#D4EFFA");
+
+  //? Payment Color
+  static Color paymentGlobalTransferColor = HexColor("#EDB37E");
+  static Color paymentDomesticTransferColor = HexColor("#AFCCA1");
+  static Color paymentPaybillColor = HexColor("#92B0EA");
+  static Color paymentQRPayColor = HexColor("#9DDDD5");
+  static Color paymentfavraPayColor = HexColor("#9ACED9");
+  static Color paymentcardPaymentcolor = HexColor("#F2A9CE");
+  static Color paymentMobileReload = HexColor("#CDD0CD");
+  static Color paymentSchedulePayment = HexColor("#FC8D94");
 }
 
 class HexColor extends Color {

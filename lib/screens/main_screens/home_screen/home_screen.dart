@@ -550,10 +550,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               Text("Savings Accounts", style: homeScreenTitleStyle),
               GestureDetector(
                 onTap: () {
-                  commonProvider.toggleState("homesavingsaccountviewall");
+                  commonProvider.toggleStates("homesavingsaccountviewall");
                 },
                 child: Text(
-                  commonProvider.getState("homesavingsaccountviewall")
+                  commonProvider.getStates("homesavingsaccountviewall")
                       ? "View Less"
                       : "View All",
                   style: commonTextStyle.copyWith(
@@ -572,7 +572,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  commonProvider.getState("homesavingsaccountviewall")
+                  commonProvider.getStates("homesavingsaccountviewall")
                       ? accountData.length
                       : 2,
                   (index) => HomeAccountTile(
@@ -596,10 +596,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               Text("Current Accounts", style: homeScreenTitleStyle),
               GestureDetector(
                 onTap: () {
-                  commonProvider.toggleState("homecurrentaccountviewall");
+                  commonProvider.toggleStates("homecurrentaccountviewall");
                 },
                 child: Text(
-                  commonProvider.getState("homecurrentaccountviewall")
+                  commonProvider.getStates("homecurrentaccountviewall")
                       ? "View Less"
                       : "View All",
                   style: commonTextStyle.copyWith(
@@ -618,7 +618,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  commonProvider.getState("homecurrentaccountviewall")
+                  commonProvider.getStates("homecurrentaccountviewall")
                       ? accountData.length
                       : 2,
                   (index) => HomeAccountTile(
@@ -656,10 +656,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   Text("Credits Cards", style: homeScreenTitleStyle),
                   GestureDetector(
                     onTap: () {
-                      commonProvider.toggleState("homecreditcardviewall");
+                      commonProvider.toggleStates("homecreditcardviewall");
                     },
                     child: Text(
-                      commonProvider.getState("homecreditcardviewall")
+                      commonProvider.getStates("homecreditcardviewall")
                           ? "View Less"
                           : "View All",
                       style: commonTextStyle.copyWith(
@@ -677,7 +677,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   scrollDirection: Axis.horizontal, // Horizontal scrolling
                   child: Row(
                     children: List.generate(
-                      commonProvider.getState("homecreditcardviewall")
+                      commonProvider.getStates("homecreditcardviewall")
                           ? cardData.length
                           : 2,
                       (index) {
@@ -693,7 +693,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                             // Add a separator after every card except the last one
                             if (index !=
                                 (commonProvider
-                                            .getState("homecreditcardviewall")
+                                            .getStates("homecreditcardviewall")
                                         ? cardData.length
                                         : 2) -
                                     1)
@@ -714,10 +714,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   Text("Prepaid Cards", style: homeScreenTitleStyle),
                   GestureDetector(
                     onTap: () {
-                      commonProvider.toggleState("homeprepaidcardviewall");
+                      commonProvider.toggleStates("homeprepaidcardviewall");
                     },
                     child: Text(
-                      commonProvider.getState("homeprepaidcardviewall")
+                      commonProvider.getStates("homeprepaidcardviewall")
                           ? "View Less"
                           : "View All",
                       style: commonTextStyle.copyWith(
@@ -735,7 +735,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   scrollDirection: Axis.horizontal, // Horizontal scrolling
                   child: Row(
                     children: List.generate(
-                      commonProvider.getState("homeprepaidcardviewall")
+                      commonProvider.getStates("homeprepaidcardviewall")
                           ? cardData.length
                           : 2,
                       (index) {
@@ -752,7 +752,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                             // Add a separator after every card except the last one
                             if (index !=
                                 (commonProvider
-                                            .getState("homeprepaidcardviewall")
+                                            .getStates("homeprepaidcardviewall")
                                         ? cardData.length
                                         : 2) -
                                     1)
@@ -773,10 +773,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   Text("Debit Cards", style: homeScreenTitleStyle),
                   GestureDetector(
                     onTap: () {
-                      commonProvider.toggleState("homedebitcardviewall");
+                      commonProvider.toggleStates("homedebitcardviewall");
                     },
                     child: Text(
-                      commonProvider.getState("homedebitcardviewall")
+                      commonProvider.getStates("homedebitcardviewall")
                           ? "View Less"
                           : "View All",
                       style: commonTextStyle.copyWith(
@@ -794,7 +794,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   scrollDirection: Axis.horizontal, // Horizontal scrolling
                   child: Row(
                     children: List.generate(
-                      commonProvider.getState("homedebitcardviewall")
+                      commonProvider.getStates("homedebitcardviewall")
                           ? cardData.length
                           : 2,
                       (index) {
@@ -810,7 +810,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                             ),
                             // Add a separator after every card except the last one
                             if (index !=
-                                (commonProvider.getState("homedebitcardviewall")
+                                (commonProvider
+                                            .getStates("homedebitcardviewall")
                                         ? cardData.length
                                         : 2) -
                                     1)
@@ -843,10 +844,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               Text("Time Deposite ", style: homeScreenTitleStyle),
               GestureDetector(
                 onTap: () {
-                  commonProvider.toggleState("homedepositeTimesviewall");
+                  commonProvider.toggleStates("homedepositeTimesviewall");
                 },
                 child: Text(
-                  commonProvider.getState("homedepositeTimesviewall")
+                  commonProvider.getStates("homedepositeTimesviewall")
                       ? "View Less"
                       : "View All",
                   style: commonTextStyle.copyWith(
@@ -865,7 +866,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  commonProvider.getState("homedepositeTimesviewall")
+                  commonProvider.getStates("homedepositeTimesviewall")
                       ? accountData.length
                       : 2,
                   (index) => HomeAccountTile(
@@ -890,10 +891,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               Text("Savings Goals", style: homeScreenTitleStyle),
               GestureDetector(
                 onTap: () {
-                  commonProvider.toggleState("homedepositeSavingsviewall");
+                  commonProvider.toggleStates("homedepositeSavingsviewall");
                 },
                 child: Text(
-                  commonProvider.getState("homedepositeSavingsviewall")
+                  commonProvider.getStates("homedepositeSavingsviewall")
                       ? "View Less"
                       : "View All",
                   style: commonTextStyle.copyWith(
@@ -912,7 +913,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  commonProvider.getState("homedepositeSavingsviewall")
+                  commonProvider.getStates("homedepositeSavingsviewall")
                       ? accountData.length
                       : 2,
                   (index) => HomeAccountTile(
@@ -947,10 +948,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               Text("Term Loan ", style: homeScreenTitleStyle),
               GestureDetector(
                 onTap: () {
-                  commonProvider.toggleState("homeLoanTermviewall");
+                  commonProvider.toggleStates("homeLoanTermviewall");
                 },
                 child: Text(
-                  commonProvider.getState("homeLoanTermviewall")
+                  commonProvider.getStates("homeLoanTermviewall")
                       ? "View Less"
                       : "View All",
                   style: commonTextStyle.copyWith(
@@ -969,7 +970,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  commonProvider.getState("homeLoanTermviewall")
+                  commonProvider.getStates("homeLoanTermviewall")
                       ? accountData.length
                       : 2,
                   (index) => HomeAccountTile(
@@ -994,10 +995,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               Text("Leasing", style: homeScreenTitleStyle),
               GestureDetector(
                 onTap: () {
-                  commonProvider.toggleState("homeLoanLeasingviewall");
+                  commonProvider.toggleStates("homeLoanLeasingviewall");
                 },
                 child: Text(
-                  commonProvider.getState("homeLoanLeasingviewall")
+                  commonProvider.getStates("homeLoanLeasingviewall")
                       ? "View Less"
                       : "View All",
                   style: commonTextStyle.copyWith(
@@ -1016,7 +1017,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  commonProvider.getState("homeLoanLeasingviewall")
+                  commonProvider.getStates("homeLoanLeasingviewall")
                       ? accountData.length
                       : 2,
                   (index) => HomeAccountTile(

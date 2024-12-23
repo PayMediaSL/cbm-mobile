@@ -53,13 +53,13 @@ class ForgetPasswordScreen extends StatelessWidget {
             CustomLableTextField(
               createNewPasswordController,
               hint: "New Password",
-              obscureText: commonProvider.getState("obscureText1"),
+              obscureText: commonProvider.getStates("obscureText1"),
               suffixIcon: IconButton(
                   onPressed: () {
-                    commonProvider.toggleState('obscureText1');
+                    commonProvider.toggleStates('obscureText1');
                   },
                   icon: Icon(
-                    commonProvider.getState('obscureText1')
+                    commonProvider.getStates('obscureText1')
                         ? Icons.visibility_off
                         : Icons.visibility,
                   )),
@@ -77,13 +77,13 @@ class ForgetPasswordScreen extends StatelessWidget {
             CustomLableTextField(
               createRe_NewPasswordController,
               hint: "Re-enter password",
-              obscureText: commonProvider.getState("obscureText2"),
+              obscureText: commonProvider.getStates("obscureText2"),
               suffixIcon: IconButton(
                   onPressed: () {
-                    commonProvider.toggleState('obscureText2');
+                    commonProvider.toggleStates('obscureText2');
                   },
                   icon: Icon(
-                    commonProvider.getState('obscureText2')
+                    commonProvider.getStates('obscureText2')
                         ? Icons.visibility_off
                         : Icons.visibility,
                   )),

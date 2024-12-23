@@ -68,13 +68,13 @@ class DrawerChangePassword extends StatelessWidget {
                         CustomLableTextField(
                           createNewPasswordController,
                           hint: "Enter Current Password",
-                          obscureText: !commonProvider.getState("drawerpsw1"),
+                          obscureText: !commonProvider.getStates("drawerpsw1"),
                           suffixIcon: IconButton(
                               onPressed: () {
-                                commonProvider.toggleState('drawerpsw1');
+                                commonProvider.toggleStates('drawerpsw1');
                               },
                               icon: Icon(
-                                commonProvider.getState('drawerpsw1')
+                                commonProvider.getStates('drawerpsw1')
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               )),
@@ -84,13 +84,13 @@ class DrawerChangePassword extends StatelessWidget {
                         CustomLableTextField(
                           createNewPasswordController,
                           hint: "Enter new Password",
-                          obscureText: !commonProvider.getState("drawerpsw2"),
+                          obscureText: !commonProvider.getStates("drawerpsw2"),
                           suffixIcon: IconButton(
                               onPressed: () {
-                                commonProvider.toggleState('drawerpsw2');
+                                commonProvider.toggleStates('drawerpsw2');
                               },
                               icon: Icon(
-                                commonProvider.getState('drawerpsw2')
+                                commonProvider.getStates('drawerpsw2')
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               )),
@@ -100,13 +100,13 @@ class DrawerChangePassword extends StatelessWidget {
                         CustomLableTextField(
                           createNewPasswordController,
                           hint: "Enter new Password",
-                          obscureText: !commonProvider.getState("drawerpsw3"),
+                          obscureText: !commonProvider.getStates("drawerpsw3"),
                           suffixIcon: IconButton(
                               onPressed: () {
-                                commonProvider.toggleState('obscureText3');
+                                commonProvider.toggleStates('obscureText3');
                               },
                               icon: Icon(
-                                commonProvider.getState('obscureText3')
+                                commonProvider.getStates('obscureText3')
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               )),

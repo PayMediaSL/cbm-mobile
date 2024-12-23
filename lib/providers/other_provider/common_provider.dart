@@ -5,7 +5,7 @@ class CommonProvider extends ChangeNotifier {
   final Map<String, bool> _states = {};
   final Map<String, int> _countdowns = {};
   final Map<String, bool> _isTimerActive = {};
-  final Map<String, bool> _state = {
+  final Map<String, bool> _stateprogress = {
     "aboutyou": false,
     "identity": false,
     "signature": false,
@@ -15,7 +15,7 @@ class CommonProvider extends ChangeNotifier {
   final Map<String, DateTime?> _selectedDates = {};
 
   // Get the current state for a key (default value is false if the key doesn't exist)
-  bool getState(String key) {
+  bool getStates(String key) {
     if (!_states.containsKey(key)) {
       _states[key] = false; // Initialize the key with false by default
     }
@@ -23,7 +23,7 @@ class CommonProvider extends ChangeNotifier {
   }
 
   // Toggle the current state for a key
-  void toggleState(String key) {
+  void toggleStates(String key) {
     if (!_states.containsKey(key)) {
       _states[key] =
           false; // Initialize the key with false if not already present
@@ -34,7 +34,7 @@ class CommonProvider extends ChangeNotifier {
   }
 
   // Set a specific state for a key
-  void setState(String key, bool value) {
+  void setStates(String key, bool value) {
     _states[key] = value; // Set the specific state value
     notifyListeners();
   }
@@ -73,18 +73,19 @@ class CommonProvider extends ChangeNotifier {
   }
 
   // Get progress as a percentage of completed states
-  double get progress => _state.values.where((v) => v).length / _state.length;
+  double get progress =>
+      _stateprogress.values.where((v) => v).length / _stateprogress.length;
 
   // Check if progress is fully completed
   bool get isProgressComplete => progress == 1.0;
 
   // Get the state of a specific key in the progress map
-  bool getStates(String key) => _state[key] ?? false;
+  bool getStateProgress(String key) => _stateprogress[key] ?? false;
 
   // Update the state of a specific key in the progress map
   void updateState(String key, bool value) {
-    if (_state.containsKey(key)) {
-      _state[key] = value;
+    if (_stateprogress.containsKey(key)) {
+      _stateprogress[key] = value;
       notifyListeners();
     }
   }

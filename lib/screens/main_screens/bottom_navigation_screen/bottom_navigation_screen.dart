@@ -2,8 +2,11 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
 import 'package:app/screens/main_screens/drawer/main_drawer_screen.dart';
 import 'package:app/screens/main_screens/home_screen/home_screen.dart';
+import 'package:app/screens/main_screens/payments/payments_screen.dart';
+import 'package:app/screens/main_screens/transaction/transaction_screen.dart';
 import 'package:app/screens/widgets/bottom_nav_Item/custom_bottom_navitem.dart';
 import 'package:app/screens/widgets/on_refresh/custom_refresh_indicator.dart';
+import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -59,13 +62,23 @@ class BottomBavigationScreen extends StatelessWidget {
     return [
       CustomRefreshIndicator(
         onRefresh: () async {
-          print("Refreshing Home Screen");
+          printLog("Refreshing Home Screen");
         },
         child: MainHomeScreen(),
       ),
-      Center(child: Text("Payments Screen")),
+      CustomRefreshIndicator(
+        onRefresh: () async {
+          printLog("Refreshing Payment Screen");
+        },
+        child: PaymentScreen(),
+      ),
       Center(child: Text("Lifestyle Screen")),
-      Center(child: Text("Transactions Screen")),
+      CustomRefreshIndicator(
+        onRefresh: () async {
+          printLog("Refreshing Transactioin Screen");
+        },
+        child: TransactionsScreen(),
+      ),
       Center(child: Text("Menu Screen")),
     ];
   }

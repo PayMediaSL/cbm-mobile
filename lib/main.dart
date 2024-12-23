@@ -23,6 +23,7 @@ import 'package:app/providers/home_screen/quick_access_data_provider.dart';
 import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
+import 'package:app/providers/transaction/transaction_data_provider.dart';
 import 'package:app/services/analytics_service.dart';
 import 'package:app/services/fcm_service.dart';
 import 'package:app/theme.dart';
@@ -86,6 +87,10 @@ void main() async {
           ChangeNotifierProvider(create: (_) => DrawerHelpDataProvider()),
           ChangeNotifierProvider(create: (_) => DrawerInfoProvider()),
           ChangeNotifierProvider(create: (_) => TransactionLimitProvider()),
+
+          // Transaction
+
+          ChangeNotifierProvider(create: (_) => TransactionDataProvider()),
         ],
         child: const MyApp(),
       ),
