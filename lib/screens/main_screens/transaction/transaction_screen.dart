@@ -3,13 +3,13 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
-import 'package:app/providers/transaction/transaction_data_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/transaction/transaction_details_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 class TransactionsScreen extends StatelessWidget {
   const TransactionsScreen({super.key});
@@ -105,7 +105,69 @@ class TransactionsScreen extends StatelessWidget {
               height: ScreenUtils.height * 0.5,
               width: ScreenUtils.width,
               child: TransactionDetailsWidget(),
+            ),
+            ColumnSpacer(0.03),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 5.sp),
+              decoration: BoxDecoration(
+                  color: AppColors.primaryWhiteColor,
+                  borderRadius: BorderRadius.circular(10.sp)),
+              height: ScreenUtils.height * 0.43,
+              width: ScreenUtils.width,
+              child: SpendingChartPage(),
+            ),
+            ColumnSpacer(0.03),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhiteColor,
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
+              height: ScreenUtils.height * 0.1,
+              width: ScreenUtils.width,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal, // Enable horizontal scrolling
+                itemCount: legendItems.length, // Dynamic number of items
+                itemBuilder: (context, index) {
+                  final item = legendItems[index];
+                  return Row(
+                    children: [
+                      LegendItem(
+                        color: item['color'],
+                        label: item['label'],
+                        value: item['value'],
+                      ),
+                      SizedBox(width: 12.sp), // Add spacing between items
+                    ],
+                  );
+                },
+              ),
             )
+
+            // Container(
+            //   padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 5.sp),
+            //   decoration: BoxDecoration(
+            //       color: AppColors.primaryWhiteColor,
+            //       borderRadius: BorderRadius.circular(10.sp)),
+            //   height: ScreenUtils.height * 0.1,
+            //   width: ScreenUtils.width,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       LegendItem(
+            //         color: Colors.purple,
+            //         label: "Food and beverage",
+            //         value: "231,856.00",
+            //       ),
+            //       LegendItem(
+            //         color: Colors.orange,
+            //         label: "Entertainment",
+            //         value: "231,856.00",
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),
@@ -113,771 +175,224 @@ class TransactionsScreen extends StatelessWidget {
   }
 }
 
-//! Transaction Details
-class TransactionDetailsWidget extends StatelessWidget {
+//! Old Code
+
+class SpendingChartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final transactionProvider = Provider.of<TransactionDataProvider>(context);
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    return ListView.builder(
-      itemCount: transactionProvider.transactions.length,
-      itemBuilder: (context, index) {
-        final transaction = transactionProvider.transactions[index];
-        final swipeOffset = transactionProvider.swipeOffsets[index] ?? 0.0;
-        bool isExpanded = transactionProvider.expandedState[index] ?? false;
-        const double maxSwipeOffsetFactor = 0.2;
-        const double swipeThresholdFactor = 0.125;
-
-        // Only allow swipe if transaction type is 'Debit'
-        if (transaction["type"] == "Debit") {
-          return GestureDetector(
-            onHorizontalDragUpdate: (details) {
-              transactionProvider.updateSwipeOffset(
-                index,
-                (transactionProvider.getSwipeOffset(index) ?? 0.0) +
-                    details.primaryDelta!,
-                screenWidth,
-                maxSwipeOffsetFactor,
-              );
-            },
-            onHorizontalDragEnd: (details) {
-              transactionProvider.resetSwipeOffset(
-                index,
-                swipeThresholdFactor,
-                screenWidth,
-                maxSwipeOffsetFactor,
-              );
-            },
-            child: GestureDetector(
-              onTap: () {
-                transactionProvider.toggleExpandedState(index);
-              },
-              child: Stack(
-                children: [
-                  // Background layer with the delete icon
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      width: ScreenUtils.width * 0.2,
-                      height: ScreenUtils.height * 0.09,
-                      decoration: BoxDecoration(
-                        color: AppColors.bottomNavBgColor,
-                      ),
-                      child: Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image(
-                            image: AssetImage(ImageAsset().iconImageDollarBill),
-                            height: 20.sp,
-                          ),
-                          ColumnSpacer(0.003),
-                          Text(
-                            "Split Bill",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 12.sp,
-                                color: AppColors.primaryBlackColor),
-                          )
-                        ],
-                      )),
-                    ),
-                  ),
-                  AnimatedContainer(
-                    width: ScreenUtils.width,
-                    height: isExpanded
-                        ? ScreenUtils.height * 0.14
-                        : ScreenUtils.height * 0.09,
-                    duration: const Duration(milliseconds: 200),
-                    transform: Matrix4.translationValues(swipeOffset, 0.0, 0.0),
-                    margin: EdgeInsets.zero, // Remove the vertical margin
-                    decoration: BoxDecoration(
-                      color: isExpanded
-                          ? AppColors.bottomNavBgColor
-                          : AppColors.white,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ListTile(
-                          leading: Container(
-                            height: ScreenUtils.height * 0.05,
-                            width: ScreenUtils.height * 0.05,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.sp),
-                              color: transaction["type"] == "Debit"
-                                  ? AppColors.primaryRedShadeColor
-                                  : AppColors.primaryGreenShadeColor,
-                            ),
-                            child: Center(
-                              child: Icon(
-                                transaction["type"] == "Debit"
-                                    ? Icons.arrow_back
-                                    : Icons.arrow_forward,
-                                color: transaction["type"] == "Debit"
-                                    ? AppColors.primaryRedColor
-                                    : AppColors.primaryGreenColor,
-                              ),
-                            ),
-                          ),
-                          title: Text(
-                            transaction["title"],
-                            style: commonTextStyle.copyWith(
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          subtitle: Text(
-                            transaction["date"],
-                            style: commonTextStyle.copyWith(
-                                fontSize: 12.sp,
-                                color: AppColors.onBoardSubTextStyleColor),
-                          ),
-                          trailing: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
-                                style: commonTextStyle.copyWith(
-                                  color: transaction["amount"] > 0
-                                      ? AppColors.primaryGreenColor
-                                      : AppColors.primaryRedColor,
-                                ),
-                              ),
-                              Text(
-                                "${transaction["type"]}",
-                                style: commonTextStyle.copyWith(
-                                    fontSize: 10.sp,
-                                    color: AppColors.onBoardSubTextStyleColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                        isExpanded
-                            ? Flexible(
-                                flex: 1,
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.fromLTRB(70.sp, 0, 20.sp, 0),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Running Balance",
-                                              style: commonTextStyle.copyWith(
-                                                  fontSize: 11.sp,
-                                                  color: AppColors
-                                                      .secondarysubGreyColor2),
-                                            ),
-                                            Text(
-                                              "Running Balance",
-                                              style: commonTextStyle.copyWith(
-                                                  fontSize: 11.sp,
-                                                  color: AppColors
-                                                      .secondarysubGreyColor2),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              "Test",
-                                              style: commonTextStyle.copyWith(
-                                                  fontSize: 11.sp,
-                                                  color: AppColors
-                                                      .secondarysubGreyColor2),
-                                            ),
-                                            Text(
-                                              "12536",
-                                              style: commonTextStyle.copyWith(
-                                                  fontSize: 11.sp,
-                                                  color: AppColors
-                                                      .secondarysubGreyColor2),
-                                            ),
-                                          ],
-                                        )
-                                      ],
+    return Padding(
+        padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Top buttons and dropdown
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DaysDropdown(),
+                Row(
+                  children: [
+                    TextButton(
+                        style: ButtonStyle(
+                            shape:
+                                WidgetStateProperty.all(RoundedRectangleBorder(
+                                    side: BorderSide(
+                                      color: AppColors
+                                          .secondarysubGreyColor3, // your color here
+                                      width: 1,
                                     ),
-                                  ),
-                                ),
-                              )
-                            : SizedBox.shrink()
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                                    borderRadius: BorderRadius.circular(10)))),
+                        onPressed: () {},
+                        child: Text(
+                          "eStatement",
+                          style: commonTextStyle.copyWith(
+                              fontSize: 11.sp,
+                              color: AppColors.primaryBlackColor),
+                        )),
+                    RowSpacer(0.01),
+                    TextButton(
+                        style: ButtonStyle(
+                            shape:
+                                WidgetStateProperty.all(RoundedRectangleBorder(
+                                    side: BorderSide(
+                                      color: AppColors
+                                          .secondarysubGreyColor3, // your color here
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10)))),
+                        onPressed: () {},
+                        child: Text(
+                          "My Budget",
+                          style: commonTextStyle.copyWith(
+                              fontSize: 11.sp,
+                              color: AppColors.primaryBlackColor),
+                        ))
+                  ],
+                ),
+              ],
             ),
-          );
-        } else {
-          //! For Credit or other types, return a non-swipeable ListTile
-          return GestureDetector(
-            onTap: () {
-              transactionProvider.toggleExpandedState(index);
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color:
-                    isExpanded ? AppColors.bottomNavBgColor : AppColors.white,
-              ),
-              width: ScreenUtils.width,
-              height: isExpanded
-                  ? ScreenUtils.height * 0.14
-                  : ScreenUtils.height * 0.09,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ListTile(
-                    leading: Container(
-                      height: ScreenUtils.height * 0.05,
-                      width: ScreenUtils.height * 0.05,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.sp),
-                        color: transaction["type"] == "Debit"
-                            ? AppColors.primaryRedShadeColor
-                            : AppColors.primaryGreenShadeColor,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          transaction["type"] == "Debit"
-                              ? Icons.arrow_back
-                              : Icons.arrow_forward,
-                          color: transaction["type"] == "Debit"
-                              ? AppColors.primaryRedColor
-                              : AppColors.primaryGreenColor,
+            ColumnSpacer(0.02),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  height: ScreenUtils.height * 0.3,
+                  width: ScreenUtils.width,
+                  child: PieChart(
+                    PieChartData(
+                      sectionsSpace: 10,
+                      centerSpaceRadius: 90,
+                      sections: [
+                        PieChartSectionData(
+                          value: 25,
+                          color: Colors.purple,
+                          radius: 25,
+                          showTitle: false,
                         ),
-                      ),
-                    ),
-                    title: Text(
-                      transaction["title"],
-                      style: commonTextStyle.copyWith(
-                          color: AppColors.primaryBlackColor),
-                    ),
-                    subtitle: Text(
-                      transaction["date"],
-                      style: commonTextStyle.copyWith(
-                          fontSize: 12.sp,
-                          color: AppColors.onBoardSubTextStyleColor),
-                    ),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
-                          style: commonTextStyle.copyWith(
-                            color: transaction["amount"] > 0
-                                ? AppColors.primaryGreenColor
-                                : AppColors.primaryRedColor,
-                          ),
+                        PieChartSectionData(
+                          value: 25,
+                          color: Colors.orange,
+                          radius: 25,
+                          showTitle: false,
                         ),
-                        Text(
-                          "${transaction["type"]}",
-                          style: commonTextStyle.copyWith(
-                              fontSize: 10.sp,
-                              color: AppColors.onBoardSubTextStyleColor),
+                        PieChartSectionData(
+                          value: 25,
+                          color: Colors.green,
+                          radius: 25,
+                          showTitle: false,
+                        ),
+                        PieChartSectionData(
+                          value: 25,
+                          color: Colors.grey,
+                          radius: 25,
+                          showTitle: false,
                         ),
                       ],
                     ),
                   ),
-                  isExpanded
-                      ? Flexible(
-                          flex: 1,
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(70.sp, 0, 20.sp, 0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Running Balance",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 11.sp,
-                                            color: AppColors
-                                                .secondarysubGreyColor2),
-                                      ),
-                                      Text(
-                                        "Running Balance",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 11.sp,
-                                            color: AppColors
-                                                .secondarysubGreyColor2),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "Test",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 11.sp,
-                                            color: AppColors
-                                                .secondarysubGreyColor2),
-                                      ),
-                                      Text(
-                                        "12536",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 11.sp,
-                                            color: AppColors
-                                                .secondarysubGreyColor2),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        )
-                      : SizedBox.shrink()
-                ],
-              ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Total Spent",
+                        style: commonTextStyle.copyWith(
+                            color: AppColors.secondarysubGreyColor3,
+                            fontSize: 11.sp)),
+                    ColumnSpacer(0.001),
+                    Text("12,345,532.00",
+                        style: commonTextStyle.copyWith(
+                            color: AppColors.primaryBlackColor)),
+                  ],
+                ),
+              ],
             ),
-          );
-        }
+
+            // Legend
+          ],
+        ));
+  }
+}
+
+class DaysDropdown extends StatefulWidget {
+  @override
+  _DaysDropdownState createState() => _DaysDropdownState();
+}
+
+class _DaysDropdownState extends State<DaysDropdown> {
+  // List of dropdown options
+  final List<String> dropdownItems = [
+    "Last 7 days",
+    "Last 30 days",
+    "Last Year"
+  ];
+
+  // Initial selected value
+  String selectedValue = "Last 7 days";
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: selectedValue,
+      icon: Icon(
+        Icons.arrow_drop_down_rounded,
+        color: AppColors.secondarysubGreyColor3,
+      ), // Dropdown icon
+      iconSize: 25,
+      underline: SizedBox(), // Removes the default underline
+      style: commonTextStyle.copyWith(color: AppColors.secondarysubGreyColor3),
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedValue = newValue!;
+        });
       },
+      items: dropdownItems.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     );
   }
 }
 
-class TransactionScreen extends StatefulWidget {
-  @override
-  _TransactionScreenState createState() => _TransactionScreenState();
-}
+final List<Map<String, dynamic>> legendItems = [
+  {
+    "color": Colors.purple,
+    "label": "Food and beverage",
+    "value": "231,856.00",
+  },
+  {
+    "color": Colors.orange,
+    "label": "Entertainment",
+    "value": "231,856.00",
+  },
+  {
+    "color": Colors.green,
+    "label": "Travel",
+    "value": "150,000.00",
+  },
+  // Add more items as needed
+];
 
-class _TransactionScreenState extends State<TransactionScreen> {
-  final List<Map<String, dynamic>> transactions = [
-    {
-      "title": "Purchase Pickme",
-      "amount": -3670.00,
-      "type": "Debit",
-      "date": "24-Jul 10:53"
-    },
-    {
-      "title": "Allowance June 2024",
-      "amount": 2543.00,
-      "type": "Credit",
-      "date": "24-Jul 10:53"
-    },
-    {
-      "title": "Purchase Pickme",
-      "amount": -3670.00,
-      "type": "Debit",
-      "date": "24-Jul 10:53"
-    },
-    {
-      "title": "Purchase Pickme",
-      "amount": -3670.00,
-      "type": "Debit",
-      "date": "24-Jul 10:53"
-    },
-    {
-      "title": "Allowance June 2024",
-      "amount": 2543.00,
-      "type": "Credit",
-      "date": "24-Jul 10:53"
-    },
-    {
-      "title": "Allowance June 2024",
-      "amount": 2543.00,
-      "type": "Credit",
-      "date": "24-Jul 10:53"
-    },
-    {
-      "title": "Purchase Pickme",
-      "amount": -3670.00,
-      "type": "Debit",
-      "date": "24-Jul 10:53"
-    },
-  ];
+class LegendItem extends StatelessWidget {
+  final Color color;
+  final String label;
+  final String value;
 
-  Map<int, double> swipeOffsets = {};
+  const LegendItem({
+    required this.color,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    const double maxSwipeOffsetFactor = 0.2;
-    const double swipeThresholdFactor = 0.125;
-
-    return ListView.builder(
-      itemCount: transactions.length,
-      itemBuilder: (context, index) {
-        final transaction = transactions[index];
-        final swipeOffset = swipeOffsets[index] ?? 0.0;
-
-        // Only allow swipe if transaction type is 'Debit'
-        if (transaction["type"] == "Debit") {
-          return GestureDetector(
-            onHorizontalDragUpdate: (details) {
-              setState(() {
-                swipeOffsets[index] =
-                    (swipeOffsets[index] ?? 0.0) + details.delta.dx;
-                swipeOffsets[index] = swipeOffsets[index]!
-                    .clamp(-screenWidth * maxSwipeOffsetFactor, 0.0);
-              });
-            },
-            onHorizontalDragEnd: (details) {
-              setState(() {
-                if (swipeOffsets[index]! <
-                    -screenWidth * swipeThresholdFactor) {
-                  swipeOffsets[index] = -screenWidth * maxSwipeOffsetFactor;
-                } else {
-                  swipeOffsets[index] = 0.0;
-                }
-              });
-            },
-            child: Stack(
-              children: [
-                // Background layer with the delete icon
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    width: ScreenUtils.width * 0.2,
-                    height: ScreenUtils.height * 0.09,
-                    decoration: BoxDecoration(
-                      color: AppColors.bottomNavBgColor,
-                    ),
-                    child: Center(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage(ImageAsset().iconImageDollarBill),
-                          height: 20.sp,
-                        ),
-                        ColumnSpacer(0.003),
-                        Text(
-                          "Split Bill",
-                          style: commonTextStyle.copyWith(
-                              fontSize: 12.sp,
-                              color: AppColors.primaryBlackColor),
-                        )
-                      ],
-                    )),
-                  ),
-                ),
-                AnimatedContainer(
-                  width: ScreenUtils.width,
-                  height: ScreenUtils.height * 0.09,
-                  duration: const Duration(milliseconds: 200),
-                  transform: Matrix4.translationValues(swipeOffset, 0.0, 0.0),
-                  margin: EdgeInsets.zero, // Remove the vertical margin
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: ListTile(
-                    leading: Container(
-                      height: ScreenUtils.height * 0.05,
-                      width: ScreenUtils.height * 0.05,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.sp),
-                        color: transaction["type"] == "Debit"
-                            ? AppColors.primaryRedShadeColor
-                            : AppColors.primaryGreenShadeColor,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          transaction["type"] == "Debit"
-                              ? Icons.arrow_back
-                              : Icons.arrow_forward,
-                          color: transaction["type"] == "Debit"
-                              ? AppColors.primaryRedColor
-                              : AppColors.primaryGreenColor,
-                        ),
-                      ),
-                    ),
-                    title: Text(
-                      transaction["title"],
-                      style: commonTextStyle.copyWith(
-                          color: AppColors.primaryBlackColor),
-                    ),
-                    subtitle: Text(
-                      transaction["date"],
-                      style: commonTextStyle.copyWith(
-                          fontSize: 12.sp,
-                          color: AppColors.onBoardSubTextStyleColor),
-                    ),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
-                          style: commonTextStyle.copyWith(
-                            color: transaction["amount"] > 0
-                                ? AppColors.primaryGreenColor
-                                : AppColors.primaryRedColor,
-                          ),
-                        ),
-                        Text(
-                          "${transaction["type"]}",
-                          style: commonTextStyle.copyWith(
-                              fontSize: 10.sp,
-                              color: AppColors.onBoardSubTextStyleColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CircleAvatar(
+          radius: 8,
+          backgroundColor: color,
+        ),
+        SizedBox(width: 8),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: commonTextStyle.copyWith(
+                  color: AppColors.secondarysubGreyColor3, fontSize: 11.sp),
             ),
-          );
-        } else {
-          // For Credit or other types, return a non-swipeable ListTile
-          return ListTile(
-            leading: Container(
-              height: ScreenUtils.height * 0.05,
-              width: ScreenUtils.height * 0.05,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.sp),
-                color: transaction["type"] == "Debit"
-                    ? AppColors.primaryRedShadeColor
-                    : AppColors.primaryGreenShadeColor,
-              ),
-              child: Center(
-                child: Icon(
-                  transaction["type"] == "Debit"
-                      ? Icons.arrow_back
-                      : Icons.arrow_forward,
-                  color: transaction["type"] == "Debit"
-                      ? AppColors.primaryRedColor
-                      : AppColors.primaryGreenColor,
-                ),
-              ),
-            ),
-            title: Text(
-              transaction["title"],
+            Text(
+              value,
               style:
                   commonTextStyle.copyWith(color: AppColors.primaryBlackColor),
             ),
-            subtitle: Text(
-              transaction["date"],
-              style: commonTextStyle.copyWith(
-                  fontSize: 12.sp, color: AppColors.onBoardSubTextStyleColor),
-            ),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
-                  style: commonTextStyle.copyWith(
-                    color: transaction["amount"] > 0
-                        ? AppColors.primaryGreenColor
-                        : AppColors.primaryRedColor,
-                  ),
-                ),
-                Text(
-                  "${transaction["type"]}",
-                  style: commonTextStyle.copyWith(
-                      fontSize: 10.sp,
-                      color: AppColors.onBoardSubTextStyleColor),
-                ),
-              ],
-            ),
-          );
-        }
-      },
+          ],
+        ),
+      ],
     );
   }
 }
-
-//! Old Code
-
-// class _TransactionScreenState extends State<TransactionScreen> {
-//   final List<Map<String, dynamic>> transactions = [
-//     {
-//       "title": "Purchase Pickme",
-//       "amount": -3670.00,
-//       "type": "Debit",
-//       "date": "24-Jul 10:53"
-//     },
-//     {
-//       "title": "Allowance June 2024",
-//       "amount": 2543.00,
-//       "type": "Credit",
-//       "date": "24-Jul 10:53"
-//     },
-//     {
-//       "title": "Purchase Pickme",
-//       "amount": -3670.00,
-//       "type": "Debit",
-//       "date": "24-Jul 10:53"
-//     },
-//     {
-//       "title": "Purchase Pickme",
-//       "amount": -3670.00,
-//       "type": "Debit",
-//       "date": "24-Jul 10:53"
-//     },
-//     {
-//       "title": "Purchase Pickme",
-//       "amount": -3670.00,
-//       "type": "Debit",
-//       "date": "24-Jul 10:53"
-//     },
-//     {
-//       "title": "Purchase Pickme",
-//       "amount": -3670.00,
-//       "type": "Debit",
-//       "date": "24-Jul 10:53"
-//     },
-//   ];
-
-//   Map<int, double> swipeOffsets = {};
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final screenWidth = MediaQuery.of(context).size.width;
-
-//     const double maxSwipeOffsetFactor = 0.2;
-//     const double swipeThresholdFactor = 0.125;
-
-//     return ListView.builder(
-//       itemCount: transactions.length,
-//       itemBuilder: (context, index) {
-//         final transaction = transactions[index];
-//         final swipeOffset = swipeOffsets[index] ?? 0.0;
-
-//         return GestureDetector(
-//           onHorizontalDragUpdate: (details) {
-//             setState(() {
-//               swipeOffsets[index] =
-//                   (swipeOffsets[index] ?? 0.0) + details.delta.dx;
-//               swipeOffsets[index] = swipeOffsets[index]!
-//                   .clamp(-screenWidth * maxSwipeOffsetFactor, 0.0);
-//             });
-//           },
-//           onHorizontalDragEnd: (details) {
-//             setState(() {
-//               if (swipeOffsets[index]! < -screenWidth * swipeThresholdFactor) {
-//                 swipeOffsets[index] = -screenWidth * maxSwipeOffsetFactor;
-//               } else {
-//                 swipeOffsets[index] = 0.0;
-//               }
-//             });
-//           },
-//           child: Stack(
-//             children: [
-//               // Background layer with the delete icon
-//               Align(
-//                 alignment: Alignment.centerRight,
-//                 child: Container(
-//                   width: ScreenUtils.width * 0.2,
-//                   height: ScreenUtils.height * 0.09,
-//                   decoration: BoxDecoration(
-//                     color: AppColors.bottomNavBgColor,
-//                   ),
-//                   child: Center(
-//                       child: Column(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Image(
-//                         image: AssetImage(ImageAsset().iconImageDollarBill),
-//                         height: 20.sp,
-//                       ),
-//                       ColumnSpacer(0.003),
-//                       Text(
-//                         "Split Bill",
-//                         style: commonTextStyle.copyWith(
-//                             fontSize: 12.sp,
-//                             color: AppColors.primaryBlackColor),
-//                       )
-//                     ],
-//                   )),
-//                 ),
-//               ),
-//               AnimatedContainer(
-//                 width: ScreenUtils.width,
-//                 height: ScreenUtils.height * 0.09,
-//                 duration: const Duration(milliseconds: 200),
-//                 transform: Matrix4.translationValues(swipeOffset, 0.0, 0.0),
-//                 margin: EdgeInsets.zero, // Remove the vertical margin
-//                 decoration: BoxDecoration(
-//                   color: Colors.white,
-//                 ),
-//                 child: ListTile(
-//                   leading: Container(
-//                     height: ScreenUtils.height * 0.05,
-//                     width: ScreenUtils.height * 0.05,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(10.sp),
-//                       color: transaction["type"] == "Debit"
-//                           ? AppColors.primaryRedShadeColor
-//                           : AppColors.primaryGreenShadeColor,
-//                     ),
-//                     child: Center(
-//                       child: Icon(
-//                         transaction["type"] == "Debit"
-//                             ? Icons.arrow_back
-//                             : Icons.arrow_forward,
-//                         color: transaction["type"] == "Debit"
-//                             ? AppColors.primaryRedColor
-//                             : AppColors.primaryGreenColor,
-//                       ),
-//                     ),
-//                   ),
-//                   title: Text(
-//                     transaction["title"],
-//                     style: commonTextStyle.copyWith(
-//                         color: AppColors.primaryBlackColor),
-//                   ),
-//                   subtitle: Text(
-//                     transaction["date"],
-//                     style: commonTextStyle.copyWith(
-//                         fontSize: 12.sp,
-//                         color: AppColors.onBoardSubTextStyleColor),
-//                   ),
-//                   trailing: Column(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     crossAxisAlignment: CrossAxisAlignment.end,
-//                     children: [
-//                       Text(
-//                         "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
-//                         style: commonTextStyle.copyWith(
-//                           color: transaction["amount"] > 0
-//                               ? AppColors.primaryGreenColor
-//                               : AppColors.primaryRedColor,
-//                         ),
-//                       ),
-//                       Text(
-//                         "${transaction["type"]}",
-//                         style: commonTextStyle.copyWith(
-//                             fontSize: 10.sp,
-//                             color: AppColors.onBoardSubTextStyleColor),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }

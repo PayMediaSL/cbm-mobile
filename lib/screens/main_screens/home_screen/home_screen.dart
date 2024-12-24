@@ -4,9 +4,11 @@ import 'dart:math';
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
+import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
+import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/screen_layouts/tab_bar/tab_bar_layout.dart';
 import 'package:app/screens/widgets/home_screen/graph_screen/graph_screen.dart';
@@ -17,6 +19,7 @@ import 'package:app/screens/widgets/text_fields/custom_search_bar.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
+import 'package:app/utils/navigation_util.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -172,6 +175,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               children: [
                 //? Circle Avatar
                 CircleAvatar(),
+
                 SearchTextField(
                   controller: TextEditingController(),
                   onChanged: (value) => print("Search text: $value"),
@@ -187,9 +191,21 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   image: AssetImage(ImageAsset().iconImageMail),
                   height: 25.sp,
                 ),
-                Image(
-                  image: AssetImage(ImageAsset().iconImageNotification),
-                  height: 25.sp,
+
+                GestureDetector(
+                  onTap: () {
+                    // print("jhajajajajjaa");
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => const NotificationScreen()),
+                    // );
+                    pushScreen(context, ScreenRoutes.toNotificationScreen);
+                  },
+                  child: Image(
+                    image: AssetImage(ImageAsset().iconImageNotification),
+                    height: 25.sp,
+                  ),
                 ),
                 Image(
                   image: AssetImage(ImageAsset().iconImageLocak),

@@ -24,6 +24,7 @@ import 'package:app/screens/main_screens/drawer/security_and_safety.dart';
 import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/drawer/transaction_limit.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
+import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
@@ -93,6 +94,10 @@ class ScreenRoutes {
   // PAyment
 
   static const String toPaymentScreen = "toPaymentScreen";
+
+  // Notifications
+
+  static const String toNotificationScreen = "toNotificationScreen";
 
   static const String test = "testinggggggg";
 }
@@ -277,6 +282,14 @@ class Router {
           builder: (_) => DrawerInviteFriendsScreen(),
           settings: settings,
         );
+
+      //! Notification Screen
+      case ScreenRoutes.toNotificationScreen:
+        return MaterialPageRoute(
+          builder: (_) => NotificationScreen(),
+          settings: settings,
+        );
+
 //! Pin Login
       case ScreenRoutes.toPinLoginScreeen:
         return MaterialPageRoute(

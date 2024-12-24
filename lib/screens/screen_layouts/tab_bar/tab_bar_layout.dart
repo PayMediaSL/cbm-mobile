@@ -26,7 +26,7 @@ class CustomTabBar extends StatelessWidget {
               tabSelectionModel.setSelectedIndex(index);
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.0.sp, vertical: 0.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.0.sp, vertical: 0.0),
               margin: EdgeInsets.symmetric(horizontal: 1.0.sp),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),

@@ -73,3 +73,21 @@ void pushAndPopUntilScreen(
     arguments: arguments,
   );
 }
+
+// A reusable function for navigating to any screen
+void navigateToSpecificScreen(BuildContext context, Widget screen) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => screen),
+  );
+}
+
+// A reusable function for navigating to any named screen
+Future<T?> navigateToNamedScreen<T>(BuildContext context, String routeName,
+    {Object? arguments}) {
+  return Navigator.pushNamed<T>(
+    context,
+    routeName,
+    arguments: arguments,
+  );
+}
