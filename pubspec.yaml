@@ -91,6 +91,7 @@ flutter:
     - assets/translations/
     - assets/icons/
     - assets/icons/settings/
+    - assets/icons/bottomnav/
 
 
 

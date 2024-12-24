@@ -73,6 +73,7 @@ class AppColors {
 
   static Color bottomNavBgColor = HexColor("#E0EBF9");
   static Color iconGreyColor = HexColor("#EEEEEF");
+  static Color bottomNavIconColor = HexColor("#334155");
 
   //? Home Screen Life style Color
 

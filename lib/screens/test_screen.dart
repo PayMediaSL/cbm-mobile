@@ -1,131 +1,293 @@
-// import 'package:app/helpers/colors.dart';
-// import 'package:app/helpers/text_styles.dart';
-// import 'package:fl_chart/fl_chart.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// class CustomBottomNavBarExample extends StatefulWidget {
+//   @override
+//   _CustomBottomNavBarExampleState createState() =>
+//       _CustomBottomNavBarExampleState();
+// }
 
-// class BalanceSummaryChart extends StatelessWidget {
+// class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
+//   int _selectedIndex = 0;
+
+//   final List<Map<String, dynamic>> _navItems = [
+//     {"icon": Icons.home, "label": "Home"},
+//     {"icon": Icons.payment, "label": "Payments"},
+//     {"icon": Icons.grid_view, "label": "Lifestyle"},
+//     {"icon": Icons.swap_horiz, "label": "sd"},
+//     {"icon": Icons.menu, "label": "Menu"},
+//   ];
+
+//   void _onItemTapped(int index) {
+//     setState(() {
+//       _selectedIndex = index;
+//     });
+//   }
+
 //   @override
 //   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.all(16.sp),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           color: HexColor("#F8F8F8"),
-//           borderRadius: BorderRadius.circular(16),
-//           // boxShadow: [],
+//     return Scaffold(
+//       body: Center(
+//         child: Text(
+//           'Selected: ${_navItems[_selectedIndex]["label"]}',
+//           style: TextStyle(fontSize: 24),
 //         ),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.all(16.0),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       ),
+//       bottomNavigationBar: Container(
+//         color: Colors.red,
+//         padding: const EdgeInsets.symmetric(vertical: 8),
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceAround,
+//           children: List.generate(_navItems.length, (index) {
+//             final isSelected = _selectedIndex == index;
+
+//             return GestureDetector(
+//               onTap: () => _onItemTapped(index),
+//               child: Column(
+//                 mainAxisSize: MainAxisSize.min,
 //                 children: [
-//                   Text(
-//                     'Statistics',
-//                     style: commonTextStyle.copyWith(
-//                         fontWeight: FontWeight.w600,
-//                         fontSize: 14.sp,
-//                         color: AppColors.primaryBlackColor),
-//                   ),
-//                   Container(
-//                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+//                   // Bar above the container (outside of it)
+//                   AnimatedContainer(
+//                     duration: Duration(milliseconds: 300),
+//                     height: isSelected ? 4 : 0,
+//                     width: 80,
 //                     decoration: BoxDecoration(
-//                       color: HexColor("#DDE8FE"),
-//                       borderRadius: BorderRadius.circular(10),
+//                       color: isSelected ? Colors.blue : Colors.transparent,
+//                       // borderRadius: BorderRadius.circular(2),
 //                     ),
-//                     child: Text(
-//                       'Past 6 months',
-//                       style: commonTextStyle.copyWith(
-//                           fontWeight: FontWeight.w600,
-//                           fontSize: 14.sp,
-//                           color: AppColors.primaryBlackColor),
+//                   ),
+//                   // const SizedBox(height: 4),
+
+//                   // Container with icon and text inside (fixed width)
+//                   Container(
+//                     width: 60, // Fixed width for all containers
+//                     padding: EdgeInsets.symmetric(vertical: 8),
+//                     decoration: BoxDecoration(
+//                       color: isSelected ? Colors.blue.withOpacity(0.2) : null,
+//                       // borderRadius: BorderRadius.circular(12),
+//                     ),
+//                     child: Column(
+//                       mainAxisSize: MainAxisSize.min,
+//                       children: [
+//                         Icon(
+//                           _navItems[index]["icon"],
+//                           color: isSelected ? Colors.blue : Colors.grey,
+//                           size: 20,
+//                         ),
+//                         // const SizedBox(height: 4),
+//                         Text(
+//                           _navItems[index]["label"],
+//                           textAlign: TextAlign.center,
+//                           style: TextStyle(
+//                             color: isSelected ? Colors.blue : Colors.grey,
+//                             fontSize: 11,
+//                             fontWeight: FontWeight.w400,
+//                           ),
+//                         ),
+//                       ],
 //                     ),
 //                   ),
 //                 ],
 //               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.all(16.sp),
-//               child: AspectRatio(
-//                 aspectRatio: 1.7,
-//                 child: LineChart(
-//                   LineChartData(
-//                     gridData: FlGridData(show: true),
-//                     titlesData: FlTitlesData(
-//                       leftTitles: AxisTitles(
-//                         sideTitles:
-//                             SideTitles(showTitles: true, reservedSize: 40),
-//                       ),
-//                       bottomTitles: AxisTitles(
-//                         sideTitles: SideTitles(
-//                           showTitles: true,
-//                           getTitlesWidget: (value, meta) {
-//                             const months = [
-//                               'Jan',
-//                               'Feb',
-//                               'Mar',
-//                               'Apr',
-//                               'May',
-//                               'Jun'
-//                             ];
-//                             return Padding(
-//                               padding: EdgeInsets.only(top: 8.sp),
-//                               child: Text(
-//                                 months[value.toInt()],
-//                                 style: TextStyle(fontSize: 12.sp),
-//                               ),
-//                             );
-//                           },
-//                         ),
-//                       ),
-//                     ),
-//                     borderData: FlBorderData(
-//                       show: true,
-//                       border: Border.all(color: Colors.grey.withOpacity(0.2)),
-//                     ),
-//                     lineBarsData: [
-//                       LineChartBarData(
-//                         spots: [
-//                           FlSpot(0, 2100),
-//                           FlSpot(1, 2300),
-//                           FlSpot(2, 2700),
-//                           FlSpot(3, 2400),
-//                           FlSpot(4, 2000),
-//                           FlSpot(5, 1400),
-//                         ],
-//                         isCurved: true,
-//                         color: HexColor("#8979FF"),
-//                         // colors: [Colors.blueAccent],
-//                         barWidth: 3,
-//                         isStrokeCapRound: true,
-//                         dotData: FlDotData(show: true),
-//                         belowBarData: BarAreaData(
-//                           show: true,
-//                           gradient: LinearGradient(
-//                             colors: [
-//                               HexColor("#8979FF").withOpacity(0.3),
-//                               HexColor("#8979FF").withOpacity(0.05),
-//                             ],
-//                             begin: Alignment.topCenter,
-//                             end: Alignment.bottomCenter,
-//                           ), // color:
-//                           // colors: [Colors.blueAccent.withOpacity(0.3)],
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ],
+//             );
+//           }),
 //         ),
 //       ),
 //     );
 //   }
 // }
+
+//! Latesttt
+// import 'package:flutter/material.dart';
+
+// class CustomBottomNavBarExample extends StatefulWidget {
+//   @override
+//   _CustomBottomNavBarExampleState createState() =>
+//       _CustomBottomNavBarExampleState();
+// }
+
+// class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
+//   int _selectedIndex = 0;
+
+//   final List<Map<String, dynamic>> _navItems = [
+//     {"icon": Icons.home, "label": "Home"},
+//     {"icon": Icons.payment, "label": "Payments"},
+//     {"icon": Icons.grid_view, "label": "Lifestyle"},
+//     {"icon": Icons.swap_horiz, "label": "Transactions"},
+//     {"icon": Icons.menu, "label": "Menu"},
+//   ];
+
+//   void _onItemTapped(int index) {
+//     setState(() {
+//       _selectedIndex = index;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: Text(
+//           'Selected: ${_navItems[_selectedIndex]["label"]}',
+//           style: TextStyle(fontSize: 24),
+//         ),
+//       ),
+//       bottomNavigationBar: Container(
+//         color: Colors.white,
+//         padding: const EdgeInsets.symmetric(vertical: 6),
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           children: List.generate(_navItems.length, (index) {
+//             final isSelected = _selectedIndex == index;
+
+//             return GestureDetector(
+//               onTap: () => _onItemTapped(index),
+//               child: Column(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   // Bar above the container (outside it)
+//                   AnimatedContainer(
+//                     duration: Duration(milliseconds: 300),
+//                     height: isSelected ? 4 : 0,
+//                     width: 70,
+//                     decoration: BoxDecoration(
+//                       color: isSelected ? Colors.blue : Colors.transparent,
+//                     ),
+//                   ),
+//                   const SizedBox(height: 4),
+
+//                   // Main container with icon and text
+//                   Container(
+//                     width: isSelected ? 80 : 70,
+//                     padding: EdgeInsets.symmetric(vertical: 8),
+//                     decoration: BoxDecoration(
+//                       color: isSelected ? Colors.blue.withOpacity(0.2) : null,
+//                     ),
+//                     child: Column(
+//                       mainAxisSize: MainAxisSize.min,
+//                       children: [
+//                         Icon(
+//                           _navItems[index]["icon"],
+//                           color: isSelected ? Colors.blue : Colors.grey,
+//                           size: 24,
+//                         ),
+//                         const SizedBox(height: 4),
+//                         Text(
+//                           _navItems[index]["label"],
+//                           textAlign: TextAlign.center,
+//                           style: TextStyle(
+//                             color: isSelected ? Colors.blue : Colors.grey,
+//                             fontSize: 11,
+//                             fontWeight: FontWeight.w500,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             );
+//           }),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+import 'package:flutter/material.dart';
+
+class CustomBottomNavBarExample extends StatefulWidget {
+  @override
+  _CustomBottomNavBarExampleState createState() =>
+      _CustomBottomNavBarExampleState();
+}
+
+class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
+  int _selectedIndex = 0;
+
+  final List<Map<String, dynamic>> _navItems = [
+    {"icon": Icons.home, "label": "Home"},
+    {"icon": Icons.payment, "label": "Payments"},
+    {"icon": Icons.grid_view, "label": "Lifestyle"},
+    {"icon": Icons.swap_horiz, "label": "Transactions"},
+    {"icon": Icons.menu, "label": "Menu"},
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Selected: ${_navItems[_selectedIndex]["label"]}',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+      bottomNavigationBar: Stack(
+        clipBehavior: Clip.none, // Ensures the animated bar is visible outside
+        children: [
+          // Main Bottom Navigation Bar
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(_navItems.length, (index) {
+                final isSelected = _selectedIndex == index;
+
+                return GestureDetector(
+                  onTap: () => _onItemTapped(index),
+                  child: Container(
+                    width: isSelected ? 80 : 70, // Expands when selected
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    decoration: BoxDecoration(
+                      color: isSelected ? Colors.blue.withOpacity(0.2) : null,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          _navItems[index]["icon"],
+                          color: isSelected ? Colors.blue : Colors.grey,
+                          size: 24,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          _navItems[index]["label"],
+                          style: TextStyle(
+                            color: isSelected ? Colors.blue : Colors.grey,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
+
+          // Animated Bar Positioned Above the Container
+          Positioned(
+            top:
+                -6, // Adjust this value to control how far above the bar should be
+            left: _selectedIndex *
+                    (MediaQuery.of(context).size.width / _navItems.length) +
+                (MediaQuery.of(context).size.width / _navItems.length / 2 - 35),
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              height: 4,
+              width: 70,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

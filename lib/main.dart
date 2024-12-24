@@ -88,6 +88,10 @@ void main() async {
           ChangeNotifierProvider(create: (_) => DrawerInfoProvider()),
           ChangeNotifierProvider(create: (_) => TransactionLimitProvider()),
 
+          // ChangeNotifierProvider<BottomNavBarIndeXModel>(
+          //   create: (context) => BottomNavBarIndeXModel(),
+          // ),
+
           // Transaction
 
           ChangeNotifierProvider(create: (_) => TransactionDataProvider()),

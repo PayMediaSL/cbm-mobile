@@ -97,4 +97,11 @@ class ImageAsset {
       'assets/icons/settings/invitefriend.png';
   final String settingsIconInfo = 'assets/icons/settings/info.png';
   final String settingsIconLogout = 'assets/icons/settings/logout.png';
+
+  //! Bottom nav
+
+  final String bottonmIconpayment = 'assets/icons/bottomnav/navpay.png';
+  final String bottonmIconlifestyle = 'assets/icons/bottomnav/navlife.png';
+  final String bottonmIcontransactions = 'assets/icons/bottomnav/navtrans.png';
+  final String bottonmIconmenu = 'assets/icons/bottomnav/navmenu.png';
 }

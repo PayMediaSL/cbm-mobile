@@ -8,7 +8,6 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
-import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/screen_layouts/tab_bar/tab_bar_layout.dart';
 import 'package:app/screens/widgets/home_screen/graph_screen/graph_screen.dart';
@@ -386,7 +385,40 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                if (LifeStyle[index]["title"] == "Food") {
+                                  pushScreen(
+                                      context, ScreenRoutes.toLifeStyleFood);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Entertainment") {
+                                  pushScreen(context,
+                                      ScreenRoutes.toLifeStyleEntertainment);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Health") {
+                                  pushScreen(
+                                      context, ScreenRoutes.toLifeStyleHealth);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Insurance") {
+                                  pushScreen(context,
+                                      ScreenRoutes.toLifeStyleInsurance);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Gaming") {
+                                  pushScreen(
+                                      context, ScreenRoutes.toLifeStyleGaming);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Ecommerce") {
+                                  pushScreen(context,
+                                      ScreenRoutes.toLifeStyleEcommerce);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Transport") {
+                                  pushScreen(context,
+                                      ScreenRoutes.toLifeStyleTransport);
+                                } else if (LifeStyle[index]["title"] ==
+                                    "Education") {
+                                  pushScreen(context,
+                                      ScreenRoutes.toLifeStyleEducation);
+                                }
+                              },
                               child: CircleAvatar(
                                 backgroundColor: _getBackgroundColor(index),
                                 radius: 20.sp,

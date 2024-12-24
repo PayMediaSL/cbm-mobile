@@ -24,10 +24,19 @@ import 'package:app/screens/main_screens/drawer/security_and_safety.dart';
 import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/drawer/transaction_limit.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_ecommerce.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_education.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_entertainment.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_food.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_gaming.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_health.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_insurance.dart';
+import 'package:app/screens/main_screens/lifestyle/lifestyle_transport.dart';
 import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
+import 'package:app/screens/test_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 
@@ -98,6 +107,17 @@ class ScreenRoutes {
   // Notifications
 
   static const String toNotificationScreen = "toNotificationScreen";
+
+  //? Life Styele
+
+  static const String toLifeStyleFood = "toLifeStyleFood";
+  static const String toLifeStyleEntertainment = "toLifeStyleEntertainment";
+  static const String toLifeStyleHealth = "toLifeStyleHealth";
+  static const String toLifeStyleInsurance = "toLifeStyleInsurance";
+  static const String toLifeStyleGaming = "toLifeStyleGaming";
+  static const String toLifeStyleEcommerce = "toLifeStyleEcommerce";
+  static const String toLifeStyleTransport = "toLifeStyleTransport";
+  static const String toLifeStyleEducation = "toLifeStyleEducation";
 
   static const String test = "testinggggggg";
 }
@@ -283,6 +303,49 @@ class Router {
           settings: settings,
         );
 
+//! LifeStyle
+
+//?Food
+      case ScreenRoutes.toLifeStyleFood:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleFoodScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleEntertainment:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleEntertainmentScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleHealth:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleHealthScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleInsurance:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleInsuranceScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleGaming:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleGamingScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleEcommerce:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleEcommerceScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleTransport:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleTransportScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toLifeStyleEducation:
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleEducationeScreen(),
+          settings: settings,
+        );
       //! Notification Screen
       case ScreenRoutes.toNotificationScreen:
         return MaterialPageRoute(
@@ -290,14 +353,14 @@ class Router {
           settings: settings,
         );
 
-//! Pin Login
+      //! Pin Login
       case ScreenRoutes.toPinLoginScreeen:
         return MaterialPageRoute(
           builder: (_) => PinSignInScreen(),
           settings: settings,
         );
 
-//!ESlips
+      //!ESlips
       case ScreenRoutes.toESlipsScreen:
         return MaterialPageRoute(
           builder: (_) => ESlipsScreen(),
@@ -319,11 +382,11 @@ class Router {
         );
 
       //!!!!!!!!!test
-      // case ScreenRoutes.test:
-      //   return MaterialPageRoute(
-      //     builder: (_) => TestScreen(),
-      //     settings: settings,
-      //   );
+      case ScreenRoutes.test:
+        return MaterialPageRoute(
+          builder: (_) => CustomBottomNavBarExample(),
+          settings: settings,
+        );
 
       default:
         return MaterialPageRoute(
