@@ -23,6 +23,7 @@ import 'package:app/providers/home_screen/quick_access_data_provider.dart';
 import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
+import 'package:app/providers/payments/qr_payment_provider.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
 import 'package:app/services/analytics_service.dart';
 import 'package:app/services/fcm_service.dart';
@@ -95,6 +96,9 @@ void main() async {
           // Transaction
 
           ChangeNotifierProvider(create: (_) => TransactionDataProvider()),
+
+          // Qr Code
+          ChangeNotifierProvider(create: (_) => QrScannerState()),
         ],
         child: const MyApp(),
       ),

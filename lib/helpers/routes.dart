@@ -36,6 +36,9 @@ import 'package:app/screens/main_screens/lifestyle/lifestyle_transport.dart';
 import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
+import 'package:app/screens/main_screens/payments/qr_payment/qr_generate.dart';
+import 'package:app/screens/main_screens/payments/qr_payment/qr_pay_screen.dart';
+import 'package:app/screens/main_screens/payments/qr_payment/qr_scan_payment.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/screens/test_screen.dart';
 import 'package:app/utils/log_util.dart';
@@ -106,6 +109,8 @@ class ScreenRoutes {
 
   static const String toPaymentScreen = "toPaymentScreen";
   static const String toQRScreenScan = "toQRScreenScan";
+  static const String toQrPaySreen = "toQrPaySreen";
+  static const String toQrGenerateSreen = "toQrGenerateSreen";
 
   // Notifications
 
@@ -392,12 +397,23 @@ class Router {
         );
 
       //? Qr Scan
-      // case ScreenRoutes.toQRScreenScan:
-      //   return MaterialPageRoute(
-      //     builder: (_) => QRCodeScannerScreen(),
-      //     settings: settings,
-      //   );
+      case ScreenRoutes.toQRScreenScan:
+        return MaterialPageRoute(
+          builder: (_) => QrScannerScreen(),
+          settings: settings,
+        );
 
+      case ScreenRoutes.toQrPaySreen:
+        return MaterialPageRoute(
+          builder: (_) => QrPayScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toQrGenerateSreen:
+        return MaterialPageRoute(
+          builder: (_) => QrGenerateScreen(),
+          settings: settings,
+        );
       //!!!!!!!!!test
       case ScreenRoutes.test:
         return MaterialPageRoute(

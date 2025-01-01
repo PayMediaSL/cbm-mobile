@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
 
-class QRCodeProvider with ChangeNotifier {
-  String _data = "https://example.com";
-  String _scannedData = '';
+class QrScannerState with ChangeNotifier {
+  String _qrData = '';
 
-  String get data => _data;
-  String get scannedData => _scannedData;
+  String get qrData => _qrData;
 
-  void updateQRData(String newData) {
-    _data = newData;
-    notifyListeners();
-  }
-
-  void updateScannedData(String data) {
-    _scannedData = data;
+  void updateQrData(String data) {
+    _qrData = data;
     notifyListeners();
   }
 }
