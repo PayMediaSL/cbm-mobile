@@ -23,6 +23,7 @@ import 'package:app/screens/main_screens/drawer/invite_friends.dart';
 import 'package:app/screens/main_screens/drawer/security_and_safety.dart';
 import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/drawer/transaction_limit.dart';
+import 'package:app/screens/main_screens/drawer/user_profile_Screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_ecommerce.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_education.dart';
@@ -99,10 +100,12 @@ class ScreenRoutes {
   static const String toDrawerHelpScreen = "toDrawerHelpScreen";
   static const String toDrawerTransactionLimit = "toDrawerTransactionLimit";
   static const String toDrawerInviteFriends = "toDrawerInviteFriends";
+  static const String toDrawerUserProfile = "toDrawerUserProfile";
 
   // PAyment
 
   static const String toPaymentScreen = "toPaymentScreen";
+  static const String toQRScreenScan = "toQRScreenScan";
 
   // Notifications
 
@@ -227,7 +230,7 @@ class Router {
           settings: settings,
         );
 
-//? Signup Billing Screen
+      //? Signup Billing Screen
       case ScreenRoutes.toSignUpBillingScreen:
         return MaterialPageRoute(
           builder: (_) => SignupBillingScreen(),
@@ -300,6 +303,13 @@ class Router {
       case ScreenRoutes.toDrawerInviteFriends:
         return MaterialPageRoute(
           builder: (_) => DrawerInviteFriendsScreen(),
+          settings: settings,
+        );
+
+      //* Drawer User Profile Screen
+      case ScreenRoutes.toDrawerUserProfile:
+        return MaterialPageRoute(
+          builder: (_) => UserProfileScreen(),
           settings: settings,
         );
 
@@ -380,6 +390,13 @@ class Router {
           builder: (_) => PaymentScreen(),
           settings: settings,
         );
+
+      //? Qr Scan
+      // case ScreenRoutes.toQRScreenScan:
+      //   return MaterialPageRoute(
+      //     builder: (_) => QRCodeScannerScreen(),
+      //     settings: settings,
+      //   );
 
       //!!!!!!!!!test
       case ScreenRoutes.test:

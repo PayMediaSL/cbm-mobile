@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
+import 'package:app/screens/main_screens/drawer/main_drawer_screen.dart';
 import 'package:app/screens/main_screens/home_screen/home_screen.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/transaction/transaction_screen.dart';
@@ -56,7 +57,8 @@ class _BottomBavigationScreenState extends State<BottomBavigationScreen> {
                     child: model.currentScreen,
                   ),
                   bottomNavigationBar: _buildBottomAppBar(),
-                  drawerEnableOpenDragGesture: false,
+                  drawerEnableOpenDragGesture: true,
+                  drawer: MainDrawerScreen(),
                 );
               });
         }),

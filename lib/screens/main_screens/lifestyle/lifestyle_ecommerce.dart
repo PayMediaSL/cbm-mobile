@@ -44,7 +44,7 @@ class LifeStyleEcommerceScreen extends StatelessWidget {
         onBackTap: () {
           popScreen(context);
         },
-        backTitle: "Food ",
+        backTitle: "E Commerce",
         children: Padding(
           padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
           child: Column(

@@ -2,11 +2,13 @@
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
+import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
+import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,12 +54,12 @@ class PaymentScreen extends StatelessWidget {
     {
       'title': 'Mobile Reload',
       "subtitle": "Settle your credit card bills",
-      "image": ImageAsset().iconImageCard
+      "image": ImageAsset().iconImageReload
     },
     {
       'title': 'Card payment',
       "subtitle": "Transfer credit to your mobile number",
-      "image": ImageAsset().iconImageReload
+      "image": ImageAsset().iconImageCard
     },
     {
       'title': 'Scheduled Payment',
@@ -167,59 +169,69 @@ class PaymentScreen extends StatelessWidget {
                         ),
                         itemCount: items.length,
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              CircleAvatar(
-                                radius: 25.sp,
-                                backgroundColor: AppColors.bottomNavBgColor,
-                                child: Image(
-                                  image: AssetImage(items[index]['image'] ??
-                                      ImageAsset().iconImageGlobe),
-                                  height: 27.sp,
+                          return GestureDetector(
+                            onTap: () {
+                              _navigateToScreen(context, index);
+                            },
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 25.sp,
+                                  backgroundColor: AppColors.bottomNavBgColor,
+                                  child: Image(
+                                    image: AssetImage(items[index]['image'] ??
+                                        ImageAsset().iconImageGlobe),
+                                    height: 27.sp,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 5.sp),
-                              Text(
-                                items[index]['title']!,
-                                textAlign: TextAlign.center,
-                                style: commonTextStyle.copyWith(
-                                    fontSize: 13.sp,
-                                    color: AppColors.primarySubBlackColor),
-                              ),
-                            ],
+                                SizedBox(height: 5.sp),
+                                Text(
+                                  items[index]['title']!,
+                                  textAlign: TextAlign.center,
+                                  style: commonTextStyle.copyWith(
+                                      fontSize: 13.sp,
+                                      color: AppColors.primarySubBlackColor),
+                                ),
+                              ],
+                            ),
                           );
                         },
                       )
                     : ListView.builder(
                         itemCount: items.length,
                         itemBuilder: (context, index) {
-                          return ListTile(
-                            leading: CircleAvatar(
-                              radius: 25.sp,
-                              backgroundColor: _getBackgroundColor(index),
-                              child: Image(
-                                image: AssetImage(items[index]['image'] ??
-                                    ImageAsset().iconImageGlobe),
-                                height: 27.sp,
+                          return GestureDetector(
+                            onTap: () {
+                              _navigateToScreen(context, index);
+                            },
+                            child: ListTile(
+                              leading: CircleAvatar(
+                                radius: 25.sp,
+                                backgroundColor: _getBackgroundColor(index),
+                                child: Image(
+                                  image: AssetImage(items[index]['image'] ??
+                                      ImageAsset().iconImageGlobe),
+                                  height: 27.sp,
+                                ),
                               ),
-                            ),
-                            title: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  items[index]['title']!,
-                                  style: commonTextStyle.copyWith(
-                                      fontSize: 15.sp,
-                                      color: AppColors.primaryBlackColor),
-                                ),
-                                Text(
-                                  items[index]['subtitle']!,
-                                  style: commonTextStyle.copyWith(
-                                      color:
-                                          AppColors.onBoardSubTextStyleColor),
-                                ),
-                              ],
+                              title: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    items[index]['title']!,
+                                    style: commonTextStyle.copyWith(
+                                        fontSize: 15.sp,
+                                        color: AppColors.primaryBlackColor),
+                                  ),
+                                  Text(
+                                    items[index]['subtitle']!,
+                                    style: commonTextStyle.copyWith(
+                                        color:
+                                            AppColors.onBoardSubTextStyleColor),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -230,6 +242,41 @@ class PaymentScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _navigateToScreen(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        // Navigate to QR Screen
+        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        break;
+      case 1:
+        pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
+        break;
+      case 2:
+        pushScreen(context, ScreenRoutes.toAboutYouScreen);
+        break;
+
+      case 3:
+        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        break;
+      case 4:
+        pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
+        break;
+      case 5:
+        pushScreen(context, ScreenRoutes.toAboutYouScreen);
+        break;
+      case 6:
+        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        break;
+      case 7:
+        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        break;
+
+      default:
+        // Fallback navigation or error
+        break;
+    }
   }
 
   Color _getBackgroundColor(int index) {

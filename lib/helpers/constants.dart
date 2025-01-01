@@ -53,7 +53,7 @@ class UI {
 
   static const double actionBarHeight = 75.0;
   static const double padding = 8.0;
-  static const double borderRadius = 8.0;
+  static const double borderRadius = 10.0;
   static const double borderRadiusButton = 17.0;
   static const double borderRadiusTextField = 20.0;
   static const double padding2 = padding * 2;

@@ -63,6 +63,7 @@ class ImageAsset {
   final String iconImageDollarBill = 'assets/icons/dollarbill.png';
   final String iconImagearrowupanddown = 'assets/icons/arrowupdown.png';
   final String iconImageFilter = 'assets/icons/filter.png';
+  final String iconExchange = 'assets/images/exchange.png';
 
   //? Home Screen LifeStyle
 

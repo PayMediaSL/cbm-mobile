@@ -50,7 +50,7 @@ class MainDrawerScreen extends StatelessWidget {
                 children: [
                   _buildSectionTitle(
                       ImageAsset().settingsIconProfile, "My Profile", true, () {
-                    pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
+                    pushScreen(context, ScreenRoutes.toDrawerUserProfile);
                   }),
                   _buildSectionTitle(ImageAsset().settingsIconSecurity,
                       "Security & Safety", true, () {

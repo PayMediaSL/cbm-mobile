@@ -124,7 +124,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       "image": ImageAsset().iconImageEcommerce,
     },
     {
-      "title": "Transport ",
+      "title": "Transport",
       "image": ImageAsset().iconImageTransport,
     },
     {
@@ -386,6 +386,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {
+                                print(index);
                                 if (LifeStyle[index]["title"] == "Food") {
                                   pushScreen(
                                       context, ScreenRoutes.toLifeStyleFood);
@@ -409,8 +410,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     "Ecommerce") {
                                   pushScreen(context,
                                       ScreenRoutes.toLifeStyleEcommerce);
-                                } else if (LifeStyle[index]["title"] ==
-                                    "Transport") {
+                                } else if (index == 6) {
                                   pushScreen(context,
                                       ScreenRoutes.toLifeStyleTransport);
                                 } else if (LifeStyle[index]["title"] ==
