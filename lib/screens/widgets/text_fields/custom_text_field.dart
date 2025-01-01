@@ -28,6 +28,7 @@ class CustomLableTextField extends StatelessWidget {
       this.isContentPadding = false,
       this.hintTextStyle,
       this.hintFontFamily,
+      this.borderradius,
       this.readOnly});
 
   final TextEditingController controller;
@@ -51,6 +52,7 @@ class CustomLableTextField extends StatelessWidget {
   final bool isContentPadding;
   final TextStyle? hintTextStyle;
   final String? hintFontFamily;
+  final double? borderradius;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -82,23 +84,28 @@ class CustomLableTextField extends StatelessWidget {
               ),
           counterText: '',
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
+            borderRadius:
+                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
+            borderRadius:
+                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
+            borderRadius:
+                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
             borderSide: BorderSide(color: AppColors.primaryRedColor),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
+            borderRadius:
+                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
             borderSide: BorderSide(color: AppColors.primaryRedColor),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(UI.borderRadiusTextField),
+            borderRadius:
+                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           contentPadding: isContentPadding

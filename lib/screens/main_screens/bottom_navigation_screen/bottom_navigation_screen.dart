@@ -4,6 +4,7 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
 import 'package:app/screens/main_screens/drawer/main_drawer_screen.dart';
 import 'package:app/screens/main_screens/home_screen/home_screen.dart';
+import 'package:app/screens/main_screens/menu/menu_screen.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/transaction/transaction_screen.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -150,7 +151,7 @@ class _BottomBavigationScreenState extends State<BottomBavigationScreen> {
                   isActive: (model.selectedIndex == 2),
                   deactivateIcon: ImageAsset().bottonmIconlifestyle,
                   onTap: () {
-                    // model.updateIndex(2, const MyContacts());
+                    // model.updateIndex(2, const TransactionsScreen());
                   },
                 ),
                 _bottomBarItem(
@@ -168,7 +169,7 @@ class _BottomBavigationScreenState extends State<BottomBavigationScreen> {
                   isActive: (model.selectedIndex == 4),
                   deactivateIcon: ImageAsset().bottonmIconmenu,
                   onTap: () {
-                    model.updateIndex(3, TransactionsScreen());
+                    model.updateIndex(4, MenuScreen());
                     // model.updateIndex(1, const MyContacts());
                   },
                 ),

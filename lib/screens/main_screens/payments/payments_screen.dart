@@ -267,7 +267,7 @@ class PaymentScreen extends StatelessWidget {
         pushScreen(context, ScreenRoutes.toAboutYouScreen);
         break;
       case 6:
-        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        pushScreen(context, ScreenRoutes.toallBankSDetails);
         break;
       case 7:
         pushScreen(context, ScreenRoutes.toQRScreenScan);

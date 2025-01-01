@@ -22,6 +22,7 @@ import 'package:app/providers/home_screen/home_screen_data_provider.dart';
 import 'package:app/providers/home_screen/quick_access_data_provider.dart';
 import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
+import 'package:app/providers/other_provider/drop_down_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/providers/payments/qr_payment_provider.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
@@ -73,6 +74,7 @@ void main() async {
 
           //* Common Provider
           ChangeNotifierProvider(create: (_) => CommonProvider()),
+          ChangeNotifierProvider(create: (_) => DropdownProvider()),
 
           //! Bottom Naviagtions
           ChangeNotifierProvider(create: (_) => BottomNavProvider()),
