@@ -37,12 +37,14 @@ import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/card_payment/all_bank_details.dart';
 import 'package:app/screens/main_screens/payments/card_payment/card_payment_details.dart';
+import 'package:app/screens/main_screens/payments/local_transfer/local_transfer_main.dart';
 import 'package:app/screens/main_screens/payments/mobile_reload/mobile_reload.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_generate.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_pay_screen.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_scan_payment.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
+import 'package:app/screens/main_screens/transaction/my_budget_screen.dart';
 import 'package:app/screens/test_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
@@ -117,6 +119,7 @@ class ScreenRoutes {
   static const String toallBankSDetails = "toallBankSDetails";
   static const String toCardPaymentDetail = "toCardPaymentDetail";
   static const String toMobileReload = "toMobileReload";
+  static const String toLocalTransferMainScreen = "toLocalTransferMainScreen";
 
   // Notifications
 
@@ -133,6 +136,8 @@ class ScreenRoutes {
   static const String toLifeStyleTransport = "toLifeStyleTransport";
   static const String toLifeStyleEducation = "toLifeStyleEducation";
 
+  //! Transaction
+  static const String toMyBudgetScreen = "toMyBudgetScreen";
   static const String test = "testinggggggg";
 }
 
@@ -324,6 +329,14 @@ class Router {
           settings: settings,
         );
 
+      //! Transaction
+
+      case ScreenRoutes.toMyBudgetScreen:
+        return MaterialPageRoute(
+          builder: (_) => MyBudgetScreen(),
+          settings: settings,
+        );
+
 //! LifeStyle
 
 //?Food
@@ -440,6 +453,13 @@ class Router {
       case ScreenRoutes.toMobileReload:
         return MaterialPageRoute(
           builder: (_) => MobileReloadScreen(),
+          settings: settings,
+        );
+
+      //* Local Transfer
+      case ScreenRoutes.toLocalTransferMainScreen:
+        return MaterialPageRoute(
+          builder: (_) => LocalTransferMainScreen(),
           settings: settings,
         );
 

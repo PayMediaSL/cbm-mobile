@@ -103,6 +103,7 @@ void main() async {
           // Qr Code
           ChangeNotifierProvider(create: (_) => QrScannerState()),
           ChangeNotifierProvider(create: (_) => TabBarProvider()),
+          ChangeNotifierProvider(create: (_) => TabBarProviderCurved()),
         ],
         child: const MyApp(),
       ),

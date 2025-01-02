@@ -26,3 +26,17 @@ class TabBarProvider extends ChangeNotifier {
     }
   }
 }
+
+class TabBarProviderCurved extends ChangeNotifier {
+  // Map to store selected index for each tabKey
+  final Map<String, int> _selectedIndexes = {};
+
+  int getSelectedIndex(String tabKey) {
+    return _selectedIndexes[tabKey] ?? 0;
+  }
+
+  void updateIndex(int index, String tabKey) {
+    _selectedIndexes[tabKey] = index;
+    notifyListeners();
+  }
+}

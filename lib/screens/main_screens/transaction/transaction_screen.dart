@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/transaction/transaction_details_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
+import 'package:app/utils/navigation_util.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -220,7 +222,9 @@ class SpendingChartPage extends StatelessWidget {
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10)))),
-                        onPressed: () {},
+                        onPressed: () {
+                          pushScreen(context, ScreenRoutes.toMyBudgetScreen);
+                        },
                         child: Text(
                           "My Budget",
                           style: commonTextStyle.copyWith(
