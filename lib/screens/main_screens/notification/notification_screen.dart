@@ -35,19 +35,19 @@ class NotificationScreen extends StatelessWidget {
     },
     {
       "title": "Bill Payment",
-      "time": "05/24",
+      "time": "05/24/2023",
       "description":
           "The bill payment of LKR 100.00 to Airtel *****567 was a success!"
     },
     {
       "title": "Bill Payment",
-      "time": "05/23",
+      "time": "31/12/2024",
       "description":
           "The bill payment of LKR 100.00 to Airtel *****567 was a success!"
     },
     {
       "title": "Bill Payment",
-      "time": "05/22",
+      "time": "21/4/24",
       "description":
           "The bill payment of LKR 100.00 to Airtel *****567 was a success!"
     },
@@ -68,7 +68,9 @@ class NotificationScreen extends StatelessWidget {
     // Filter out the older notifications (older than 7 days)
     final List<Map<String, String>> olderNotifications =
         notifications.where((notification) {
+      print("asasas");
       final notificationDate = _parseDate(notification['time']!);
+      print(notificationDate);
       return notificationDate == null ||
           now.difference(notificationDate).inDays > 7;
     }).toList();
@@ -77,7 +79,7 @@ class NotificationScreen extends StatelessWidget {
       backgroundColor: AppColors.SecondarysubGreyColor,
       isBgContainer1: true,
       isBgContainer2: true,
-      isBgContainer1Height: ScreenUtils.height * 0.1,
+      isBgContainer1Height: ScreenUtils.height * 0.07,
       onBackIconAvailable: true,
       onBackTitleAvailable: true,
       onBackTap: () {
@@ -90,15 +92,19 @@ class NotificationScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ColumnSpacer(0.1),
+            ColumnSpacer(0.06),
+            // Top container for "Last 7 Days"
             _buildSection(
-              title: "Last 7 Days  (${lastSevenDaysNotifications.length})",
+              title: "Last 7 Days (${lastSevenDaysNotifications.length})",
               notifications: lastSevenDaysNotifications,
+              isTopContainer: true,
             ),
             ColumnSpacer(0.02),
+
             _buildSection(
               title: "Older (${olderNotifications.length})",
               notifications: olderNotifications,
+              isTopContainer: true,
             ),
           ],
         ),
@@ -112,20 +118,33 @@ class NotificationScreen extends StatelessWidget {
         return DateTime.now();
       } else if (time.contains("/")) {
         final parts = time.split("/");
-        final month = int.parse(parts[0]);
-        final day = int.parse(parts[1]);
-        final year = DateTime.now().year; // Assume it's from the current year
-        return DateTime(year, month, day);
+        if (parts.length == 3) {
+          final day = int.tryParse(parts[0]);
+          final month = int.tryParse(parts[1]);
+          final year = int.tryParse(parts[2]);
+
+          // Ensure the day, month, and year are valid
+          if (day != null &&
+              month != null &&
+              year != null &&
+              month >= 1 &&
+              month <= 12 &&
+              day >= 1 &&
+              day <= 31) {
+            // Parse the date
+            final parsedDate = DateTime(year, month, day);
+            return parsedDate;
+          }
+        }
       }
-    } catch (e) {
-      print("Error parsing date: $e");
-    }
+    } catch (e) {}
     return null;
   }
 
   Widget _buildSection({
     required String title,
     required List<Map<String, String>> notifications,
+    required bool isTopContainer,
   }) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -133,7 +152,7 @@ class NotificationScreen extends StatelessWidget {
       children: [
         Container(
           height: ScreenUtils.height * 0.4,
-          // margin: const EdgeInsets.symmetric(horizontal: 10.0),
+          width: ScreenUtils.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             color: AppColors.primaryWhiteColor,
@@ -145,12 +164,13 @@ class NotificationScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: commonTextStyle.copyWith(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.bottomNavIconColor)),
-                  // ColumnSpacer(0.001),
+                  Text(
+                    title,
+                    style: commonTextStyle.copyWith(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.bottomNavIconColor),
+                  ),
                   Column(
                     children: notifications
                         .map((notification) =>

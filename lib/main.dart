@@ -24,6 +24,7 @@ import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/drop_down_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
+import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/providers/payments/qr_payment_provider.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
 import 'package:app/services/analytics_service.dart';
@@ -101,6 +102,7 @@ void main() async {
 
           // Qr Code
           ChangeNotifierProvider(create: (_) => QrScannerState()),
+          ChangeNotifierProvider(create: (_) => TabBarProvider()),
         ],
         child: const MyApp(),
       ),

@@ -26,6 +26,7 @@ class CustomLableTextField extends StatelessWidget {
       this.lable,
       this.onTap,
       this.isContentPadding = false,
+      this.isSmallContentPadding = false,
       this.hintTextStyle,
       this.hintFontFamily,
       this.borderradius,
@@ -50,12 +51,14 @@ class CustomLableTextField extends StatelessWidget {
   final void Function()? onTap;
   final bool? readOnly;
   final bool isContentPadding;
+  final bool isSmallContentPadding;
   final TextStyle? hintTextStyle;
   final String? hintFontFamily;
   final double? borderradius;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      // textAlign: TextAlign.left,
       readOnly: readOnly ?? false,
       onTap: onTap,
       autovalidateMode:
@@ -112,7 +115,11 @@ class CustomLableTextField extends StatelessWidget {
               ? contentPadding ??
                   EdgeInsets.symmetric(
                       horizontal: UI.getPadding(2), vertical: 20)
-              : null,
+              : isSmallContentPadding
+                  ? EdgeInsets.symmetric(horizontal: 10.sp, vertical: 10.sp)
+                  : null,
+
+          // contentPadding: EdgeInsets.only(top: 10.sp, left: 10.sp),
           filled: true,
           fillColor: AppColors.white,
           suffixIcon: suffixIcon,

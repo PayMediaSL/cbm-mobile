@@ -38,7 +38,7 @@ class LifeStyleInsuranceScreen extends StatelessWidget {
         backgroundColor: AppColors.SecondarysubGreyColor,
         isBgContainer1: true,
         isBgContainer2: true,
-        isBgContainer1Height: ScreenUtils.height * 0.1,
+        isBgContainer1Height: ScreenUtils.height * 0.07,
         onBackIconAvailable: true,
         onBackTitleAvailable: true,
         onBackTap: () {

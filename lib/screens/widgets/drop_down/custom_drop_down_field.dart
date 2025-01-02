@@ -10,10 +10,14 @@ import 'package:provider/provider.dart';
 class CustomDropdown extends StatelessWidget {
   final String dropdownKey; // Unique key for each dropdown
   final List<String> items;
-  final double? borderradius; // List of items for the dropdown
+  final double? borderradius;
+  final double? dropdownheight; // List of items for the dropdown
 
   CustomDropdown(
-      {required this.dropdownKey, required this.items, this.borderradius});
+      {required this.dropdownKey,
+      required this.items,
+      this.borderradius,
+      this.dropdownheight});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class CustomDropdown extends StatelessWidget {
       builder: (context, provider, child) {
         return Container(
           padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
-          height: ScreenUtils.height * 0.065,
+          height: dropdownheight ?? ScreenUtils.height * 0.055,
           width: ScreenUtils.width,
           decoration: BoxDecoration(
             color: AppColors.primaryWhiteColor,

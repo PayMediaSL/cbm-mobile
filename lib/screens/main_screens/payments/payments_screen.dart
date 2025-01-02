@@ -76,7 +76,7 @@ class PaymentScreen extends StatelessWidget {
       backgroundColor: AppColors.SecondarysubGreyColor,
       isBgContainer1: true,
       isBgContainer2: true,
-      isBgContainer1Height: ScreenUtils.height * 0.1,
+      isBgContainer1Height: ScreenUtils.height * 0.07,
       onBackIconAvailable: true,
       onBackTitleAvailable: true,
       onBackTap: () {},
@@ -87,7 +87,7 @@ class PaymentScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ColumnSpacer(0.07),
+            ColumnSpacer(0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -264,7 +264,7 @@ class PaymentScreen extends StatelessWidget {
         pushScreen(context, ScreenRoutes.toDrawerDetailsUpdate);
         break;
       case 5:
-        pushScreen(context, ScreenRoutes.toAboutYouScreen);
+        pushScreen(context, ScreenRoutes.toMobileReload);
         break;
       case 6:
         pushScreen(context, ScreenRoutes.toallBankSDetails);

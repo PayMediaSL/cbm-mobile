@@ -123,6 +123,7 @@ class CardPaymentDetails extends StatelessWidget {
                           ),
                           ColumnSpacer(0.006),
                           CustomLableTextField(
+                            isSmallContentPadding: true,
                             borderradius: 13.sp,
                             inputFormatters: [],
                             emailrController,
@@ -153,6 +154,7 @@ class CardPaymentDetails extends StatelessWidget {
                           ),
                           ColumnSpacer(0.006),
                           CustomLableTextField(
+                            isSmallContentPadding: true,
                             borderradius: 13.sp,
                             inputFormatters: [],
                             emailrController,
@@ -168,6 +170,7 @@ class CardPaymentDetails extends StatelessWidget {
                           ),
                           ColumnSpacer(0.006),
                           CustomLableTextField(
+                            isSmallContentPadding: true,
                             borderradius: 13.sp,
                             inputFormatters: [],
                             emailrController,

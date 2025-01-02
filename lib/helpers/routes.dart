@@ -37,6 +37,7 @@ import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/card_payment/all_bank_details.dart';
 import 'package:app/screens/main_screens/payments/card_payment/card_payment_details.dart';
+import 'package:app/screens/main_screens/payments/mobile_reload/mobile_reload.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_generate.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_pay_screen.dart';
@@ -115,6 +116,7 @@ class ScreenRoutes {
   static const String toQrGenerateSreen = "toQrGenerateSreen";
   static const String toallBankSDetails = "toallBankSDetails";
   static const String toCardPaymentDetail = "toCardPaymentDetail";
+  static const String toMobileReload = "toMobileReload";
 
   // Notifications
 
@@ -430,6 +432,14 @@ class Router {
       case ScreenRoutes.toCardPaymentDetail:
         return MaterialPageRoute(
           builder: (_) => CardPaymentDetails(),
+          settings: settings,
+        );
+
+      //* Mobile Reload
+
+      case ScreenRoutes.toMobileReload:
+        return MaterialPageRoute(
+          builder: (_) => MobileReloadScreen(),
           settings: settings,
         );
 

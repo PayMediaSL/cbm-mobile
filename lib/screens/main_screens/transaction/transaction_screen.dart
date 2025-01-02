@@ -20,7 +20,7 @@ class TransactionsScreen extends StatelessWidget {
       backgroundColor: AppColors.SecondarysubGreyColor,
       isBgContainer1: true,
       isBgContainer2: true,
-      isBgContainer1Height: ScreenUtils.height * 0.1,
+      isBgContainer1Height: ScreenUtils.height * 0.07,
       onBackIconAvailable: true,
       onBackTitleAvailable: true,
       onBackTap: () {},
@@ -31,7 +31,7 @@ class TransactionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ColumnSpacer(0.07),
+            ColumnSpacer(0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -96,7 +96,7 @@ class TransactionsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            ColumnSpacer(0.07),
+            ColumnSpacer(0.04),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 5.sp),
               decoration: BoxDecoration(

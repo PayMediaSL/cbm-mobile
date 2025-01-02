@@ -11,10 +11,12 @@ class ContactsProvider with ChangeNotifier {
   List<MyContact> _contacts = [];
   final bool _isLoading = false;
   final List<Contact> _contactsdetails = [];
+  List<MyContact> _filteredContacts = [];
 
   List<MyContact> get contacts => _contacts;
   bool get isLoading => _isLoading;
   List<Contact> get contactsdetails => _contactsdetails;
+  List<MyContact> get filteredContacts => _filteredContacts;
 
   Future<void> fetchContacts() async {
     PermissionStatus status = await Permission.contacts.request();
@@ -51,5 +53,15 @@ class ContactsProvider with ChangeNotifier {
     String lastLetter = names.length > 1 ? names.last[0] : "";
 
     return lastLetter.isNotEmpty ? "$firstLetter$lastLetter" : firstLetter;
+  }
+
+  void filterContacts(String query) {
+    final queryLower = query.toLowerCase();
+    _filteredContacts = _contacts.where((contact) {
+      final nameLower = contact.name?.toLowerCase() ?? '';
+      final numberLower = contact.mobileNumber?.toLowerCase() ?? '';
+      return nameLower.contains(queryLower) || numberLower.contains(queryLower);
+    }).toList();
+    notifyListeners();
   }
 }

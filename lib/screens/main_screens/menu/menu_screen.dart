@@ -16,54 +16,66 @@ class MenuScreen extends StatelessWidget {
   MenuScreen({super.key});
 
   bool isGridView = true; // Toggle between Grid and List view
-  //  ImageAsset().iconImageGlobe,
-  //   ImageAsset().iconImageSend,
-  //   ImageAsset().iconImageBill,
-  //   ImageAsset().iconImageQR,
-  //   ImageAsset().iconImageFavara,
-  //   ImageAsset().iconImageCard,
-  //   ImageAsset().iconImageReload,
-  //   ImageAsset().iconImageCalendar,
 
   final List<Map<String, String>> items = [
     {
-      'title': 'Global Transfers',
-      "subtitle": "Transfer money across accounts worldwide",
+      'title': 'Currents Accounts Cards',
+      "subtitle": "Add money to your wallet.",
       "image": ImageAsset().iconImageGlobe
     },
     {
-      'title': 'Local Transfers',
-      "subtitle": "Transfer money across accounts within the country",
+      'title': 'Accounts & Cards',
+      "subtitle": "Transfer money across accounts worldwide.",
       "image": ImageAsset().iconImageSend
     },
     {
-      'title': 'Pay Bills',
-      "subtitle": "Pay your utility bills",
+      'title': 'Gifts',
+      "subtitle": "Transfer money across accounts within the country.",
       "image": ImageAsset().iconImageBill
     },
     {
-      'title': 'QR Pay',
-      "subtitle": "Scan the QR code to make payments",
+      'title': 'My portfolio',
+      "subtitle": "Pay your electricity, telephone, water, ..bills.",
       "image": ImageAsset().iconImageQR
     },
     {
-      'title': 'Favara Pay',
-      "subtitle": "Make payments through FAVARA portal",
+      'title': 'Split Bills',
+      "subtitle": "Scan the QR code to pay faster.",
       "image": ImageAsset().iconImageFavara
     },
     {
-      'title': 'Mobile Reload',
-      "subtitle": "Settle your credit card bills",
+      'title': 'Insurance',
+      "subtitle": "Make payments through FAVARA portal.",
       "image": ImageAsset().iconImageReload
     },
     {
-      'title': 'Card payment',
-      "subtitle": "Transfer credit to your mobile number",
+      'title': 'Cash Token',
+      "subtitle": "Settle your credit card bills.",
       "image": ImageAsset().iconImageCard
     },
     {
-      'title': 'Scheduled Payment',
-      "subtitle": "Add money to your wallet",
+      'title': 'Request Money',
+      "subtitle": "Transfer credit to your mobile number.",
+      "image": ImageAsset().iconImageCalendar
+    },
+    {
+      'title': 'E-Statements',
+      "subtitle": "Add money to your wallet..",
+      "image": ImageAsset().iconImageCalendar
+    },
+    {
+      'title': 'Savings Goals',
+      "subtitle": "Add money to your wallet.",
+      "image": ImageAsset().iconImageCalendar
+    },
+    {
+      'title': 'Fixed Deposit',
+      "subtitle": "Add money to your wallet.",
+      "image": ImageAsset().iconImageCalendar
+    },
+    {
+      'title': 'Budgeting',
+      "subtitle": "Add money to your wallet.",
       "image": ImageAsset().iconImageCalendar
     },
   ];
@@ -76,7 +88,7 @@ class MenuScreen extends StatelessWidget {
       backgroundColor: AppColors.SecondarysubGreyColor,
       isBgContainer1: true,
       isBgContainer2: true,
-      isBgContainer1Height: ScreenUtils.height * 0.1,
+      isBgContainer1Height: ScreenUtils.height * 0.07,
       onBackIconAvailable: true,
       onBackTitleAvailable: true,
       onBackTap: () {},
@@ -87,7 +99,7 @@ class MenuScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ColumnSpacer(0.07),
+            ColumnSpacer(0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -187,7 +199,7 @@ class MenuScreen extends StatelessWidget {
                                   items[index]['title']!,
                                   textAlign: TextAlign.center,
                                   style: commonTextStyle.copyWith(
-                                      fontSize: 13.sp,
+                                      fontSize: 12.sp,
                                       color: AppColors.primarySubBlackColor),
                                 ),
                               ],
@@ -195,7 +207,7 @@ class MenuScreen extends StatelessWidget {
                           );
                         },
                       )
-                    : ListView.builder(
+                    : ListView.separated(
                         itemCount: items.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
@@ -232,6 +244,9 @@ class MenuScreen extends StatelessWidget {
                               ),
                             ),
                           );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return ColumnSpacer(0.02);
                         },
                       ),
               ),
