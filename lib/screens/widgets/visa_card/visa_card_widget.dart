@@ -257,7 +257,7 @@ class VisaCardWidget extends StatelessWidget {
   }
 }
 
-//! Visa Card
+//! Visa Card2
 
 class VisaCardWidget2 extends StatelessWidget {
   final String availableBalance;
@@ -346,6 +346,124 @@ class VisaCardWidget2 extends StatelessWidget {
                   fontSize: 15.sp,
                   fontFamily: "spacegrotsek",
                   color: AppColors.primaryWhiteColor),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class VisaCardWidget3 extends StatelessWidget {
+  final String availableBalance;
+  final String accountNumber;
+  final void Function()? onTap1;
+  final void Function()? onTap2;
+  final void Function()? onTapAccounts;
+  final void Function()? onTapAddMoney;
+  final void Function()? onTapLastCard;
+  final int? maskindex;
+  final double? cardHeight;
+  final double? cardwidth;
+
+  bool isWallet;
+  final Color? gradientColor1;
+  final Color? gradientColor2;
+  final bool isLastCard;
+  final bool isCards;
+
+  VisaCardWidget3({
+    required this.availableBalance,
+    required this.accountNumber,
+    this.onTap1,
+    this.onTap2,
+    this.isWallet = false,
+    this.onTapAccounts,
+    this.onTapAddMoney,
+    this.gradientColor1,
+    this.gradientColor2,
+    this.isLastCard = false,
+    this.onTapLastCard,
+    this.maskindex,
+    this.cardHeight,
+    this.cardwidth,
+    this.isCards = true,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    ScreenUtils.init(context);
+    ScreenUtil.init(context);
+    // var commonProvider = getCommonProvider(context);
+
+    return Center(
+        child: Container(
+      width: cardwidth ?? ScreenUtils.width,
+      height: cardHeight ?? ScreenUtils.width * 0.44,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          colors: [
+            gradientColor1 ?? Colors.teal,
+            gradientColor2 ?? Colors.black
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 10.sp),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "${accountNumber}",
+                  style: commonTextStyle.copyWith(
+                      fontSize: 15.sp,
+                      fontFamily: "spacegrotsek",
+                      color: AppColors.primaryWhiteColor),
+                ),
+                Text(
+                  "Commercial",
+                  style: commonTextStyle.copyWith(
+                      color: AppColors.primaryWhiteColor),
+                ),
+              ],
+            ),
+            // Align(
+            //   alignment: Alignment.topRight,
+            //   child: Text(
+            //     "Commercial",
+            //     style: commonTextStyle.copyWith(
+            //         color: AppColors.primaryWhiteColor),
+            //   ),
+            // ),
+
+            ColumnSpacer(0.035),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Rs ${availableBalance}",
+                  style: commonTextStyle.copyWith(
+                      fontSize: 17.sp,
+                      fontFamily: "spacegrotsek",
+                      color: AppColors.primaryWhiteColor),
+                ),
+                ColumnSpacer(0.001),
+                Text(
+                  "Available Balance",
+                  style: commonTextStyle.copyWith(
+                      color: AppColors.primaryWhiteColor),
+                ),
+              ],
             ),
           ],
         ),

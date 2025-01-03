@@ -37,6 +37,7 @@ import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/card_payment/all_bank_details.dart';
 import 'package:app/screens/main_screens/payments/card_payment/card_payment_details.dart';
+import 'package:app/screens/main_screens/payments/local_transfer/add_to_favourite_local_transfer.dart';
 import 'package:app/screens/main_screens/payments/local_transfer/local_transfer_main.dart';
 import 'package:app/screens/main_screens/payments/mobile_reload/mobile_reload.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
@@ -45,6 +46,8 @@ import 'package:app/screens/main_screens/payments/qr_payment/qr_pay_screen.dart'
 import 'package:app/screens/main_screens/payments/qr_payment/qr_scan_payment.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/screens/main_screens/transaction/my_budget_screen.dart';
+import 'package:app/screens/main_screens/transaction_confirmation/transaction_confirmation_screen.dart';
+import 'package:app/screens/main_screens/transaction_confirmation/transaction_success_screen.dart';
 import 'package:app/screens/test_screen.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
@@ -120,6 +123,14 @@ class ScreenRoutes {
   static const String toCardPaymentDetail = "toCardPaymentDetail";
   static const String toMobileReload = "toMobileReload";
   static const String toLocalTransferMainScreen = "toLocalTransferMainScreen";
+  static const String toLocalTransferAddtoFavourite =
+      "toLocalTransferAddtoFavourite";
+
+  // Trasnsaction Confirmation
+
+  static const String toTransactionConfirmationScreen =
+      "toTransactionConfirmationScreen";
+  static const String toTransactionSuccessScreen = "toTransactionSuccessScreen";
 
   // Notifications
 
@@ -460,6 +471,26 @@ class Router {
       case ScreenRoutes.toLocalTransferMainScreen:
         return MaterialPageRoute(
           builder: (_) => LocalTransferMainScreen(),
+          settings: settings,
+        );
+      //* Local Transfer Add to favourite
+      case ScreenRoutes.toLocalTransferAddtoFavourite:
+        return MaterialPageRoute(
+          builder: (_) => AddToFavouriteLocalTransferScreen(),
+          settings: settings,
+        );
+
+      //!!!!!!!!!!!!!!!!!!!!!!
+      // Transaction Confirmation
+      case ScreenRoutes.toTransactionConfirmationScreen:
+        return MaterialPageRoute(
+          builder: (_) => TransactionConfirmationScreen(),
+          settings: settings,
+        );
+      // Transaction Success
+      case ScreenRoutes.toTransactionSuccessScreen:
+        return MaterialPageRoute(
+          builder: (_) => TransactionSuccessScreen(),
           settings: settings,
         );
 

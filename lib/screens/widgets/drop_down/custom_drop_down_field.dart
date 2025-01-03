@@ -12,11 +12,17 @@ class CustomDropdown extends StatelessWidget {
   final List<String> items;
   final double? borderradius;
   final double? dropdownheight; // List of items for the dropdown
+  final double? dropdownwidth;
+  final bool isHint;
+  final String? hint;
 
   CustomDropdown(
       {required this.dropdownKey,
       required this.items,
       this.borderradius,
+      this.dropdownwidth,
+      this.hint,
+      this.isHint = true,
       this.dropdownheight});
 
   @override
@@ -26,7 +32,7 @@ class CustomDropdown extends StatelessWidget {
         return Container(
           padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
           height: dropdownheight ?? ScreenUtils.height * 0.055,
-          width: ScreenUtils.width,
+          width: dropdownwidth ?? ScreenUtils.width,
           decoration: BoxDecoration(
             color: AppColors.primaryWhiteColor,
             border: Border.all(color: AppColors.onBoardActiveColor),
@@ -44,14 +50,16 @@ class CustomDropdown extends StatelessWidget {
               value: provider.getSelectedValue(dropdownKey).isEmpty
                   ? null
                   : provider.getSelectedValue(dropdownKey),
-              hint: Text(
-                "Select an option",
-                style: TextStyle(
-                  fontFamily: "exo2",
-                  color: AppColors.textFieldHintColor,
-                  fontSize: 14.sp,
-                ),
-              ),
+              hint: isHint
+                  ? Text(
+                      hint ?? "Select an option",
+                      style: TextStyle(
+                        fontFamily: "exo2",
+                        color: AppColors.textFieldHintColor,
+                        fontSize: 14.sp,
+                      ),
+                    )
+                  : null,
               onChanged: (newValue) {
                 if (newValue != null) {
                   provider.updateSelectedValue(dropdownKey, newValue);

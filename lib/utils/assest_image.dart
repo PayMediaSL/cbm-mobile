@@ -105,4 +105,9 @@ class ImageAsset {
   final String bottonmIconlifestyle = 'assets/icons/bottomnav/navlife.png';
   final String bottonmIcontransactions = 'assets/icons/bottomnav/navtrans.png';
   final String bottonmIconmenu = 'assets/icons/bottomnav/navmenu.png';
+
+  //
+
+  final String comBankLogo = 'assets/images/combanklogo.png';
+  final String successCheck = 'assets/images/successcheck.png';
 }

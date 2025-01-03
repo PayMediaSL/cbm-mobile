@@ -2,6 +2,7 @@
 
 import 'package:app/helpers/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //Common TextStyle
 
@@ -9,6 +10,24 @@ var commonTextStyle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.getStartedSubHeading,
+    fontFamily: 'inter');
+
+var commonTextHeadingStyle = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+    fontFamily: 'inter');
+
+var commonTextSubHeadingStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.bottomNavIconColor,
+    fontFamily: 'inter');
+
+var commonTextFieldTitleStyle = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
     fontFamily: 'inter');
 
 //OnBoarding textStyle

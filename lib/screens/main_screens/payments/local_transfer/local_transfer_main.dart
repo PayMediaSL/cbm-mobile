@@ -1,19 +1,54 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/povider_helper/common_provider.dart';
+import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
+import 'package:app/helpers/text_editing_controllers.dart';
+import 'package:app/helpers/text_styles.dart';
+import 'package:app/providers/drawer/toggle_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
+import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
+import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
+import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class LocalTransferMainScreen extends StatelessWidget {
-  const LocalTransferMainScreen({super.key});
+  LocalTransferMainScreen({super.key});
+  final List<Map<String, String>> favorites = [
+    {
+      "bank": "BOC",
+      "name": "Janu",
+    },
+    {
+      "bank": "Cargills",
+      "name": "test",
+    },
+    {
+      "bank": "Commercial",
+      "name": "404ven0m",
+    },
+    {
+      "bank": "DFCC",
+      "name": "Strix",
+    },
+    {
+      "bank": "HNB",
+      "name": "qwe",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
+    //TODO NEED TO ADD CONTROLLER FOR TEXT FORM FIELDS
     return HomeMainLayout(
         backgroundColor: AppColors.SecondarysubGreyColor,
         isBgContainer1: true,
@@ -36,29 +71,603 @@ class LocalTransferMainScreen extends StatelessWidget {
                     tabs: ['Own Account', 'Other Bank', 'One App User'],
                     tabKey: 'localtransfer',
                   ),
+                  ColumnSpacer(0.02),
                   Consumer<TabBarProviderCurved>(
                     builder: (context, provider, _) {
                       if (provider.getSelectedIndex("localtransfer") == 0) {
-                        return Text("sdsds");
+                        return ownAccountTransfer();
+                      } else if (provider.getSelectedIndex("localtransfer") ==
+                          1) {
+                        return otherBankTransfer(context);
                       } else {
-                        return Text("janu");
-
-                        // if (provider.getSelectedIndex("localtransfer") == 1) {}
-                        // _showContactsBottomSheet(context);
-
-                        // return const Center(
-                        //     child: Text("Saved contacts content"));
+                        return oneAppUserTransfer(context);
                       }
                     },
                   ),
+                  ColumnSpacer(0.07),
+                  MainButton(
+                    isMainButton: true,
+                    btnOnPress: () {
+                      pushScreen(context,
+                          ScreenRoutes.toTransactionConfirmationScreen);
+                    },
+                    buttontitle: "Proceed to Payment",
+                  )
                 ])));
   }
 
-  Widget buildAccountTab() {
-    return Container();
+  Widget ownAccountTransfer() {
+    return CustomCurvedContainer(
+      height: ScreenUtils.height * 0.65,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Own Account Transfer",
+              style: commonTextHeadingStyle,
+            ),
+            ColumnSpacer(0.001),
+            Text(
+              "Transfer money between your bank accounts",
+              style: commonTextSubHeadingStyle,
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Payment Details",
+              style: commonTextHeadingStyle,
+            ),
+            ColumnSpacer(0.013),
+            Text(
+              "Amount",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g : 10,00,000",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Pay From",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.001),
+            SizedBox(
+              height: ScreenUtils.width * 0.35,
+              child: PageView.builder(
+                controller: PageController(
+                  initialPage: 0,
+                  viewportFraction:
+                      0.8, // Adjust for card size relative to screen width
+                ),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: VisaCardWidget3(
+                      gradientColor2: Colors.black87,
+                      gradientColor1: AppColors.primaryBlueColor,
+                      cardHeight: ScreenUtils.width * 0.33,
+                      cardwidth: ScreenUtils.width * 0.6,
+                      availableBalance: "123,345,44",
+                      accountNumber: "2451344",
+                    ),
+                  );
+                },
+              ),
+            ),
+            Text(
+              "Pay To",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.001),
+            SizedBox(
+              height: ScreenUtils.width * 0.35,
+              child: PageView.builder(
+                controller: PageController(
+                  viewportFraction:
+                      0.8, // Adjust for card size relative to screen width
+                ),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: VisaCardWidget3(
+                      gradientColor2: Colors.black87,
+                      gradientColor1: AppColors.primaryBlueColor,
+                      cardHeight: ScreenUtils.width * 0.33,
+                      cardwidth: ScreenUtils.width * 0.6,
+                      availableBalance: "123,345,44",
+                      accountNumber: "2451344",
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
-  Widget buildAccountTab2() {
-    return Container();
+  //! Widget Other Bank Transfer
+
+  Widget otherBankTransfer(BuildContext context) {
+    var commonProvider = getCommonProvider(context);
+    return CustomCurvedContainer(
+      height: ScreenUtils.height * 0.65,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Other Bank Transfer",
+              style: commonTextHeadingStyle,
+            ),
+            ColumnSpacer(0.001),
+            Text(
+              "Transfer money between your bank accounts",
+              style: commonTextSubHeadingStyle,
+            ),
+            ColumnSpacer(0.01),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Favourites",
+                  style: commonTextHeadingStyle,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    commonProvider.toggleStates("localtransferfavourite");
+                  },
+                  child: Text(
+                    commonProvider.getStates("localtransferfavourite")
+                        ? "viewless"
+                        : "viewall",
+                    style: commonTextSubHeadingStyle.copyWith(
+                        decoration: TextDecoration.underline),
+                  ),
+                )
+              ],
+            ),
+            ColumnSpacer(0.02),
+            SizedBox(
+              height: ScreenUtils.height * 0.12,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                // Always include the "Add" card
+                itemCount: commonProvider.getStates("localtransferfavourite")
+                    ? favorites.length + 1
+                    : (favorites.length >= 3 ? 3 : favorites.length) + 1,
+                itemBuilder: (context, index) {
+                  if (index == favorites.length ||
+                      (!commonProvider.getStates("localtransferfavourite") &&
+                          index ==
+                              (favorites.length >= 3 ? 3 : favorites.length))) {
+                    return _buildFavoriteCard(
+                      'Add',
+                      '',
+                      ImageAsset().authBg,
+                      onTap: () {
+                        pushScreen(context,
+                            ScreenRoutes.toLocalTransferAddtoFavourite);
+                        // Perform Add action
+                      },
+                    );
+                  } else {
+                    return _buildFavoriteCard(
+                      favorites[index]["name"].toString(),
+                      favorites[index]["bank"].toString(),
+                      ImageAsset().authBg,
+                    );
+                  }
+                },
+              ),
+            ),
+            ColumnSpacer(0.02),
+            Text(
+              "Payment Details",
+              style: commonTextHeadingStyle,
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Pay From",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.001),
+            SizedBox(
+              height: ScreenUtils.width * 0.35,
+              child: PageView.builder(
+                controller: PageController(
+                  initialPage: 0,
+                  viewportFraction:
+                      0.8, // Adjust for card size relative to screen width
+                ),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: VisaCardWidget3(
+                      gradientColor2: Colors.black87,
+                      gradientColor1: AppColors.primaryBlueColor,
+                      cardHeight: ScreenUtils.width * 0.33,
+                      cardwidth: ScreenUtils.width * 0.6,
+                      availableBalance: "123,345,44",
+                      accountNumber: "2451344",
+                    ),
+                  );
+                },
+              ),
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Receipient's Bank",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomDropdown(
+              borderradius: 13.sp,
+              dropdownKey: 'localtransferFavourites',
+              items: ['Option 1', 'Option 2', 'Option 3'],
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Receipient's account number",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g : 234563354",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Receipient's name",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g : john doe",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Amount",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g : 10,00,000",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Date",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: CustomLableTextField(
+                    signInPasswordController,
+                    borderradius: 12.sp,
+                    isSmallContentPadding: true,
+                    hint: "mm/dd/yyyy",
+                    suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.calendar_month_rounded,
+                          color: AppColors.textFieldHintColor,
+                        )),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Consumer<ToggleSwitchProvider>(
+                      builder: (BuildContext context,
+                              ToggleSwitchProvider value, Widget? child) =>
+                          Transform.scale(
+                        scale: 0.8,
+                        child: CupertinoSwitch(
+                          value: value
+                              .getSwitchState("switch_localtransfer_recurring"),
+                          activeColor: AppColors.primaryBlueColor,
+                          trackColor:
+                              AppColors.primaryBlackColor.withOpacity(0.12),
+                          thumbColor: AppColors.primaryWhiteColor,
+                          onChanged: (v) {
+                            value.toggleSwitch(
+                                "switch_localtransfer_recurring", v);
+                          },
+                        ),
+                      ),
+                    ),
+                    // RowSpacer(0.1),
+                    Text(
+                      "Recurring",
+                      style: commonTextFieldTitleStyle,
+                    ),
+                  ],
+                )
+              ],
+            ),
+            ColumnSpacer(0.01),
+            //?
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Repeat EveryDay",
+                  style: commonTextFieldTitleStyle,
+                ),
+                RowSpacer(0.16),
+                Text(
+                  "Until Date",
+                  style: commonTextFieldTitleStyle,
+                ),
+              ],
+            ),
+            ColumnSpacer(0.005),
+
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomDropdown(
+                  hint: "Day",
+                  dropdownwidth: ScreenUtils.width * 0.2,
+                  borderradius: 13.sp,
+                  dropdownKey: 'test',
+                  items: ['1', '2', '3'],
+                ),
+                RowSpacer(0.01),
+                CustomDropdown(
+                  hint: "month",
+                  dropdownwidth: ScreenUtils.width * 0.24,
+                  borderradius: 13.sp,
+                  dropdownKey: 'test2',
+                  items: ['1', '2', '3'],
+                ),
+                RowSpacer(0.01),
+                Expanded(
+                  child: CustomLableTextField(
+                    signInPasswordController,
+                    borderradius: 12.sp,
+                    isSmallContentPadding: true,
+                    hint: "mm/dd/yyyy",
+                    suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.calendar_month_rounded,
+                          color: AppColors.textFieldHintColor,
+                        )),
+                  ),
+                ),
+              ],
+            ),
+
+            ColumnSpacer(0.01),
+            Text(
+              "Personal Notes",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g. Transferred refreshment charges to Jane",
+            ),
+
+            ColumnSpacer(0.01),
+            Text(
+              "Notes to Receipients",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g. Transferred refreshment charges to Jane",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  //! One App User
+
+  Widget oneAppUserTransfer(BuildContext context) {
+    var commonProvider = getCommonProvider(context);
+    return CustomCurvedContainer(
+      height: ScreenUtils.height * 0.65,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "One App Account Transfer",
+              style: commonTextHeadingStyle,
+            ),
+            ColumnSpacer(0.001),
+            Text(
+              "Transfer money between your bank accounts",
+              style: commonTextSubHeadingStyle,
+            ),
+            ColumnSpacer(0.01),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Recently Used",
+                  style: commonTextHeadingStyle,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    commonProvider.toggleStates("localtransferfavourite");
+                  },
+                  child: Text(
+                    commonProvider.getStates("localtransferfavourite")
+                        ? "viewless"
+                        : "viewall",
+                    style: commonTextSubHeadingStyle.copyWith(
+                        decoration: TextDecoration.underline),
+                  ),
+                )
+              ],
+            ),
+            ColumnSpacer(0.02),
+            SizedBox(
+              height: ScreenUtils.height * 0.12,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                // Always include the "Add" card
+                itemCount: commonProvider.getStates("localtransferfavourite")
+                    ? favorites.length + 1
+                    : (favorites.length >= 3 ? 3 : favorites.length) + 1,
+                itemBuilder: (context, index) {
+                  if (index == favorites.length ||
+                      (!commonProvider.getStates("localtransferfavourite") &&
+                          index ==
+                              (favorites.length >= 3 ? 3 : favorites.length))) {
+                    return _buildFavoriteCard(
+                      'Add',
+                      '',
+                      ImageAsset().authBg,
+                      onTap: () {
+                        // Perform Add action
+                      },
+                    );
+                  } else {
+                    return _buildFavoriteCard(
+                      favorites[index]["name"].toString(),
+                      favorites[index]["bank"].toString(),
+                      ImageAsset().authBg,
+                    );
+                  }
+                },
+              ),
+            ),
+            ColumnSpacer(0.02),
+            Text(
+              "Payment Details",
+              style: commonTextHeadingStyle,
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Mobile Number",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g : 0754314567",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Amount",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g : 10,00,000",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Personal Notes",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g. Transferred refreshment charges to Jane",
+            ),
+            ColumnSpacer(0.01),
+            Text(
+              "Notes to Receipients",
+              style: commonTextFieldTitleStyle,
+            ),
+            ColumnSpacer(0.005),
+            CustomLableTextField(
+              signInPasswordController,
+              borderradius: 12.sp,
+              isSmallContentPadding: true,
+              hint: "e.g. Transferred refreshment charges to Jane",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+//! Favourites Card
+  Widget _buildFavoriteCard(String name, String details, String image,
+      {VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        width: ScreenUtils.width * 0.2,
+        // margin: EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 30,
+              backgroundImage: name == "Add" ? null : AssetImage(image),
+              backgroundColor: name == "Add"
+                  ? AppColors.iconGreyColor
+                  : AppColors.transparent,
+              child: Icon(name == "Add" ? Icons.add : null,
+                  size: 30, color: AppColors.black),
+            ),
+            Text(
+              name,
+              style: commonTextStyle.copyWith(
+                  color: AppColors.primaryBlackColor,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+            ),
+            if (details.isNotEmpty)
+              Text(
+                details,
+                style: commonTextStyle.copyWith(
+                    color: AppColors.bottomNavIconColor,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500),
+                textAlign: TextAlign.center,
+              ),
+          ],
+        ),
+      ),
+    );
   }
 }
