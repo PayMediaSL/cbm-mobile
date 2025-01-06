@@ -248,7 +248,7 @@ class PaymentScreen extends StatelessWidget {
     switch (index) {
       case 0:
         // Navigate to QR Screen
-        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        pushScreen(context, ScreenRoutes.toMainMessageScreen);
         break;
       case 1:
         pushScreen(context, ScreenRoutes.toLocalTransferMainScreen);
@@ -270,7 +270,7 @@ class PaymentScreen extends StatelessWidget {
         pushScreen(context, ScreenRoutes.toallBankSDetails);
         break;
       case 7:
-        pushScreen(context, ScreenRoutes.toQRScreenScan);
+        pushScreen(context, ScreenRoutes.toMySchedulesPayment);
         break;
 
       default:

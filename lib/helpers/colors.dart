@@ -42,6 +42,7 @@ class AppColors {
   static Color? primaryGreenShadeColor = Colors.green[50];
   static Color primaryRedColor = HexColor("#DC2626");
   static Color primaryGreenColor = HexColor("#16A34A");
+  static Color suffixIconColor = HexColor("#B0B0B0");
 
   //! Primary Sub BlackColor
 
@@ -68,6 +69,7 @@ class AppColors {
   static Color SecondarysubGreyColor = HexColor("#E5E7EB");
   static Color secondarysubGreyColor2 = HexColor("#64748B");
   static Color secondarysubGreyColor3 = HexColor("#9CA3AF");
+  static Color secondarysubGreyColor4 = HexColor("#6B7280");
 
   //bottom Navigation bgColor
 

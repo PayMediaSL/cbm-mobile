@@ -64,6 +64,8 @@ class ImageAsset {
   final String iconImagearrowupanddown = 'assets/icons/arrowupdown.png';
   final String iconImageFilter = 'assets/icons/filter.png';
   final String iconExchange = 'assets/images/exchange.png';
+  final String iconMessgae = 'assets/icons/message.png';
+  final String iconDelete = 'assets/icons/delete.png';
 
   //? Home Screen LifeStyle
 

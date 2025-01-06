@@ -123,6 +123,7 @@ class CustomLableTextField extends StatelessWidget {
           filled: true,
           fillColor: AppColors.white,
           suffixIcon: suffixIcon,
+          suffixIconColor: AppColors.suffixIconColor,
           prefixIcon: prefixIcon),
 
       obscureText: obscureText,

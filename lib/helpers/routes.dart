@@ -33,6 +33,7 @@ import 'package:app/screens/main_screens/lifestyle/lifestyle_gaming.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_health.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_insurance.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_transport.dart';
+import 'package:app/screens/main_screens/message_screen/message_screen.dart';
 import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/card_payment/all_bank_details.dart';
@@ -44,6 +45,7 @@ import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_generate.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_pay_screen.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_scan_payment.dart';
+import 'package:app/screens/main_screens/payments/scheduled_payment.dart/schedule_payment_main.dart';
 import 'package:app/screens/main_screens/splash_screen/splash_screen.dart';
 import 'package:app/screens/main_screens/transaction/my_budget_screen.dart';
 import 'package:app/screens/main_screens/transaction_confirmation/transaction_confirmation_screen.dart';
@@ -102,6 +104,9 @@ class ScreenRoutes {
   static const String toBottomNavigationScreen = "toBottomNavigationScreen";
   static const String toHomeScreen = "toHomeScreen";
 
+//Message
+  static const String toMainMessageScreen = "toMainMessageScreen";
+
   // Draweerrr
   static const String toDrawerSettingScreen = "toDrawerSettingScreen";
   static const String toDrawerDetailsUpdate = "toDrawerDetailsUpdate";
@@ -149,6 +154,8 @@ class ScreenRoutes {
 
   //! Transaction
   static const String toMyBudgetScreen = "toMyBudgetScreen";
+  static const String toMySchedulesPayment = "toMySchedulesPayment";
+
   static const String test = "testinggggggg";
 }
 
@@ -340,6 +347,12 @@ class Router {
           settings: settings,
         );
 
+      case ScreenRoutes.toMainMessageScreen:
+        return MaterialPageRoute(
+          builder: (_) => MainMessageScreen(),
+          settings: settings,
+        );
+
       //! Transaction
 
       case ScreenRoutes.toMyBudgetScreen:
@@ -477,6 +490,14 @@ class Router {
       case ScreenRoutes.toLocalTransferAddtoFavourite:
         return MaterialPageRoute(
           builder: (_) => AddToFavouriteLocalTransferScreen(),
+          settings: settings,
+        );
+
+      //* Scheduled Payment
+
+      case ScreenRoutes.toMySchedulesPayment:
+        return MaterialPageRoute(
+          builder: (_) => ScheduledPaymentScreen(),
           settings: settings,
         );
 
