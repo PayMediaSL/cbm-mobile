@@ -87,6 +87,46 @@ class PayBillMainScreen extends StatelessWidget {
       'runningBalance': 'LKR 1,500',
       'transactionNumber': 'TXN11223',
     },
+    {
+      'title': 'Anna’s mobile bill',
+      'phone': '071 888 8888',
+      'provider': 'Mobitel',
+      'account': '453540',
+      'runningBalance': 'LKR 1,500',
+      'transactionNumber': 'TXN11223',
+    },
+    {
+      'title': 'Anna’s mobile bill',
+      'phone': '071 888 8888',
+      'provider': 'Mobitel',
+      'account': '453540',
+      'runningBalance': 'LKR 1,500',
+      'transactionNumber': 'TXN11223',
+    },
+    {
+      'title': 'Anna’s mobile bill',
+      'phone': '071 888 8888',
+      'provider': 'Mobitel',
+      'account': '453540',
+      'runningBalance': 'LKR 1,500',
+      'transactionNumber': 'TXN11223',
+    },
+    {
+      'title': 'Anna’s mobile bill',
+      'phone': '071 888 8888',
+      'provider': 'Mobitel',
+      'account': '453540',
+      'runningBalance': 'LKR 1,500',
+      'transactionNumber': 'TXN11223',
+    },
+    {
+      'title': 'Anna’s mobile bill',
+      'phone': '071 888 8888',
+      'provider': 'Mobitel',
+      'account': '453540',
+      'runningBalance': 'LKR 1,500',
+      'transactionNumber': 'TXN11223',
+    },
   ];
 
   @override
@@ -133,7 +173,10 @@ class PayBillMainScreen extends StatelessWidget {
                           value.getSelectedIndex("paybills") == 0
                               ? MainButton(
                                   isMainButton: true,
-                                  btnOnPress: () {},
+                                  btnOnPress: () {
+                                    pushScreen(context,
+                                        ScreenRoutes.toPaySpecificBillScreen);
+                                  },
                                   buttontitle: "Proceed to Payment",
                                 )
                               : SizedBox())
@@ -368,29 +411,98 @@ class PayBillMainScreen extends StatelessWidget {
     }
     return CustomCurvedContainer(
       height: ScreenUtils.height * 0.6,
-      child: ListView.builder(
-        itemCount: billData.length,
-        itemBuilder: (context, index) {
-          return Consumer<PayBillProvider>(
-            builder: (context, provider, child) {
-              provider.initializeState(billData.length);
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                width: ScreenUtils.width * 0.2,
+                height: ScreenUtils.height * 0.05,
+                decoration: BoxDecoration(
+                    color: AppColors.primaryWhiteColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.sp),
+                      bottomLeft: Radius.circular(10.sp),
+                    ),
+                    border: Border.all(color: AppColors.textFieldBorderColor2)),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Filter",
+                        style: commonTextStyle.copyWith(
+                            color: AppColors.primaryBlackColor),
+                      ),
+                      RowSpacer(0.01),
+                      Image(
+                        image: AssetImage(ImageAsset().iconImageFilter),
+                        height: 15.sp,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: ScreenUtils.width * 0.2,
+                height: ScreenUtils.height * 0.05,
+                decoration: BoxDecoration(
+                    color: AppColors.primaryWhiteColor,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(10.sp),
+                      bottomRight: Radius.circular(10.sp),
+                    ),
+                    border: Border.all(color: AppColors.textFieldBorderColor2)),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Sort",
+                        style: commonTextStyle.copyWith(
+                            color: AppColors.primaryBlackColor),
+                      ),
+                      RowSpacer(0.01),
+                      Image(
+                        image: AssetImage(ImageAsset().iconImagearrowupanddown),
+                        height: 15.sp,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          ColumnSpacer(0.01),
+          SizedBox(
+            height: ScreenUtils.height * 0.5,
+            child: ListView.builder(
+              itemCount: billData.length,
+              itemBuilder: (context, index) {
+                return Consumer<PayBillProvider>(
+                  builder: (context, provider, child) {
+                    provider.initializeState(billData.length);
 
-              final isExpanded = provider.isExpanded(index);
-              final bill = billData[index];
+                    final isExpanded = provider.isExpanded(index);
+                    final bill = billData[index];
 
-              return ExpandableTile(
-                title: bill['title'],
-                phone: bill['phone'],
-                provider: bill['provider'],
-                account: bill['account'],
-                runningBalance: bill['runningBalance'],
-                transactionNumber: bill['transactionNumber'],
-                isExpanded: isExpanded,
-                onTap: () => provider.toggleExpansion(index),
-              );
-            },
-          );
-        },
+                    return ExpandableTile(
+                      title: bill['title'],
+                      phone: bill['phone'],
+                      provider: bill['provider'],
+                      account: bill['account'],
+                      runningBalance: bill['runningBalance'],
+                      transactionNumber: bill['transactionNumber'],
+                      isExpanded: isExpanded,
+                      onTap: () => provider.toggleExpansion(index),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

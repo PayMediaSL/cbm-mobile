@@ -44,6 +44,7 @@ import 'package:app/screens/main_screens/payments/local_transfer/add_to_favourit
 import 'package:app/screens/main_screens/payments/local_transfer/local_transfer_main.dart';
 import 'package:app/screens/main_screens/payments/mobile_reload/mobile_reload.dart';
 import 'package:app/screens/main_screens/payments/pay_bill/pay_bill_main_screen.dart';
+import 'package:app/screens/main_screens/payments/pay_bill/pay_specific_bill.dart';
 import 'package:app/screens/main_screens/payments/payments_screen.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_generate.dart';
 import 'package:app/screens/main_screens/payments/qr_payment/qr_pay_screen.dart';
@@ -139,6 +140,7 @@ class ScreenRoutes {
       "toGlobalTransferAddtoFavourite";
 
   static const String toPayBillsMainScreen = "toPayBillsMainScreen";
+  static const String toPaySpecificBillScreen = "toPaySpecificBillScreen";
 
   // Trasnsaction Confirmation
 
@@ -527,6 +529,11 @@ class Router {
       case ScreenRoutes.toPayBillsMainScreen:
         return MaterialPageRoute(
           builder: (_) => PayBillMainScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toPaySpecificBillScreen:
+        return MaterialPageRoute(
+          builder: (_) => PaySpecificBill(),
           settings: settings,
         );
 
