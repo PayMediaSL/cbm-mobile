@@ -38,6 +38,8 @@ import 'package:app/screens/main_screens/notification/notification_screen.dart';
 import 'package:app/screens/main_screens/on_boarding_screen/on_boarding_Screen.dart';
 import 'package:app/screens/main_screens/payments/card_payment/all_bank_details.dart';
 import 'package:app/screens/main_screens/payments/card_payment/card_payment_details.dart';
+import 'package:app/screens/main_screens/payments/global_transfer/add_to_favourite_global_transfer.dart';
+import 'package:app/screens/main_screens/payments/global_transfer/global_transfer_main.dart';
 import 'package:app/screens/main_screens/payments/local_transfer/add_to_favourite_local_transfer.dart';
 import 'package:app/screens/main_screens/payments/local_transfer/local_transfer_main.dart';
 import 'package:app/screens/main_screens/payments/mobile_reload/mobile_reload.dart';
@@ -130,6 +132,10 @@ class ScreenRoutes {
   static const String toLocalTransferMainScreen = "toLocalTransferMainScreen";
   static const String toLocalTransferAddtoFavourite =
       "toLocalTransferAddtoFavourite";
+
+  static const String toGlobalTransferMain = "toGlobalTransferMain";
+  static const String toGlobalTransferAddtoFavourite =
+      "toGlobalTransferAddtoFavourite";
 
   // Trasnsaction Confirmation
 
@@ -498,6 +504,20 @@ class Router {
       case ScreenRoutes.toMySchedulesPayment:
         return MaterialPageRoute(
           builder: (_) => ScheduledPaymentScreen(),
+          settings: settings,
+        );
+
+      //* Global Transfer
+
+      case ScreenRoutes.toGlobalTransferMain:
+        return MaterialPageRoute(
+          builder: (_) => GlobalTransferMain(),
+          settings: settings,
+        );
+      //* Global Transfer Add to favourite
+      case ScreenRoutes.toGlobalTransferAddtoFavourite:
+        return MaterialPageRoute(
+          builder: (_) => AddToFavouriteGlobalTransferScreen(),
           settings: settings,
         );
 

@@ -10,6 +10,7 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
+import 'package:app/screens/widgets/favourite/favorite_widget.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
@@ -314,7 +315,7 @@ class LocalTransferMainScreen extends StatelessWidget {
             ColumnSpacer(0.005),
             CustomDropdown(
               borderradius: 13.sp,
-              dropdownKey: 'localtransferFavourites',
+              dropdownKey: 'localtransferreceipientbank',
               items: ['Option 1', 'Option 2', 'Option 3'],
             ),
             ColumnSpacer(0.01),
@@ -436,7 +437,7 @@ class LocalTransferMainScreen extends StatelessWidget {
                   hint: "Day",
                   dropdownwidth: ScreenUtils.width * 0.2,
                   borderradius: 13.sp,
-                  dropdownKey: 'test',
+                  dropdownKey: 'local_transfer_day',
                   items: ['1', '2', '3'],
                 ),
                 RowSpacer(0.01),
@@ -444,7 +445,7 @@ class LocalTransferMainScreen extends StatelessWidget {
                   hint: "month",
                   dropdownwidth: ScreenUtils.width * 0.24,
                   borderradius: 13.sp,
-                  dropdownKey: 'test2',
+                  dropdownKey: 'local_transfer_month',
                   items: ['1', '2', '3'],
                 ),
                 RowSpacer(0.01),
@@ -526,10 +527,10 @@ class LocalTransferMainScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    commonProvider.toggleStates("localtransferfavourite");
+                    commonProvider.toggleStates("localtransferfavourite2");
                   },
                   child: Text(
-                    commonProvider.getStates("localtransferfavourite")
+                    commonProvider.getStates("localtransferfavourite2")
                         ? "viewless"
                         : "viewall",
                     style: commonTextSubHeadingStyle.copyWith(
@@ -544,32 +545,65 @@ class LocalTransferMainScreen extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 // Always include the "Add" card
-                itemCount: commonProvider.getStates("localtransferfavourite")
+                itemCount: commonProvider.getStates("localtransferfavourite2")
                     ? favorites.length + 1
                     : (favorites.length >= 3 ? 3 : favorites.length) + 1,
                 itemBuilder: (context, index) {
                   if (index == favorites.length ||
-                      (!commonProvider.getStates("localtransferfavourite") &&
+                      (!commonProvider.getStates("localtransferfavourite2") &&
                           index ==
                               (favorites.length >= 3 ? 3 : favorites.length))) {
-                    return _buildFavoriteCard(
-                      'Add',
-                      '',
-                      ImageAsset().authBg,
+                    return FavoriteCard(
+                      name: 'Add',
+                      details: '',
+                      image: ImageAsset().authBg,
                       onTap: () {
+                        pushScreen(context,
+                            ScreenRoutes.toLocalTransferAddtoFavourite);
                         // Perform Add action
                       },
                     );
                   } else {
-                    return _buildFavoriteCard(
-                      favorites[index]["name"].toString(),
-                      favorites[index]["bank"].toString(),
-                      ImageAsset().authBg,
+                    return FavoriteCard(
+                      name: favorites[index]["name"].toString(),
+                      details: favorites[index]["bank"].toString(),
+                      image: ImageAsset().authBg,
                     );
                   }
                 },
               ),
             ),
+            // SizedBox(
+            //   height: ScreenUtils.height * 0.12,
+            //   child: ListView.builder(
+            //     scrollDirection: Axis.horizontal,
+            //     // Always include the "Add" card
+            //     itemCount: commonProvider.getStates("localtransferfavourite")
+            //         ? favorites.length + 1
+            //         : (favorites.length >= 3 ? 3 : favorites.length) + 1,
+            //     itemBuilder: (context, index) {
+            //       if (index == favorites.length ||
+            //           (!commonProvider.getStates("localtransferfavourite") &&
+            //               index ==
+            //                   (favorites.length >= 3 ? 3 : favorites.length))) {
+            //         return _buildFavoriteCard(
+            //           'Add',
+            //           '',
+            //           ImageAsset().authBg,
+            //           onTap: () {
+            //             // Perform Add action
+            //           },
+            //         );
+            //       } else {
+            //         return _buildFavoriteCard(
+            //           favorites[index]["name"].toString(),
+            //           favorites[index]["bank"].toString(),
+            //           ImageAsset().authBg,
+            //         );
+            //       }
+            //     },
+            //   ),
+            // ),
             ColumnSpacer(0.02),
             Text(
               "Payment Details",

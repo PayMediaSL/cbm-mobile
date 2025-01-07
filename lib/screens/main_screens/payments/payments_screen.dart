@@ -248,13 +248,13 @@ class PaymentScreen extends StatelessWidget {
     switch (index) {
       case 0:
         // Navigate to QR Screen
-        pushScreen(context, ScreenRoutes.toMainMessageScreen);
+        pushScreen(context, ScreenRoutes.toGlobalTransferMain);
         break;
       case 1:
         pushScreen(context, ScreenRoutes.toLocalTransferMainScreen);
         break;
       case 2:
-        pushScreen(context, ScreenRoutes.toAboutYouScreen);
+        pushScreen(context, ScreenRoutes.toMainMessageScreen);
         break;
 
       case 3:
