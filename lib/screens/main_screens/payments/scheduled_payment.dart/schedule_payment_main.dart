@@ -10,9 +10,8 @@ import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
-import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
-import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
+import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/cupertino.dart';
@@ -103,74 +102,43 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 style: commonTextSubHeadingStyle,
               ),
               ColumnSpacer(0.013),
-              Text(
-                "Date",
-                style: commonTextFieldTitleStyle,
-              ),
-              ColumnSpacer(0.005),
-              CustomLableTextField(
-                suffixIcon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.calendar_month_rounded)),
-                signInPasswordController,
-                borderradius: 12.sp,
-                isSmallContentPadding: true,
-                hint: "e.g : 10,00,000",
-              ),
+              LabelWithTextField(
+                  suffixIcon: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.calendar_month_rounded)),
+                  label: "Date",
+                  controller: signInPasswordController,
+                  borderRadius: 12.sp,
+                  isSmallContentPadding: true,
+                  hint: "12/23/14"),
               ColumnSpacer(0.01),
-              Text(
-                "Account Number",
-                style: commonTextFieldTitleStyle,
-              ),
-              ColumnSpacer(0.005),
-              CustomLableTextField(
-                signInPasswordController,
-                borderradius: 12.sp,
-                isSmallContentPadding: true,
-                hint: "e.g : 10,00,000",
-              ),
+              LabelWithTextField(
+                  label: "Account Number",
+                  controller: signInPasswordController,
+                  borderRadius: 12.sp,
+                  isSmallContentPadding: true,
+                  hint: "e.g. ********127"),
               ColumnSpacer(0.01),
-              Text(
-                "Account Name",
-                style: commonTextFieldTitleStyle,
-              ),
-              ColumnSpacer(0.005),
-              CustomLableTextField(
-                signInPasswordController,
-                borderradius: 12.sp,
-                isSmallContentPadding: true,
-                hint: "e.g : 10,00,000",
-              ),
+              LabelWithTextField(
+                  label: "Account Name",
+                  controller: signInPasswordController,
+                  borderRadius: 12.sp,
+                  isSmallContentPadding: true,
+                  hint: "eg : john doe"),
               ColumnSpacer(0.01),
-              Text(
-                "Amount",
-                style: commonTextFieldTitleStyle,
-              ),
-              ColumnSpacer(0.005),
-              CustomLableTextField(
-                signInPasswordController,
-                borderradius: 12.sp,
-                isSmallContentPadding: true,
-                hint: "e.g : 10,00,000",
-              ),
+              LabelWithTextField(
+                  label: "Amount ",
+                  controller: signInPasswordController,
+                  borderRadius: 12.sp,
+                  isSmallContentPadding: true,
+                  hint: "eg : 100,000"),
               ColumnSpacer(0.01),
-              Text(
-                "Billing Cycle",
-                style: commonTextFieldTitleStyle,
-              ),
-              ColumnSpacer(0.005),
-              CustomDropdown(
-                  borderradius: 13.sp,
-                  dropdownKey: "schedulebilldropdown",
+              LabelWithDropdown(
+                  label: "Billing Cycle",
+                  borderRadius: 12.sp,
+                  dropdownKey: "schedule_payment_billing_cycle",
                   items: ["option1", "option2", "option3"]),
-
-              // CustomLableTextField(
-              //   signInPasswordController,
-              //   borderradius: 12.sp,
-              //   isSmallContentPadding: true,
-              //   hint: "e.g : 10,00,000",
-              // ),
               ColumnSpacer(0.01),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

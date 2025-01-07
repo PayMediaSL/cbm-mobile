@@ -12,6 +12,7 @@ import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -308,52 +309,36 @@ class LocalTransferMainScreen extends StatelessWidget {
               ),
             ),
             ColumnSpacer(0.01),
-            Text(
-              "Receipient's Bank",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomDropdown(
-              borderradius: 13.sp,
-              dropdownKey: 'localtransferreceipientbank',
-              items: ['Option 1', 'Option 2', 'Option 3'],
-            ),
+            LabelWithDropdown(
+                label: "Recipient’s bank",
+                borderRadius: 12.sp,
+                dropdownKey: "local_transfer_main_bank",
+                items: ["option1", "option2", "option3"]),
             ColumnSpacer(0.01),
-            Text(
-              "Receipient's account number",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g : 234563354",
-            ),
+
+            LabelWithTextField(
+                label: "Receipient's account number",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "234563354"),
             ColumnSpacer(0.01),
-            Text(
-              "Receipient's name",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g : john doe",
-            ),
+            LabelWithTextField(
+                label: "Recipient’s name",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "eg : john doe"),
+
             ColumnSpacer(0.01),
-            Text(
-              "Amount",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g : 10,00,000",
-            ),
+
+            LabelWithTextField(
+                label: "Amount",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "eg:10,000"),
+
             ColumnSpacer(0.01),
             Text(
               "Date",
@@ -467,30 +452,20 @@ class LocalTransferMainScreen extends StatelessWidget {
             ),
 
             ColumnSpacer(0.01),
-            Text(
-              "Personal Notes",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g. Transferred refreshment charges to Jane",
-            ),
+            LabelWithTextField(
+                label: "Personal note",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "e.g. Transferred refreshment charges to Jane"),
 
             ColumnSpacer(0.01),
-            Text(
-              "Notes to Receipients",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g. Transferred refreshment charges to Jane",
-            ),
+            LabelWithTextField(
+                label: "Note to recipient",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "e.g. Transferred refreshment charges"),
           ],
         ),
       ),
@@ -610,53 +585,82 @@ class LocalTransferMainScreen extends StatelessWidget {
               style: commonTextHeadingStyle,
             ),
             ColumnSpacer(0.01),
-            Text(
-              "Mobile Number",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g : 0754314567",
-            ),
+            LabelWithTextField(
+                label: "Mobile Number",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "e.g. 0765342345"),
             ColumnSpacer(0.01),
-            Text(
-              "Amount",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g : 10,00,000",
-            ),
+            LabelWithTextField(
+                label: "Amount",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "e.g. 10,0000"),
             ColumnSpacer(0.01),
-            Text(
-              "Personal Notes",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g. Transferred refreshment charges to Jane",
-            ),
+            LabelWithTextField(
+                label: "Personal note",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "e.g. Transferred refreshment charges to Jane"),
             ColumnSpacer(0.01),
-            Text(
-              "Notes to Receipients",
-              style: commonTextFieldTitleStyle,
-            ),
-            ColumnSpacer(0.005),
-            CustomLableTextField(
-              signInPasswordController,
-              borderradius: 12.sp,
-              isSmallContentPadding: true,
-              hint: "e.g. Transferred refreshment charges to Jane",
-            ),
+            LabelWithTextField(
+                label: "Note to recipient",
+                controller: signInPasswordController,
+                borderRadius: 12.sp,
+                isSmallContentPadding: true,
+                hint: "e.g. Transferred refreshment charges"),
+            ColumnSpacer(0.01),
+
+            // Text(
+            //   "Mobile Number",
+            //   style: commonTextFieldTitleStyle,
+            // ),
+            // ColumnSpacer(0.005),
+            // CustomLableTextField(
+            //   signInPasswordController,
+            //   borderradius: 12.sp,
+            //   isSmallContentPadding: true,
+            //   hint: "e.g : 0754314567",
+            // ),
+            // ColumnSpacer(0.01),
+            // Text(
+            //   "Amount",
+            //   style: commonTextFieldTitleStyle,
+            // ),
+            // ColumnSpacer(0.005),
+            // CustomLableTextField(
+            //   signInPasswordController,
+            //   borderradius: 12.sp,
+            //   isSmallContentPadding: true,
+            //   hint: "e.g : 10,00,000",
+            // ),
+            // ColumnSpacer(0.01),
+            // Text(
+            //   "Personal Notes",
+            //   style: commonTextFieldTitleStyle,
+            // ),
+            // ColumnSpacer(0.005),
+            // CustomLableTextField(
+            //   signInPasswordController,
+            //   borderradius: 12.sp,
+            //   isSmallContentPadding: true,
+            //   hint: "e.g. Transferred refreshment charges to Jane",
+            // ),
+            // ColumnSpacer(0.01),
+            // Text(
+            //   "Notes to Receipients",
+            //   style: commonTextFieldTitleStyle,
+            // ),
+            // ColumnSpacer(0.005),
+            // CustomLableTextField(
+            //   signInPasswordController,
+            //   borderradius: 12.sp,
+            //   isSmallContentPadding: true,
+            //   hint: "e.g. Transferred refreshment charges to Jane",
+            // ),
           ],
         ),
       ),

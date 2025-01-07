@@ -6,9 +6,8 @@ import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
-import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
-import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
+import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -48,40 +47,62 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
                           style: commonTextHeadingStyle,
                         ),
                         ColumnSpacer(0.01),
-                        Text(
-                          "Receipient's Bank",
-                          style: commonTextFieldTitleStyle,
-                        ),
-                        ColumnSpacer(0.005),
-                        CustomDropdown(
-                          borderradius: 13.sp,
-                          dropdownKey: 'localtransferFavourites',
-                          items: ['Option 1', 'Option 2', 'Option 3'],
-                        ),
+
+                        LabelWithDropdown(
+                            label: "Recipient’s bank",
+                            borderRadius: 12.sp,
+                            dropdownKey: "local_transfer_favourite_bank",
+                            items: ["option1", "option2", "option3"]),
                         ColumnSpacer(0.01),
-                        Text(
-                          "Receipient's account number",
-                          style: commonTextFieldTitleStyle,
-                        ),
-                        ColumnSpacer(0.005),
-                        CustomLableTextField(
-                          signInPasswordController,
-                          borderradius: 12.sp,
-                          isSmallContentPadding: true,
-                          hint: "e.g : 234563354",
-                        ),
+
+                        LabelWithTextField(
+                            label: "Receipient's account number",
+                            controller: signInPasswordController,
+                            borderRadius: 12.sp,
+                            isSmallContentPadding: true,
+                            hint: "eg:234563354"),
                         ColumnSpacer(0.01),
-                        Text(
-                          "Receipient's name",
-                          style: commonTextFieldTitleStyle,
-                        ),
-                        ColumnSpacer(0.005),
-                        CustomLableTextField(
-                          signInPasswordController,
-                          borderradius: 12.sp,
-                          isSmallContentPadding: true,
-                          hint: "e.g : john doe",
-                        ),
+                        LabelWithTextField(
+                            label: "Recipient’s name",
+                            controller: signInPasswordController,
+                            borderRadius: 12.sp,
+                            isSmallContentPadding: true,
+                            hint: "eg : john doe"),
+
+                        // Text(
+                        //   "Receipient's Bank",
+                        //   style: commonTextFieldTitleStyle,
+                        // ),
+                        // ColumnSpacer(0.005),
+                        // CustomDropdown(
+                        //   borderradius: 13.sp,
+                        //   dropdownKey: 'localtransferFavourites',
+                        //   items: ['Option 1', 'Option 2', 'Option 3'],
+                        // ),
+                        // ColumnSpacer(0.01),
+                        // Text(
+                        //   "Receipient's account number",
+                        //   style: commonTextFieldTitleStyle,
+                        // ),
+                        // ColumnSpacer(0.005),
+                        // CustomLableTextField(
+                        //   signInPasswordController,
+                        //   borderradius: 12.sp,
+                        //   isSmallContentPadding: true,
+                        //   hint: "e.g : 234563354",
+                        // ),
+                        // ColumnSpacer(0.01),
+                        // Text(
+                        //   "Receipient's name",
+                        //   style: commonTextFieldTitleStyle,
+                        // ),
+                        // ColumnSpacer(0.005),
+                        // CustomLableTextField(
+                        //   signInPasswordController,
+                        //   borderradius: 12.sp,
+                        //   isSmallContentPadding: true,
+                        //   hint: "e.g : john doe",
+                        // ),
                       ],
                     ),
                   ),

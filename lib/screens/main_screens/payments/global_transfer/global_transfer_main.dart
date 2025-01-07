@@ -10,6 +10,7 @@ import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -198,101 +199,65 @@ class GlobalTransferMain extends StatelessWidget {
                           //   items: ['Option 1', 'Option 2', 'Option 3'],
                           // ),
                           // ColumnSpacer(0.01),
-                          Text(
-                            "Receipient's account number",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g : 234563354",
-                          ),
+                          //!
+                          // Recipient’s account number
+                          // Recipient’s name
+                          // Recipient’s address / country
+                          // Recipient’s code option -d
+                          // Recipient’s bank country
+                          // Recipient’s bank name
+                          // Recipient’s bank address
+                          // Amount
+
+                          LabelWithTextField(
+                              label: "Recipient’s account number",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. *******364"),
                           ColumnSpacer(0.01),
-                          Text(
-                            "Receipient's name",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g : john doe",
-                          ),
+                          LabelWithTextField(
+                              label: "Recipient’s name",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "eg: John Doe"),
                           ColumnSpacer(0.01),
-                          Text(
-                            "Recipient’s address / country",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g : France",
-                          ),
+                          LabelWithTextField(
+                              label: "Recipient’s address / country",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "eg: France"),
+                          ColumnSpacer(0.01),
+                          LabelWithDropdown(
+                              label: "Recipient’s code option",
+                              borderRadius: 12.sp,
+                              dropdownKey:
+                                  "global_transfer_main_receipient_code",
+                              items: ["option1", "option2", "option3"]),
 
                           ColumnSpacer(0.01),
-                          Text(
-                            "Recipient’s code option",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomDropdown(
-                            borderradius: 13.sp,
-                            dropdownKey: 'globaltransferreceipientcodeoption',
-                            items: ['Option 1', 'Option 2', 'Option 3'],
-                          ),
+                          LabelWithTextField(
+                              label: "Recipient’s bank country",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "eg : France"),
                           ColumnSpacer(0.01),
-                          Text(
-                            "Recipient’s bank country",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g : Douch bank",
-                          ),
+                          LabelWithTextField(
+                              label: "Recipient’s bank name",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. Deuche Bank"),
                           ColumnSpacer(0.01),
-                          Text(
-                            "Recipient’s bank name",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g :douche bank",
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Recipient’s bank address",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g : douche bank",
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Amount",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g : 10 000",
-                          ),
+                          LabelWithTextField(
+                              label: "Recipient’s bank address",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. Deuche Bank,France"),
                           ColumnSpacer(0.01),
                           Text(
                             "Date",
@@ -408,30 +373,44 @@ class GlobalTransferMain extends StatelessWidget {
                           ),
 
                           ColumnSpacer(0.01),
-                          Text(
-                            "Note to recipient",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomLableTextField(
-                            signInPasswordController,
-                            borderradius: 12.sp,
-                            isSmallContentPadding: true,
-                            hint:
-                                "e.g. Transferred refreshment charges to Jane",
-                          ),
-
+                          LabelWithTextField(
+                              label: "Note to recipient",
+                              controller: signInPasswordController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint:
+                                  "e.g. Transferred refreshment charges to Jane"),
                           ColumnSpacer(0.01),
-                          Text(
-                            "Charges",
-                            style: commonTextFieldTitleStyle,
-                          ),
-                          ColumnSpacer(0.005),
-                          CustomDropdown(
-                            borderradius: 13.sp,
-                            dropdownKey: 'global_transfer_charges',
-                            items: ['Option 1', 'Option 2', 'Option 3'],
-                          ),
+                          LabelWithDropdown(
+                              label: "Charges",
+                              borderRadius: 12.sp,
+                              dropdownKey: "'global_transfer_main_charges",
+                              items: ["option1", "option2", "option3"]),
+
+                          // Text(
+                          //   "Note to recipient",
+                          //   style: commonTextFieldTitleStyle,
+                          // ),
+                          // ColumnSpacer(0.005),
+                          // CustomLableTextField(
+                          //   signInPasswordController,
+                          //   borderradius: 12.sp,
+                          //   isSmallContentPadding: true,
+                          //   hint:
+                          //       "e.g. Transferred refreshment charges to Jane",
+                          // ),
+
+                          // ColumnSpacer(0.01),
+                          // Text(
+                          //   "Charges",
+                          //   style: commonTextFieldTitleStyle,
+                          // ),
+                          // ColumnSpacer(0.005),
+                          // CustomDropdown(
+                          //   borderradius: 13.sp,
+                          //   dropdownKey: 'global_transfer_charges',
+                          //   items: ['Option 1', 'Option 2', 'Option 3'],
+                          // ),
                         ],
                       ),
                     ),

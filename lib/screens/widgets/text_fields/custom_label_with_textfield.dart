@@ -9,6 +9,7 @@ class LabelWithTextField extends StatelessWidget {
   final double borderRadius;
   final bool isSmallContentPadding;
   final String hint;
+  final Widget? suffixIcon;
 
   const LabelWithTextField({
     Key? key,
@@ -17,6 +18,7 @@ class LabelWithTextField extends StatelessWidget {
     required this.borderRadius,
     required this.isSmallContentPadding,
     required this.hint,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
@@ -36,6 +38,7 @@ class LabelWithTextField extends StatelessWidget {
           borderradius: borderRadius,
           isSmallContentPadding: isSmallContentPadding,
           hint: hint,
+          suffixIcon: suffixIcon,
         ),
       ],
     );
