@@ -24,6 +24,7 @@ import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/drop_down_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
+import 'package:app/providers/paybill_provider/pay_bill_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/providers/payments/qr_payment_provider.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
@@ -104,6 +105,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => QrScannerState()),
           ChangeNotifierProvider(create: (_) => TabBarProvider()),
           ChangeNotifierProvider(create: (_) => TabBarProviderCurved()),
+          ChangeNotifierProvider(create: (_) => PayBillProvider()),
         ],
         child: const MyApp(),
       ),
