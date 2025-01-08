@@ -25,6 +25,8 @@ import 'package:app/screens/main_screens/drawer/settings_screen.dart';
 import 'package:app/screens/main_screens/drawer/transaction_limit.dart';
 import 'package:app/screens/main_screens/drawer/user_profile_Screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
+import 'package:app/screens/main_screens/home_screen/fixed_deposite/fixed_deposite.dart';
+import 'package:app/screens/main_screens/home_screen/loan_service/specific_loan_service.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_ecommerce.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_education.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_entertainment.dart';
@@ -134,7 +136,8 @@ class ScreenRoutes {
   static const String toLocalTransferMainScreen = "toLocalTransferMainScreen";
   static const String toLocalTransferAddtoFavourite =
       "toLocalTransferAddtoFavourite";
-
+  static const String toLoanDetailScreen = "toLoanDetailScreen";
+  static const String toFixedDepositeScreen = "toFixedDepositeScreen";
   static const String toGlobalTransferMain = "toGlobalTransferMain";
   static const String toGlobalTransferAddtoFavourite =
       "toGlobalTransferAddtoFavourite";
@@ -534,6 +537,18 @@ class Router {
       case ScreenRoutes.toPaySpecificBillScreen:
         return MaterialPageRoute(
           builder: (_) => PaySpecificBill(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toLoanDetailScreen:
+        return MaterialPageRoute(
+          builder: (_) => LoanDetailsScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toFixedDepositeScreen:
+        return MaterialPageRoute(
+          builder: (_) => FixedDepositeDetailScreen(),
           settings: settings,
         );
 

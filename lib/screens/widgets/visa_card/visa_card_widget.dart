@@ -257,7 +257,7 @@ class VisaCardWidget extends StatelessWidget {
   }
 }
 
-//! Visa Card2
+//! Visa Card 2
 
 class VisaCardWidget2 extends StatelessWidget {
   final String availableBalance;
@@ -323,29 +323,43 @@ class VisaCardWidget2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                "Commercial",
-                style: commonTextStyle.copyWith(
-                    color: AppColors.primaryWhiteColor),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "${accountNumber}",
+                  style: commonTextStyle.copyWith(
+                      fontSize: 15.sp,
+                      fontFamily: "spacegrotsek",
+                      color: AppColors.primaryWhiteColor),
+                ),
+                Text(
+                  "Commercial",
+                  style: commonTextStyle.copyWith(
+                      color: AppColors.primaryWhiteColor),
+                ),
+              ],
             ),
-            ColumnSpacer(0.02),
-            Text(
-              "${accountNumber}",
-              style: commonTextStyle.copyWith(
-                  fontSize: 15.sp,
-                  fontFamily: "spacegrotsek",
-                  color: AppColors.primaryWhiteColor),
-            ),
-            ColumnSpacer(0.02),
-            Text(
-              "Rs ${maskNumber(availableBalance)}",
-              style: commonTextStyle.copyWith(
-                  fontSize: 15.sp,
-                  fontFamily: "spacegrotsek",
-                  color: AppColors.primaryWhiteColor),
+            ColumnSpacer(0.035),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Rs ${availableBalance}",
+                  style: commonTextStyle.copyWith(
+                      fontSize: 17.sp,
+                      fontFamily: "spacegrotsek",
+                      color: AppColors.primaryWhiteColor),
+                ),
+                ColumnSpacer(0.001),
+                Text(
+                  "Available Balance",
+                  style: commonTextStyle.copyWith(
+                      color: AppColors.primaryWhiteColor),
+                ),
+              ],
             ),
           ],
         ),
@@ -353,6 +367,8 @@ class VisaCardWidget2 extends StatelessWidget {
     ));
   }
 }
+
+//! Visa Card 3
 
 class VisaCardWidget3 extends StatelessWidget {
   final String availableBalance;
@@ -365,12 +381,20 @@ class VisaCardWidget3 extends StatelessWidget {
   final int? maskindex;
   final double? cardHeight;
   final double? cardwidth;
+  final String? balancetext;
+  final String? rowleftText;
+  final String? rowleftTextValue;
+  final String? rowrightText;
+  final String? rowrightTextValue;
+  final String? dueValue;
+  final Widget? rightTopWidget;
 
   bool isWallet;
   final Color? gradientColor1;
   final Color? gradientColor2;
   final bool isLastCard;
   final bool isCards;
+  final bool isOverdue;
 
   VisaCardWidget3({
     required this.availableBalance,
@@ -388,6 +412,14 @@ class VisaCardWidget3 extends StatelessWidget {
     this.cardHeight,
     this.cardwidth,
     this.isCards = true,
+    this.balancetext,
+    this.rowleftText,
+    this.rowleftTextValue,
+    this.rowrightText,
+    this.rowrightTextValue,
+    this.isOverdue = false,
+    this.dueValue,
+    this.rightTopWidget,
     Key? key,
   }) : super(key: key);
 
@@ -429,23 +461,27 @@ class VisaCardWidget3 extends StatelessWidget {
                       fontFamily: "spacegrotsek",
                       color: AppColors.primaryWhiteColor),
                 ),
-                Text(
-                  "Commercial",
-                  style: commonTextStyle.copyWith(
-                      color: AppColors.primaryWhiteColor),
-                ),
+                isOverdue
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Over due",
+                            style: commonTextStyle.copyWith(
+                                color: AppColors.primaryRedColor),
+                          ),
+                          Text(
+                            dueValue ?? "0.00",
+                            style: commonTextStyle.copyWith(
+                                color: AppColors.primaryAmberColor),
+                          ),
+                        ],
+                      )
+                    : rightTopWidget ?? SizedBox()
               ],
             ),
-            // Align(
-            //   alignment: Alignment.topRight,
-            //   child: Text(
-            //     "Commercial",
-            //     style: commonTextStyle.copyWith(
-            //         color: AppColors.primaryWhiteColor),
-            //   ),
-            // ),
-
-            ColumnSpacer(0.035),
+            ColumnSpacer(0.03),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -459,9 +495,50 @@ class VisaCardWidget3 extends StatelessWidget {
                 ),
                 ColumnSpacer(0.001),
                 Text(
-                  "Available Balance",
+                  balancetext ?? "Available Balance",
                   style: commonTextStyle.copyWith(
                       color: AppColors.primaryWhiteColor),
+                ),
+              ],
+            ),
+            ColumnSpacer(isOverdue ? 0.02 : 0.035),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      rowleftText ?? "Next Payment",
+                      style: commonTextStyle.copyWith(
+                          color: AppColors.primaryWhiteColor),
+                    ),
+                    ColumnSpacer(0.001),
+                    Text(
+                      rowleftTextValue ?? "3300",
+                      style: commonTextStyle.copyWith(
+                          color: AppColors.primaryWhiteColor),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      rowrightText ?? "Next Payment Date",
+                      style: commonTextStyle.copyWith(
+                          color: AppColors.primaryWhiteColor),
+                    ),
+                    ColumnSpacer(0.001),
+                    Text(
+                      rowrightTextValue ?? "24/12",
+                      style: commonTextStyle.copyWith(
+                          color: AppColors.primaryWhiteColor),
+                    ),
+                  ],
                 ),
               ],
             ),

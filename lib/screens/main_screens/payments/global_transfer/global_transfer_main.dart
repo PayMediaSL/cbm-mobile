@@ -175,7 +175,7 @@ class GlobalTransferMain extends StatelessWidget {
                                 return Padding(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: VisaCardWidget3(
+                                  child: VisaCardWidget2(
                                     gradientColor2: Colors.black87,
                                     gradientColor1: AppColors.primaryBlueColor,
                                     cardHeight: ScreenUtils.width * 0.33,

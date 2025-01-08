@@ -24,6 +24,12 @@ var commonTextSubHeadingStyle = TextStyle(
     color: AppColors.bottomNavIconColor,
     fontFamily: 'inter');
 
+var commonTextInTheField = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+    fontFamily: 'inter');
+
 var commonTextFieldTitleStyle = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeight.w500,

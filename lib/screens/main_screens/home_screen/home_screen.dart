@@ -15,6 +15,7 @@ import 'package:app/screens/widgets/home_screen/home_account_tile/home_account_t
 import 'package:app/screens/widgets/home_screen/home_contatcs/home_contacts.dart';
 import 'package:app/screens/widgets/home_screen/home_quick_access/home_quick_access.dart';
 import 'package:app/screens/widgets/text_fields/custom_search_bar.dart';
+import 'package:app/screens/widgets/toggle/toggle_text.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
@@ -592,26 +593,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //! SAvings Account
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Savings Accounts", style: homeScreenTitleStyle),
-              GestureDetector(
-                onTap: () {
-                  commonProvider.toggleStates("homesavingsaccountviewall");
-                },
-                child: Text(
-                  commonProvider.getStates("homesavingsaccountviewall")
-                      ? "View Less"
-                      : "View All",
-                  style: commonTextStyle.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.primaryBlackColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ],
+
+          ToggleViewWidget(
+            title: "Savings Accounts",
+            titleStyle: homeScreenTitleStyle,
+            isExpanded: commonProvider.getStates("homesavingsaccountviewall"),
+            viewAllText: "View All",
+            viewLessText: "View Less",
+            onToggle: () {
+              commonProvider.toggleStates("homesavingsaccountviewall");
+            },
           ),
+
           ColumnSpacer(0.01),
           Container(
             height: ScreenUtils.height * 0.15,
@@ -638,26 +631,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           ColumnSpacer(0.01),
 
 //! Current Accounts
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Current Accounts", style: homeScreenTitleStyle),
-              GestureDetector(
-                onTap: () {
-                  commonProvider.toggleStates("homecurrentaccountviewall");
-                },
-                child: Text(
-                  commonProvider.getStates("homecurrentaccountviewall")
-                      ? "View Less"
-                      : "View All",
-                  style: commonTextStyle.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.primaryBlackColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ],
+
+          ToggleViewWidget(
+            title: "Current Accounts",
+            titleStyle: homeScreenTitleStyle,
+            isExpanded: commonProvider.getStates("homecurrentaccountviewall"),
+            viewAllText: "View All",
+            viewLessText: "View Less",
+            onToggle: () {
+              commonProvider.toggleStates("homecurrentaccountviewall");
+            },
           ),
+
           ColumnSpacer(0.01),
           Container(
             height: ScreenUtils.height * 0.15,
@@ -698,27 +683,19 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               //! Credits Cards
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Credits Cards", style: homeScreenTitleStyle),
-                  GestureDetector(
-                    onTap: () {
-                      commonProvider.toggleStates("homecreditcardviewall");
-                    },
-                    child: Text(
-                      commonProvider.getStates("homecreditcardviewall")
-                          ? "View Less"
-                          : "View All",
-                      style: commonTextStyle.copyWith(
-                          decoration: TextDecoration.underline,
-                          color: AppColors.primaryBlackColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ],
+
+              ToggleViewWidget(
+                title: "Credits Cards",
+                titleStyle: homeScreenTitleStyle,
+                isExpanded: commonProvider.getStates("homecreditcardviewall"),
+                viewAllText: "View All",
+                viewLessText: "View Less",
+                onToggle: () {
+                  commonProvider.toggleStates("homecreditcardviewall");
+                },
               ),
-              // ColumnSpacer(0.01),
+
+              ColumnSpacer(0.01),
               Container(
                 height: ScreenUtils.height * 0.2,
                 child: SingleChildScrollView(
@@ -756,27 +733,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
 
               //! Prepaid Card
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Prepaid Cards", style: homeScreenTitleStyle),
-                  GestureDetector(
-                    onTap: () {
-                      commonProvider.toggleStates("homeprepaidcardviewall");
-                    },
-                    child: Text(
-                      commonProvider.getStates("homeprepaidcardviewall")
-                          ? "View Less"
-                          : "View All",
-                      style: commonTextStyle.copyWith(
-                          decoration: TextDecoration.underline,
-                          color: AppColors.primaryBlackColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ],
+              ToggleViewWidget(
+                title: "Prepaid Cards",
+                titleStyle: homeScreenTitleStyle,
+                isExpanded: commonProvider.getStates("homeprepaidcardviewall"),
+                viewAllText: "View All",
+                viewLessText: "View Less",
+                onToggle: () {
+                  commonProvider.toggleStates("homeprepaidcardviewall");
+                },
               ),
-              // ColumnSpacer(0.01),
+
+              ColumnSpacer(0.01),
               Container(
                 height: ScreenUtils.height * 0.2,
                 child: SingleChildScrollView(
@@ -815,27 +783,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
 
               //! Debit card
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Debit Cards", style: homeScreenTitleStyle),
-                  GestureDetector(
-                    onTap: () {
-                      commonProvider.toggleStates("homedebitcardviewall");
-                    },
-                    child: Text(
-                      commonProvider.getStates("homedebitcardviewall")
-                          ? "View Less"
-                          : "View All",
-                      style: commonTextStyle.copyWith(
-                          decoration: TextDecoration.underline,
-                          color: AppColors.primaryBlackColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ],
+              ToggleViewWidget(
+                title: "Debit Cards",
+                titleStyle: homeScreenTitleStyle,
+                isExpanded: commonProvider.getStates("homedebitcardviewall"),
+                viewAllText: "View All",
+                viewLessText: "View Less",
+                onToggle: () {
+                  commonProvider.toggleStates("homedebitcardviewall");
+                },
               ),
-              // ColumnSpacer(0.01),
+
+              ColumnSpacer(0.01),
               Container(
                 height: ScreenUtils.height * 0.2,
                 child: SingleChildScrollView(
@@ -886,26 +845,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //! Timw Account
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Time Deposite ", style: homeScreenTitleStyle),
-              GestureDetector(
-                onTap: () {
-                  commonProvider.toggleStates("homedepositeTimesviewall");
-                },
-                child: Text(
-                  commonProvider.getStates("homedepositeTimesviewall")
-                      ? "View Less"
-                      : "View All",
-                  style: commonTextStyle.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.primaryBlackColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ],
+
+          ToggleViewWidget(
+            title: "Time Deposite",
+            titleStyle: homeScreenTitleStyle,
+            isExpanded: commonProvider.getStates("homedepositeTimesviewall"),
+            viewAllText: "View All",
+            viewLessText: "View Less",
+            onToggle: () {
+              commonProvider.toggleStates("homedepositeTimesviewall");
+            },
           ),
+
           ColumnSpacer(0.01),
           Container(
             height: ScreenUtils.height * 0.15,
@@ -917,14 +868,21 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   commonProvider.getStates("homedepositeTimesviewall")
                       ? accountData.length
                       : 2,
-                  (index) => HomeAccountTile(
-                    image: ImageAsset().userImage,
-                    holdTitle: "NIP",
-                    title: accountData[index]["title"]!,
-                    subtitle: accountData[index]["subtitle"]!,
-                    amount: accountData[index]["amount"]!,
-                    holds: accountData[index]["holds"]!,
-                  ),
+                  (index) {
+                    final account = accountData[index];
+                    return GestureDetector(
+                      onTap: () {
+                        pushScreen(context, ScreenRoutes.toFixedDepositeScreen);
+                      },
+                      child: HomeAccountTile(
+                        image: ImageAsset().userImage,
+                        title: account["title"]!,
+                        subtitle: "Remaining Balance",
+                        amount: account["amount"]!,
+                        holds: account["holds"]!,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -933,26 +891,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           ColumnSpacer(0.01),
 
 //! Savings Goals
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Savings Goals", style: homeScreenTitleStyle),
-              GestureDetector(
-                onTap: () {
-                  commonProvider.toggleStates("homedepositeSavingsviewall");
-                },
-                child: Text(
-                  commonProvider.getStates("homedepositeSavingsviewall")
-                      ? "View Less"
-                      : "View All",
-                  style: commonTextStyle.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.primaryBlackColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ],
+
+          ToggleViewWidget(
+            title: "Savings Goals",
+            titleStyle: homeScreenTitleStyle,
+            isExpanded: commonProvider.getStates("homedepositeSavingsviewall"),
+            viewAllText: "View All",
+            viewLessText: "View Less",
+            onToggle: () {
+              commonProvider.toggleStates("homedepositeSavingsviewall");
+            },
           ),
+
           ColumnSpacer(0.01),
           Container(
             height: ScreenUtils.height * 0.15,
@@ -964,13 +914,22 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   commonProvider.getStates("homedepositeSavingsviewall")
                       ? accountData.length
                       : 2,
-                  (index) => HomeAccountTile(
-                    image: ImageAsset().userImage,
-                    title: accountData[index]["title"]!,
-                    subtitle: "Remaining Balance",
-                    amount: accountData[index]["amount"]!,
-                    holds: accountData[index]["holds"]!,
-                  ),
+                  (index) {
+                    final account = accountData[index];
+
+                    return GestureDetector(
+                      onTap: () {
+                        pushScreen(context, ScreenRoutes.toFixedDepositeScreen);
+                      },
+                      child: HomeAccountTile(
+                        image: ImageAsset().userImage,
+                        title: account["title"]!,
+                        subtitle: "Remaining Balance",
+                        amount: account["amount"]!,
+                        holds: account["holds"]!,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -990,26 +949,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //! term loan
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Term Loan ", style: homeScreenTitleStyle),
-              GestureDetector(
-                onTap: () {
-                  commonProvider.toggleStates("homeLoanTermviewall");
-                },
-                child: Text(
-                  commonProvider.getStates("homeLoanTermviewall")
-                      ? "View Less"
-                      : "View All",
-                  style: commonTextStyle.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.primaryBlackColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ],
+
+          ToggleViewWidget(
+            title: "Term Loan",
+            titleStyle: homeScreenTitleStyle,
+            isExpanded: commonProvider.getStates("homeLoanTermviewall"),
+            viewAllText: "View All",
+            viewLessText: "View Less",
+            onToggle: () {
+              commonProvider.toggleStates("homeLoanTermviewall");
+            },
           ),
+
           ColumnSpacer(0.01),
           Container(
             height: ScreenUtils.height * 0.15,
@@ -1021,14 +972,23 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   commonProvider.getStates("homeLoanTermviewall")
                       ? accountData.length
                       : 2,
-                  (index) => HomeAccountTile(
-                    image: ImageAsset().userImage,
-                    holdTitle: "NIP",
-                    title: accountData[index]["title"]!,
-                    subtitle: accountData[index]["subtitle"]!,
-                    amount: accountData[index]["amount"]!,
-                    holds: accountData[index]["holds"]!,
-                  ),
+                  (index) {
+                    final account =
+                        accountData[index]; // Access data for the current index
+                    return GestureDetector(
+                      onTap: () {
+                        pushScreen(context, ScreenRoutes.toLoanDetailScreen);
+                      },
+                      child: HomeAccountTile(
+                        image: ImageAsset().userImage,
+                        holdTitle: "NIP",
+                        title: account["title"]!,
+                        subtitle: account["subtitle"]!,
+                        amount: account["amount"]!,
+                        holds: account["holds"]!,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -1037,27 +997,20 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           ColumnSpacer(0.01),
 
 //! Leasing Goals
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Leasing", style: homeScreenTitleStyle),
-              GestureDetector(
-                onTap: () {
-                  commonProvider.toggleStates("homeLoanLeasingviewall");
-                },
-                child: Text(
-                  commonProvider.getStates("homeLoanLeasingviewall")
-                      ? "View Less"
-                      : "View All",
-                  style: commonTextStyle.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.primaryBlackColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ],
+
+          ToggleViewWidget(
+            title: "Leasing",
+            titleStyle: homeScreenTitleStyle,
+            isExpanded: commonProvider.getStates("homeLoanLeasingviewall"),
+            viewAllText: "View All",
+            viewLessText: "View Less",
+            onToggle: () {
+              commonProvider.toggleStates("homeLoanLeasingviewall");
+            },
           ),
+
           ColumnSpacer(0.01),
+
           Container(
             height: ScreenUtils.height * 0.15,
             child: SingleChildScrollView(
@@ -1068,14 +1021,23 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   commonProvider.getStates("homeLoanLeasingviewall")
                       ? accountData.length
                       : 2,
-                  (index) => HomeAccountTile(
-                    holdTitle: "NIP",
-                    image: ImageAsset().userImage,
-                    title: accountData[index]["title"]!,
-                    subtitle: accountData[index]["subtitle"]!,
-                    amount: accountData[index]["amount"]!,
-                    holds: accountData[index]["holds"]!,
-                  ),
+                  (index) {
+                    final account =
+                        accountData[index]; // Access data for the current index
+                    return GestureDetector(
+                      onTap: () {
+                        pushScreen(context, ScreenRoutes.toLoanDetailScreen);
+                      },
+                      child: HomeAccountTile(
+                        image: ImageAsset().userImage,
+                        holdTitle: "NIP",
+                        title: account["title"]!,
+                        subtitle: account["subtitle"]!,
+                        amount: account["amount"]!,
+                        holds: account["holds"]!,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
