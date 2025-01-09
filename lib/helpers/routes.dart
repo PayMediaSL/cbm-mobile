@@ -27,6 +27,7 @@ import 'package:app/screens/main_screens/drawer/user_profile_Screen.dart';
 import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/home_screen/fixed_deposite/fixed_deposite.dart';
 import 'package:app/screens/main_screens/home_screen/loan_service/specific_loan_service.dart';
+import 'package:app/screens/main_screens/home_screen/saved_cards/saved_cards_screen.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_ecommerce.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_education.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_entertainment.dart';
@@ -144,6 +145,7 @@ class ScreenRoutes {
 
   static const String toPayBillsMainScreen = "toPayBillsMainScreen";
   static const String toPaySpecificBillScreen = "toPaySpecificBillScreen";
+  static const String toSavedCardScreen = "toSavedCardScreen";
 
   // Trasnsaction Confirmation
 
@@ -537,6 +539,12 @@ class Router {
       case ScreenRoutes.toPaySpecificBillScreen:
         return MaterialPageRoute(
           builder: (_) => PaySpecificBill(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toSavedCardScreen:
+        return MaterialPageRoute(
+          builder: (_) => SavedCardScreen(),
           settings: settings,
         );
 

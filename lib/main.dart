@@ -106,6 +106,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => TabBarProvider()),
           ChangeNotifierProvider(create: (_) => TabBarProviderCurved()),
           ChangeNotifierProvider(create: (_) => PayBillProvider()),
+          // ChangeNotifierProvider(create: (_) => ExpandableTileProvider()),
         ],
         child: const MyApp(),
       ),

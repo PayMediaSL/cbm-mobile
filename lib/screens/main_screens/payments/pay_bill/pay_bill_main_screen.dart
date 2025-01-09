@@ -631,7 +631,6 @@ class ExpandableTile extends StatelessWidget {
             ),
             if (isExpanded) ...[
               ColumnSpacer(0.02),
-
               Padding(
                 padding: EdgeInsets.only(left: 55.sp),
                 child: Column(
@@ -671,55 +670,6 @@ class ExpandableTile extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,children: [],),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-              //     Text('Reference Number',
-              //         style: commonTextHeadingStyle.copyWith(
-              //             fontSize: 12.sp,
-              //             color: AppColors.onBoardSubTextStyleColor,
-              //             fontWeight: FontWeight.w400)),
-              //     Text('$transactionNumber',
-              //         style: commonTextHeadingStyle.copyWith(
-              //             fontSize: 12.sp,
-              //             color: AppColors.onBoardSubTextStyleColor,
-              //             fontWeight: FontWeight.w400)),
-              //   ],
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-              //     Text('Running Balance',
-              //         style: commonTextHeadingStyle.copyWith(
-              //             fontSize: 12.sp,
-              //             color: AppColors.onBoardSubTextStyleColor,
-              //             fontWeight: FontWeight.w400)),
-              //     Text('$runningBalance',
-              //         style: commonTextHeadingStyle.copyWith(
-              //             fontSize: 12.sp,
-              //             color: AppColors.onBoardSubTextStyleColor,
-              //             fontWeight: FontWeight.w400)),
-              //   ],
-              // ),
-              // Text(
-              //   'Running Balance: $runningBalance',
-              //   style: TextStyle(
-              //     fontSize: 14,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // SizedBox(height: 4),
-              // Text(
-              //   'Transaction Number: $transactionNumber',
-              //   style: TextStyle(
-              //     fontSize: 14,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
             ],
           ],
         ),

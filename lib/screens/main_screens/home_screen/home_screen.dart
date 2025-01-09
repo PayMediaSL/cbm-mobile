@@ -709,11 +709,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                         final card = cardData[index];
                         return Row(
                           children: [
-                            VisaCardWidget2(
-                              cardHeight: ScreenUtils.width * 0.33,
-                              cardwidth: ScreenUtils.width * 0.6,
-                              availableBalance: card["availableBalance"] ?? "",
-                              accountNumber: card["accountNumber"] ?? "",
+                            GestureDetector(
+                              onTap: () {
+                                pushScreen(
+                                    context, ScreenRoutes.toSavedCardScreen);
+                              },
+                              child: VisaCardWidget2(
+                                cardHeight: ScreenUtils.width * 0.33,
+                                cardwidth: ScreenUtils.width * 0.6,
+                                availableBalance:
+                                    card["availableBalance"] ?? "",
+                                accountNumber: card["accountNumber"] ?? "",
+                              ),
                             ),
                             // Add a separator after every card except the last one
                             if (index !=
@@ -758,12 +765,19 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                         final card = cardData[index];
                         return Row(
                           children: [
-                            VisaCardWidget2(
-                              gradientColor1: Colors.red,
-                              cardHeight: ScreenUtils.width * 0.33,
-                              cardwidth: ScreenUtils.width * 0.6,
-                              availableBalance: card["availableBalance"] ?? "",
-                              accountNumber: card["accountNumber"] ?? "",
+                            GestureDetector(
+                              onTap: () {
+                                pushScreen(
+                                    context, ScreenRoutes.toSavedCardScreen);
+                              },
+                              child: VisaCardWidget2(
+                                gradientColor1: Colors.red,
+                                cardHeight: ScreenUtils.width * 0.33,
+                                cardwidth: ScreenUtils.width * 0.6,
+                                availableBalance:
+                                    card["availableBalance"] ?? "",
+                                accountNumber: card["accountNumber"] ?? "",
+                              ),
                             ),
                             // Add a separator after every card except the last one
                             if (index !=
@@ -808,12 +822,19 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                         final card = cardData[index];
                         return Row(
                           children: [
-                            VisaCardWidget2(
-                              gradientColor1: Colors.grey,
-                              cardHeight: ScreenUtils.width * 0.33,
-                              cardwidth: ScreenUtils.width * 0.6,
-                              availableBalance: card["availableBalance"] ?? "",
-                              accountNumber: card["accountNumber"] ?? "",
+                            GestureDetector(
+                              onTap: () {
+                                pushScreen(
+                                    context, ScreenRoutes.toSavedCardScreen);
+                              },
+                              child: VisaCardWidget2(
+                                gradientColor1: Colors.grey,
+                                cardHeight: ScreenUtils.width * 0.33,
+                                cardwidth: ScreenUtils.width * 0.6,
+                                availableBalance:
+                                    card["availableBalance"] ?? "",
+                                accountNumber: card["accountNumber"] ?? "",
+                              ),
                             ),
                             // Add a separator after every card except the last one
                             if (index !=

@@ -63,6 +63,17 @@ class LoanDetailsScreen extends StatelessWidget {
       "date": "24/11/2024 "
     },
   ];
+  final List<Map<String, String>> loanData = [
+    {"label": "Original loan amount", "value": "200,000.00"},
+    {"label": "Outstanding balance", "value": "sdsd"},
+    {"label": "Current interest rate", "value": "sdsd"},
+    {"label": "Next payment amount", "value": "sdsd"},
+    {"label": "Next payment date", "value": "sdsd"},
+    {"label": "Overdue amount", "value": "sdsd"},
+    {"label": "Debit account", "value": "sdsd"},
+    {"label": "Product Name", "value": "sdsd"},
+    {"label": "Granted date", "value": "sdsd"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -282,15 +293,25 @@ class LoanDetailsScreen extends StatelessWidget {
               ),
             ),
             ColumnSpacer(0.01),
-            textWithDivider("Original loan amount", "200,000.00"),
-            textWithDivider("Outstanding balance", "sdsd"),
-            textWithDivider("Current interest rate", "sdsd"),
-            textWithDivider("Next payment amount", "sdsd"),
-            textWithDivider("Next payment date", "sdsd"),
-            textWithDivider("Overdue amount", "sdsd"),
-            textWithDivider("Debit account", "sdsd"),
-            textWithDivider("Product Name", "sdsd"),
-            textWithDivider("Granted date", "sdsd"),
+
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: loanData.length,
+              itemBuilder: (context, index) {
+                final item = loanData[index];
+                return textWithDivider(item["label"]!,
+                    item["value"]!); // Use "!" to ensure the non-null values
+              },
+            )
+            // textWithDivider("Original loan amount", "200,000.00"),
+            // textWithDivider("Outstanding balance", "sdsd"),
+            // textWithDivider("Current interest rate", "sdsd"),
+            // textWithDivider("Next payment amount", "sdsd"),
+            // textWithDivider("Next payment date", "sdsd"),
+            // textWithDivider("Overdue amount", "sdsd"),
+            // textWithDivider("Debit account", "sdsd"),
+            // textWithDivider("Product Name", "sdsd"),
+            // textWithDivider("Granted date", "sdsd"),
           ],
         ),
       ),
