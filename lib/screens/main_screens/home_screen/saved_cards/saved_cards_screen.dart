@@ -325,11 +325,52 @@ class SavedCardScreen extends StatelessWidget {
                           ),
                           if (expandedIndex == index)
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Additional details for this transaction", // Replace with actual details
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.black),
+                              padding: EdgeInsets.only(left: 55.sp),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Reference Number',
+                                          style:
+                                              commonTextHeadingStyle.copyWith(
+                                                  fontSize: 12.sp,
+                                                  color: AppColors
+                                                      .onBoardSubTextStyleColor,
+                                                  fontWeight: FontWeight.w400)),
+                                      // RowSpacer(0.1),
+                                      Text('asasa',
+                                          style:
+                                              commonTextHeadingStyle.copyWith(
+                                                  fontSize: 12.sp,
+                                                  color: AppColors
+                                                      .onBoardSubTextStyleColor,
+                                                  fontWeight: FontWeight.w400)),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Running Balance',
+                                          style:
+                                              commonTextHeadingStyle.copyWith(
+                                                  fontSize: 12.sp,
+                                                  color: AppColors
+                                                      .onBoardSubTextStyleColor,
+                                                  fontWeight: FontWeight.w400)),
+                                      // RowSpacer(0.14),
+                                      Text('asas',
+                                          style:
+                                              commonTextHeadingStyle.copyWith(
+                                                  fontSize: 12.sp,
+                                                  color: AppColors
+                                                      .onBoardSubTextStyleColor,
+                                                  fontWeight: FontWeight.w400)),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                         ],
