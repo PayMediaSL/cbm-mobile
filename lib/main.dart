@@ -23,6 +23,7 @@ import 'package:app/providers/home_screen/quick_access_data_provider.dart';
 import 'package:app/providers/home_screen/tap_selection_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/other_provider/drop_down_provider.dart';
+import 'package:app/providers/other_provider/expandable_tile_provider.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/providers/paybill_provider/pay_bill_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
@@ -106,7 +107,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => TabBarProvider()),
           ChangeNotifierProvider(create: (_) => TabBarProviderCurved()),
           ChangeNotifierProvider(create: (_) => PayBillProvider()),
-          // ChangeNotifierProvider(create: (_) => ExpandableTileProvider()),
+          ChangeNotifierProvider(create: (_) => TransactionProvider()),
         ],
         child: const MyApp(),
       ),

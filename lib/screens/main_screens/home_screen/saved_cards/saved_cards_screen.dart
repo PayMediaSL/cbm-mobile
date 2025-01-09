@@ -3,6 +3,7 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/providers/other_provider/expandable_tile_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/circular_image_text.dart';
@@ -172,7 +173,7 @@ class SavedCardScreen extends StatelessWidget {
                       builder: (context, provider, _) {
                         if (provider.getSelectedIndex("card_service_detail") ==
                             0) {
-                          return _transaction();
+                          return _transaction(context);
                         } else {
                           return _info();
                         }
@@ -184,20 +185,27 @@ class SavedCardScreen extends StatelessWidget {
             ]));
   }
 
-  Widget _transaction() {
+  Widget _transaction(BuildContext context) {
+    final transactionProvider = Provider.of<TransactionProvider>(context);
+
+    // Group transactions by month
     // Group transactions by month
     final Map<String, List<Map<String, dynamic>>> groupedTransactions = {};
 
     for (var transaction in transactions) {
       try {
-        final dateString = transaction["date"].trim();
-        final transactionDate = DateFormat("dd/MM/yyyy").parse(dateString);
-        final monthYear = DateFormat("MMMM").format(transactionDate);
-        if (!groupedTransactions.containsKey(monthYear)) {
-          groupedTransactions[monthYear] = [];
+        final dateString = (transaction["date"] as String?)?.trim();
+        if (dateString != null && dateString.isNotEmpty) {
+          final transactionDate = DateFormat("dd/MM/yyyy").parse(dateString);
+          final monthYear = DateFormat("MMMM yyyy").format(transactionDate);
+          if (!groupedTransactions.containsKey(monthYear)) {
+            groupedTransactions[monthYear] = [];
+          }
+          groupedTransactions[monthYear]?.add(transaction);
         }
-        groupedTransactions[monthYear]?.add(transaction);
-      } catch (e) {}
+      } catch (e) {
+        // Handle errors gracefully
+      }
     }
 
     return CustomCurvedContainer(
@@ -211,74 +219,198 @@ class SavedCardScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Month Header
-              Text(monthYear,
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  monthYear,
                   style: commonTextStyle.copyWith(
-                      fontSize: 15.sp,
-                      color: AppColors.secondarysubGreyColor2)),
-              SizedBox(
-                child: ListView.builder(
-                  shrinkWrap:
-                      true, // This ensures the ListView doesn't take up too much space
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: transactionsInMonth.length,
-                  itemBuilder: (context, index) {
-                    final transaction = transactionsInMonth[index];
+                    fontSize: 15.sp,
+                    color: AppColors.secondarysubGreyColor2,
+                  ),
+                ),
+              ),
+              // Transaction List for the current month
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: transactionsInMonth.length,
+                itemBuilder: (context, index) {
+                  final transaction = transactionsInMonth[index];
 
-                    return ListTile(
-                      leading: Container(
-                        height: ScreenUtils.height * 0.05,
-                        width: ScreenUtils.height * 0.05,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: transaction["type"] == "Debit"
-                              ? AppColors.primaryRedShadeColor
-                              : AppColors.primaryGreenShadeColor,
-                        ),
-                        child: Center(
-                          child: Icon(
-                            transaction["type"] == "Debit"
-                                ? Icons.arrow_back
-                                : Icons.arrow_forward,
-                            color: transaction["type"] == "Debit"
-                                ? AppColors.primaryRedColor
-                                : AppColors.primaryGreenColor,
-                          ),
-                        ),
-                      ),
-                      title: Text(
-                        transaction["title"],
-                        style: commonTextStyle.copyWith(
-                            color: AppColors.primaryBlackColor),
-                      ),
-                      subtitle: Text(
-                        transaction["date"],
-                        style: commonTextStyle.copyWith(
-                            fontSize: 12.sp,
-                            color: AppColors.onBoardSubTextStyleColor),
-                      ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                  // Get the current expanded index for this month
+                  final expandedIndex = transactionProvider
+                      .getExpandedTransactionIndex(monthYear);
+
+                  return InkWell(
+                    onTap: () {
+                      // Toggle expansion for this transaction within the month
+                      transactionProvider.toggleTransactionExpansion(
+                          monthYear, index);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
+                      decoration: BoxDecoration(
+                          color: expandedIndex == index
+                              ? AppColors.bottomNavBgColor
+                              : Colors.transparent),
+                      child: Column(
                         children: [
-                          Text(
-                            "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
-                            style: commonTextStyle.copyWith(
-                              color: transaction["amount"] > 0
-                                  ? AppColors.primaryGreenColor
-                                  : AppColors.primaryRedColor,
+                          Row(
+                            children: [
+                              Container(
+                                height: ScreenUtils.height * 0.05,
+                                width: ScreenUtils.height * 0.05,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: transaction["type"] == "Debit"
+                                      ? AppColors.primaryRedShadeColor
+                                      : AppColors.primaryGreenShadeColor,
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    transaction["type"] == "Debit"
+                                        ? Icons.arrow_back
+                                        : Icons.arrow_forward,
+                                    color: transaction["type"] == "Debit"
+                                        ? AppColors.primaryRedColor
+                                        : AppColors.primaryGreenColor,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                  width:
+                                      16.0), // Space between leading and text
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      transaction["title"],
+                                      style: commonTextStyle.copyWith(
+                                          color: AppColors.primaryBlackColor),
+                                    ),
+                                    Text(
+                                      transaction["date"],
+                                      style: commonTextStyle.copyWith(
+                                          fontSize: 12.sp,
+                                          color: AppColors
+                                              .onBoardSubTextStyleColor),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
+                                    style: commonTextStyle.copyWith(
+                                      color: transaction["amount"] > 0
+                                          ? AppColors.primaryGreenColor
+                                          : AppColors.primaryRedColor,
+                                    ),
+                                  ),
+                                  Text(
+                                    "${transaction["type"]}",
+                                    style: commonTextStyle.copyWith(
+                                        fontSize: 10.sp,
+                                        color:
+                                            AppColors.onBoardSubTextStyleColor),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          if (expandedIndex == index)
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Additional details for this transaction", // Replace with actual details
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
                             ),
-                          ),
-                          Text(
-                            "${transaction["type"]}",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 10.sp,
-                                color: AppColors.onBoardSubTextStyleColor),
-                          ),
                         ],
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+
+                  // return Column(
+                  //   children: [
+                  //     InkWell(
+                  //       onTap: () {
+                  //         // Toggle expansion for this transaction within the month
+                  //         transactionProvider.toggleTransactionExpansion(
+                  //             monthYear, index);
+                  //       },
+                  //       child: ListTile(
+                  //         leading: Container(
+                  //           height: ScreenUtils.height * 0.05,
+                  //           width: ScreenUtils.height * 0.05,
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(10.0),
+                  //             color: transaction["type"] == "Debit"
+                  //                 ? AppColors.primaryRedShadeColor
+                  //                 : AppColors.primaryGreenShadeColor,
+                  //           ),
+                  //           child: Center(
+                  //             child: Icon(
+                  //               transaction["type"] == "Debit"
+                  //                   ? Icons.arrow_back
+                  //                   : Icons.arrow_forward,
+                  //               color: transaction["type"] == "Debit"
+                  //                   ? AppColors.primaryRedColor
+                  //                   : AppColors.primaryGreenColor,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         title: Text(
+                  //           transaction["title"],
+                  //           style: commonTextStyle.copyWith(
+                  //               color: AppColors.primaryBlackColor),
+                  //         ),
+                  //         subtitle: Text(
+                  //           transaction["date"],
+                  //           style: commonTextStyle.copyWith(
+                  //               fontSize: 12.sp,
+                  //               color: AppColors.onBoardSubTextStyleColor),
+                  //         ),
+                  //         trailing: Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           crossAxisAlignment: CrossAxisAlignment.end,
+                  //           children: [
+                  //             Text(
+                  //               "${transaction["amount"] > 0 ? "+" : ""}${transaction["amount"].toStringAsFixed(2)}",
+                  //               style: commonTextStyle.copyWith(
+                  //                 color: transaction["amount"] > 0
+                  //                     ? AppColors.primaryGreenColor
+                  //                     : AppColors.primaryRedColor,
+                  //               ),
+                  //             ),
+                  //             Text(
+                  //               "${transaction["type"]}",
+                  //               style: commonTextStyle.copyWith(
+                  //                   fontSize: 10.sp,
+                  //                   color: AppColors.onBoardSubTextStyleColor),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //       // Only expand the tapped transaction
+                  //       if (expandedIndex == index)
+                  //         Padding(
+                  //           padding: const EdgeInsets.all(8.0),
+                  //           child: Text(
+                  //             "Additional details for this transaction", // Replace with actual details
+                  //             style: TextStyle(fontSize: 14, color: Colors.black),
+                  //           ),
+                  //         ),
+                  //   ],
+                  // );
+                },
               ),
             ],
           );
@@ -318,15 +450,6 @@ class SavedCardScreen extends StatelessWidget {
                     item["value"]!); // Use "!" to ensure the non-null values
               },
             )
-            // textWithDivider("Original loan amount", "200,000.00"),
-            // textWithDivider("Outstanding balance", "sdsd"),
-            // textWithDivider("Current interest rate", "sdsd"),
-            // textWithDivider("Next payment amount", "sdsd"),
-            // textWithDivider("Next payment date", "sdsd"),
-            // textWithDivider("Overdue amount", "sdsd"),
-            // textWithDivider("Debit account", "sdsd"),
-            // textWithDivider("Product Name", "sdsd"),
-            // textWithDivider("Granted date", "sdsd"),
           ],
         ),
       ),
