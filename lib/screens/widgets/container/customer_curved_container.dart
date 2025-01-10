@@ -13,17 +13,20 @@ class CustomCurvedContainer extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Widget? child;
 
+  final EdgeInsetsGeometry? margin;
   const CustomCurvedContainer(
       {super.key,
       this.height,
       this.width,
       this.borderradius,
       this.padding,
+      this.margin,
       this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       padding:
           padding ?? EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
       height: height ?? ScreenUtils.height * 0.3,

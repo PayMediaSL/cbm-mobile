@@ -28,6 +28,7 @@ import 'package:app/screens/main_screens/eslips_screen/e_slips_screen.dart';
 import 'package:app/screens/main_screens/home_screen/fixed_deposite/fixed_deposite.dart';
 import 'package:app/screens/main_screens/home_screen/loan_service/specific_loan_service.dart';
 import 'package:app/screens/main_screens/home_screen/saved_cards/saved_cards_screen.dart';
+import 'package:app/screens/main_screens/lifestyle/life_style_details.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_ecommerce.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_education.dart';
 import 'package:app/screens/main_screens/lifestyle/lifestyle_entertainment.dart';
@@ -167,6 +168,7 @@ class ScreenRoutes {
   static const String toLifeStyleEcommerce = "toLifeStyleEcommerce";
   static const String toLifeStyleTransport = "toLifeStyleTransport";
   static const String toLifeStyleEducation = "toLifeStyleEducation";
+  static const String toLifeStyleDetailsScreen = "toLifeStyleDetailsScreen";
 
   //! Transaction
   static const String toMyBudgetScreen = "toMyBudgetScreen";
@@ -418,6 +420,16 @@ class Router {
       case ScreenRoutes.toLifeStyleEducation:
         return MaterialPageRoute(
           builder: (_) => LifeStyleEducationeScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toLifeStyleDetailsScreen:
+        final args = settings.arguments as Map<String, String>;
+
+        return MaterialPageRoute(
+          builder: (_) => LifeStyleDetails(
+            backTitle: args['backTitle'] ?? '',
+          ),
           settings: settings,
         );
       //! Notification Screen

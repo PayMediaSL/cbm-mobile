@@ -35,6 +35,7 @@ class MainHomeScreen extends StatefulWidget {
 }
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
+  //! Needs to Clear Once Api has been done
   final List<Map<String, String>> cardData = [
     {
       'availableBalance': 'John Doe',
@@ -387,10 +388,21 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {
+                                //! Pass the value from one widget to another without the need to create separate screens for each one, maintaining a consistent UI.()
+                                //Two Option Based on Scenario use it
                                 print(index);
                                 if (LifeStyle[index]["title"] == "Food") {
+                                  //?Option1
+                                  // pushScreen(
+                                  //     context, ScreenRoutes.toLifeStyleFood);
+                                  //?Option2
                                   pushScreen(
-                                      context, ScreenRoutes.toLifeStyleFood);
+                                    context,
+                                    ScreenRoutes.toLifeStyleDetailsScreen,
+                                    arguments: {
+                                      "backTitle": "Food",
+                                    },
+                                  );
                                 } else if (LifeStyle[index]["title"] ==
                                     "Entertainment") {
                                   pushScreen(context,
@@ -630,7 +642,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
 
           ColumnSpacer(0.01),
 
-//! Current Accounts
+          //! Current Accounts
 
           ToggleViewWidget(
             title: "Current Accounts",

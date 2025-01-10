@@ -6,6 +6,7 @@ import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/drawer/toggle_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/calendar/calendar_widget.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
@@ -275,7 +276,11 @@ class GlobalTransferMain extends StatelessWidget {
                                   isSmallContentPadding: true,
                                   hint: "mm/dd/yyyy",
                                   suffixIcon: IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showDateTimePickerBottomSheet(
+                                            context, "global_date_1");
+                                        //janu
+                                      },
                                       icon: Icon(
                                         Icons.calendar_month_rounded,
                                         color: AppColors.textFieldHintColor,
@@ -423,4 +428,29 @@ class GlobalTransferMain extends StatelessWidget {
                   )
                 ])));
   }
+
+  void showDateTimePickerBottomSheet(BuildContext context, String dateKey) {
+    showModalBottomSheet(
+      backgroundColor: AppColors.subGreyColor,
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
+          padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 20.sp),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(13.sp),
+          ),
+          child: DateTimePickerWidget(dateKey: dateKey),
+        );
+      },
+    );
+  }
 }
+
+//! Print Selected Date and Time
+
+// final dateTimeProvider = Provider.of<DateTimeProvider>(context);
+// DateTime selectedDate = dateTimeProvider
+//     .getSelectedDate('calendar1'); // Replace 'calendar1' with the actual key

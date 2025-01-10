@@ -327,8 +327,7 @@ class LoanDetailsScreen extends StatelessWidget {
           children: [
             Text(
               leftText,
-              style:
-                  commonTextInTheField, // Make sure to define this style somewhere in your code
+              style: commonTextInTheField,
             ),
             Text(
               rightText,
@@ -337,8 +336,7 @@ class LoanDetailsScreen extends StatelessWidget {
           ],
         ),
         Divider(
-          color: AppColors
-              .secondarysubGreyColor5, // Define this color in your app's theme
+          color: AppColors.secondarysubGreyColor5,
         ),
       ],
     );

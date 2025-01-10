@@ -300,8 +300,7 @@ class FixedDepositeDetailScreen extends StatelessWidget {
               itemCount: loanData.length,
               itemBuilder: (context, index) {
                 final item = loanData[index];
-                return textWithDivider(item["label"]!,
-                    item["value"]!); // Use "!" to ensure the non-null values
+                return textWithDivider(item["label"]!, item["value"]!);
               },
             )
             // textWithDivider("Original loan amount", "200,000.00"),

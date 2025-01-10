@@ -13,6 +13,7 @@ import 'package:app/models/notification_state.dart';
 import 'package:app/providers/app_language_provider.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
+import 'package:app/providers/date_tme/date_time_provider.dart';
 import 'package:app/providers/drawer/help_provider.dart';
 import 'package:app/providers/drawer/info_provider.dart';
 import 'package:app/providers/drawer/transaction_limit_provider.dart';
@@ -108,6 +109,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => TabBarProviderCurved()),
           ChangeNotifierProvider(create: (_) => PayBillProvider()),
           ChangeNotifierProvider(create: (_) => TransactionProvider()),
+          ChangeNotifierProvider(create: (_) => DateTimeProvider()),
         ],
         child: const MyApp(),
       ),
