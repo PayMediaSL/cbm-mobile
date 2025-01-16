@@ -9,12 +9,16 @@ import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/services/validation_service.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddToFavouriteLocalTransferScreen extends StatelessWidget {
-  const AddToFavouriteLocalTransferScreen({super.key});
+  AddToFavouriteLocalTransferScreen({super.key});
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,87 +35,116 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
         },
         children: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ColumnSpacer(0.05),
-                  CustomCurvedContainer(
-                    height: ScreenUtils.height * 0.37,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Receipient Details",
-                          style: commonTextHeadingStyle,
-                        ),
-                        ColumnSpacer(0.01),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ColumnSpacer(0.05),
+                    CustomCurvedContainer(
+                      height: ScreenUtils.height * 0.37,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Receipient Details",
+                            style: commonTextHeadingStyle,
+                          ),
+                          ColumnSpacer(0.01),
 
-                        LabelWithDropdown(
+                          LabelWithDropdown(
                             label: "Recipient’s bank",
                             borderRadius: 12.sp,
                             dropdownKey: "local_transfer_favourite_bank",
-                            items: ["option1", "option2", "option3"]),
-                        ColumnSpacer(0.01),
+                            items: ["option1", "option2", "option3"],
+                            autovalidate: true,
+                            validator: (value) =>
+                                ValidationService.validateIsNotEmptyField(
+                                    value, "Bank"),
+                          ),
+                          ColumnSpacer(0.01),
 
-                        LabelWithTextField(
+                          LabelWithTextField(
                             label: "Receipient's account number",
-                            controller: signInPasswordController,
+                            controller: TextEditingController(),
                             borderRadius: 12.sp,
                             isSmallContentPadding: true,
-                            hint: "eg:234563354"),
-                        ColumnSpacer(0.01),
-                        LabelWithTextField(
+                            hint: "eg:234563354",
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            autovalidate: true,
+                            validator: (value) =>
+                                ValidationService.validateAccoutNumber(
+                              value,
+                            ),
+                          ),
+                          ColumnSpacer(0.01),
+                          LabelWithTextField(
                             label: "Recipient’s name",
-                            controller: signInPasswordController,
+                            controller: TextEditingController(),
                             borderRadius: 12.sp,
                             isSmallContentPadding: true,
-                            hint: "eg : john doe"),
+                            hint: "eg : john doe",
+                            autovalidate: true,
+                            validator: (value) =>
+                                ValidationService.validateIsNotEmptyField(
+                                    value, "Name"),
+                          ),
 
-                        // Text(
-                        //   "Receipient's Bank",
-                        //   style: commonTextFieldTitleStyle,
-                        // ),
-                        // ColumnSpacer(0.005),
-                        // CustomDropdown(
-                        //   borderradius: 13.sp,
-                        //   dropdownKey: 'localtransferFavourites',
-                        //   items: ['Option 1', 'Option 2', 'Option 3'],
-                        // ),
-                        // ColumnSpacer(0.01),
-                        // Text(
-                        //   "Receipient's account number",
-                        //   style: commonTextFieldTitleStyle,
-                        // ),
-                        // ColumnSpacer(0.005),
-                        // CustomLableTextField(
-                        //   signInPasswordController,
-                        //   borderradius: 12.sp,
-                        //   isSmallContentPadding: true,
-                        //   hint: "e.g : 234563354",
-                        // ),
-                        // ColumnSpacer(0.01),
-                        // Text(
-                        //   "Receipient's name",
-                        //   style: commonTextFieldTitleStyle,
-                        // ),
-                        // ColumnSpacer(0.005),
-                        // CustomLableTextField(
-                        //   signInPasswordController,
-                        //   borderradius: 12.sp,
-                        //   isSmallContentPadding: true,
-                        //   hint: "e.g : john doe",
-                        // ),
-                      ],
+                          // Text(
+                          //   "Receipient's Bank",
+                          //   style: commonTextFieldTitleStyle,
+                          // ),
+                          // ColumnSpacer(0.005),
+                          // CustomDropdown(
+                          //   borderradius: 13.sp,
+                          //   dropdownKey: 'localtransferFavourites',
+                          //   items: ['Option 1', 'Option 2', 'Option 3'],
+                          // ),
+                          // ColumnSpacer(0.01),
+                          // Text(
+                          //   "Receipient's account number",
+                          //   style: commonTextFieldTitleStyle,
+                          // ),
+                          // ColumnSpacer(0.005),
+                          // CustomLableTextField(
+                          //   signInPasswordController,
+                          //   borderradius: 12.sp,
+                          //   isSmallContentPadding: true,
+                          //   hint: "e.g : 234563354",
+                          // ),
+                          // ColumnSpacer(0.01),
+                          // Text(
+                          //   "Receipient's name",
+                          //   style: commonTextFieldTitleStyle,
+                          // ),
+                          // ColumnSpacer(0.005),
+                          // CustomLableTextField(
+                          //   signInPasswordController,
+                          //   borderradius: 12.sp,
+                          //   isSmallContentPadding: true,
+                          //   hint: "e.g : john doe",
+                          // ),
+                        ],
+                      ),
                     ),
-                  ),
-                  ColumnSpacer(0.3),
-                  MainButton(
-                    isMainButton: true,
-                    btnOnPress: () {},
-                    buttontitle: "Add to Favourite",
-                  )
-                ])));
+                    ColumnSpacer(0.3),
+                    MainButton(
+                      isMainButton: true,
+                      btnOnPress: () {
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Form is valid!')),
+                          );
+                        }
+                      },
+                      buttontitle: "Add to Favourite",
+                    )
+                  ]),
+            )));
   }
 }

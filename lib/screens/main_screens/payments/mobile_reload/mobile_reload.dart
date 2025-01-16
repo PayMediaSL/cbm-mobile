@@ -7,6 +7,7 @@ import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/models/contacts/contacts_model.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
+import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
@@ -15,7 +16,11 @@ import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/services/validation_service.dart';
+import 'package:app/utils/log_util.dart';
+import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +29,8 @@ import '../../../widgets/custom_tab/custom_tab_bar.dart';
 
 class MobileReloadScreen extends StatelessWidget {
   MobileReloadScreen({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   final List<Map<String, String>> cardData = [
     {
       'availableBalance': 'John Doe',
@@ -66,24 +73,6 @@ class MobileReloadScreen extends StatelessWidget {
       },
     );
   }
-  // void _showContactsBottomSheet(BuildContext context) {
-  //   showModalBottomSheet(
-  //     backgroundColor: Colors.white,
-  //     context: context,
-
-  //     enableDrag: true, // Allow the bottom sheet to be dragged
-  //     builder: (context) {
-  //       return DraggableScrollableSheet(
-  //         initialChildSize: 0.96, // Set initial height of the bottom sheet
-  //         minChildSize: 0.4, // Minimum height when collapsed
-  //         // maxChildSize: 1.0, // Maximum height (can drag to the top)
-  //         builder: (BuildContext context, ScrollController scrollController) {
-  //           return ContactsListPage(); // Pass contacts to bottom sheet
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -94,214 +83,267 @@ class MobileReloadScreen extends StatelessWidget {
         isBgContainer1Height: ScreenUtils.height * 0.07,
         onBackIconAvailable: true,
         onBackTitleAvailable: true,
-        onBackTap: () {},
+        onBackTap: () {
+          popScreen(context);
+        },
         backTitle: "Mobile Reload",
         children: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
             child: Consumer<TabBarProvider>(
               builder: (BuildContext context, TabBarProvider tabProvider,
                       Widget? child) =>
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                    ColumnSpacer(0.07),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.sp, horizontal: 10.sp),
-                      height: tabProvider.selectedIndex == 1
-                          ? ScreenUtils.height * 0.25
-                          : ScreenUtils.height * 0.7,
-                      width: ScreenUtils.width,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryWhiteColor,
-                        borderRadius: BorderRadius.circular(UI.borderRadius),
-                      ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "OneApp Mobile Reload",
-                              style: commonTextStyle.copyWith(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.black),
-                            ),
-                            ColumnSpacer(0.004),
-                            Text(
-                              "Reload from your OneApp account to Mobile number",
-                              style: commonTextStyle.copyWith(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.primarySubBlackColor),
-                            ),
-                            ColumnSpacer(0.03),
+                  Form(
+                key: _formKey,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ColumnSpacer(0.07),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.sp, horizontal: 10.sp),
+                        height: tabProvider.selectedIndex == 1
+                            ? ScreenUtils.height * 0.25
+                            : ScreenUtils.height * 0.7,
+                        width: ScreenUtils.width,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryWhiteColor,
+                          borderRadius: BorderRadius.circular(UI.borderRadius),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "OneApp Mobile Reload",
+                                style: commonTextStyle.copyWith(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.black),
+                              ),
+                              ColumnSpacer(0.004),
+                              Text(
+                                "Reload from your OneApp account to Mobile number",
+                                style: commonTextStyle.copyWith(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.primarySubBlackColor),
+                              ),
+                              ColumnSpacer(0.03),
 
-                            CustomTabBarwidget(
-                              tabs: const ["New number", "Saved contacts"],
-                            ),
-                            ColumnSpacer(0.03),
-                            // Content based on the selected tab
-                            Consumer<TabBarProvider>(
-                              builder: (context, provider, _) {
-                                if (provider.selectedIndex == 0) {
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Mobile number",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 13.sp,
-                                            color: AppColors.black,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      ColumnSpacer(0.005),
-
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            child: CustomLableTextField(
-                                              isSmallContentPadding: true,
-                                              borderradius: 13.sp,
-                                              inputFormatters: [],
-                                              emailrController,
-                                              hint: "eg: 07543128978",
-                                            ),
-                                          ),
-                                          RowSpacer(
-                                              0.02), // Space between the TextField and button
-                                          Container(
-                                            height: ScreenUtils.height * 0.05,
-                                            width: ScreenUtils.width * 0.25,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: AppColors
-                                                        .primaryBlackColor),
-                                                color:
-                                                    AppColors.primaryWhiteColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        UI.borderRadius)),
-                                            child: Center(
-                                              child: Text(
-                                                "Save Contact",
-                                                style: commonTextStyle.copyWith(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: AppColors.black),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-
-                                      ColumnSpacer(0.015),
-                                      Text(
-                                        "Amount",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 13.sp,
-                                            color: AppColors.black,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      ColumnSpacer(0.005),
-                                      CustomLableTextField(
-                                        isSmallContentPadding: true,
-                                        borderradius: 13.sp,
-                                        inputFormatters: [],
-                                        emailrController,
-                                        hint: "eg: 20000",
-                                      ),
-                                      ColumnSpacer(0.015),
-                                      Text(
-                                        "Description",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 13.sp,
-                                            color: AppColors.black,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      ColumnSpacer(0.005),
-                                      CustomLableTextField(
-                                        isSmallContentPadding: true,
-                                        borderradius: 13.sp,
-                                        inputFormatters: [],
-                                        emailrController,
-                                        hint: "eg: Payment",
-                                      ),
-                                      ColumnSpacer(0.015),
-                                      Text(
-                                        "Pay From",
-                                        style: commonTextStyle.copyWith(
-                                            fontSize: 13.sp,
-                                            color: AppColors.black,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      ColumnSpacer(0.005),
-                                      SizedBox(
-                                        height: ScreenUtils.width * 0.4,
-                                        child: PageView.builder(
-                                          controller: PageController(
-                                            viewportFraction:
-                                                0.8, // Adjust for card size relative to screen width
-                                          ),
-                                          itemCount: cardData.length,
-                                          itemBuilder: (context, index) {
-                                            final card = cardData[index];
-                                            return Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 8.0),
-                                              child: VisaCardWidget2(
-                                                gradientColor2: Colors.black87,
-                                                gradientColor1:
-                                                    AppColors.primaryBlueColor,
-                                                cardHeight:
-                                                    ScreenUtils.width * 0.33,
-                                                cardwidth:
-                                                    ScreenUtils.width * 0.6,
-                                                availableBalance:
-                                                    card["availableBalance"] ??
-                                                        "",
-                                                accountNumber:
-                                                    card["accountNumber"] ?? "",
-                                              ),
-                                            );
-                                          },
+                              CustomTabBarwidget(
+                                tabs: const ["New number", "Saved contacts"],
+                              ),
+                              ColumnSpacer(0.03),
+                              // Content based on the selected tab
+                              Consumer<TabBarProvider>(
+                                builder: (context, provider, _) {
+                                  if (provider.selectedIndex == 0) {
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Mobile number",
+                                          style: commonTextStyle.copyWith(
+                                              fontSize: 13.sp,
+                                              color: AppColors.black,
+                                              fontWeight: FontWeight.w500),
                                         ),
-                                      ),
-                                      // TextFormField()
-                                    ],
-                                  );
-                                } else {
-                                  Future.delayed(Duration.zero, () {
-                                    if (provider.selectedIndex == 1) {
-                                      _showContactsBottomSheet(context);
-                                    }
-                                    // _showContactsBottomSheet(context);
-                                  });
-                                  return Container();
-                                  // return const Center(
-                                  //     child: Text("Saved contacts content"));
-                                }
-                              },
-                            ),
-                          ],
+                                        ColumnSpacer(0.005),
+
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              child: CustomLableTextField(
+                                                isSmallContentPadding: true,
+                                                borderradius: 13.sp,
+                                                emailrController,
+                                                hint: "eg: 07543128978",
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                inputFormatters: [
+                                                  FilteringTextInputFormatter
+                                                      .digitsOnly
+                                                ],
+                                                autovalidate: true,
+                                                validator: (value) =>
+                                                    ValidationService
+                                                        .validateUserMobileNumber(
+                                                  value,
+                                                ),
+                                              ),
+                                            ),
+                                            RowSpacer(
+                                                0.02), // Space between the TextField and button
+                                            Container(
+                                              height: ScreenUtils.height * 0.05,
+                                              width: ScreenUtils.width * 0.25,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: AppColors
+                                                          .primaryBlackColor),
+                                                  color: AppColors
+                                                      .primaryWhiteColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          UI.borderRadius)),
+                                              child: Center(
+                                                child: Text(
+                                                  "Save Contact",
+                                                  style:
+                                                      commonTextStyle.copyWith(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color:
+                                                              AppColors.black),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+
+                                        ColumnSpacer(0.015),
+                                        Text(
+                                          "Amount",
+                                          style: commonTextStyle.copyWith(
+                                              fontSize: 13.sp,
+                                              color: AppColors.black,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        ColumnSpacer(0.005),
+                                        CustomLableTextField(
+                                          isSmallContentPadding: true,
+                                          borderradius: 13.sp,
+                                          emailrController,
+                                          hint: "eg: 20000",
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter
+                                                .digitsOnly
+                                          ],
+                                          autovalidate: true,
+                                          validator: (input) =>
+                                              ValidationService
+                                                  .validateIsNotEmptyField(
+                                                      input, "Amount"),
+                                        ),
+                                        ColumnSpacer(0.015),
+                                        Text(
+                                          "Description",
+                                          style: commonTextStyle.copyWith(
+                                              fontSize: 13.sp,
+                                              color: AppColors.black,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        ColumnSpacer(0.005),
+                                        CustomLableTextField(
+                                          isSmallContentPadding: true,
+                                          borderradius: 13.sp,
+                                          inputFormatters: [],
+                                          emailrController,
+                                          hint: "eg: Payment",
+                                          autovalidate: true,
+                                          validator: (input) =>
+                                              ValidationService
+                                                  .validateIsNotEmptyField(
+                                                      input, "Payment"),
+                                        ),
+                                        ColumnSpacer(0.015),
+                                        Text(
+                                          "Pay From",
+                                          style: commonTextStyle.copyWith(
+                                              fontSize: 13.sp,
+                                              color: AppColors.black,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        ColumnSpacer(0.005),
+                                        Consumer<CommonProvider>(
+                                          builder: (BuildContext context,
+                                                  CommonProvider commonProvider,
+                                                  Widget? child) =>
+                                              SizedBox(
+                                            height: ScreenUtils.width * 0.4,
+                                            child: PageView.builder(
+                                              controller: PageController(
+                                                initialPage:
+                                                    commonProvider.currentIndex,
+                                                viewportFraction:
+                                                    0.8, // Card occupies 80% of screen width
+                                              ),
+                                              onPageChanged: (index) {
+                                                commonProvider
+                                                    .updateIndex(index);
+                                              },
+                                              itemCount: cardData.length,
+                                              itemBuilder: (context, index) {
+                                                final card = cardData[index];
+                                                return Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 8.0),
+                                                  child: VisaCardWidget2(
+                                                    gradientColor2:
+                                                        Colors.black87,
+                                                    gradientColor1: AppColors
+                                                        .primaryBlueColor,
+                                                    cardHeight:
+                                                        ScreenUtils.width *
+                                                            0.33,
+                                                    cardwidth:
+                                                        ScreenUtils.width * 0.6,
+                                                    availableBalance: card[
+                                                            "availableBalance"] ??
+                                                        "",
+                                                    accountNumber:
+                                                        card["accountNumber"] ??
+                                                            "",
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        // TextFormField()
+                                      ],
+                                    );
+                                  } else {
+                                    Future.delayed(Duration.zero, () {
+                                      if (provider.selectedIndex == 1) {
+                                        _showContactsBottomSheet(context);
+                                      }
+                                      // _showContactsBottomSheet(context);
+                                    });
+                                    return Container();
+                                    // return const Center(
+                                    //     child: Text("Saved contacts content"));
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    ColumnSpacer(tabProvider.selectedIndex == 1 ? 0.45 : 0.04),
-                    MainButton(
-                      isMainButton: true,
-                      buttontitle: "Confirm Payment",
-                      btnOnPress: () {},
-                    )
-                  ]),
+                      ColumnSpacer(
+                          tabProvider.selectedIndex == 1 ? 0.45 : 0.04),
+                      MainButton(
+                        isMainButton: true,
+                        buttontitle: "Confirm Payment",
+                        btnOnPress: () {
+                          if (_formKey.currentState!.validate()) {
+                            printLog("Validated>>>>>>>>>");
+                          }
+                        },
+                      )
+                    ]),
+              ),
             )));
   }
 }

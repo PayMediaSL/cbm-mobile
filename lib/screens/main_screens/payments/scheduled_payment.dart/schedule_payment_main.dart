@@ -8,19 +8,23 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/drawer/toggle_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/services/validation_service.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class ScheduledPaymentScreen extends StatelessWidget {
   ScheduledPaymentScreen({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final List<Map<String, String>> savedTransfers = List.generate(
     10,
@@ -61,7 +65,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 Consumer<TabBarProviderCurved>(
                   builder: (context, provider, _) {
                     if (provider.getSelectedIndex("schedulepayment") == 0) {
-                      return transfer();
+                      return transfer(context);
                     } else {
                       return bill(context);
                     }
@@ -73,7 +77,9 @@ class ScheduledPaymentScreen extends StatelessWidget {
                           TabBarProviderCurved tabProvider, Widget? child) =>
                       MainButton(
                     isMainButton: true,
-                    btnOnPress: () {},
+                    btnOnPress: () {
+                      if (_formKey.currentState!.validate()) {}
+                    },
                     buttontitle:
                         tabProvider.getSelectedIndex("schedulepayment") == 0
                             ? "Confirm"
@@ -84,88 +90,120 @@ class ScheduledPaymentScreen extends StatelessWidget {
         ));
   }
 
-  Widget transfer() {
+  Widget transfer(BuildContext context) {
     return CustomCurvedContainer(
         height: ScreenUtils.height * 0.65,
         child: SingleChildScrollView(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-              Text(
-                "Schedule your Transfers",
-                style: commonTextHeadingStyle,
-              ),
-              ColumnSpacer(0.001),
-              Text(
-                "Schedule Transfer money to bank accounts.",
-                style: commonTextSubHeadingStyle,
-              ),
-              ColumnSpacer(0.013),
-              LabelWithTextField(
+            child: Form(
+          key: _formKey,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Schedule your Transfers",
+                  style: commonTextHeadingStyle,
+                ),
+                ColumnSpacer(0.001),
+                Text(
+                  "Schedule Transfer money to bank accounts.",
+                  style: commonTextSubHeadingStyle,
+                ),
+                ColumnSpacer(0.013),
+                LabelWithTextField(
                   suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDateTimePickerBottomSheet(
+                            context, "schedule_payment_transfer_date");
+                      },
                       icon: Icon(Icons.calendar_month_rounded)),
                   label: "Date",
                   controller: signInPasswordController,
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
-                  hint: "12/23/14"),
-              ColumnSpacer(0.01),
-              LabelWithTextField(
+                  hint: "12/23/14",
+                  autovalidate: true,
+                  validator: (input) =>
+                      ValidationService.validateIsNotEmptyField(input, "Date"),
+                ),
+                ColumnSpacer(0.01),
+                LabelWithTextField(
                   label: "Account Number",
                   controller: signInPasswordController,
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
-                  hint: "e.g. ********127"),
-              ColumnSpacer(0.01),
-              LabelWithTextField(
+                  hint: "e.g. ********127",
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  keyboardType: TextInputType.number,
+                  autovalidate: true,
+                  validator: (input) => ValidationService.validateAccoutNumber(
+                    input,
+                  ),
+                ),
+                ColumnSpacer(0.01),
+                LabelWithTextField(
                   label: "Account Name",
                   controller: signInPasswordController,
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
-                  hint: "eg : john doe"),
-              ColumnSpacer(0.01),
-              LabelWithTextField(
+                  hint: "eg : john doe",
+                  autovalidate: true,
+                  validator: (input) =>
+                      ValidationService.validateIsNotEmptyField(input, "Name"),
+                ),
+                ColumnSpacer(0.01),
+                LabelWithTextField(
                   label: "Amount ",
                   controller: signInPasswordController,
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
-                  hint: "eg : 100,000"),
-              ColumnSpacer(0.01),
-              LabelWithDropdown(
+                  hint: "eg : 100,000",
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  keyboardType: TextInputType.number,
+                  autovalidate: true,
+                  validator: (input) =>
+                      ValidationService.validateIsNotEmptyField(
+                          input, "Amount"),
+                ),
+                ColumnSpacer(0.01),
+                LabelWithDropdown(
                   label: "Billing Cycle",
                   borderRadius: 12.sp,
                   dropdownKey: "schedule_payment_billing_cycle",
-                  items: ["option1", "option2", "option3"]),
-              ColumnSpacer(0.01),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Consumer<ToggleSwitchProvider>(
-                    builder: (BuildContext context, ToggleSwitchProvider value,
-                            Widget? child) =>
-                        Transform.scale(
-                      scale: 0.8,
-                      child: CupertinoSwitch(
-                        value: value.getSwitchState("switch_schedule_bill"),
-                        activeColor: AppColors.primaryBlueColor,
-                        trackColor:
-                            AppColors.primaryBlackColor.withOpacity(0.12),
-                        thumbColor: AppColors.primaryWhiteColor,
-                        onChanged: (v) {
-                          value.toggleSwitch("switch_schedule_bill", v);
-                        },
+                  items: ["option1", "option2", "option3"],
+                  validator: (input) =>
+                      ValidationService.validateIsNotEmptyField(
+                          input, "Billing"),
+                ),
+                ColumnSpacer(0.01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Consumer<ToggleSwitchProvider>(
+                      builder: (BuildContext context,
+                              ToggleSwitchProvider value, Widget? child) =>
+                          Transform.scale(
+                        scale: 0.8,
+                        child: CupertinoSwitch(
+                          value: value.getSwitchState("switch_schedule_bill"),
+                          activeColor: AppColors.primaryBlueColor,
+                          trackColor:
+                              AppColors.primaryBlackColor.withOpacity(0.12),
+                          thumbColor: AppColors.primaryWhiteColor,
+                          onChanged: (v) {
+                            value.toggleSwitch("switch_schedule_bill", v);
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    "Add to Favourite",
-                    style: commonTextFieldTitleStyle,
-                  ),
-                ],
-              ),
-            ])));
+                    Text(
+                      "Add to Favourite",
+                      style: commonTextFieldTitleStyle,
+                    ),
+                  ],
+                ),
+              ]),
+        )));
   }
 
   Widget bill(BuildContext context) {

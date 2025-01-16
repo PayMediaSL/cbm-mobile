@@ -1,21 +1,29 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
-import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
+import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/services/validation_service.dart';
+import 'package:app/utils/log_util.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../widgets/drop_down/custom_drop_down_field.dart';
+import 'package:provider/provider.dart';
 
 class CardPaymentDetails extends StatelessWidget {
   CardPaymentDetails({super.key});
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // late PageController _pageController;
+
   final List<Map<String, String>> cardData = [
     {
       'availableBalance': 'John Doe',
@@ -78,140 +86,140 @@ class CardPaymentDetails extends StatelessWidget {
                         color: AppColors.primaryWhiteColor,
                         borderRadius: BorderRadius.circular(UI.borderRadius)),
                     child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Payment Details",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Pay to",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.006),
-
-                          CustomDropdown(
-                            borderradius: 13.sp,
-                            dropdownKey:
-                                'dropdown1', // Unique key for first dropdown
-                            items: ['Option 1', 'Option 2', 'Option 3'],
-                          ),
-
-                          //!?Readfing Drop Down Value
-
-                          // String selectedValue1 = context.read<DropdownProvider>().getSelectedValue('dropdown1');
-                          // String selectedValue2 = context.read<DropdownProvider>().getSelectedValue('dropdown2');
-                          // print("Selected Value 1: $selectedValue1");
-                          // print("Selected Value 2: $selectedValue2");
-
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Amount",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.006),
-                          CustomLableTextField(
-                            isSmallContentPadding: true,
-                            borderradius: 13.sp,
-                            inputFormatters: [],
-                            emailrController,
-                            hint: "RS.3000",
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Card Number",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.006),
-                          CustomDropdown(
-                            borderradius: 13.sp,
-                            dropdownKey:
-                                'dropdown2', // Unique key for first dropdown
-                            items: ['Option 1', 'Option 2', 'Option 3'],
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Card HolderName",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.006),
-                          CustomLableTextField(
-                            isSmallContentPadding: true,
-                            borderradius: 13.sp,
-                            inputFormatters: [],
-                            emailrController,
-                            hint: "eg: John Doe",
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Description",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.006),
-                          CustomLableTextField(
-                            isSmallContentPadding: true,
-                            borderradius: 13.sp,
-                            inputFormatters: [],
-                            emailrController,
-                            hint: "Card Payment",
-                          ),
-                          ColumnSpacer(0.01),
-                          Text(
-                            "Pay From",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBlackColor),
-                          ),
-                          ColumnSpacer(0.006),
-                          SizedBox(
-                            height: ScreenUtils.width * 0.4,
-                            child: PageView.builder(
-                              controller: PageController(
-                                viewportFraction:
-                                    0.8, // Adjust for card size relative to screen width
-                              ),
-                              itemCount: cardData.length,
-                              itemBuilder: (context, index) {
-                                final card = cardData[index];
-                                return Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: VisaCardWidget2(
-                                    gradientColor2: Colors.black87,
-                                    gradientColor1: AppColors.primaryBlueColor,
-                                    cardHeight: ScreenUtils.width * 0.33,
-                                    cardwidth: ScreenUtils.width * 0.6,
-                                    availableBalance:
-                                        card["availableBalance"] ?? "",
-                                    accountNumber: card["accountNumber"] ?? "",
-                                  ),
-                                );
-                              },
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Payment Details",
+                              style: commonTextStyle.copyWith(
+                                  fontSize: 17.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.primaryBlackColor),
                             ),
-                          ),
-                        ],
+                            ColumnSpacer(0.01),
+
+                            LabelWithDropdown(
+                                autovalidate: true,
+                                validator: (value) =>
+                                    ValidationService.validateIsNotEmptyField(
+                                        value, "Payment"),
+                                label: "Pay to",
+                                borderRadius: 12.sp,
+                                dropdownKey: "card_payment_pay_to",
+                                items: ["option1", "option2", "option3"]),
+
+                            //!?Readfing Drop Down Value
+                            // String selectedValue1 = context.read<DropdownProvider>().getSelectedValue('dropdown1');
+                            // String selectedValue2 = context.read<DropdownProvider>().getSelectedValue('dropdown2');
+                            // print("Selected Value 1: $selectedValue1");
+                            // print("Selected Value 2: $selectedValue2");
+
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                                autovalidate: true,
+                                validator: (input) =>
+                                    ValidationService.validateIsNotEmptyField(
+                                        input, "Amount"),
+                                keyboardType: TextInputType.number,
+                                label: "Amount ",
+                                controller: cardPaymentAmountController,
+                                borderRadius: 12.sp,
+                                isSmallContentPadding: true,
+                                hint: "eg : 30000"),
+                            ColumnSpacer(0.01),
+                            LabelWithDropdown(
+                                autovalidate: true,
+                                validator: (value) =>
+                                    ValidationService.validateIsNotEmptyField(
+                                        value, "Card Number"),
+                                label: "Card Number",
+                                borderRadius: 12.sp,
+                                dropdownKey: "card_payment_card_number",
+                                items: ["option1", "option2", "option3"]),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Card Holder Name ",
+                              controller: cardPaymentCardHolderNameController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "eg : john doe",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Card Holder Name"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Description ",
+                              controller: cardPaymentDescriptionController,
+                              borderRadius: 12.sp,
+                              isSmallContentPadding: true,
+                              hint: "eg : Card Payment",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Description"),
+                            ),
+                            ColumnSpacer(0.01),
+                            Text(
+                              "Pay From",
+                              style: commonTextStyle.copyWith(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.primaryBlackColor),
+                            ),
+                            ColumnSpacer(0.006),
+                            Consumer<CommonProvider>(
+                              builder: (BuildContext context,
+                                      CommonProvider commonProvider,
+                                      Widget? child) =>
+                                  SizedBox(
+                                height: ScreenUtils.width * 0.4,
+                                child: PageView.builder(
+                                  controller: PageController(
+                                    initialPage: commonProvider.currentIndex,
+                                    viewportFraction:
+                                        0.8, // Card occupies 80% of screen width
+                                  ),
+                                  onPageChanged: (index) {
+                                    commonProvider.updateIndex(index);
+                                    // _printCardDetails(cardData[index]);
+
+                                    // _printCardDetails(cardData[
+                                    //     index]);
+                                  },
+                                  itemCount: cardData.length,
+                                  itemBuilder: (context, index) {
+                                    final card = cardData[index];
+
+                                    if (index == commonProvider.currentIndex) {
+                                      _printCardDetails(cardData[
+                                          commonProvider.currentIndex]);
+                                    }
+                                    return Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: VisaCardWidget2(
+                                        gradientColor2: Colors.black87,
+                                        gradientColor1:
+                                            AppColors.primaryBlueColor,
+                                        cardHeight: ScreenUtils.width * 0.33,
+                                        cardwidth: ScreenUtils.width * 0.6,
+                                        availableBalance:
+                                            card["availableBalance"] ?? "",
+                                        accountNumber:
+                                            card["accountNumber"] ?? "",
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -219,8 +227,22 @@ class CardPaymentDetails extends StatelessWidget {
                   MainButton(
                     isMainButton: true,
                     buttontitle: "Proceed to payment",
-                    btnOnPress: () {},
+                    btnOnPress: () {
+                      if (_formKey.currentState!.validate()) {
+                        // Form is valid, proceed with submission
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Form is valid!')),
+                        );
+                      }
+                    },
                   )
                 ])));
+  }
+
+  void _printCardDetails(Map<String, String> card) {
+    printLog('Selected Card Details:');
+    card.forEach((key, value) {
+      printLog('$key: $value');
+    });
   }
 }

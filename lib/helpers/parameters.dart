@@ -4,7 +4,7 @@ import 'constants.dart';
 
 class Environment {
   // All checks & logs should be false in PROD stage
-  static bool enableLogs = false;
+  static bool enableLogs = true;
   static bool bypassDeviceCheck = false;
   static bool bypassSslCheck = false;
   static bool bypassLcSdkCheck = false;

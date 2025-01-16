@@ -118,6 +118,7 @@ class CustomLableTextField extends StatelessWidget {
               : isSmallContentPadding
                   ? EdgeInsets.symmetric(horizontal: 10.sp, vertical: 10.sp)
                   : null,
+          errorStyle: TextStyle(color: AppColors.primaryRedColor),
 
           // contentPadding: EdgeInsets.only(top: 10.sp, left: 10.sp),
           filled: true,

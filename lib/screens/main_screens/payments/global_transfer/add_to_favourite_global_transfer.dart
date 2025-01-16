@@ -9,12 +9,15 @@ import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/services/validation_service.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
-  const AddToFavouriteGlobalTransferScreen({super.key});
+  AddToFavouriteGlobalTransferScreen({super.key});
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,70 +42,107 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                   CustomCurvedContainer(
                     height: ScreenUtils.height * 0.6,
                     child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Receipient Details",
-                            style: commonTextHeadingStyle,
-                          ),
-                          ColumnSpacer(0.01),
-                          LabelWithTextField(
-                            label: "Recipient’s account number",
-                            controller: signInPasswordController,
-                            borderRadius: 13.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g. *******364",
-                          ),
-                          ColumnSpacer(0.01),
-                          LabelWithTextField(
-                            label: "Recipient’s name",
-                            controller: signInPasswordController,
-                            borderRadius: 13.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g. John Doe",
-                          ),
-                          ColumnSpacer(0.01),
-                          LabelWithTextField(
-                            label: "Recipient’s address / country",
-                            controller: signInPasswordController,
-                            borderRadius: 13.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g. France",
-                          ),
-                          ColumnSpacer(0.01),
-                          LabelWithDropdown(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Receipient Details",
+                              style: commonTextHeadingStyle,
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Recipient’s account number",
+                              controller:
+                                  globalTransferFavouriteAccountController,
+                              borderRadius: 13.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. *******364",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Account Number"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Recipient’s name",
+                              controller: globalTransferFavouriteNameController,
+                              borderRadius: 13.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. John Doe",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Name"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Recipient’s address / country",
+                              controller:
+                                  globalTransferFavouriteAddressCountryController,
+                              borderRadius: 13.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. France",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Country/Address"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithDropdown(
                               label: "Recipient’s code option",
                               borderRadius: 13.sp,
                               dropdownKey: "global_favorite_receipient_code",
-                              items: ["option1", "option2", "option3"]),
-                          ColumnSpacer(0.01),
-                          LabelWithTextField(
-                            label: "Recipient’s bank country",
-                            controller: signInPasswordController,
-                            borderRadius: 13.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g. France",
-                          ),
-                          ColumnSpacer(0.01),
-                          LabelWithTextField(
-                            label: "Recipient’s bank name",
-                            controller: signInPasswordController,
-                            borderRadius: 13.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g. Deuche Bank",
-                          ),
-                          ColumnSpacer(0.01),
-                          LabelWithTextField(
-                            label: "Recipient’s bank address",
-                            controller: signInPasswordController,
-                            borderRadius: 13.sp,
-                            isSmallContentPadding: true,
-                            hint: "e.g. Deuche Bank, France",
-                          ),
-                          ColumnSpacer(0.01),
-                        ],
+                              items: ["option1", "option2", "option3"],
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Code"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Recipient’s bank country",
+                              controller:
+                                  globalTransferFavouriteBankCountryController,
+                              borderRadius: 13.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. France",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Bank Country"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Recipient’s bank name",
+                              controller:
+                                  globalTransferFavouriteBankNameController,
+                              borderRadius: 13.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. Deuche Bank",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Bank Name"),
+                            ),
+                            ColumnSpacer(0.01),
+                            LabelWithTextField(
+                              label: "Recipient’s bank address",
+                              controller:
+                                  globalTransferFavouriteBankAddressController,
+                              borderRadius: 13.sp,
+                              isSmallContentPadding: true,
+                              hint: "e.g. Deuche Bank, France",
+                              autovalidate: true,
+                              validator: (value) =>
+                                  ValidationService.validateIsNotEmptyField(
+                                      value, "Bank Address"),
+                            ),
+                            ColumnSpacer(0.01),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -110,6 +150,11 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                   MainButton(
                     isMainButton: true,
                     btnOnPress: () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Form is valid!')),
+                        );
+                      }
                       // String selectedValue1 = Provider.of<DropdownProvider>(
                       //         context,
                       //         listen: false)

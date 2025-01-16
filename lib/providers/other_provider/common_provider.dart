@@ -75,10 +75,8 @@ class CommonProvider extends ChangeNotifier {
   // Get progress as a percentage of completed states
   double get progress =>
       _stateprogress.values.where((v) => v).length / _stateprogress.length;
-
   // Check if progress is fully completed
   bool get isProgressComplete => progress == 1.0;
-
   // Get the state of a specific key in the progress map
   bool getStateProgress(String key) => _stateprogress[key] ?? false;
 
@@ -95,6 +93,15 @@ class CommonProvider extends ChangeNotifier {
   DateTime? getSelectedDate(String key) => _selectedDates[key];
   void setSelectedDate(String key, DateTime date) {
     _selectedDates[key] = date;
+    notifyListeners();
+  }
+
+  //! Common Update Index Provider
+  int _currentIndex = 0;
+  int get currentIndex => _currentIndex;
+
+  void updateIndex(int index) {
+    _currentIndex = index;
     notifyListeners();
   }
 }

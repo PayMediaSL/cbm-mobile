@@ -25,11 +25,45 @@ class ValidationService {
     return null;
   }
 
-  /// Validates if the given [value] is not empty.
-  static String? validateEmpty(String? value, {String? fieldName}) {
-    if (value == null || value.trim().isEmpty) {
-      return '$fieldName is required';
+  static String? validateAccoutNumber(
+    String? value,
+  ) {
+    if (value == null || value.isEmpty) {
+      return 'Account number  is required';
+    } else if (value.length != 10) {
+      return 'Invalid Account Number';
     }
+
+    return null;
+  }
+
+  static String? validateUserMobileNumber(
+    String? value,
+  ) {
+    if (value == null || value.isEmpty) {
+      return 'Mobile number  is required';
+    } else if (value.length != 10) {
+      return 'Invalid Account Number';
+    }
+
+    return null;
+  }
+
+  /// Validates if the given [value] is not empty.
+  static String? validateIsNotEmptyField(String? value, String name) {
+    if (value == null || value.isEmpty) {
+      return '${name}  is required';
+    }
+
+    return null;
+  }
+
+  /// Validates if the given [value] is not empty.
+  static String? validateIsNotEmptyFieldRequired(String? value, String name) {
+    if (value == null || value.isEmpty) {
+      return '${name}  required';
+    }
+
     return null;
   }
 
