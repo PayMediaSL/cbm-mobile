@@ -1,5 +1,7 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/services/input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,10 +10,14 @@ class PinFeild extends StatelessWidget {
     Key? key,
     required this.controller,
     required this.onChanged,
+    this.inputFormatters,
+    this.validator,
   }) : super(key: key);
 
   final TextEditingController controller;
   final void Function(String) onChanged;
+  final String? Function(String? input)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,9 @@ class PinFeild extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 25.h, left: 70.w, right: 70.w),
       child: PinCodeTextField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        inputFormatters: inputFormatters ?? [AlphaNumericInputFormatter()],
+        validator: validator,
         controller: controller,
         appContext: context,
         autoDisposeControllers: false,

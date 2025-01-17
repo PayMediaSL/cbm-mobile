@@ -2,7 +2,6 @@
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
-import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';

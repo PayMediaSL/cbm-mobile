@@ -192,7 +192,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       title: Environment.appName,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: router.ScreenRoutes.toBottomNavigationScreen,
+      initialRoute: router.ScreenRoutes.toSignInScreen,
       navigatorKey: navigatorKey,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

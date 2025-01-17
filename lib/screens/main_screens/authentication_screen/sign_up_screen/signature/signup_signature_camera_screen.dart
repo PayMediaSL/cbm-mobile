@@ -37,7 +37,7 @@ class _SignUpSignatureCameraScreenState
           onTap: () {
             pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
             commonProvider.toggleStates("signature");
-            commonProvider.updateState("signature", true);
+            commonProvider.updateStateProgress("signature", true);
           },
         ),
       ),

@@ -49,6 +49,22 @@ class ValidationService {
     return null;
   }
 
+  static String? validateOTPField(
+    String? value,
+  ) {
+    if (value!.isEmpty) {
+      return 'PIN cannot be empty';
+    }
+    if (value.length != 5) {
+      return 'PIN must be exactly 5 digits long';
+    }
+    if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+      return 'PIN can only contain numeric digits';
+    }
+    // Add more validation rules if needed
+    return null;
+  }
+
   /// Validates if the given [value] is not empty.
   static String? validateIsNotEmptyField(String? value, String name) {
     if (value == null || value.isEmpty) {
@@ -105,5 +121,57 @@ class ValidationService {
     }
 
     return null;
+  }
+
+  static String? validatePassword(String? password, {bool allowEmpty = false}) {
+    if ((password == null || password.trim().isEmpty) && !allowEmpty) {
+      return 'Password is required';
+    }
+
+    if (!allowEmpty && password != null) {
+      // Define password rules
+      final passwordRegex = RegExp(
+        r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$', // At least 8 characters, one uppercase, one lowercase, and one number
+      );
+
+      if (!passwordRegex.hasMatch(password)) {
+        return 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, and a number';
+      }
+    }
+
+    return null;
+  }
+
+  static String? validateConfirmPassword(
+    String? confirmPassword, {
+    required String? createPassword,
+    bool allowEmpty = false,
+  }) {
+    if ((confirmPassword == null || confirmPassword.trim().isEmpty) &&
+        !allowEmpty) {
+      return 'Confirm password is required';
+    }
+
+    if (confirmPassword != createPassword) {
+      return 'Passwords do not match';
+    }
+
+    return null; // Confirm password is valid
+  }
+
+  static String? validatePassCode(String? passcode, String? previousPasscode) {
+    if (passcode == null || passcode.trim().isEmpty) {
+      return 'Passcode cannot be empty';
+    }
+
+    if (!RegExp(r'^\d{6}$').hasMatch(passcode)) {
+      return 'Passcode must 6 digits';
+    }
+
+    if (previousPasscode != null && passcode != previousPasscode) {
+      return 'Passcodes do not match';
+    }
+
+    return null; // Valid passcode
   }
 }

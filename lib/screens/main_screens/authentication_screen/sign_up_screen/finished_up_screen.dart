@@ -1,8 +1,10 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/services/screen_size_calculator.dart';
+import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,7 +35,9 @@ class FinishedUpScreen extends StatelessWidget {
           MainButton(
             isMainButton: true,
             isPaddingNeeded: true,
-            btnOnPress: () {},
+            btnOnPress: () {
+              pushScreen(context, ScreenRoutes.toBottomNavigationScreen);
+            },
             buttontitle: "Explore my OneApp account",
           )
         ],

@@ -43,12 +43,12 @@ bool autoValidate = false;
 String passcode = ''; // to store the first entered passcode
 // bool isReEnter = false;
 
-int identityDetailsId = 0;
-int mobileNumberId = 1;
-int otpId = 2;
-int emailId = 3;
-int newCredentialId = 5;
-int createPasscodeId = 6;
+const identityDetailsId = 0;
+const mobileNumberId = 1;
+const otpId = 2;
+const emailId = 3;
+const newCredentialId = 5;
+const createPasscodeId = 6;
 // int clarifyIdentityId = 7;
 // int aboutYouId = 8;
 
@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       valueListenable: _progressNotifier,
       builder: (BuildContext context, value, Widget? child) {
         return Form(
-          autovalidateMode: commonProvider.getStates("autovalidate")
+          autovalidateMode: commonProvider.getStates("signup_autovalidate")
               ? AutovalidateMode.onUserInteraction
               : AutovalidateMode.disabled,
           key: _formKey,
@@ -72,74 +72,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
             //!On Back Press
             onBackPress: (currentPage) {
               if (currentPage == 0) {
-              } else if (currentPage == createPasscodeId) {
-                commonProvider.toggleStates("passcode");
+                return;
+              }
+              switch (currentPage) {
+                case createPasscodeId:
+                  commonProvider.setStates("passcode", false);
+                  signupCreatePinController.clear();
+                  break;
+                case otpId:
+                  commonProvider.resetCountdown("otp_timer");
+                  break;
+                default:
+                  break;
+              }
+              if (currentPage > 0) {
                 _wizardController.updateWizardPage(currentPage - 1);
               } else {
-                if (currentPage > 0) {
-                  _wizardController.updateWizardPage(currentPage - 1);
-                } else {
-                  popScreen(context);
-                }
+                popScreen(context);
               }
             },
-            //! OnPrimary Tap
+
+            //! OnPrimary Tap (Refactored)
+
             onPrimaryTap: (page) {
-              // print("Pagesssssssssssssssss>>>>>>>>>>>>>>>");
-              // print(page + 1);
-              int nextPage = page + 1;
-              if (page == identityDetailsId) {
-                _wizardController.updateWizardPage(nextPage);
-              } else if (page == mobileNumberId) {
-                _wizardController.updateWizardPage(nextPage);
-                commonProvider.startCountdown("otp_timer", duration: 120);
-              } else if (page == otpId) {
-                _wizardController.updateWizardPage(nextPage);
-              } else if (page == emailId) {
-                _wizardController.updateWizardPage(nextPage);
-                // if (_formKey.currentState?.validate() ?? false) {
-                //   _formKey.currentState?.save();
-                //   _wizardController.updateWizardPage(nextPage);
-                // } else {
-                //   commonProvider.toggleState("autovalidate");
-                // }
-              } else if (page == newCredentialId) {
-                _wizardController.updateWizardPage(nextPage);
-                //! Need
-              } else if (page == createPasscodeId) {
-                if (!commonProvider.getStates("passcode")) {
-                  passcode = createPinController.text;
-                  createPinController.clear();
-                  commonProvider.toggleStates("passcode");
-                } else {
-                  if (createPinController.text == passcode) {
-                    //! Passcodes match, proceed to the next step
-                    // _wizardController.updateWizardPage(nextPage);
-                    pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content:
-                            Text("Passcodes do not match. Please try again.")));
-                    // Show error message if passcodes don't match
-                    // showError("Passcodes do not match. Please try again.");
-                  }
-                }
-              }
-              // else if (page == aboutYouId) {
-              //   _wizardController.updateWizardPage(clarifyIdentityId);
-              //   commonProvider.toggleState("aboutyou");
-              // }
-              else {
-                _wizardController.updateWizardPage(nextPage);
-              }
+              final isValid = _formKey.currentState?.validate() ?? false;
+              final nextPage = page + 1;
 
-              // else if (page == mobileNumberId) {
-              //   _wizardController.updateWizardPage(nextPage);
-              // }
+              if (!isValid) return;
+              switch (page) {
+                case identityDetailsId:
+                case otpId:
+                case emailId:
+                case newCredentialId:
+                  _wizardController.updateWizardPage(nextPage);
+                  break;
+
+                case mobileNumberId:
+                  _wizardController.updateWizardPage(nextPage);
+                  commonProvider.startCountdown("otp_timer", duration: 120);
+                  break;
+
+                case createPasscodeId:
+                  if (!commonProvider.getStates("passcode")) {
+                    passcode = signupCreatePinController.text;
+                    signupCreatePinController.clear();
+                    commonProvider.setStates("passcode", true);
+                  } else {
+                    pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
+                  }
+                  break;
+
+                default:
+                  _wizardController.updateWizardPage(nextPage);
+              }
             },
 
-//! ALL WIZARDS ARE STRTS FROM HERE
-
+            //! ALL WIZARDS ARE STRTS FROM HERE
             //* All Wizard Items
             children: <WizardItem>[
               //! Wizard 1 : Account Details
@@ -152,6 +140,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     // ColumnSpacer(size)
                     CustomLableTextField(
+                      autovalidate: true,
+                      validator: (input) =>
+                          ValidationService.validateIsNotEmptyField(
+                              input, "Passport"),
                       nidOrPassportController,
                       hint: "National ID / Passport Number",
                     ),
@@ -167,11 +159,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   defaulButton: true,
                   buttonTitle: "Next",
                   children: [
-                    MobileInputField(mobileNumberController),
-                    // CustomLableTextField(
-                    //   nidOrPassportController,
-                    //   hint: "Mobile Number",
-                    // ),
+                    MobileInputField(
+                      mobileNumberController,
+                      autovalidate: true,
+                      validator: (input) => ValidationService.validateMobile(
+                        input,
+                      ),
+                    ),
                     ColumnSpacer(0.4)
                   ]),
 
@@ -212,19 +206,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
                       ],
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'PIN cannot be empty';
-                        }
-                        if (value.length != 5) {
-                          return 'PIN must be exactly 5 digits long';
-                        }
-                        if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                          return 'PIN can only contain numeric digits';
-                        }
-                        // Add more validation rules if needed
-                        return null;
-                      },
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      // autovalidateMode:commonProvider.getStates("signup_autovalidate") ?? ,
+                      validator: (value) =>
+                          ValidationService.validateOTPField(value),
                     ),
                     Align(
                         alignment: Alignment.topLeft,
@@ -274,10 +259,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // MobileInputField(mobileNumberController),
                     CustomLableTextField(
                       inputFormatters: [],
-                      validator: (value) =>
-                          ValidationService.validateEmail(value),
                       emailrController,
                       hint: "eg:johndoe@gmail.com",
+                      autovalidate: true,
+                      validator: (value) =>
+                          ValidationService.validateEmail(value),
                     ),
                     ColumnSpacer(0.4)
                   ]),
@@ -336,10 +322,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     CustomLableTextField(
                       signInUserNameController,
                       hint: "Username",
+                      autovalidate: true,
+                      validator: (input) =>
+                          ValidationService.validateIsNotEmptyField(
+                              input, "UserName"),
                     ),
                     const ColumnSpacer(0.02),
                     CustomLableTextField(
-                      createNewPasswordController,
+                      signupcreateNewPasswordController,
                       hint: "New Password",
                       obscureText: !commonProvider.getStates("obscureText1"),
                       suffixIcon: IconButton(
@@ -351,6 +341,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                           )),
+                      autovalidate: true,
+                      validator: (input) => ValidationService.validatePassword(
+                        input,
+                      ),
                     ),
                     const ColumnSpacer(0.005),
                     Padding(
@@ -364,7 +358,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const ColumnSpacer(0.02),
                     CustomLableTextField(
-                      createRe_NewPasswordController,
+                      signupcreateRe_NewPasswordController,
                       hint: "Re-enter password",
                       obscureText: !commonProvider.getStates("obscureText2"),
                       suffixIcon: IconButton(
@@ -376,6 +370,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                           )),
+                      autovalidate: true,
+                      validator: (input) =>
+                          ValidationService.validateConfirmPassword(
+                        input,
+                        createPassword:
+                            signupcreateNewPasswordController.text.toString(),
+                      ),
                     ),
                     const ColumnSpacer(0.2),
                   ]),
@@ -401,10 +402,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     PinFeild(
-                        controller: createPinController, onChanged: (value) {}),
+                      controller: signupCreatePinController,
+                      onChanged: (value) {},
+                      validator: (value) => ValidationService.validatePassCode(
+                        value,
+                        commonProvider.getStates("passcode") ? passcode : null,
+                      ),
+                    ),
                     ColumnSpacer(0.03),
                     PinNumberPad(
-                      controller: createPinController,
+                      controller: signupCreatePinController,
                       onChanged: (value) {},
                       isBiomentrics: false,
                     ),

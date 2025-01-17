@@ -36,7 +36,7 @@ class _NIDBackCameraScreenState extends State<NIDBackCameraScreen> {
           onTap: () {
             // commonProvider.toggleState("");
             commonProvider.toggleStates("identity");
-            commonProvider.updateState("identity", true);
+            commonProvider.updateStateProgress("identity", true);
 
             pushScreen(context, ScreenRoutes.toClarifyIdentityScreen);
           },

@@ -18,7 +18,7 @@ class CustomLableTextField extends StatelessWidget {
       this.keyboardType,
       this.enabled = true,
       this.textInputAction,
-      this.autovalidate,
+      this.autovalidate = false,
       this.contentPadding,
       this.focus,
       this.onChanged,
@@ -44,7 +44,7 @@ class CustomLableTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool? enabled;
   final TextInputAction? textInputAction;
-  final bool? autovalidate;
+  final bool autovalidate;
   final EdgeInsetsGeometry? contentPadding;
   final FocusNode? focus;
   final Function(String)? onChanged;
@@ -61,8 +61,12 @@ class CustomLableTextField extends StatelessWidget {
       // textAlign: TextAlign.left,
       readOnly: readOnly ?? false,
       onTap: onTap,
-      autovalidateMode:
-          autovalidate == null ? null : AutovalidateMode.onUserInteraction,
+      // autovalidateMode:
+      //     autovalidate == null ? null : AutovalidateMode.onUserInteraction,
+
+      autovalidateMode: autovalidate
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
       controller: controller,
       // focusNode: focus,
       maxLength: maxLength ?? 200,

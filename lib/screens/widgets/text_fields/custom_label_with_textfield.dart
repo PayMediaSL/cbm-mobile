@@ -12,7 +12,7 @@ class LabelWithTextField extends StatelessWidget {
   final String hint;
   final Widget? suffixIcon;
   final String? Function(String? input)? validator;
-  final bool? autovalidate;
+  final bool autovalidate;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
 
@@ -25,7 +25,7 @@ class LabelWithTextField extends StatelessWidget {
       required this.hint,
       this.suffixIcon,
       this.validator,
-      this.autovalidate,
+      this.autovalidate = false,
       this.inputFormatters,
       this.keyboardType})
       : super(key: key);

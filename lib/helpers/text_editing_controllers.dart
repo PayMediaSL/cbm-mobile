@@ -9,9 +9,13 @@ TextEditingController signInPasswordController = TextEditingController();
 
 TextEditingController pinController = TextEditingController();
 
-//Create NEw Crentials
-TextEditingController createNewPasswordController = TextEditingController();
-TextEditingController createRe_NewPasswordController = TextEditingController();
+//Create SignUPNEw Crentials
+TextEditingController signupcreateNewPasswordController =
+    TextEditingController();
+TextEditingController signupcreateRe_NewPasswordController =
+    TextEditingController();
+
+TextEditingController signupCreatePinController = TextEditingController();
 
 //SignUp Flow
 //Identity Details

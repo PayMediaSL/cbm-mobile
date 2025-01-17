@@ -51,7 +51,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             const ColumnSpacer(0.02),
             CustomLableTextField(
-              createNewPasswordController,
+              TextEditingController(), // Paste Your Actual Controller
               hint: "New Password",
               obscureText: commonProvider.getStates("obscureText1"),
               suffixIcon: IconButton(
@@ -75,7 +75,8 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             const ColumnSpacer(0.02),
             CustomLableTextField(
-              createRe_NewPasswordController,
+              TextEditingController(), // Paste Your Actual Controller
+
               hint: "Re-enter password",
               obscureText: commonProvider.getStates("obscureText2"),
               suffixIcon: IconButton(

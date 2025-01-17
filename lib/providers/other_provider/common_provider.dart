@@ -72,6 +72,12 @@ class CommonProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetCountdown(String key, {int defaultValue = 0}) {
+    _countdowns[key] = defaultValue; // Reset the countdown to default value
+    _isTimerActive[key] = false; // Mark the timer as inactive
+    notifyListeners();
+  }
+
   // Get progress as a percentage of completed states
   double get progress =>
       _stateprogress.values.where((v) => v).length / _stateprogress.length;
@@ -81,7 +87,7 @@ class CommonProvider extends ChangeNotifier {
   bool getStateProgress(String key) => _stateprogress[key] ?? false;
 
   // Update the state of a specific key in the progress map
-  void updateState(String key, bool value) {
+  void updateStateProgress(String key, bool value) {
     if (_stateprogress.containsKey(key)) {
       _stateprogress[key] = value;
       notifyListeners();

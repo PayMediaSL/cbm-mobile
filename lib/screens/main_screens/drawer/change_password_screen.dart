@@ -1,7 +1,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
 import 'package:app/helpers/spacers.dart';
-import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
@@ -66,7 +65,7 @@ class DrawerChangePassword extends StatelessWidget {
 
                         ColumnSpacer(0.05),
                         CustomLableTextField(
-                          createNewPasswordController,
+                          TextEditingController(), // Paste Your Actual Controller
                           hint: "Enter Current Password",
                           obscureText: !commonProvider.getStates("drawerpsw1"),
                           suffixIcon: IconButton(
@@ -82,7 +81,7 @@ class DrawerChangePassword extends StatelessWidget {
                         ),
                         ColumnSpacer(0.02),
                         CustomLableTextField(
-                          createNewPasswordController,
+                          TextEditingController(), // Paste Your Actual Controller
                           hint: "Enter new Password",
                           obscureText: !commonProvider.getStates("drawerpsw2"),
                           suffixIcon: IconButton(
@@ -98,7 +97,7 @@ class DrawerChangePassword extends StatelessWidget {
                         ),
                         ColumnSpacer(0.02),
                         CustomLableTextField(
-                          createNewPasswordController,
+                          TextEditingController(), // Paste Your Actual Controller
                           hint: "Enter new Password",
                           obscureText: !commonProvider.getStates("drawerpsw3"),
                           suffixIcon: IconButton(

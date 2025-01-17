@@ -3,7 +3,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/models/sign_up/country_model.dart';
-import 'package:app/services/validation_service.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -23,6 +22,9 @@ class MobileInputField extends StatefulWidget {
     this.labelText,
     this.enableBorder,
     this.readOnly = false,
+    this.autovalidate = false,
+    this.validator,
+    this.inputFormatters,
   });
 
   final TextEditingController controller;
@@ -34,6 +36,10 @@ class MobileInputField extends StatefulWidget {
   final bool? enableBorder;
   final String? labelText;
   final bool readOnly;
+  final bool autovalidate;
+  final String? Function(String? input)? validator;
+  final List<TextInputFormatter>? inputFormatters;
+
   @override
   State<MobileInputField> createState() => _MobileInputFieldState();
 }
@@ -55,18 +61,21 @@ class _MobileInputFieldState extends State<MobileInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: widget.autovalidate
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
       readOnly: widget.readOnly,
       textInputAction: widget.textInputAction,
       controller: widget.controller,
       onChanged: (value) {
         widget.onChanged?.call(_selectedCountry, value);
       },
-      validator: (text) => ValidationService.validateMobile(text,
-          maxLength: _selectedCountry?.length,
-          countryShortName: _selectedCountry?.countryShortName ?? ''),
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-      ],
+      validator: widget.validator,
+      // validator: (text) => ValidationService.validateMobile(text,
+      //     maxLength: _selectedCountry?.length,
+      //     countryShortName: _selectedCountry?.countryShortName ?? ''),
+
+      inputFormatters: widget.inputFormatters,
       keyboardType: TextInputType.phone,
       maxLength: _selectedCountry?.length ?? 10,
       decoration: InputDecoration(
