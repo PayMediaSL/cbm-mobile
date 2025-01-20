@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:app/parameters.dart';
+import 'package:cbm_one_app/parameters.dart';
 
 void printLog(message, [Object? stackTrace, int? level]) {
   if (Env.enableLogs) {

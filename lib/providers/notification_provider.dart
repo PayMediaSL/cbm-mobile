@@ -1,4 +1,4 @@
-import 'package:app/models/notification_state.dart';
+import 'package:cbm_one_app/models/notification_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

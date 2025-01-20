@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:app/models/enums/auth_method.dart';
-import 'package:app/providers/app_language_provider.dart';
+import 'package:cbm_one_app/models/enums/auth_method.dart';
+import 'package:cbm_one_app/providers/app_language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';

@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app/firebase_options.dart';
-import 'package:app/providers/app_state_provider.dart';
-import 'package:app/utils/log_util.dart';
+import 'package:cbm_one_app/firebase_options.dart';
+import 'package:cbm_one_app/providers/app_state_provider.dart';
+import 'package:cbm_one_app/utils/log_util.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

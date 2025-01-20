@@ -1,6 +1,6 @@
-# app
+# cbm_one_app
 
-Flutter application boilerplate with Flutter 3.19
+CBM Mobile Application
 
 ## Getting Started
 

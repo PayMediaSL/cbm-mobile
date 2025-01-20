@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:app/utils/platform_util.dart';
+import 'package:cbm_one_app/utils/platform_util.dart';
 import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 
 import 'log_util.dart';

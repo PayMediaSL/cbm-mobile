@@ -1,4 +1,4 @@
-import 'package:app/utils/log_util.dart';
+import 'package:cbm_one_app/utils/log_util.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -13,7 +13,7 @@ class LauncherUtil {
 
     await launchUrl(phoneCallUri);
   }
-  
+
   static void url(String url, {LaunchMode? launchMode}) async {
     try {
       if (await canLaunchUrl(Uri.parse(url))) {

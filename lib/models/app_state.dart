@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:app/models/user.dart';
-import 'package:app/parameters.dart';
-import 'package:app/utils/log_util.dart';
-import 'package:app/utils/navigation_util.dart';
+import 'package:cbm_one_app/models/user.dart';
+import 'package:cbm_one_app/parameters.dart';
+import 'package:cbm_one_app/utils/log_util.dart';
+import 'package:cbm_one_app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {
@@ -49,7 +49,6 @@ class AppState extends ChangeNotifier {
           }
         },
       );
-
 
       printLog('called timeout');
     } else {

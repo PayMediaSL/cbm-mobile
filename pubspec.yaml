@@ -1,5 +1,5 @@
-name: app
-description: "Flutter application boilerplate with Flutter 3.19"
+name: cbm_one_app
+description: "CBM Mobile Application"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -18,6 +18,22 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_encryption_plugin:
+    git:
+      url: https://github.com/directpaylk/flutter_encryption_plugin.git
+      ref: rsa-aes_v2
+  biometric_auth:
+    git:
+      url: https://github.com/directpaylk/flutter-biometric-auth.git
+      ref: null-safety
+  dp_file_downloader:
+    git:
+      url: https://github.com/directpaylk/flutter-file-download.git
+      ref: null-safety
+  app_security_plugin:
+    git:
+      url: https://github.com/directpaylk/app-security-plugin.git
+      ref: main
   cupertino_icons: ^1.0.6
   provider: ^6.1.1
   shared_preferences: ^2.2.2
@@ -45,6 +61,7 @@ dependencies:
   get_it: ^7.6.7
   cached_network_image: ^3.3.1
   mobile_scanner: ^4.0.0
+  flutter_udid: ^4.0.0
 
 
 dev_dependencies:
@@ -71,6 +88,6 @@ flutter:
 
   assets:
     - assets/
-    - assets/images/
+    # - assets/images/
     - assets/i18n/
 

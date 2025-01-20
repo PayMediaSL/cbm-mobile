@@ -1,15 +1,13 @@
 import 'dart:io';
-
+import 'package:app_security_plugin/app_security_plugin.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:lp_flutter_plugin/lp_flutter_plugin.dart';
+import 'package:flutter_udid/flutter_udid.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class DeviceInfoUtil {
   final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   Future<Map> getDeviceInfo() async {
     Map map = {};
-    String? deviceId = await LpFlutterPlugin.deviceId();
-
     if (Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
       String? os = (androidInfo.version.baseOS?.isEmpty ?? true)
@@ -17,30 +15,41 @@ class DeviceInfoUtil {
           : androidInfo.version.baseOS;
       map = {
         "platform": "Android",
-        "device_id": deviceId,
         'model': androidInfo.model,
         'manufacturer': androidInfo.manufacturer,
         // 'os': androidInfo.version.baseOS,
         'os': os,
         'os_version': androidInfo.version.release,
-        'sdk_int': androidInfo.version.sdkInt
+        'sdk_int': androidInfo.version.sdkInt,
       };
     } else if (Platform.isIOS) {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       map = {
         "platform": "IOS",
-        "device_id": deviceId,
+        // "device_id": await FlutterLCSDK.deviceId,
         'model': _getIosDeviceName(iosDeviceInfo.utsname.machine),
         'manufacturer': 'Apple',
         'os': iosDeviceInfo.systemName,
-        'os_version': iosDeviceInfo.systemVersion
+        'os_version': iosDeviceInfo.systemVersion,
       };
     }
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     map['app_version'] = packageInfo.version;
     map['build_number'] = packageInfo.buildNumber;
-    // map['app_signature'] = await AppSecurityPlugin().getAppHash(null);
+    map['app_signature'] = await AppSecurityPlugin().getAppHash(null);
 
+    // if (kDebugMode) {
+    //   map['build_number'] = '19';
+    map['app_signature'] =
+        '53206a76444b1d4ca9173bdff88a1bfc6dfdd66cb29249a3e9866c0f1ad47d74';
+    // }
+
+    final udid = await FlutterUdid.udid;
+
+    // map["device_id"] = 'test1s55hssss3';
+    // map["device_id"] = 'test155312vsss121ssss22322';
+
+    map["device_id"] = udid;
     return map;
   }
 

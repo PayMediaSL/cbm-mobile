@@ -1,12 +1,11 @@
-import 'package:app/screens/splash_screen.dart';
-import 'package:app/utils/log_util.dart';
+import 'package:cbm_one_app/screens/splash_screen.dart';
+import 'package:cbm_one_app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 
 class ScreenRoutes {
   // Init
   static const String toSplashScreen = "toSplashScreen";
   static const String toHomeScreen = "toHomeScreen";
-
 }
 
 class Router {
@@ -27,7 +26,6 @@ class Router {
           builder: (_) => const SplashScreen(),
           settings: settings,
         );
-
 
       default:
         return MaterialPageRoute(

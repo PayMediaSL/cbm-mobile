@@ -1,21 +1,21 @@
 import 'dart:async';
 
-import 'package:app/colors.dart';
-import 'package:app/models/app_language.dart';
-import 'package:app/models/app_state.dart';
-import 'package:app/models/notification_state.dart';
-import 'package:app/parameters.dart';
-import 'package:app/providers/app_language_provider.dart';
-import 'package:app/providers/app_state_provider.dart';
-import 'package:app/services/analytics_service.dart';
-import 'package:app/services/fcm_service.dart';
-import 'package:app/utils/log_util.dart';
+import 'package:cbm_one_app/colors.dart';
+import 'package:cbm_one_app/models/app_language.dart';
+import 'package:cbm_one_app/models/app_state.dart';
+import 'package:cbm_one_app/models/notification_state.dart';
+import 'package:cbm_one_app/parameters.dart';
+import 'package:cbm_one_app/providers/app_language_provider.dart';
+import 'package:cbm_one_app/providers/app_state_provider.dart';
+import 'package:cbm_one_app/services/analytics_service.dart';
+import 'package:cbm_one_app/services/fcm_service.dart';
+import 'package:cbm_one_app/utils/log_util.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:app/routes.dart' as r;
+import 'package:cbm_one_app/routes.dart' as r;
 
 import 'injection.dart';
 
@@ -122,14 +122,14 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       initialRoute: r.ScreenRoutes.toSplashScreen,
       navigatorKey: navigatorKey,
       navigatorObservers: [
-        AnalyticsService().getFirebaseAnalyticsObserver(),
+        // AnalyticsService().getFirebaseAnalyticsObserver(),
       ],
       builder: (context, child) {
         final scaleFactor = MediaQuery.of(context).textScaleFactor;
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(
               textScaler:
-              TextScaler.linear(scaleFactor > 1 ? 1.0 : scaleFactor)),
+                  TextScaler.linear(scaleFactor > 1 ? 1.0 : scaleFactor)),
           child: child ?? Container(),
         );
       },
