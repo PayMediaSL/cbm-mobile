@@ -1,4 +1,4 @@
-package lk.directpay.app;
+package com.cbm.oneapp;
 
 import android.content.ComponentName;
 import android.content.Intent;
