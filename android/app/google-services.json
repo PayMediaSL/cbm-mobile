@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "986325806471",
+    "project_id": "cbm-dev-ac457",
+    "storage_bucket": "cbm-dev-ac457.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986325806471:android:cc2132fcb0c8ea2448f722",
+        "android_client_info": {
+          "package_name": "com.cbm.oneapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzm23mYruG6h1UInD3V0Rum_bm8r7Jk-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
