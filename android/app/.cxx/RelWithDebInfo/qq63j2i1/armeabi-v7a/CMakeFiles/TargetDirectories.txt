@@ -1,0 +1,3 @@
+/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/android/app/.cxx/RelWithDebInfo/qq63j2i1/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/android/app/.cxx/RelWithDebInfo/qq63j2i1/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/android/app/.cxx/RelWithDebInfo/qq63j2i1/armeabi-v7a/CMakeFiles/native-lib.dir

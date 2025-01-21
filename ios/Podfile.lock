@@ -11,6 +11,7 @@ PODS:
     - Flutter
   - dp_file_downloader (0.0.2):
     - Flutter
+  - DTTJailbreakDetection (0.4.0)
   - Firebase/Analytics (10.22.0):
     - Firebase/Core
   - Firebase/Core (10.22.0):
@@ -229,7 +230,12 @@ PODS:
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
+  - safe_device (1.0.0):
+    - DTTJailbreakDetection
+    - Flutter
   - SAMKeychain (1.5.3)
+  - security_plus (1.0.0):
+    - Flutter
   - share_plus (0.0.1):
     - Flutter
   - shared_preferences_foundation (0.0.1):
@@ -268,6 +274,8 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - pointer_interceptor_ios (from `.symlinks/plugins/pointer_interceptor_ios/ios`)
+  - safe_device (from `.symlinks/plugins/safe_device/ios`)
+  - security_plus (from `.symlinks/plugins/security_plus/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
@@ -278,6 +286,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CryptoSwift
+    - DTTJailbreakDetection
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -351,6 +360,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   pointer_interceptor_ios:
     :path: ".symlinks/plugins/pointer_interceptor_ios/ios"
+  safe_device:
+    :path: ".symlinks/plugins/safe_device/ios"
+  security_plus:
+    :path: ".symlinks/plugins/security_plus/ios"
   share_plus:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
@@ -370,6 +383,7 @@ SPEC CHECKSUMS:
   CryptoSwift: e64e11850ede528a02a0f3e768cec8e9d92ecb90
   device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   dp_file_downloader: 406f1aacc06677b90e1135e2eeab3858da0a6493
+  DTTJailbreakDetection: 5e356c5badc17995f65a83ed9483f787a0057b71
   Firebase: 797fd7297b7e1be954432743a0b3f90038e45a71
   firebase_analytics: b9ce200bfc2c54629076bb22d6a510f31c296ab8
   firebase_core: 100945864b4aedce3cfef0c62ab864858bf013cf
@@ -387,7 +401,7 @@ SPEC CHECKSUMS:
   flutter_encryption_plugin: 9d11e9eaa04e339e35687f1d9337c001fc885282
   flutter_jailbreak_detection: c5bf66ff6c0c4230769b6ba0bd63eb6ac4148a76
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
-  flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086
+  flutter_local_notifications: df98d66e515e1ca797af436137b4459b160ad8c9
   flutter_udid: b2417673f287ee62817a1de3d1643f47b9f508ab
   GoogleAppMeasurement: ccefe3eac9b0aa27f96066809fb1a7fe4b462626
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
@@ -412,7 +426,9 @@ SPEC CHECKSUMS:
   pointer_interceptor_ios: 508241697ff0947f853c061945a8b822463947c1
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  safe_device: 4539eb6bdbeb4b61a763a51c4e73e6b37dea4e3d
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  security_plus: 359cfedc4f1d39235c78ccc4037f427a38140d47
   share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d

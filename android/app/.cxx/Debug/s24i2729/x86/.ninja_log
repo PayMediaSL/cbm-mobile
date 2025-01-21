@@ -1,3 +1,6 @@
 # ninja log v5
 0	82	1737443889	CMakeFiles/native-lib.dir/native-lib.c.o	d7e441273ab5beb4
 82	180	1737443889	/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/build/app/intermediates/cxx/Debug/s24i2729/obj/x86/libnative-lib.so	ba956ceafd181557
+0	90	1737444331	CMakeFiles/native-lib.dir/native-lib.c.o	d7e441273ab5beb4
+90	193	1737444331	/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/build/app/intermediates/cxx/Debug/s24i2729/obj/x86/libnative-lib.so	ba956ceafd181557
+10	638	1737452312	/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/build/app/intermediates/cxx/Debug/s24i2729/obj/x86/libnative-lib.so	ba956ceafd181557
