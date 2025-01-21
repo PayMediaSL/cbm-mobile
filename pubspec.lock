@@ -13,8 +13,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: main
-      resolved-ref: "50b16d50dee03871e33dfabb1764967e6710f1f4"
+      ref: security-upgrade
+      resolved-ref: "9c8570f5a620bc2c5544358f8728756b67edd77e"
       url: "https://github.com/directpaylk/app-security-plugin.git"
     source: git
     version: "0.0.1"
@@ -22,8 +22,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: null-safety
-      resolved-ref: "5d32ced50237a9136e8ba7e14681c92e91a3d487"
+      ref: security-upgrade
+      resolved-ref: "5fbb233ff79e9b83ede893479af335550dc69513"
       url: "https://github.com/directpaylk/app-signature-flutter-plugin.git"
     source: git
     version: "0.4.0"
@@ -168,10 +168,10 @@ packages:
     dependency: transitive
     description:
       name: dbus
-      sha256: "365c771ac3b0e58845f39ec6deebc76e3276aa9922b0cc60840712094d9047ac"
+      sha256: "79e0c23480ff85dc68de79e2cd6334add97e48f7f4865d17686dd6ea81a47e8c"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.10"
+    version: "0.7.11"
   device_info_plus:
     dependency: "direct main"
     description:
@@ -431,26 +431,26 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: "55b9b229307a10974b26296ff29f2e132256ba4bd74266939118eaefa941cb00"
+      sha256: ef41ae901e7529e52934feba19ed82827b11baa67336829564aeab3129460610
       url: "https://pub.dev"
     source: hosted
-    version: "16.3.3"
+    version: "18.0.1"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
       name: flutter_local_notifications_linux
-      sha256: c49bd06165cad9beeb79090b18cd1eb0296f4bf4b23b84426e37dd7c027fc3af
+      sha256: "8f685642876742c941b29c32030f6f4f6dacd0e4eaecb3efbb187d6a3812ca01"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.1"
+    version: "5.0.0"
   flutter_local_notifications_platform_interface:
     dependency: transitive
     description:
       name: flutter_local_notifications_platform_interface
-      sha256: "85f8d07fe708c1bdcf45037f2c0109753b26ae077e9d9e899d55971711a4ea66"
+      sha256: "6c5b83c86bf819cdb177a9247a3722067dd8cc6313827ce7c77a4b238a26fd52"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.0"
+    version: "8.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -877,6 +877,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
+  safe_device:
+    dependency: transitive
+    description:
+      name: safe_device
+      sha256: "953aeac3486180df9118a1a3f5fb842d84015e8aa6f2607edeb5fb881b67a669"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+  security_plus:
+    dependency: transitive
+    description:
+      name: security_plus
+      sha256: "3b266b1ccf12472ab0c541140b50f455dd5c4b26745fc4bcc47d27f99b9087c2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   share_plus:
     dependency: "direct main"
     description:

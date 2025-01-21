@@ -1,0 +1,3 @@
+/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/android/app/.cxx/Debug/s24i2729/x86/CMakeFiles/rebuild_cache.dir
+/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/android/app/.cxx/Debug/s24i2729/x86/CMakeFiles/edit_cache.dir
+/Users/udarinagasinghe/Documents/GitHub/cbm-mobile/android/app/.cxx/Debug/s24i2729/x86/CMakeFiles/native-lib.dir
