@@ -33,7 +33,7 @@ dependencies:
   app_security_plugin:
     git:
       url: https://github.com/directpaylk/app-security-plugin.git
-      ref: main
+      ref: security-upgrade
   cupertino_icons: ^1.0.6
   provider: ^6.1.1
   shared_preferences: ^2.2.2
@@ -45,10 +45,7 @@ dependencies:
   share_plus: ^7.2.2
   url_launcher: ^6.2.5
   flutter_jailbreak_detection: ^1.10.0
-  firebase_core: ^2.25.4
-  firebase_messaging: ^14.7.16
   permission_handler: ^11.3.0
-  flutter_local_notifications: ^16.3.2
   path_provider: ^2.1.2
   pin_code_fields: ^8.0.1
   otp_autofill: ^3.0.2
@@ -56,12 +53,14 @@ dependencies:
   carousel_slider: ^4.2.1
   crypto: ^3.0.3
   flutter_typeahead: ^5.2.0
-  firebase_analytics: ^10.8.6
-  firebase_crashlytics: ^3.4.15
   get_it: ^7.6.7
   cached_network_image: ^3.3.1
   mobile_scanner: ^4.0.0
   flutter_udid: ^4.0.0
+  flutter_local_notifications: ^18.0.1
+  firebase_crashlytics: ^3.4.18
+  firebase_messaging: ^14.7.19
+  firebase_analytics: ^10.8.9
 
 
 dev_dependencies:
