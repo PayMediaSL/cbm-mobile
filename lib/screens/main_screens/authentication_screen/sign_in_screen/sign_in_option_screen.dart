@@ -41,6 +41,9 @@ class SignInOptionScreen extends StatelessWidget {
           ),
           ColumnSpacer(0.01),
           MainButton(
+            btnOnPress: () {
+              pushScreen(context, ScreenRoutes.toSignUpScreen);
+            },
             isPaddingNeeded: true,
             buttontitle: "No",
           )
