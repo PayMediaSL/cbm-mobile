@@ -1,9 +1,8 @@
 import 'dart:developer';
-
-import 'package:cbm_one_app/parameters.dart';
+import 'package:cbm_one_app/helpers/parameters.dart';
 
 void printLog(message, [Object? stackTrace, int? level]) {
-  if (Env.enableLogs) {
+  if (Environment.enableLogs) {
     log(
       message.toString(),
       level: level ?? 0,

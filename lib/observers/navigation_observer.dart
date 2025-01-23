@@ -1,5 +1,3 @@
-import 'package:cbm_one_app/colors.dart';
-import 'package:cbm_one_app/routes.dart';
 import 'package:flutter/material.dart';
 
 class AppNavigatorObserver extends NavigatorObserver {

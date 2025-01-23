@@ -1,9 +1,8 @@
 import 'dart:async';
 
+import 'package:cbm_one_app/helpers/parameters.dart';
 import 'package:cbm_one_app/models/user.dart';
-import 'package:cbm_one_app/parameters.dart';
 import 'package:cbm_one_app/utils/log_util.dart';
-import 'package:cbm_one_app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {
@@ -40,10 +39,10 @@ class AppState extends ChangeNotifier {
       // moveToSplash(context!);
       // DateTime nowTime = DateTime.now();
       _timer = Timer(
-        Duration(seconds: Env.timeoutWaitSeconds),
+        Duration(seconds: Environment.timeoutWaitSeconds),
         () {
           if (_timer != null) {
-            moveToSplash(ctx!);
+            // moveToSplash(ctx!);
           } else {
             printLog('Timer is null *********** 0');
           }

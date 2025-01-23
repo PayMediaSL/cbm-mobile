@@ -1,50 +1,120 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
-import 'package:cbm_one_app/colors.dart';
+import 'package:cbm_one_app/helpers/colors.dart';
+import 'package:cbm_one_app/helpers/injection.dart';
+import 'package:cbm_one_app/helpers/parameters.dart';
+import 'package:cbm_one_app/helpers/povider_helper/toggle_provider.dart';
 import 'package:cbm_one_app/models/app_language.dart';
 import 'package:cbm_one_app/models/app_state.dart';
 import 'package:cbm_one_app/models/notification_state.dart';
-import 'package:cbm_one_app/parameters.dart';
 import 'package:cbm_one_app/providers/app_language_provider.dart';
 import 'package:cbm_one_app/providers/app_state_provider.dart';
-import 'package:cbm_one_app/services/analytics_service.dart';
+import 'package:cbm_one_app/providers/bottom_navigation/bottom_navigation_bar_provider.dart';
+import 'package:cbm_one_app/providers/date_tme/date_time_provider.dart';
+import 'package:cbm_one_app/providers/drawer/help_provider.dart';
+import 'package:cbm_one_app/providers/drawer/info_provider.dart';
+import 'package:cbm_one_app/providers/drawer/toggle_provider.dart';
+import 'package:cbm_one_app/providers/drawer/transaction_limit_provider.dart';
+import 'package:cbm_one_app/providers/home_screen/contacts_data_provider.dart';
+import 'package:cbm_one_app/providers/home_screen/home_screen_data_provider.dart';
+import 'package:cbm_one_app/providers/home_screen/quick_access_data_provider.dart';
+import 'package:cbm_one_app/providers/home_screen/tap_selection_provider.dart';
+import 'package:cbm_one_app/providers/other_provider/common_provider.dart';
+import 'package:cbm_one_app/providers/other_provider/drop_down_provider.dart';
+import 'package:cbm_one_app/providers/other_provider/expandable_tile_provider.dart';
+import 'package:cbm_one_app/providers/other_provider/locale_provider.dart';
+import 'package:cbm_one_app/providers/paybill_provider/pay_bill_provider.dart';
+import 'package:cbm_one_app/providers/payments/mobile_reload.dart';
+import 'package:cbm_one_app/providers/payments/qr_payment_provider.dart';
+import 'package:cbm_one_app/providers/transaction/transaction_data_provider.dart';
 import 'package:cbm_one_app/services/fcm_service.dart';
+import 'package:cbm_one_app/theme.dart';
 import 'package:cbm_one_app/utils/log_util.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:cbm_one_app/routes.dart' as r;
-
-import 'injection.dart';
+import 'package:cbm_one_app/helpers/routes.dart' as router;
+import 'package:easy_localization/easy_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // EasyLocalization.ensureInitialized();
+  // await EasyLocalization.ensureInitialized();
 
   // Setup repository injection
   setupInjection();
-
   await FcmService().init();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppState>(
-          create: (context) => AppState(),
-        ),
-        ChangeNotifierProvider<AppLanguage>(
-          create: (context) => AppLanguage(),
-        ),
-        ChangeNotifierProvider<NotificationState>(
-          create: (context) => NotificationState(),
-        ),
-      ],
-      child: const MyApp(),
-    ));
+    runApp(
+      // EasyLocalization(
+      // saveLocale: false,
+      // supportedLocales:
+      //     supportedLanguages.map((lang) => lang['locale'] as Locale).toList(),
+      // path: 'assets/translations',
+      // fallbackLocale: Locale('en'),
+      // child:
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<AppState>(
+            create: (context) => AppState(),
+          ),
+          ChangeNotifierProvider<AppLanguage>(
+            create: (context) => AppLanguage(),
+          ),
+          ChangeNotifierProvider<NotificationState>(
+            create: (context) => NotificationState(),
+          ),
+
+          //* Locale Provider
+          ChangeNotifierProvider(create: (_) => LocaleProvider()),
+
+          //* Common Provider
+          ChangeNotifierProvider(create: (_) => CommonProvider()),
+          ChangeNotifierProvider(create: (_) => DropdownProvider()),
+
+          //! Bottom Naviagtions
+          ChangeNotifierProvider(create: (_) => BottomNavProvider()),
+
+          //! Home Screen Providers
+          ChangeNotifierProvider(create: (_) => HomeScreenDataProvider()),
+          ChangeNotifierProvider(create: (_) => QuickAccessProvider()),
+          ChangeNotifierProvider(create: (_) => TabSelectionProvider()),
+          ChangeNotifierProvider(create: (_) => ContactsProvider()),
+
+          //! Drawer
+          ChangeNotifierProvider(create: (_) => ToggleSwitchProvider()),
+          ChangeNotifierProvider(create: (_) => DrawerHelpDataProvider()),
+          ChangeNotifierProvider(create: (_) => DrawerInfoProvider()),
+          ChangeNotifierProvider(create: (_) => TransactionLimitProvider()),
+
+          // ChangeNotifierProvider<BottomNavBarIndeXModel>(
+          //   create: (context) => BottomNavBarIndeXModel(),
+          // ),
+
+          // Transaction
+
+          ChangeNotifierProvider(create: (_) => TransactionDataProvider()),
+
+          // Qr Code
+          ChangeNotifierProvider(create: (_) => QrScannerState()),
+          ChangeNotifierProvider(create: (_) => TabBarProvider()),
+          ChangeNotifierProvider(create: (_) => TabBarProviderCurved()),
+          ChangeNotifierProvider(create: (_) => PayBillProvider()),
+          ChangeNotifierProvider(create: (_) => TransactionProvider()),
+          ChangeNotifierProvider(create: (_) => DateTimeProvider()),
+        ],
+        child: const MyApp(),
+      ),
+      // )
+    );
   });
 
   //crashlytics
@@ -112,15 +182,22 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     initTime();
-
     printLog('AppLocale -> ${getAppLang(context).appLocale}');
-
+    var toggleProvider = getToggleProvider(context);
+    bool isDarkTheme = toggleProvider.getSwitchState("switch_darktheme");
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: isDarkTheme ? Colors.black : AppColors.primaryBlueColor,
+    ));
     return MaterialApp(
-      title: Env.appName,
+      title: Environment.appName,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: r.Router.generateRoute,
-      initialRoute: r.ScreenRoutes.toSplashScreen,
+      onGenerateRoute: router.Router.generateRoute,
+      initialRoute: router.ScreenRoutes.toOnBoardScreen,
       navigatorKey: navigatorKey,
+      // localizationsDelegates: context.localizationDelegates,
+      // supportedLocales: context.supportedLocales,
+      // locale: context.locale,
       navigatorObservers: [
         // AnalyticsService().getFirebaseAnalyticsObserver(),
       ],
@@ -130,14 +207,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           data: MediaQuery.of(context).copyWith(
               textScaler:
                   TextScaler.linear(scaleFactor > 1 ? 1.0 : scaleFactor)),
+          // data: MediaQuery.of(context)
+          //     .copyWith(textScaleFactor: scaleFactor > 1 ? 1.0 : scaleFactor),
           child: child ?? Container(),
         );
       },
-      theme: ThemeData(
-        primarySwatch: AppColors.primaryColor,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        // fontFamily: 'SF-Pro-Display',
-      ),
+      themeMode: toggleProvider.getSwitchState("switch_darktheme")
+          ? ThemeMode.dark
+          : ThemeMode.light,
+      theme: CustomTheme.lightTheme,
+      darkTheme: CustomTheme.darkTheme,
     );
   }
 
@@ -148,6 +227,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void initTime() {
     printLog("Reset idle Time *****");
     timer?.cancel();
-    timer = Timer(Duration(seconds: Env.timeoutPreSeconds), timeOutCallBack);
+    timer = Timer(
+        Duration(seconds: Environment.timeoutPreSeconds), timeOutCallBack);
   }
 }

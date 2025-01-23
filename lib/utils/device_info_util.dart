@@ -15,6 +15,7 @@ class DeviceInfoUtil {
           : androidInfo.version.baseOS;
       map = {
         "platform": "Android",
+        // "device_id": deviceId,
         'model': androidInfo.model,
         'manufacturer': androidInfo.manufacturer,
         // 'os': androidInfo.version.baseOS,
@@ -26,7 +27,7 @@ class DeviceInfoUtil {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       map = {
         "platform": "IOS",
-        // "device_id": await FlutterLCSDK.deviceId,
+        // "device_id": deviceId,
         'model': _getIosDeviceName(iosDeviceInfo.utsname.machine),
         'manufacturer': 'Apple',
         'os': iosDeviceInfo.systemName,
