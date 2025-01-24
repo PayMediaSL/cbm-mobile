@@ -1,4 +1,6 @@
+import 'package:cbm_one_app/helpers/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 //* Utility function to remove focus from the current input field.
 void dismissKeyboard(BuildContext context) {
@@ -26,11 +28,13 @@ bool canPop(BuildContext context) {
 //* Pops the current screen and optionally returns a result.
 void popScreen(BuildContext context, {Object? result}) {
   Navigator.of(context).pop(result);
+  _clearToastAndSnackBars(context);
 }
 
 //* Pushes a new screen onto the navigation stack.
 Future pushScreen(BuildContext context, String route,
     {Object? arguments}) async {
+  _clearToastAndSnackBars(context);
   return await Navigator.of(context).pushNamed(
     route,
     arguments: arguments,
@@ -40,6 +44,7 @@ Future pushScreen(BuildContext context, String route,
 //* Replaces the current screen with a new one.
 Future pushReplacementScreen(BuildContext context, String route,
     {Object? arguments}) async {
+  _clearToastAndSnackBars(context);
   return await Navigator.of(context).pushReplacementNamed(
     route,
     arguments: arguments,
@@ -53,6 +58,7 @@ void navigateToScreen(BuildContext context, String route, {Object? arguments}) {
     (_) => false,
     arguments: arguments,
   );
+  _clearToastAndSnackBars(context);
 }
 
 //* Pops screens until the specified route is found.
@@ -60,6 +66,7 @@ void popUntilScreen(BuildContext context, String routeName) {
   Navigator.of(context).popUntil((route) {
     return route.settings.name == routeName;
   });
+  _clearToastAndSnackBars(context);
 }
 
 //* Pushes a new screen and pops back to a specific screen in the navigation stack.
@@ -72,6 +79,7 @@ void pushAndPopUntilScreen(
     (route) => route.settings.name == popUntilName,
     arguments: arguments,
   );
+  _clearToastAndSnackBars(context);
 }
 
 // A reusable function for navigating to any screen
@@ -90,4 +98,23 @@ Future navigateToNamedScreen(BuildContext context, String routeName,
     routeName,
     arguments: arguments,
   );
+}
+
+//* Moves to the Home screen.
+void moveToHome(BuildContext context) {
+  navigateToScreen(context, ScreenRoutes.toHomeScreen);
+  _clearToastAndSnackBars(context);
+}
+
+//* Moves to the Splash screen.
+void moveToSplash(BuildContext context) {
+  navigateToScreen(context, ScreenRoutes.toSplashScreen);
+  _clearToastAndSnackBars(context);
+}
+
+//* Clears all toasts and snack bars from the screen.
+void _clearToastAndSnackBars(BuildContext context) async {
+  await Fluttertoast.cancel();
+  if (!context.mounted) return;
+  ScaffoldMessenger.of(context).clearSnackBars();
 }
