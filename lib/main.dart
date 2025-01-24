@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:cbm_one_app/helpers/colors.dart';
 import 'package:cbm_one_app/helpers/injection.dart';
+import 'package:cbm_one_app/helpers/language_constants.dart';
 import 'package:cbm_one_app/helpers/parameters.dart';
 import 'package:cbm_one_app/helpers/povider_helper/toggle_provider.dart';
 import 'package:cbm_one_app/models/app_language.dart';
@@ -43,7 +44,7 @@ import 'package:easy_localization/easy_localization.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // EasyLocalization.ensureInitialized();
-  // await EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   // Setup repository injection
   setupInjection();
@@ -53,15 +54,13 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(
-      // EasyLocalization(
-      // saveLocale: false,
-      // supportedLocales:
-      //     supportedLanguages.map((lang) => lang['locale'] as Locale).toList(),
-      // path: 'assets/translations',
-      // fallbackLocale: Locale('en'),
-      // child:
-      MultiProvider(
+    runApp(EasyLocalization(
+      saveLocale: false,
+      supportedLocales:
+          supportedLanguages.map((lang) => lang['locale'] as Locale).toList(),
+      path: 'assets/translations',
+      fallbackLocale: Locale('en'),
+      child: MultiProvider(
         providers: [
           ChangeNotifierProvider<AppState>(
             create: (context) => AppState(),
@@ -113,8 +112,7 @@ void main() async {
         ],
         child: const MyApp(),
       ),
-      // )
-    );
+    ));
   });
 
   //crashlytics
@@ -195,9 +193,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       onGenerateRoute: router.Router.generateRoute,
       initialRoute: router.ScreenRoutes.toOnBoardScreen,
       navigatorKey: navigatorKey,
-      // localizationsDelegates: context.localizationDelegates,
-      // supportedLocales: context.supportedLocales,
-      // locale: context.locale,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       navigatorObservers: [
         // AnalyticsService().getFirebaseAnalyticsObserver(),
       ],

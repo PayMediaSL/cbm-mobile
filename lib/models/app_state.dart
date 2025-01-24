@@ -6,7 +6,7 @@ import 'package:cbm_one_app/utils/log_util.dart';
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {
-  String? token;
+  String? accessToken;
   String? fcmToken;
   String? refreshToken;
   String? appVersion;
@@ -57,7 +57,7 @@ class AppState extends ChangeNotifier {
 
   void processLoginResponse(Map responseData) {
     user = User.fromJson(responseData['user']);
-    token = responseData['access_token'];
+    accessToken = responseData['access_token'];
     refreshToken = responseData['refresh_token'];
   }
 }

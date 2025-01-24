@@ -29,16 +29,16 @@ void popScreen(BuildContext context, {Object? result}) {
 }
 
 //* Pushes a new screen onto the navigation stack.
-Future<T?> pushScreen<T>(BuildContext context, String route,
+Future pushScreen(BuildContext context, String route,
     {Object? arguments}) async {
-  return await Navigator.of(context).pushNamed<T>(
+  return await Navigator.of(context).pushNamed(
     route,
     arguments: arguments,
   );
 }
 
 //* Replaces the current screen with a new one.
-Future<T?> pushReplacementScreen<T>(BuildContext context, String route,
+Future pushReplacementScreen(BuildContext context, String route,
     {Object? arguments}) async {
   return await Navigator.of(context).pushReplacementNamed(
     route,
@@ -83,9 +83,9 @@ void navigateToSpecificScreen(BuildContext context, Widget screen) {
 }
 
 // A reusable function for navigating to any named screen
-Future<T?> navigateToNamedScreen<T>(BuildContext context, String routeName,
+Future navigateToNamedScreen(BuildContext context, String routeName,
     {Object? arguments}) {
-  return Navigator.pushNamed<T>(
+  return Navigator.pushNamed(
     context,
     routeName,
     arguments: arguments,
