@@ -3,7 +3,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
 import 'package:app/helpers/spacers.dart';
-import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/drawer/toggle_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
@@ -118,7 +117,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                       },
                       icon: Icon(Icons.calendar_month_rounded)),
                   label: "Date",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "12/23/14",
@@ -129,7 +128,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithTextField(
                   label: "Account Number",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "e.g. ********127",
@@ -143,7 +142,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithTextField(
                   label: "Account Name",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "eg : john doe",
@@ -154,7 +153,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithTextField(
                   label: "Amount ",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "eg : 100,000",

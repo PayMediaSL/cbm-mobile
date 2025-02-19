@@ -3,7 +3,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/spacers.dart';
-import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/models/contacts/contacts_model.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
@@ -165,7 +164,7 @@ class MobileReloadScreen extends StatelessWidget {
                                               child: CustomLableTextField(
                                                 isSmallContentPadding: true,
                                                 borderradius: 13.sp,
-                                                emailrController,
+                                                TextEditingController(),
                                                 hint: "eg: 07543128978",
                                                 keyboardType:
                                                     TextInputType.number,
@@ -223,7 +222,7 @@ class MobileReloadScreen extends StatelessWidget {
                                         CustomLableTextField(
                                           isSmallContentPadding: true,
                                           borderradius: 13.sp,
-                                          emailrController,
+                                          TextEditingController(),
                                           hint: "eg: 20000",
                                           keyboardType: TextInputType.number,
                                           inputFormatters: [
@@ -249,7 +248,7 @@ class MobileReloadScreen extends StatelessWidget {
                                           isSmallContentPadding: true,
                                           borderradius: 13.sp,
                                           inputFormatters: [],
-                                          emailrController,
+                                          TextEditingController(),
                                           hint: "eg: Payment",
                                           autovalidate: true,
                                           validator: (input) =>

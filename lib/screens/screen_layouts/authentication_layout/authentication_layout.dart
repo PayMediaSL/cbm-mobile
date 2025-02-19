@@ -82,7 +82,9 @@ class AuthenticationLayout extends StatelessWidget {
       backgroundColor: backgroundColor ?? AppColors.primaryWhiteColor,
       appBar: isAppBar
           ? AppBar(
-              backgroundColor: appbarbackgroundColor,
+              toolbarHeight: 0,
+              backgroundColor:
+                  appbarbackgroundColor ?? AppColors.primaryBlueColor,
               elevation: 0,
               leading: isLeading
                   ? isLeadingBackButton

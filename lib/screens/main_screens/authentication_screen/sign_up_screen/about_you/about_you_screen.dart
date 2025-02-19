@@ -23,6 +23,7 @@ class AboutYouScreen extends StatelessWidget {
     ScreenUtil.init(context);
     final commonProvider = Provider.of<CommonProvider>(context, listen: false);
     return AuthenticationLayout(
+      isAppBar: true,
       onBackButtonTap: () {
         popScreen(context);
       },

@@ -29,6 +29,7 @@ class SignInScreen extends StatelessWidget {
     ScreenUtil.init(context);
     // final darkModeEnabled = context.isDarkMode;
     return AuthenticationLayout(
+      isAppBar: true,
       backgroundColor: AppColors.primaryWhiteColor,
       isContainer1: true,
       isBodyLeadingAvailable: true,

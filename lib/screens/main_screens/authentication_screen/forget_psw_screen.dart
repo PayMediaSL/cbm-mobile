@@ -26,6 +26,7 @@ class ForgetPasswordScreen extends StatelessWidget {
     final commonProvider = Provider.of<CommonProvider>(context);
 
     return AuthenticationLayout(
+      isAppBar: true,
       backgroundColor: AppColors.primaryWhiteColor,
       isContainer1: true,
       isBodyLeadingAvailable: true,

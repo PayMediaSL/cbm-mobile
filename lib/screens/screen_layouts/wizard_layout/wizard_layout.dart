@@ -62,6 +62,7 @@ class _WizardLayoutState extends State<WizardLayout> {
                   // grabFocus(context);
                 },
                 child: AuthenticationLayout(
+                  isAppBar: true,
                   backgroundColor: HexColor("#F7F8FC"),
                   onBackButtonTap: () {
                     if (widget.onBackPress != null) {
