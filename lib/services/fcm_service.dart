@@ -1,7 +1,9 @@
+// ignore_for_file: prefer_const_constructors, unused_local_variable
+
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app/firebase_options.dart';
+import 'package:app/helpers/firebase_options.dart';
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -101,22 +103,22 @@ class FcmService {
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
-      onDidReceiveLocalNotification: (
-        int id,
-        String? title,
-        String? body,
-        String? payload,
-      ) async {
-        printLog("IOS notification handle");
-        // didReceiveLocalNotificationSubject.add(
-        //   ReceivedNotification(
-        //     id: id,
-        //     title: title ?? "",
-        //     body: body ?? "",
-        //     payload: payload ?? "",
-        //   ),
-        // );
-      },
+      // onDidReceiveLocalNotification: (
+      //   int id,
+      //   String? title,
+      //   String? body,
+      //   String? payload,
+      // ) async {
+      //   printLog("IOS notification handle");
+      //   // didReceiveLocalNotificationSubject.add(
+      //   //   ReceivedNotification(
+      //   //     id: id,
+      //   //     title: title ?? "",
+      //   //     body: body ?? "",
+      //   //     payload: payload ?? "",
+      //   //   ),
+      //   // );
+      // },
     );
 
     final initializationSettings = InitializationSettings(

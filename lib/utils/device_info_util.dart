@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:lp_flutter_plugin/lp_flutter_plugin.dart';
+// import 'package:lp_flutter_plugin/lp_flutter_plugin.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class DeviceInfoUtil {
   final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   Future<Map> getDeviceInfo() async {
     Map map = {};
-    String? deviceId = await LpFlutterPlugin.deviceId();
+    // String? deviceId = await LpFlutterPlugin.deviceId();
 
     if (Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
@@ -17,7 +17,7 @@ class DeviceInfoUtil {
           : androidInfo.version.baseOS;
       map = {
         "platform": "Android",
-        "device_id": deviceId,
+        // "device_id": deviceId,
         'model': androidInfo.model,
         'manufacturer': androidInfo.manufacturer,
         // 'os': androidInfo.version.baseOS,
@@ -29,7 +29,7 @@ class DeviceInfoUtil {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       map = {
         "platform": "IOS",
-        "device_id": deviceId,
+        // "device_id": deviceId,
         'model': _getIosDeviceName(iosDeviceInfo.utsname.machine),
         'manufacturer': 'Apple',
         'os': iosDeviceInfo.systemName,
