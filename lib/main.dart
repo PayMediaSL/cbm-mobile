@@ -118,15 +118,15 @@ void main() async {
   //crashlytics
   //send error throws by flutter
   FlutterError.onError = (errorDetails) {
-    if (!kDebugMode) {
-      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-    }
+    // if (!kDebugMode) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    // }
   };
   //send error throws by platform
   PlatformDispatcher.instance.onError = (error, stack) {
-    if (!kDebugMode) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    }
+    // if (!kDebugMode) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    // }
     return true;
   };
 }

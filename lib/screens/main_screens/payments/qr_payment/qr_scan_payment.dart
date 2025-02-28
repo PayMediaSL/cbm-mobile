@@ -162,14 +162,14 @@ class QrScannerScreen extends StatelessWidget {
                       width: scanWindow.width,
                       height: scanWindow.height,
                       child: MobileScanner(
-                        startDelay: true,
+                        // startDelay: true,
                         // fit: BoxFit.fitHeight,
                         // scanWindow: scanWindow,
                         controller: controller,
                         errorBuilder: (context, error, child) {
                           return ScannerErrorWidget(error: error);
                         },
-                        onScannerStarted: (arguments) {},
+                        // onScannerStarted: (arguments) {},
                         onDetect: (BarcodeCapture barcodeCapture) {
                           if (barcodeCapture.barcodes.isNotEmpty) {
                             String barcodeValue =
