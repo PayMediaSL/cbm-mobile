@@ -40,6 +40,10 @@ class HomeMainLayout extends StatelessWidget {
     ScreenUtils.init(context);
     ScreenUtil.init(context);
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: AppColors.primaryBlueColor,
+      ),
       backgroundColor: backgroundColor ?? AppColors.primaryWhiteColor,
       body: SafeArea(
         child: SingleChildScrollView(

@@ -118,7 +118,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                       },
                       icon: Icon(Icons.calendar_month_rounded)),
                   label: "Date",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "12/23/14",
@@ -129,7 +129,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithTextField(
                   label: "Account Number",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "e.g. ********127",
@@ -143,7 +143,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithTextField(
                   label: "Account Name",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "eg : john doe",
@@ -154,7 +154,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithTextField(
                   label: "Amount ",
-                  controller: signInPasswordController,
+                  controller: TextEditingController(),
                   borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "eg : 100,000",

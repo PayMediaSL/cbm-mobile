@@ -17,6 +17,7 @@ class ESlipsScreen extends StatelessWidget {
     ScreenUtils.init(context);
     ScreenUtil.init(context);
     return AuthenticationLayout(
+      isAppBar: true,
       isContainer1: true,
       isContainer2: true,
       isBodyLeadingAvailable: true,

@@ -44,6 +44,7 @@ class DescriptionLayout extends StatelessWidget {
     ScreenUtil.init(context);
 
     return AuthenticationLayout(
+      isAppBar: true,
       onBackButtonTap: onBackButtonTap,
       isContainer1: true,
       isContainer2: true,

@@ -165,7 +165,7 @@ class MobileReloadScreen extends StatelessWidget {
                                               child: CustomLableTextField(
                                                 isSmallContentPadding: true,
                                                 borderradius: 13.sp,
-                                                emailrController,
+                                                TextEditingController(),
                                                 hint: "eg: 07543128978",
                                                 keyboardType:
                                                     TextInputType.number,
@@ -223,7 +223,7 @@ class MobileReloadScreen extends StatelessWidget {
                                         CustomLableTextField(
                                           isSmallContentPadding: true,
                                           borderradius: 13.sp,
-                                          emailrController,
+                                          TextEditingController(),
                                           hint: "eg: 20000",
                                           keyboardType: TextInputType.number,
                                           inputFormatters: [
@@ -249,7 +249,7 @@ class MobileReloadScreen extends StatelessWidget {
                                           isSmallContentPadding: true,
                                           borderradius: 13.sp,
                                           inputFormatters: [],
-                                          emailrController,
+                                          TextEditingController(),
                                           hint: "eg: Payment",
                                           autovalidate: true,
                                           validator: (input) =>

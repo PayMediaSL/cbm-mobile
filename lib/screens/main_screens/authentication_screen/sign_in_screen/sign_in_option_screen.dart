@@ -16,6 +16,7 @@ class SignInOptionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtils.init(context);
     return AuthenticationLayout(
+      isAppBar: true,
       backgroundColor: AppColors.primaryWhiteColor,
       isContainer1: true,
       container1Height: ScreenUtils.height * 0.58,
