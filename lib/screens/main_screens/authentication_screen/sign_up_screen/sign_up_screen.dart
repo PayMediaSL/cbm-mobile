@@ -9,6 +9,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/providers/value_notifier/value_notifier.dart';
 import 'package:app/screens/screen_layouts/wizard_layout/wizard_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/pin_field/pin_field.dart';
 import 'package:app/screens/widgets/pin_field/pin_pad.dart';
@@ -72,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             //!On Back Press
             onBackPress: (currentPage) {
               if (currentPage == 0) {
-                return;
+                return popScreen(context);
               }
               switch (currentPage) {
                 case createPasscodeId:
@@ -148,7 +149,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hint: "National ID / Passport Number",
                     ),
                     ColumnSpacer(0.4)
-                    // Text("skdjskdjk")
                   ]),
 
               //! Wizard 2: Account Details
@@ -333,14 +333,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hint: "New Password",
                       obscureText: !commonProvider.getStates("obscureText1"),
                       suffixIcon: IconButton(
-                          onPressed: () {
-                            commonProvider.toggleStates('obscureText1');
-                          },
-                          icon: Icon(
-                            commonProvider.getStates('obscureText1')
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          )),
+                        onPressed: () {
+                          commonProvider.toggleStates('obscureText1');
+                        },
+                        icon: commonProvider.getStates('obscureText1')
+                            ? CustomVisibility_ON_Icon()
+                            : CustomVisibility_OFF_Icon(),
+                        // icon: Icon(
+                        //   commonProvider.getStates('obscureText1')
+                        //       ? Icons.visibility
+                        //       : Icons.visibility_off,
+                        // )
+                      ),
                       autovalidate: true,
                       validator: (input) => ValidationService.validatePassword(
                         input,
@@ -362,14 +366,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hint: "Re-enter password",
                       obscureText: !commonProvider.getStates("obscureText2"),
                       suffixIcon: IconButton(
-                          onPressed: () {
-                            commonProvider.toggleStates('obscureText2');
-                          },
-                          icon: Icon(
-                            commonProvider.getStates('obscureText2')
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          )),
+                        onPressed: () {
+                          commonProvider.toggleStates('obscureText2');
+                        },
+                        icon: commonProvider.getStates('obscureText2')
+                            ? CustomVisibility_ON_Icon()
+                            : CustomVisibility_OFF_Icon(),
+                        // icon: Icon(
+                        //   commonProvider.getStates('obscureText2')
+                        //       ? Icons.visibility
+                        //       : Icons.visibility_off,
+                        // )
+                      ),
                       autovalidate: true,
                       validator: (input) =>
                           ValidationService.validateConfirmPassword(

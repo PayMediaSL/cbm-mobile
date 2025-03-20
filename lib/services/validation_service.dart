@@ -135,7 +135,7 @@ class ValidationService {
       );
 
       if (!passwordRegex.hasMatch(password)) {
-        return 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, and a number';
+        return 'Invalid Password Format';
       }
     }
 

@@ -3,6 +3,7 @@
 import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/screens/widgets/icons/custom_icons.dart';
+import 'package:app/utils/assest_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app/helpers/colors.dart';
@@ -31,7 +32,7 @@ class AuthenticationLayout extends StatelessWidget {
     this.useImage = false,
     this.defaultButton = false,
     this.isLinearProgress = false,
-    this.imageName = "",
+    this.imageName,
     this.backgroundColor,
     this.onTap,
     this.appbarbackgroundColor,
@@ -45,6 +46,7 @@ class AuthenticationLayout extends StatelessWidget {
     this.buttontitle = "",
     this.children = const <Widget>[],
     this.onBackButtonTap,
+    this.defaultButtonBottomWidget,
   });
 
   bool isAppBar;
@@ -61,6 +63,8 @@ class AuthenticationLayout extends StatelessWidget {
   bool isListChildren;
   bool defaultButton;
   bool isLinearProgress;
+  final Widget? defaultButtonBottomWidget;
+
   final Color? backgroundColor;
   final Color? appbarbackgroundColor;
   final void Function()? onTap;
@@ -71,9 +75,10 @@ class AuthenticationLayout extends StatelessWidget {
   final double? container1Width;
   final String headerText;
   final String headerSubText;
-  final String imageName;
+  final String? imageName;
   final String buttontitle;
   final List<Widget> children;
+
   final void Function()? onBackButtonTap;
 
   @override
@@ -131,7 +136,7 @@ class AuthenticationLayout extends StatelessWidget {
         color: useImage ? null : AppColors.primaryBlueColor,
         image: useImage
             ? DecorationImage(
-                image: AssetImage(imageName),
+                image: AssetImage(imageName ?? ImageAsset().authBg),
                 fit: BoxFit.cover,
               )
             : null,
@@ -219,29 +224,65 @@ class AuthenticationLayout extends StatelessWidget {
 
   Widget _buildContainer2() {
     return Container(
-      child: defaultButton
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
-                      vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
-                  child: container2CustomWidget!,
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: MainButton(
-                    buttontitle: buttontitle,
-                    isPaddingNeeded: true,
-                    btnOnPress: onTap,
-                    isMainButton: true,
+        child: defaultButton
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
+                        vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
+                    child: container2CustomWidget!,
                   ),
-                ),
-              ],
-            )
-          : container2CustomWidget,
-    );
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      children: [
+                        MainButton(
+                          buttontitle: buttontitle,
+                          isPaddingNeeded: true,
+                          btnOnPress: onTap,
+                          isMainButton: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            // : container2CustomWidget,
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
+                        vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
+                    child: container2CustomWidget!,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      children: [
+                        MainButton(
+                          buttontitle: buttontitle,
+                          isPaddingNeeded: true,
+                          btnOnPress: onTap,
+                          isMainButton: true,
+                        ),
+                        ColumnSpacer(0.02),
+                        if (defaultButtonBottomWidget != null)
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING),
+                            child: defaultButtonBottomWidget!,
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ));
   }
 }

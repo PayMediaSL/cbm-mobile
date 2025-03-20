@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:app/helpers/colors.dart';
 import 'package:app/providers/value_notifier/value_notifier.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
-import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
@@ -78,13 +77,15 @@ class _WizardLayoutState extends State<WizardLayout> {
                   isBodyLeadingIcon: true,
                   isBodyLeadingAvailable: true,
                   useImage: true,
-                  imageName: ImageAsset().authBg,
+                  // imageName: ImageAsset().authBg,
                   isHeadingAvailable: true,
                   isSubHeadingAvailable: true,
                   headerText: currentItem.title,
                   headerSubText: currentItem.subtitle,
                   defaultButton: currentItem.defaulButton,
                   buttontitle: currentItem.buttonTitle,
+                  defaultButtonBottomWidget:
+                      currentItem.defaultButtonBottomWidget,
                   onTap: () => widget.onPrimaryTap?.call(currentPage),
                   container2CustomWidget: Column(
                     children: [...currentItem.children],
@@ -113,21 +114,21 @@ class _WizardLayoutState extends State<WizardLayout> {
 }
 
 class WizardItem {
-  const WizardItem({
-    this.title = "",
-    this.subtitle = "",
-    this.btnRaised = false,
-    // this.twoButtonLayout = false,
-    this.defaulButton = false,
-    this.primaryBtnTitle = '',
-    this.secondaryBtnTitle = '',
-    this.children = const <Widget>[],
-    this.thisProgress = 1,
-    this.mainBtnReplacement,
-    this.buttonTitle = "",
-    this.infoText,
-    this.infoTextMessage,
-  });
+  const WizardItem(
+      {this.title = "",
+      this.subtitle = "",
+      this.btnRaised = false,
+      // this.twoButtonLayout = false,
+      this.defaulButton = false,
+      this.primaryBtnTitle = '',
+      this.secondaryBtnTitle = '',
+      this.children = const <Widget>[],
+      this.thisProgress = 1,
+      this.mainBtnReplacement,
+      this.buttonTitle = "",
+      this.infoText,
+      this.infoTextMessage,
+      this.defaultButtonBottomWidget});
 
   final String title;
   final String subtitle;
@@ -144,6 +145,7 @@ class WizardItem {
   final String secondaryBtnTitle;
   final List<Widget> children;
   final Widget? mainBtnReplacement;
+  final Widget? defaultButtonBottomWidget;
 }
 
 class WizardStreamBuilder extends StatelessWidget {

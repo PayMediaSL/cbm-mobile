@@ -1,4 +1,5 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
@@ -73,7 +74,7 @@ class AboutYouScreen extends StatelessWidget {
                 "Optional",
                 style: commonTextStyle.copyWith(
                     color: AppColors.secondarySubBlackColor,
-                    fontFamily: "exo2"),
+                    fontFamily: UIFontFamily.exo2),
               ),
             ),
             CustomLableTextField(

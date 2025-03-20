@@ -12,6 +12,7 @@ class CustomCurvedContainer extends StatelessWidget {
   final double? borderradius;
   final EdgeInsetsGeometry? padding;
   final Widget? child;
+  final Color? color;
 
   final EdgeInsetsGeometry? margin;
   const CustomCurvedContainer(
@@ -21,6 +22,7 @@ class CustomCurvedContainer extends StatelessWidget {
       this.borderradius,
       this.padding,
       this.margin,
+      this.color,
       this.child});
 
   @override
@@ -32,7 +34,7 @@ class CustomCurvedContainer extends StatelessWidget {
       height: height ?? ScreenUtils.height * 0.3,
       width: width ?? ScreenUtils.width,
       decoration: BoxDecoration(
-          color: AppColors.white,
+          color: color ?? AppColors.white,
           borderRadius: BorderRadius.circular(borderradius ?? UI.borderRadius)),
       child: child,
     );

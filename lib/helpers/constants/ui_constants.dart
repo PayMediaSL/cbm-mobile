@@ -12,6 +12,7 @@ class UIFontFamily {
 class UI_Iconsize {
   static double AUTH_LEADING_ICON_SIZE = 24.sp;
   static double AUTH_LEADING_ICON_ARROW_SIZE = 20.sp;
+  static double VALIDATION_CIRCLE_SIZE = 12.sp;
 }
 
 class UI_Icon {

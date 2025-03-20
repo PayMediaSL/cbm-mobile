@@ -3,6 +3,7 @@ import 'package:app/helpers/povider_helper/common_provider.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -69,14 +70,19 @@ class DrawerChangePassword extends StatelessWidget {
                           hint: "Enter Current Password",
                           obscureText: !commonProvider.getStates("drawerpsw1"),
                           suffixIcon: IconButton(
-                              onPressed: () {
-                                commonProvider.toggleStates('drawerpsw1');
-                              },
-                              icon: Icon(
-                                commonProvider.getStates('drawerpsw1')
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              )),
+                            onPressed: () {
+                              commonProvider.toggleStates('drawerpsw1');
+                            },
+
+                            icon: commonProvider.getStates('drawerpsw1')
+                                ? CustomVisibility_ON_Icon()
+                                : CustomVisibility_OFF_Icon(),
+                            // icon: Icon(
+                            //   commonProvider.getStates('drawerpsw1')
+                            //       ? Icons.visibility
+                            //       : Icons.visibility_off,
+                            // )
+                          ),
                           hintFontFamily: "inter",
                         ),
                         ColumnSpacer(0.02),
@@ -85,14 +91,18 @@ class DrawerChangePassword extends StatelessWidget {
                           hint: "Enter new Password",
                           obscureText: !commonProvider.getStates("drawerpsw2"),
                           suffixIcon: IconButton(
-                              onPressed: () {
-                                commonProvider.toggleStates('drawerpsw2');
-                              },
-                              icon: Icon(
-                                commonProvider.getStates('drawerpsw2')
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              )),
+                            onPressed: () {
+                              commonProvider.toggleStates('drawerpsw2');
+                            },
+                            icon: commonProvider.getStates('drawerpsw2')
+                                ? CustomVisibility_ON_Icon()
+                                : CustomVisibility_OFF_Icon(),
+                            // icon: Icon(
+                            //   commonProvider.getStates('drawerpsw2')
+                            //       ? Icons.visibility
+                            //       : Icons.visibility_off,
+                            // )
+                          ),
                           hintFontFamily: "inter",
                         ),
                         ColumnSpacer(0.02),
@@ -101,14 +111,18 @@ class DrawerChangePassword extends StatelessWidget {
                           hint: "Enter new Password",
                           obscureText: !commonProvider.getStates("drawerpsw3"),
                           suffixIcon: IconButton(
-                              onPressed: () {
-                                commonProvider.toggleStates('obscureText3');
-                              },
-                              icon: Icon(
-                                commonProvider.getStates('obscureText3')
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              )),
+                            onPressed: () {
+                              commonProvider.toggleStates('obscureText3');
+                            },
+                            icon: commonProvider.getStates('obscureText3')
+                                ? CustomVisibility_ON_Icon()
+                                : CustomVisibility_OFF_Icon(),
+                            // icon: Icon(
+                            //   commonProvider.getStates('obscureText3')
+                            //       ? Icons.visibility
+                            //       : Icons.visibility_off,
+                            // )
+                          ),
                           hintFontFamily: "inter",
                         ),
                         ColumnSpacer(0.01),

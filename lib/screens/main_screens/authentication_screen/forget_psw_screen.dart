@@ -7,6 +7,7 @@ import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -56,14 +57,18 @@ class ForgetPasswordScreen extends StatelessWidget {
               hint: "New Password",
               obscureText: commonProvider.getStates("obscureText1"),
               suffixIcon: IconButton(
-                  onPressed: () {
-                    commonProvider.toggleStates('obscureText1');
-                  },
-                  icon: Icon(
-                    commonProvider.getStates('obscureText1')
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                  )),
+                onPressed: () {
+                  commonProvider.toggleStates('obscureText1');
+                },
+                icon: commonProvider.getStates('obscureText1')
+                    ? CustomVisibility_ON_Icon()
+                    : CustomVisibility_OFF_Icon(),
+                // icon: Icon(
+                //   commonProvider.getStates('obscureText1')
+                //       ? CustomVisibility_ON_Icon()
+                //       : CustomVisibility_OFF_Icon(),
+                // )
+              ),
             ),
             const ColumnSpacer(0.005),
             Padding(
@@ -81,14 +86,19 @@ class ForgetPasswordScreen extends StatelessWidget {
               hint: "Re-enter password",
               obscureText: commonProvider.getStates("obscureText2"),
               suffixIcon: IconButton(
-                  onPressed: () {
-                    commonProvider.toggleStates('obscureText2');
-                  },
-                  icon: Icon(
-                    commonProvider.getStates('obscureText2')
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                  )),
+                onPressed: () {
+                  commonProvider.toggleStates('obscureText2');
+                },
+
+                icon: commonProvider.getStates('obscureText2')
+                    ? CustomVisibility_ON_Icon()
+                    : CustomVisibility_OFF_Icon(),
+                // icon: Icon(
+                //   commonProvider.getStates('obscureText2')
+                //       ? Icons.visibility_off
+                //       : Icons.visibility,
+                // )
+              ),
             ),
             const ColumnSpacer(0.1),
             MainButton(

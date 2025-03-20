@@ -43,6 +43,8 @@ class AppColors {
   static Color primaryRedColor = HexColor("#DC2626");
   static Color primaryGreenColor = HexColor("#16A34A");
   static Color suffixIconColor = HexColor("#B0B0B0");
+  static Color primarypaleGreenColor = HexColor("#22C55E");
+  static Color primarypaleRedColor = HexColor("#F24141");
 
   //?Authentication'
 

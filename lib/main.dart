@@ -30,6 +30,7 @@ import 'package:app/providers/paybill_provider/pay_bill_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/providers/payments/qr_payment_provider.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
+import 'package:app/providers/validation_provider/password_validation_provider.dart';
 import 'package:app/services/analytics_service.dart';
 import 'package:app/services/fcm_service.dart';
 import 'package:app/theme.dart';
@@ -110,6 +111,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => PayBillProvider()),
           ChangeNotifierProvider(create: (_) => TransactionProvider()),
           ChangeNotifierProvider(create: (_) => DateTimeProvider()),
+          ChangeNotifierProvider(create: (_) => ValidationProvider()),
         ],
         child: const MyApp(),
       ),

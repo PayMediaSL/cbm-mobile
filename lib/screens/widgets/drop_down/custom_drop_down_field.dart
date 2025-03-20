@@ -1,5 +1,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/other_provider/drop_down_provider.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -144,7 +145,7 @@ class CustomDropdown extends StatelessWidget {
                           ? Text(
                               hint ?? "Select an option",
                               style: TextStyle(
-                                fontFamily: "exo2",
+                                fontFamily: UIFontFamily.exo2,
                                 color: AppColors.textFieldHintColor,
                                 fontSize: 14.sp,
                               ),

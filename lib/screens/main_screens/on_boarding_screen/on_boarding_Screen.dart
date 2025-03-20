@@ -42,7 +42,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
     ScreenUtils.init(context);
     return IntroductionScreen(
       key: introKey,
-      globalBackgroundColor: Colors.white,
+      globalBackgroundColor: AppColors.primaryWhiteColor,
 
       // Global Header with Skip Button and Progress Indicator
       globalHeader: Padding(

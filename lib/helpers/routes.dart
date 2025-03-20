@@ -5,6 +5,7 @@ import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/ab
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/billing/signup_billing_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/billing/signup_billing_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/clarify_you_identity_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/existing_user_flow/signin_existing_user.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/finished_up_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_back_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_front_camera_screen.dart';
@@ -84,6 +85,7 @@ class ScreenRoutes {
   static const String toSignUpScreen = "toSignUpScreen";
   static const String toClarifyIdentityScreen = "toClarifyIdentityScreen";
   static const String toAboutYouScreen = "toAboutYouScreen";
+  static const String toExistingUserLogin = "toExistingUserLogin";
 
   //Selfie
   static const String toSignUpSelfieScreen = "toSignUpSelfieScreen";
@@ -219,6 +221,13 @@ class Router {
       case ScreenRoutes.toforgetPswScreen:
         return MaterialPageRoute(
           builder: (_) => ForgetPasswordScreen(),
+          settings: settings,
+        );
+//?Existing User
+
+      case ScreenRoutes.toExistingUserLogin:
+        return MaterialPageRoute(
+          builder: (_) => ExistingUserLogin(),
           settings: settings,
         );
 

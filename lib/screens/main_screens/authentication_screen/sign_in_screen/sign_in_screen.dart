@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 import 'package:app/helpers/colors.dart';
-import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
@@ -9,13 +8,14 @@ import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/rich_text/rich_text.dart';
+import 'package:app/screens/widgets/text_button/text_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/services/validation_service.dart';
-import 'package:app/utils/assest_image.dart';
+import 'package:app/utils/log_util.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +42,7 @@ class SignInScreen extends StatelessWidget {
       headerSubText: "OneApp for all your banking needs",
       isContainer2: true,
       useImage: true,
-      imageName: ImageAsset().authBg,
+      // imageName: ImageAsset().authBg,
       container2CustomWidget: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.sp),
         child: Form(
@@ -99,7 +99,7 @@ class SignInScreen extends StatelessWidget {
                 isMainButton: true,
                 btnOnPress: () {
                   if (_formKey.currentState!.validate()) {
-                    pushScreen(context, ScreenRoutes.toPinLoginScreeen);
+                    pushScreen(context, ScreenRoutes.toExistingUserLogin);
                   }
                 },
               ),
@@ -113,83 +113,104 @@ class SignInScreen extends StatelessWidget {
                     style: commonTextStyle.copyWith(
                         color: AppColors.primarySubBlackColor),
                   ),
-                  GestureDetector(
+                  UnderlinedTextButton(
+                    fonttWeight: FontWeight.w600,
+                    text: 'Sign up',
+                    color: AppColors.primarySubBlackColor,
                     onTap: () {
                       pushScreen(context, ScreenRoutes.toSignUpScreen);
                     },
-                    child: Text(
-                      "Sign up ",
-                      style: commonTextStyle.copyWith(
-                        color: AppColors.primarySubBlackColor,
-                        fontWeight: FontWeight.w600,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
                   ),
                 ],
               ),
-
-              ColumnSpacer(0.03),
+              // ColumnSpacer(0.03),
               //? Divider Line
+              // Row(
+              //   children: <Widget>[
+              //     Expanded(child: Divider()),
+              //     Padding(
+              //       padding:
+              //           EdgeInsets.symmetric(horizontal: UI_Padding.PADDING_2X),
+              //       child: Text('or continue to',
+              //           style: commonTextStyle.copyWith(
+              //               color: AppColors.primarySubBlackColor)),
+              //     ),
+              //     Expanded(child: Divider()),
+              //   ],
+              // ),
+              // ColumnSpacer(0.03),
+              // MainButton(
+              //   buttontitle: "Access eSlips",
+              //   btnOnPress: () {
+              //     pushScreen(context, ScreenRoutes.toESlipsScreen);
+              //   },
+              // ),
+              ColumnSpacer(0.1),
+
               Row(
-                children: <Widget>[
-                  Expanded(child: Divider()),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: UI_Padding.PADDING_2X),
-                    child: Text('or continue to',
-                        style: commonTextStyle.copyWith(
-                            color: AppColors.primarySubBlackColor)),
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  UnderlinedTextButton(
+                    text: 'Need help',
+                    color: AppColors.secondarySubBlueColor2,
+                    onTap: () {},
                   ),
-                  Expanded(child: Divider()),
+                  RowSpacer(0.03),
+                  UnderlinedTextButton(
+                    text: 'More info',
+                    color: AppColors.primarySubBlackColor,
+                    onTap: () {},
+                  ),
                 ],
               ),
-              ColumnSpacer(0.03),
-
-              MainButton(
-                buttontitle: "Access eSlips",
-                btnOnPress: () {
-                  pushScreen(context, ScreenRoutes.toESlipsScreen);
+              ColumnSpacer(0.05),
+              TermsAndPrivacyText(
+                onTermsTap: () {
+                  printLog("Terms of Use clicked");
+                },
+                onPrivacyTap: () {
+                  printLog("Privacy Policy clicked");
                 },
               ),
-              ColumnSpacer(0.07),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'By using OneApp, you agree to our ',
-                      style: TextStyle(color: AppColors.primaryBlackColor),
-                    ),
-                    TextSpan(
-                      text: 'Terms of Use',
-                      style: mainButtonTextStyle.copyWith(
-                          color: AppColors.primarySubBlackColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w700),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          // Open Terms of Use link
-                        },
-                    ),
-                    TextSpan(
-                      text: ' and ',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    TextSpan(
-                      text: 'Privacy Policy',
-                      style: mainButtonTextStyle.copyWith(
-                          color: AppColors.primarySubBlackColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w700),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          // Open Privacy Policy link
-                        },
-                    ),
-                  ],
-                ),
-              )
+
+              // RichText(
+              //   textAlign: TextAlign.center,
+              //   text: TextSpan(
+              //     children: [
+              //       TextSpan(
+              //         text: 'By using OneApp, you agree to our ',
+              //         style: TextStyle(color: AppColors.primaryBlackColor),
+              //       ),
+              //       TextSpan(
+              //         text: 'Terms of Use',
+              //         style: mainButtonTextStyle.copyWith(
+              //             color: AppColors.primarySubBlackColor,
+              //             fontSize: 12.sp,
+              //             fontWeight: FontWeight.w700),
+              //         recognizer: TapGestureRecognizer()
+              //           ..onTap = () {
+              //             // Open Terms of Use link
+              //           },
+              //       ),
+              //       TextSpan(
+              //         text: ' and ',
+              //         style: TextStyle(color: Colors.black),
+              //       ),
+              //       TextSpan(
+              //         text: 'Privacy Policy',
+              //         style: mainButtonTextStyle.copyWith(
+              //             color: AppColors.primarySubBlackColor,
+              //             fontSize: 12.sp,
+              //             fontWeight: FontWeight.w700),
+              //         recognizer: TapGestureRecognizer()
+              //           ..onTap = () {
+              //             // Open Privacy Policy link
+              //           },
+              //       ),
+              //     ],
+              //   ),
+              // )
             ],
           ),
         ),

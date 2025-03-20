@@ -1,5 +1,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/input_formatter.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +86,7 @@ class CustomLableTextField extends StatelessWidget {
           hintText: hint ?? '',
           hintStyle: hintTextStyle ??
               TextStyle(
-                fontFamily: hintFontFamily ?? "exo2",
+                fontFamily: hintFontFamily ?? UIFontFamily.exo2,
                 color: AppColors.textFieldHintColor,
                 fontSize: 14.sp,
               ),
