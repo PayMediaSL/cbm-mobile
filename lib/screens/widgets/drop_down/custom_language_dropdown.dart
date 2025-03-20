@@ -93,8 +93,10 @@
 // }
 
 //! State Management Change
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/language_constants.dart';
 import 'package:app/providers/other_provider/locale_provider.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -109,7 +111,7 @@ class CustomLanguageDropdown extends StatelessWidget {
   final Color fillColor;
   final Color borderColor;
   final Color? dropDownFillColor;
-  final double dropDownBorderRadius;
+  final double? dropDownBorderRadius;
 
   CustomLanguageDropdown({
     this.dropdownHeight = 50.0,
@@ -118,7 +120,7 @@ class CustomLanguageDropdown extends StatelessWidget {
     this.dheight,
     this.dwidth,
     this.dropDownFillColor,
-    this.dropDownBorderRadius = 25.0,
+    this.dropDownBorderRadius,
   });
 
   @override
@@ -130,18 +132,20 @@ class CustomLanguageDropdown extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: dropDownFillColor ?? HexColor("#E5E7EB"),
-        borderRadius: BorderRadius.circular(dropDownBorderRadius),
+        color: dropDownFillColor ?? AppColors.SecondarysubGreyColor,
+        borderRadius: BorderRadius.circular(dropDownBorderRadius ??
+            UI_Borderradius.AUTH_LEADING_DROPDOWN_BORDERRADIUS),
       ),
       height: dheight ?? ScreenUtils.height * 0.5,
       width: dwidth ?? ScreenUtils.width * 0.3,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: EdgeInsets.symmetric(
+            vertical: UI_Padding.PADDING_10, horizontal: UI_Padding.PADDING_10),
         child: DropdownButton<Locale>(
           value: _selectedLocale,
           isExpanded: true,
-          icon: Icon(Icons.arrow_drop_down),
-          iconSize: 25,
+          icon: CustomDropdownArrowIcon(),
+          // iconSize: UI_Iconsize.AUTH_LEADING_ICON_SIZE,
           dropdownColor: fillColor,
           items: supportedLanguages.map((lang) {
             return DropdownMenuItem<Locale>(

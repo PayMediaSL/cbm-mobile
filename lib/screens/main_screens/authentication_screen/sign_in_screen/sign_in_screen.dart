@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -64,14 +66,13 @@ class SignInScreen extends StatelessWidget {
                   hint: "Password",
                   obscureText: !value.getStates('obscureText'),
                   suffixIcon: IconButton(
-                      onPressed: () {
-                        value.toggleStates('obscureText');
-                      },
-                      icon: Icon(
-                        value.getStates('obscureText')
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                      )),
+                    onPressed: () {
+                      value.toggleStates('obscureText');
+                    },
+                    icon: value.getStates('obscureText')
+                        ? CustomVisibility_ON_Icon()
+                        : CustomVisibility_OFF_Icon(),
+                  ),
                   autovalidate: true,
                   validator: (input) =>
                       ValidationService.validateIsNotEmptyField(
@@ -108,7 +109,7 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don’t have an account? ",
+                    "Are you a new user? ",
                     style: commonTextStyle.copyWith(
                         color: AppColors.primarySubBlackColor),
                   ),
@@ -134,7 +135,8 @@ class SignInScreen extends StatelessWidget {
                 children: <Widget>[
                   Expanded(child: Divider()),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: UI_Padding.PADDING_2X),
                     child: Text('or continue to',
                         style: commonTextStyle.copyWith(
                             color: AppColors.primarySubBlackColor)),
@@ -157,7 +159,7 @@ class SignInScreen extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: 'By using OneApp, you agree to our ',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: AppColors.primaryBlackColor),
                     ),
                     TextSpan(
                       text: 'Terms of Use',

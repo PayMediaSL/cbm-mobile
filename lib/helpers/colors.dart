@@ -44,6 +44,8 @@ class AppColors {
   static Color primaryGreenColor = HexColor("#16A34A");
   static Color suffixIconColor = HexColor("#B0B0B0");
 
+  //?Authentication'
+
   //! Primary Sub BlackColor
 
   //! Onboard Indicator
@@ -104,6 +106,10 @@ class AppColors {
   static Color paymentcardPaymentcolor = HexColor("#F2A9CE");
   static Color paymentMobileReload = HexColor("#CDD0CD");
   static Color paymentSchedulePayment = HexColor("#FC8D94");
+
+  //? ICon Color
+
+  static Color toggleIconColor = HexColor("#334155");
 }
 
 class HexColor extends Color {
