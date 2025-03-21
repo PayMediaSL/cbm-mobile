@@ -45,6 +45,7 @@ class AppColors {
   static Color suffixIconColor = HexColor("#B0B0B0");
   static Color primarypaleGreenColor = HexColor("#22C55E");
   static Color primarypaleRedColor = HexColor("#F24141");
+  static Color primaryRadioButtonFillColor = HexColor("#71717A");
 
   //?Authentication'
 

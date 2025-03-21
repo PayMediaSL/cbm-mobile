@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:app/providers/app_state_provider.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';

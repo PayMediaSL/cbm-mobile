@@ -69,7 +69,7 @@ class UserProfileScreen extends StatelessWidget {
                                 Text(
                                   "Sajeewa Dissanayake",
                                   style: commonTextStyle.copyWith(
-                                      color: AppColors.black),
+                                      color: AppColors.primaryBlackColor),
                                 )
                               ],
                             ),

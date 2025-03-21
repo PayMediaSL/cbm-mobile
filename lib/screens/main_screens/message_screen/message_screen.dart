@@ -5,6 +5,7 @@ import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -284,13 +285,13 @@ class _MessageTileState extends State<MessageTile> {
                 children: [
                   Text(widget.title,
                       style: commonTextFieldTitleStyle.copyWith(
-                          fontFamily: "jost",
+                          fontFamily: secondaryFontFamily,
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp)),
                   // const SizedBox(height: 4.0),
                   Text(widget.message,
                       style: commonTextFieldTitleStyle.copyWith(
-                          fontFamily: "jost",
+                          fontFamily: secondaryFontFamily,
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp)),
                 ],
@@ -299,7 +300,7 @@ class _MessageTileState extends State<MessageTile> {
             RowSpacer(0.02),
             Text(widget.date,
                 style: commonTextFieldTitleStyle.copyWith(
-                    fontFamily: "jost",
+                    fontFamily: secondaryFontFamily,
                     fontWeight: FontWeight.w400,
                     color: AppColors.secondarysubGreyColor4,
                     fontSize: 9.sp)),

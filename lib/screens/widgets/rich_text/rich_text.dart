@@ -44,9 +44,9 @@ class TermsAndPrivacyText extends StatelessWidget {
                 fontWeight: FontWeight.w700),
             onTap: onTermsTap,
           ),
-          const TextSpan(
+          TextSpan(
             text: ' and ',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: AppColors.primaryBlackColor),
           ),
           ClickableTextSpan(
             text: 'Privacy Policy',

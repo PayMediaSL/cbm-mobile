@@ -6,6 +6,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/models/contacts/contacts_model.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +136,7 @@ class ContactsListPage extends StatelessWidget {
               style: commonTextStyle.copyWith(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
-                  fontFamily: "jost",
+                  fontFamily: secondaryFontFamily,
                   color: AppColors.primaryBlackColor),
             ),
           ),
@@ -145,8 +146,8 @@ class ContactsListPage extends StatelessWidget {
                 child: Text(
                   contactsProvider.getContactInitials(contact.name),
                   style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "jost",
+                    color: AppColors.primaryWhiteColor,
+                    fontFamily: secondaryFontFamily,
                   ),
                 ),
                 backgroundColor: _getAvatarColor(contact.name),
@@ -155,14 +156,14 @@ class ContactsListPage extends StatelessWidget {
                 contact.name!,
                 style: commonTextStyle.copyWith(
                     fontSize: 16.sp,
-                    fontFamily: "jost",
+                    fontFamily: secondaryFontFamily,
                     color: AppColors.primaryBlackColor),
               ),
               subtitle: Text(
                 contact.mobileNumber ?? 'No phone number',
                 style: commonTextStyle.copyWith(
                     fontSize: 14.sp,
-                    fontFamily: "jost",
+                    fontFamily: secondaryFontFamily,
                     color: AppColors.onBoardSubTextStyleColor),
               ),
             );
@@ -175,7 +176,7 @@ class ContactsListPage extends StatelessWidget {
   }
 
   Color _getAvatarColor(String? name) {
-    if (name == null || name.isEmpty) return Colors.grey;
+    if (name == null || name.isEmpty) return AppColors.primaryGreyColor;
     int charCode = name.codeUnitAt(0);
     return Colors.primaries[charCode % Colors.primaries.length];
   }

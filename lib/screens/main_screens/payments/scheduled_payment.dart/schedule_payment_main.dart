@@ -12,6 +12,7 @@ import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/services/validation_service.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -277,7 +278,8 @@ Widget buildExpandableSection({
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title,
-              style: commonTextFieldTitleStyle.copyWith(fontFamily: "jost")),
+              style: commonTextFieldTitleStyle.copyWith(
+                  fontFamily: secondaryFontFamily)),
           GestureDetector(
             onTap: onToggle,
             child: Text(isExpanded ? "Show less" : "View all",
@@ -305,14 +307,14 @@ Widget buildExpandableSection({
                 ),
                 subtitle: Text(item["type"]!,
                     style: commonTextFieldTitleStyle.copyWith(
-                        fontFamily: "jost",
+                        fontFamily: secondaryFontFamily,
                         color: AppColors.secondarysubGreyColor4)),
                 trailing: showArrow
                     ? Icon(Icons.arrow_forward_ios, size: 16)
                     : Text(
                         item["account"] ?? "",
                         style: commonTextFieldTitleStyle.copyWith(
-                            fontFamily: "jost"),
+                            fontFamily: secondaryFontFamily),
                       ),
               ),
             );

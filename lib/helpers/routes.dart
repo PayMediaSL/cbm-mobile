@@ -5,8 +5,9 @@ import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/ab
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/billing/signup_billing_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/billing/signup_billing_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/clarify_you_identity_screen.dart';
-import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/existing_user_flow/signin_existing_user.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/existing_user_flow/signup_existing_digital_customer.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/finished_up_screen.dart';
+import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/forget_password_flow.dart/forget_password_flow.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_back_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_front_camera_screen.dart';
 import 'package:app/screens/main_screens/authentication_screen/sign_up_screen/nid_upload/nid_screen.dart';
@@ -85,7 +86,11 @@ class ScreenRoutes {
   static const String toSignUpScreen = "toSignUpScreen";
   static const String toClarifyIdentityScreen = "toClarifyIdentityScreen";
   static const String toAboutYouScreen = "toAboutYouScreen";
-  static const String toExistingUserLogin = "toExistingUserLogin";
+  static const String toSignUpExistingDigitalCustomer =
+      "toSignUpExistingDigitalCustomer";
+
+//! Forget password
+  static const String toForgetPasswordFlow = "toForgetPasswordFlow";
 
   //Selfie
   static const String toSignUpSelfieScreen = "toSignUpSelfieScreen";
@@ -225,12 +230,19 @@ class Router {
         );
 //?Existing User
 
-      case ScreenRoutes.toExistingUserLogin:
+      case ScreenRoutes.toSignUpExistingDigitalCustomer:
         return MaterialPageRoute(
-          builder: (_) => ExistingUserLogin(),
+          builder: (_) => SignUpExistingDigitalCustomer(),
           settings: settings,
         );
 
+      //? Forget PaSSWORS
+
+      case ScreenRoutes.toForgetPasswordFlow:
+        return MaterialPageRoute(
+          builder: (_) => ForgetPasswordFlowScreen(),
+          settings: settings,
+        );
 //! SignUp Screeen
 
       case ScreenRoutes.toSignUpScreen:

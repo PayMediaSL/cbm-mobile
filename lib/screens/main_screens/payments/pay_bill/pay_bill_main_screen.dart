@@ -11,6 +11,7 @@ import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -601,7 +602,8 @@ class ExpandableTile extends StatelessWidget {
                   children: [
                     Text(title,
                         style: commonTextHeadingStyle.copyWith(
-                            fontFamily: "jost", fontWeight: FontWeight.w400)),
+                            fontFamily: secondaryFontFamily,
+                            fontWeight: FontWeight.w400)),
                     Text(
                       phone,
                       style: commonTextHeadingStyle.copyWith(

@@ -20,6 +20,7 @@ class AppState extends ChangeNotifier {
   String? username;
   bool _isExploreApp = false;
   Timer? _timer;
+  // ignore: unused_field
   Timer? _tokenExpireTimer;
   DateTime? tokenExpiredTime;
   DateTime? refreshTokenExpiredTIme;

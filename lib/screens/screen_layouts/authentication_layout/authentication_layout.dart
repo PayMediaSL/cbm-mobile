@@ -64,7 +64,6 @@ class AuthenticationLayout extends StatelessWidget {
   bool defaultButton;
   bool isLinearProgress;
   final Widget? defaultButtonBottomWidget;
-
   final Color? backgroundColor;
   final Color? appbarbackgroundColor;
   final void Function()? onTap;
@@ -224,65 +223,74 @@ class AuthenticationLayout extends StatelessWidget {
 
   Widget _buildContainer2() {
     return Container(
-        child: defaultButton
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
-                        vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
-                    child: container2CustomWidget!,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Column(
-                      children: [
-                        MainButton(
-                          buttontitle: buttontitle,
-                          isPaddingNeeded: true,
-                          btnOnPress: onTap,
-                          isMainButton: true,
+      child: defaultButton
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
+                      vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
+                  child: container2CustomWidget!,
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    children: [
+                      MainButton(
+                        buttontitle: buttontitle,
+                        isPaddingNeeded: true,
+                        btnOnPress: onTap,
+                        isMainButton: true,
+                      ),
+                      ColumnSpacer(0.02),
+                      if (defaultButtonBottomWidget != null)
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING),
+                          child: defaultButtonBottomWidget!,
                         ),
-                      ],
-                    ),
+                    ],
                   ),
-                ],
-              )
-            // : container2CustomWidget,
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
-                        vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
-                    child: container2CustomWidget!,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Column(
-                      children: [
-                        MainButton(
-                          buttontitle: buttontitle,
-                          isPaddingNeeded: true,
-                          btnOnPress: onTap,
-                          isMainButton: true,
-                        ),
-                        ColumnSpacer(0.02),
-                        if (defaultButtonBottomWidget != null)
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING),
-                            child: defaultButtonBottomWidget!,
-                          ),
-                      ],
-                    ),
-                  ),
-                ],
-              ));
+                ),
+              ],
+            )
+          : container2CustomWidget,
+      // : Column(
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       Padding(
+      //         padding: EdgeInsets.symmetric(
+      //             horizontal: UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING,
+      //             vertical: UI_Padding.AUTHLAYOUT_VERTICAL_PADDING),
+      //         child: container2CustomWidget!,
+      //       ),
+      //       Align(
+      //         alignment: Alignment.bottomCenter,
+      //         child: Column(
+      //           children: [
+      //             MainButton(
+      //               buttontitle: buttontitle,
+      //               isPaddingNeeded: true,
+      //               btnOnPress: onTap,
+      //               isMainButton: true,
+      //             ),
+      //             ColumnSpacer(0.02),
+      //             if (defaultButtonBottomWidget != null)
+      //               Padding(
+      //                 padding: EdgeInsets.symmetric(
+      //                     horizontal:
+      //                         UI_Padding.AUTHLAYOUT_HORIZONTAL_PADDING),
+      //                 child: defaultButtonBottomWidget!,
+      //               ),
+      //           ],
+      //         ),
+      //       ),
+      //     ],
+      //   )
+    );
   }
 }

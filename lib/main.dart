@@ -29,6 +29,7 @@ import 'package:app/providers/other_provider/locale_provider.dart';
 import 'package:app/providers/paybill_provider/pay_bill_provider.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/providers/payments/qr_payment_provider.dart';
+import 'package:app/providers/radio_button/radio_button_provider.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
 import 'package:app/providers/validation_provider/password_validation_provider.dart';
 import 'package:app/services/analytics_service.dart';
@@ -112,6 +113,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => TransactionProvider()),
           ChangeNotifierProvider(create: (_) => DateTimeProvider()),
           ChangeNotifierProvider(create: (_) => ValidationProvider()),
+          ChangeNotifierProvider(create: (_) => RadioButtonProvider()),
         ],
         child: const MyApp(),
       ),
@@ -188,7 +190,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     bool isDarkTheme = toggleProvider.getSwitchState("switch_darktheme");
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.transparent,
-      statusBarColor: isDarkTheme ? Colors.black : AppColors.primaryBlueColor,
+      statusBarColor: isDarkTheme
+          ? AppColors.primaryBlackColor
+          : AppColors.primaryBlueColor,
     ));
     return MaterialApp(
       title: Environment.appName,

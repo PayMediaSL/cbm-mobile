@@ -148,7 +148,7 @@ class MainDrawerScreen extends StatelessWidget {
             // Circle Avatar
             CircleAvatar(
               radius: 50.sp,
-              backgroundColor: Colors.blue[200],
+              backgroundColor: AppColors.primaryBlueColor.withOpacity(0.2),
               // child: Text(
               //   "SD",
               //   style: TextStyle(

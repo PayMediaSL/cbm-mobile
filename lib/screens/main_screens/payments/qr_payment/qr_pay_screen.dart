@@ -9,6 +9,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -84,7 +85,7 @@ class QrPayScreen extends StatelessWidget {
                         Text(
                           "PAID BY QR TO",
                           style: commonTextStyle.copyWith(
-                              fontFamily: "jost",
+                              fontFamily: secondaryFontFamily,
                               color: AppColors.bottomNavIconColor),
                         ),
                         ColumnSpacer(0.005),
@@ -93,14 +94,15 @@ class QrPayScreen extends StatelessWidget {
                             Text(
                               "MERCHANT NAME:",
                               style: commonTextStyle.copyWith(
-                                  fontFamily: "jost",
+                                  fontFamily: secondaryFontFamily,
                                   color: AppColors.onBoardSubTextStyleColor),
                             ),
                             RowSpacer(0.01),
                             Text(
                               "TYest",
                               style: commonTextStyle.copyWith(
-                                  fontFamily: "jost", color: AppColors.black),
+                                  fontFamily: secondaryFontFamily,
+                                  color: AppColors.black),
                             ),
                           ],
                         )
@@ -125,7 +127,7 @@ class QrPayScreen extends StatelessWidget {
                         Text(
                           "Amount",
                           style: commonTextStyle.copyWith(
-                              fontFamily: "jost",
+                              fontFamily: secondaryFontFamily,
                               fontSize: 15.sp,
                               color: AppColors.primaryBlackColor),
                         ),
@@ -139,7 +141,7 @@ class QrPayScreen extends StatelessWidget {
                         Text(
                           "Description",
                           style: commonTextStyle.copyWith(
-                              fontFamily: "jost",
+                              fontFamily: secondaryFontFamily,
                               fontSize: 15.sp,
                               color: AppColors.primaryBlackColor),
                         ),
@@ -153,7 +155,7 @@ class QrPayScreen extends StatelessWidget {
                         Text(
                           "Pay From",
                           style: commonTextStyle.copyWith(
-                              fontFamily: "jost",
+                              fontFamily: secondaryFontFamily,
                               fontSize: 15.sp,
                               color: AppColors.primaryBlackColor),
                         ),

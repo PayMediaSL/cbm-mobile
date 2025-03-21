@@ -19,7 +19,8 @@ import 'package:app/screens/widgets/rich_text/rich_text.dart';
 import 'package:app/screens/widgets/switch/toggle_switch.dart';
 import 'package:app/screens/widgets/text_button/text_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
-import 'package:app/screens/widgets/validation_indicator/validation_indicator.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
+import 'package:app/screens/widgets/validation/password_validation_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/services/validation_service.dart';
 import 'package:app/utils/assest_image.dart';
@@ -29,11 +30,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class ExistingUserLogin extends StatefulWidget {
-  const ExistingUserLogin({super.key});
+class SignUpExistingDigitalCustomer extends StatefulWidget {
+  const SignUpExistingDigitalCustomer({super.key});
 
   @override
-  State<ExistingUserLogin> createState() => _ExistingUserLoginState();
+  State<SignUpExistingDigitalCustomer> createState() =>
+      _SignUpExistingDigitalCustomerState();
 }
 
 //! Global Keys
@@ -44,21 +46,15 @@ final _progressNotifier = GenericValueNotifier<bool>(false);
 bool autoValidate = false;
 
 //Otp PassCodce
-String passcode = ''; // to store the first entered passcode
-// bool isReEnter = false;
-
+String passcode = '';
 const identityDetailsId = 0;
 const loginWithcbm = 1;
-// // const mobileNumberId = 1;
-// const otpId = 2;
-// const emailId = 3;
 const newCredentialId = 2;
 const createPasscodeId = 3;
 const enableBiometrics = 4;
-// int clarifyIdentityId = 7;
-// int aboutYouId = 8;
 
-class _ExistingUserLoginState extends State<ExistingUserLogin> {
+class _SignUpExistingDigitalCustomerState
+    extends State<SignUpExistingDigitalCustomer> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
@@ -85,9 +81,7 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
                   commonProvider.setStates("passcode", false);
                   signupCreatePinController.clear();
                   break;
-                // case otpId:
-                //   commonProvider.resetCountdown("otp_timer");
-                //   break;
+
                 default:
                   break;
               }
@@ -101,6 +95,7 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
             //! OnPrimary Tap (Refactored)
 
             onPrimaryTap: (page) {
+              printLog(page);
               final isValid = _formKey.currentState?.validate() ?? false;
               final nextPage = page + 1;
 
@@ -108,14 +103,9 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
               switch (page) {
                 case identityDetailsId:
                 case loginWithcbm:
-                // case emailId:
                 case newCredentialId:
                   _wizardController.updateWizardPage(nextPage);
                   break;
-                // case mobileNumberId:
-                //   _wizardController.updateWizardPage(nextPage);
-                //   commonProvider.startCountdown("otp_timer", duration: 120);
-                //   break;
                 case createPasscodeId:
                   if (!commonProvider.getStates("passcode")) {
                     passcode = signupCreatePinController.text;
@@ -196,20 +186,24 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
                       ),
                     ),
                     ColumnSpacer(0.02),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: GestureDetector(
-                        onTap: () {
-                          pushScreen(context, ScreenRoutes.toforgetPswScreen);
-                        },
-                        child: Text(
-                          "Forgot Password ?",
-                          style: commonTextStyle.copyWith(
-                              color: AppColors.primarySubBlackColor,
-                              fontSize: 14.sp),
-                        ),
-                      ),
+                    ForgotPasswordButton(
+                      onTap: () =>
+                          pushScreen(context, ScreenRoutes.toforgetPswScreen),
                     ),
+                    // Align(
+                    //   alignment: Alignment.bottomRight,
+                    //   child: GestureDetector(
+                    //     onTap: () {
+                    //       pushScreen(context, ScreenRoutes.toforgetPswScreen);
+                    //     },
+                    //     child: Text(
+                    //       "Forgot Password ?",
+                    //       style: commonTextStyle.copyWith(
+                    //           color: AppColors.primarySubBlackColor,
+                    //           fontSize: 14.sp),
+                    //     ),
+                    //   ),
+                    // ),
                     ColumnSpacer(0.3)
                   ]),
 
@@ -219,7 +213,7 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
                   title: "Create new credentials",
                   subtitle:
                       "Enter the username and password you would like to use into oneapp.",
-                  defaulButton: false,
+                  defaulButton: true,
                   buttonTitle: "Next",
                   defaultButtonBottomWidget: TermsAndPrivacyText(
                     onTermsTap: () {
@@ -290,44 +284,9 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
                     ),
 
                     ColumnSpacer(0.03),
-                    //Password Validation
-                    Consumer<ValidationProvider>(
-                      builder: (context, validationProvider, _) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ValidationIndicator(
-                              text: "Minimum 8 characters",
-                              isValid: validationProvider.hasMinLength,
-                              isChecked: validationProvider.isPasswordChecked,
-                            ),
-                            ColumnSpacer(0.003),
-                            ValidationIndicator(
-                              text: "At least 1 uppercase letter (A-Z)",
-                              isValid: validationProvider.hasUpperCase,
-                              isChecked: validationProvider.isPasswordChecked,
-                            ),
-                            ColumnSpacer(0.003),
-                            ValidationIndicator(
-                              text: "At least 1 lowercase letter(a-z)",
-                              isValid: validationProvider.hasLowerCase,
-                              isChecked: validationProvider.isPasswordChecked,
-                            ),
-                            ColumnSpacer(0.003),
-                            ValidationIndicator(
-                              text: "At least 1 number(0-9)",
-                              isValid: validationProvider.hasNumber,
-                              isChecked: validationProvider.isPasswordChecked,
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    // ValidationIndicator(
-                    //   isChecked: false,
-                    //   isValid: false,
-                    //   text: "asasssaadsdsdsd",
-                    // ),
+                    //Password ValidationWidget
+                    PasswordValidationWidget(),
+
                     const ColumnSpacer(0.04),
                   ]),
 
@@ -371,7 +330,7 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
                   title: "Enable Biometrics",
                   subtitle:
                       "Use fingerprint or face recognition to quickly and securely access your account.",
-                  defaulButton: false,
+                  defaulButton: true,
                   defaultButtonBottomWidget: CustomTextButton(
                     onTap: () {},
                     text: 'Skip This Time',
@@ -404,7 +363,7 @@ class _ExistingUserLoginState extends State<ExistingUserLogin> {
                                   style: commonTextStyle.copyWith(
                                     fontSize: 17.sp,
                                     color: AppColors.primaryBlackColor,
-                                    fontFamily: UIFontFamily.jost,
+                                    fontFamily: secondaryFontFamily,
                                   )),
                             ],
                           ),

@@ -280,12 +280,12 @@ class RateSection extends StatelessWidget {
     // Define text styles for headings, values, and first column
     TextStyle textStyle = isHeading
         ? commonTextStyle.copyWith(
-            color: HexColor("#64748B"),
+            color: AppColors.onBoardSubTextStyleColor,
             fontSize: 12.sp,
             fontWeight: FontWeight.w500)
         : isFirstColumn
             ? commonTextStyle.copyWith(
-                color: HexColor("#64748B"),
+                color: AppColors.onBoardSubTextStyleColor,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500)
             : commonTextStyle.copyWith(

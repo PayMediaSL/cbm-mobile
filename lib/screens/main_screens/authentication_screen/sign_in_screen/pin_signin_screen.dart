@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
@@ -9,7 +10,6 @@ import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/pin_field/pin_field.dart';
 import 'package:app/screens/widgets/pin_field/pin_pad.dart';
 import 'package:app/services/screen_size_calculator.dart';
-import 'package:app/utils/assest_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,14 +25,14 @@ class PinSignInScreen extends StatelessWidget {
       isContainer1: true,
       isContainer2: true,
       useImage: true,
-      imageName: ImageAsset().authBg,
       isBodyLeadingAvailable: true,
       isSubHeadingAvailable: true,
       isHeadingAvailable: true,
       headerText: "Welcome back",
       headerSubText: "OneApp for all your banking needs",
       container2CustomWidget: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: EdgeInsets.symmetric(
+            vertical: UI_Padding.PADDING_10, horizontal: UI_Padding.PADDING_20),
         child: Column(
           children: [
             PinFeild(controller: pinController, onChanged: (value) {}),

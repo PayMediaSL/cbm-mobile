@@ -111,7 +111,7 @@ class DrawerHelpScreen extends StatelessWidget {
                                     color: faqProvider.expandedStatus[index] ??
                                             false
                                         ? AppColors.secondarySubBlueColor2
-                                        : HexColor("#64748B"),
+                                        : AppColors.onBoardSubTextStyleColor,
                                   ),
                                 ),
                               ],
@@ -136,13 +136,12 @@ class DrawerHelpScreen extends StatelessWidget {
                                               Expanded(
                                                 child: Text(
                                                   answer,
-                                                  style:
-                                                      commonTextStyle.copyWith(
-                                                          fontSize: 13.sp,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: HexColor(
-                                                              "#64748B")),
+                                                  style: commonTextStyle.copyWith(
+                                                      fontSize: 13.sp,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: AppColors
+                                                          .onBoardSubTextStyleColor),
                                                 ),
                                               ),
                                             ],

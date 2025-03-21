@@ -13,6 +13,7 @@ class UI_Iconsize {
   static double AUTH_LEADING_ICON_SIZE = 24.sp;
   static double AUTH_LEADING_ICON_ARROW_SIZE = 20.sp;
   static double VALIDATION_CIRCLE_SIZE = 12.sp;
+  static double COMMON_ICON_SIZE = 29.sp;
 }
 
 class UI_Icon {
@@ -21,6 +22,11 @@ class UI_Icon {
 
 class UI_Borderradius {
   static double AUTH_LEADING_WIDGET_BORDERRADIUS = 25.sp;
+  static double AUTH_LEADING_DROPDOWN_BORDERRADIUS = 25.sp;
+}
+
+class UI_Borderwidth {
+  static double SMALL_BORDER_WIDTH = 5.sp;
   static double AUTH_LEADING_DROPDOWN_BORDERRADIUS = 25.sp;
 }
 

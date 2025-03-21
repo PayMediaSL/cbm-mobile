@@ -191,6 +191,7 @@
 //   }
 // }
 
+import 'package:app/helpers/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavBarExample extends StatefulWidget {
@@ -230,7 +231,7 @@ class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
         children: [
           // Main Bottom Navigation Bar
           Container(
-            color: Colors.white,
+            color: AppColors.primaryWhiteColor,
             padding: const EdgeInsets.symmetric(vertical: 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -243,21 +244,27 @@ class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
                     width: isSelected ? 80 : 70, // Expands when selected
                     padding: EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
-                      color: isSelected ? Colors.blue.withOpacity(0.2) : null,
+                      color: isSelected
+                          ? AppColors.primaryBlueColor.withOpacity(0.2)
+                          : null,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
                           _navItems[index]["icon"],
-                          color: isSelected ? Colors.blue : Colors.grey,
+                          color: isSelected
+                              ? AppColors.primaryBlueColor
+                              : AppColors.primaryGreyColor,
                           size: 24,
                         ),
                         const SizedBox(height: 4),
                         Text(
                           _navItems[index]["label"],
                           style: TextStyle(
-                            color: isSelected ? Colors.blue : Colors.grey,
+                            color: isSelected
+                                ? AppColors.primaryBlueColor
+                                : Colors.grey,
                             fontSize: 11,
                             fontWeight: FontWeight.w500,
                           ),
@@ -282,7 +289,7 @@ class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
               height: 4,
               width: 70,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.primaryBlueColor,
               ),
             ),
           ),

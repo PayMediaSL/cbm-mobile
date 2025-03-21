@@ -1,4 +1,3 @@
-
 import 'country_entity.dart';
 
 class CountryModel {
@@ -32,6 +31,7 @@ class CountryModel {
       countryFlag: countryFlag ?? '');
 
   @override
+  // ignore: non_nullable_equals_parameter
   bool operator ==(dynamic other) =>
       other != null &&
       other is CountryModel &&

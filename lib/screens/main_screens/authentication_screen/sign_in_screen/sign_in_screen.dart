@@ -80,26 +80,19 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
               ColumnSpacer(0.02),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: GestureDetector(
-                  onTap: () {
-                    pushScreen(context, ScreenRoutes.toforgetPswScreen);
-                  },
-                  child: Text(
-                    "Forgot Password ?",
-                    style: commonTextStyle.copyWith(
-                        color: AppColors.primarySubBlackColor, fontSize: 14.sp),
-                  ),
-                ),
+              ForgotPasswordButton(
+                onTap: () =>
+                    pushScreen(context, ScreenRoutes.toForgetPasswordFlow),
               ),
+
               ColumnSpacer(0.02),
               MainButton(
                 buttontitle: "Login",
                 isMainButton: true,
                 btnOnPress: () {
                   if (_formKey.currentState!.validate()) {
-                    pushScreen(context, ScreenRoutes.toExistingUserLogin);
+                    pushScreen(
+                        context, ScreenRoutes.toSignUpExistingDigitalCustomer);
                   }
                 },
               ),
@@ -173,44 +166,6 @@ class SignInScreen extends StatelessWidget {
                   printLog("Privacy Policy clicked");
                 },
               ),
-
-              // RichText(
-              //   textAlign: TextAlign.center,
-              //   text: TextSpan(
-              //     children: [
-              //       TextSpan(
-              //         text: 'By using OneApp, you agree to our ',
-              //         style: TextStyle(color: AppColors.primaryBlackColor),
-              //       ),
-              //       TextSpan(
-              //         text: 'Terms of Use',
-              //         style: mainButtonTextStyle.copyWith(
-              //             color: AppColors.primarySubBlackColor,
-              //             fontSize: 12.sp,
-              //             fontWeight: FontWeight.w700),
-              //         recognizer: TapGestureRecognizer()
-              //           ..onTap = () {
-              //             // Open Terms of Use link
-              //           },
-              //       ),
-              //       TextSpan(
-              //         text: ' and ',
-              //         style: TextStyle(color: Colors.black),
-              //       ),
-              //       TextSpan(
-              //         text: 'Privacy Policy',
-              //         style: mainButtonTextStyle.copyWith(
-              //             color: AppColors.primarySubBlackColor,
-              //             fontSize: 12.sp,
-              //             fontWeight: FontWeight.w700),
-              //         recognizer: TapGestureRecognizer()
-              //           ..onTap = () {
-              //             // Open Privacy Policy link
-              //           },
-              //       ),
-              //     ],
-              //   ),
-              // )
             ],
           ),
         ),

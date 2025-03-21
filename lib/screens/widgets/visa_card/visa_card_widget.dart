@@ -4,6 +4,7 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/common_methods.dart';
 import 'package:flutter/material.dart';
@@ -122,17 +123,23 @@ class VisaCardWidget extends StatelessWidget {
                         Row(
                           children: [
                             GestureDetector(
-                                onTap: () {
-                                  commonProvider
-                                      .toggleStates("masknumber_$maskindex");
-                                },
-                                child: Icon(
-                                  !commonProvider
-                                          .getStates("masknumber_$maskindex")
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                  color: AppColors.primaryWhiteColor,
-                                )),
+                              onTap: () {
+                                commonProvider
+                                    .toggleStates("masknumber_$maskindex");
+                              },
+
+                              child: commonProvider
+                                      .getStates("masknumber_$maskindex")
+                                  ? CustomVisibility_OFF_Icon()
+                                  : CustomVisibility_ON_Icon(),
+                              // child: Icon(
+                              //   !commonProvider
+                              //           .getStates("masknumber_$maskindex")
+                              //       ? Icons.visibility_off
+                              //       : Icons.visibility,
+                              //   color: AppColors.primaryWhiteColor,
+                              // )
+                            ),
                             RowSpacer(0.03),
                             GestureDetector(
                                 onTap: onTap1,

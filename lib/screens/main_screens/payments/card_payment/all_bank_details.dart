@@ -187,7 +187,7 @@ class AllBankDetails extends StatelessWidget {
             CircleAvatar(
               radius: 30,
               backgroundColor: AppColors.iconGreyColor,
-              child: Icon(icon, size: 30, color: AppColors.black),
+              child: Icon(icon, size: 30, color: AppColors.primaryBlackColor),
             ),
             Text(
               name,

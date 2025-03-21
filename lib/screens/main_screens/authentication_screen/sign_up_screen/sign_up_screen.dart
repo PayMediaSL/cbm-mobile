@@ -13,6 +13,7 @@ import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/pin_field/pin_field.dart';
 import 'package:app/screens/widgets/pin_field/pin_pad.dart';
+import 'package:app/screens/widgets/text_button/text_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/screens/widgets/text_fields/mobile_input_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -226,23 +227,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           style: commonTextStyle.copyWith(
                               color: AppColors.secondarySubBlackColor),
                         ),
-                        GestureDetector(
-                          onTap: commonProvider.isTimerActive("otp_timer")
-                              ? null
-                              : () {
-                                  commonProvider.startCountdown("otp_timer",
-                                      duration: 120);
-                                },
-                          child: Text(
-                            " Resend",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: commonProvider.isTimerActive("otp_timer")
-                                    ? AppColors.primarySubBlackColor
-                                    : AppColors.primaryBlueColor),
-                          ),
-                        ),
+                        RowSpacer(0.01),
+                        CustomTextButton(
+                            text: "Resend",
+                            fonttWeight: FontWeight.w600,
+                            color: commonProvider.isTimerActive("otp_timer")
+                                ? AppColors.primarySubBlackColor
+                                : AppColors.primaryBlueColor,
+                            isDisabled:
+                                commonProvider.isTimerActive("otp_timer"),
+                            onTap: () {
+                              commonProvider.startCountdown("otp_timer",
+                                  duration: 120);
+                            })
+                        // GestureDetector(
+                        //   onTap: commonProvider.isTimerActive("otp_timer")
+                        //       ? null
+                        //       : () {
+                        //           commonProvider.startCountdown("otp_timer",
+                        //               duration: 120);
+                        //         },
+                        //   child: Text(
+                        //     " Resend",
+                        //     style: TextStyle(
+                        //         fontSize: 16,
+                        //         fontWeight: FontWeight.w600,
+                        //         color: commonProvider.isTimerActive("otp_timer")
+                        //             ? AppColors.primarySubBlackColor
+                        //             : AppColors.primaryBlueColor),
+                        //   ),
+                        // ),
                       ],
                     ),
                     ColumnSpacer(0.3)

@@ -27,6 +27,7 @@ class SignInOptionScreen extends StatelessWidget {
       headerText: "Are you a registered Flash Digital Banking customer?",
       headerSubText: "Choose one of below options to begin",
       isContainer2: true,
+      // defaultButton: true,
       container2CustomWidget: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

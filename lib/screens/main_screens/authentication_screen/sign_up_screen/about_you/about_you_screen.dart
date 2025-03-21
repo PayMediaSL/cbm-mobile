@@ -113,30 +113,6 @@ class AboutYouScreen extends StatelessWidget {
                   ValidationService.validateIsNotEmptyField(input, "Date "),
               readOnly: true,
             ),
-
-            // CustomLableTextField(
-            //   suffixIcon: IconButton(
-            //       onPressed: () async {
-            //         final pickedDate = await showDatePicker(
-            //           context: context,
-            //           initialDate: DateTime.now(),
-            //           firstDate: DateTime(2000),
-            //           lastDate: DateTime(2100),
-            //         );
-            //         if (pickedDate != null) {
-            //           // Update the selected date in the provider
-            //           context
-            //               .read<CommonProvider>()
-            //               .setSelectedDate("sss", pickedDate);
-            //         }
-            //       },
-            //       icon: Icon(
-            //         Icons.calendar_month,
-            //         color: AppColors.primaryGreyColor2,
-            //       )),
-            //   dateOfBirthController,
-            //   hint: "Date of birth (DD/MM/YYYY)",
-            // ),
             ColumnSpacer(0.14),
           ],
         ),

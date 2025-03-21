@@ -12,6 +12,7 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_search_bar.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 
 import 'package:app/services/screen_size_calculator.dart';
@@ -119,7 +120,7 @@ class MobileReloadScreen extends StatelessWidget {
                                 style: commonTextStyle.copyWith(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColors.black),
+                                    color: AppColors.primaryBlackColor),
                               ),
                               ColumnSpacer(0.004),
                               Text(
@@ -149,7 +150,8 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Mobile number",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color: AppColors.black,
+                                              color:
+                                                  AppColors.primaryBlackColor,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -197,13 +199,12 @@ class MobileReloadScreen extends StatelessWidget {
                                               child: Center(
                                                 child: Text(
                                                   "Save Contact",
-                                                  style:
-                                                      commonTextStyle.copyWith(
-                                                          fontSize: 11.sp,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color:
-                                                              AppColors.black),
+                                                  style: commonTextStyle.copyWith(
+                                                      fontSize: 11.sp,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: AppColors
+                                                          .primaryBlackColor),
                                                 ),
                                               ),
                                             )
@@ -215,7 +216,8 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Amount",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color: AppColors.black,
+                                              color:
+                                                  AppColors.primaryBlackColor,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -240,7 +242,8 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Description",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color: AppColors.black,
+                                              color:
+                                                  AppColors.primaryBlackColor,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -261,7 +264,8 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Pay From",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color: AppColors.black,
+                                              color:
+                                                  AppColors.primaryBlackColor,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -393,7 +397,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                 style: commonTextStyle.copyWith(
                     fontSize: 17.sp,
                     color: AppColors.primaryBlackColor,
-                    fontFamily: "jost",
+                    fontFamily: secondaryFontFamily,
                     fontWeight: FontWeight.w500),
               ),
               ColumnSpacer(0.01),
@@ -417,7 +421,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                           style: commonTextStyle.copyWith(
                             fontSize: 16.sp,
                             color: AppColors.onBoardSubTextStyleColor,
-                            fontFamily: "jost",
+                            fontFamily: secondaryFontFamily,
                           ),
                         ),
                       )
@@ -429,7 +433,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                           style: commonTextStyle.copyWith(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
-                              fontFamily: "jost",
+                              fontFamily: secondaryFontFamily,
                               color: AppColors.primaryBlackColor),
                         ),
                         itemBuilder: (context, contact) {
@@ -444,8 +448,8 @@ class _ContactsListPageState extends State<ContactsListPage> {
                                       contactsProvider
                                           .getContactInitials(contact.name),
                                       style: TextStyle(
-                                        color: Colors.amber,
-                                        fontFamily: "jost",
+                                        color: AppColors.primaryAmberColor,
+                                        fontFamily: secondaryFontFamily,
                                       ),
                                     ),
                                     backgroundColor: HexColor("#FEF9C3"),
@@ -454,14 +458,14 @@ class _ContactsListPageState extends State<ContactsListPage> {
                                     contact.name!,
                                     style: commonTextStyle.copyWith(
                                         fontSize: 16.sp,
-                                        fontFamily: "jost",
+                                        fontFamily: secondaryFontFamily,
                                         color: AppColors.primaryBlackColor),
                                   ),
                                   subtitle: Text(
                                     contact.mobileNumber ?? 'No phone number',
                                     style: commonTextStyle.copyWith(
                                         fontSize: 14.sp,
-                                        fontFamily: "jost",
+                                        fontFamily: secondaryFontFamily,
                                         color:
                                             AppColors.onBoardSubTextStyleColor),
                                   ),
@@ -477,7 +481,8 @@ class _ContactsListPageState extends State<ContactsListPage> {
                                   child: Text(
                                     "OneApp",
                                     style: commonTextStyle.copyWith(
-                                        fontSize: 9.sp, color: AppColors.black),
+                                        fontSize: 9.sp,
+                                        color: AppColors.primaryBlackColor),
                                   ),
                                 ),
                               )

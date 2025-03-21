@@ -1,5 +1,6 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:flutter/material.dart';
@@ -101,8 +102,10 @@ class PinNumberPad extends StatelessWidget {
       shape: const CircleBorder(),
       clipBehavior: Clip.antiAlias,
       color: Colors.transparent,
-      textStyle: const TextStyle(
-          color: AppColors.black, fontSize: 23, fontFamily: "interS"),
+      textStyle: TextStyle(
+          color: AppColors.primaryBlackColor,
+          fontSize: 23,
+          fontFamily: primaryFontFamily),
       child: InkWell(
         highlightColor: AppColors.white,
         splashColor: AppColors.white,

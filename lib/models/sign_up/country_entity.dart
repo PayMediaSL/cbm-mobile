@@ -22,6 +22,7 @@ class CountryEntity extends Equatable {
         countryFlag,
       ];
   @override
+  // ignore: non_nullable_equals_parameter
   bool operator ==(dynamic other) =>
       other != null &&
       other is CountryEntity &&

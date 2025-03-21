@@ -9,16 +9,16 @@ import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
 import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/rich_text/rich_text.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
-  ForgetPasswordScreen({super.key});
+  const ForgetPasswordScreen({super.key});
   // bool _isPasswordVisible = false; // Controls password visibility
 
   @override
@@ -107,43 +107,45 @@ class ForgetPasswordScreen extends StatelessWidget {
               btnOnPress: () {},
             ),
             const ColumnSpacer(0.1),
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                children: [
-                  const TextSpan(
-                    text: 'By using OneApp, you agree to our ',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  TextSpan(
-                    text: 'Terms of Use',
-                    style: mainButtonTextStyle.copyWith(
-                        color: AppColors.primarySubBlackColor,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w700),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        // Open Terms of Use link
-                      },
-                  ),
-                  const TextSpan(
-                    text: ' and ',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  TextSpan(
-                    text: 'Privacy Policy',
-                    style: mainButtonTextStyle.copyWith(
-                        color: AppColors.primarySubBlackColor,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w700),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        // Open Privacy Policy link
-                      },
-                  ),
-                ],
-              ),
-            )
+
+            TermsAndPrivacyText(onTermsTap: () {}, onPrivacyTap: () {})
+            // RichText(
+            //   textAlign: TextAlign.center,
+            //   text: TextSpan(
+            //     children: [
+            //       TextSpan(
+            //         text: 'By using OneApp, you agree to our ',
+            //         style: TextStyle(color: AppColors.primaryBlackColor),
+            //       ),
+            //       TextSpan(
+            //         text: 'Terms of Use',
+            //         style: mainButtonTextStyle.copyWith(
+            //             color: AppColors.primarySubBlackColor,
+            //             fontSize: 12.sp,
+            //             fontWeight: FontWeight.w700),
+            //         recognizer: TapGestureRecognizer()
+            //           ..onTap = () {
+            //             // Open Terms of Use link
+            //           },
+            //       ),
+            //       const TextSpan(
+            //         text: ' and ',
+            //         style: TextStyle(color: Colors.black),
+            //       ),
+            //       TextSpan(
+            //         text: 'Privacy Policy',
+            //         style: mainButtonTextStyle.copyWith(
+            //             color: AppColors.primarySubBlackColor,
+            //             fontSize: 12.sp,
+            //             fontWeight: FontWeight.w700),
+            //         recognizer: TapGestureRecognizer()
+            //           ..onTap = () {
+            //             // Open Privacy Policy link
+            //           },
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

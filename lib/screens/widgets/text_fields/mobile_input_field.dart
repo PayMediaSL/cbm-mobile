@@ -80,7 +80,7 @@ class _MobileInputFieldState extends State<MobileInputField> {
       maxLength: _selectedCountry?.length ?? 10,
       decoration: InputDecoration(
         // labelText: widget.labelText ?? 'Enter your mobile number',
-        labelStyle: const TextStyle(color: AppColors.black),
+        labelStyle: TextStyle(color: AppColors.primaryBlackColor),
         // border: _getFieldBorder(),
         hintText: "eg 77 88 9998",
         enabledBorder: _getFieldEnableBorder(),

@@ -3,6 +3,7 @@ import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
+import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class QrGenerateScreen extends StatelessWidget {
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.primaryBlackColor,
-                    fontFamily: "jost"),
+                    fontFamily: secondaryFontFamily),
               ),
               ColumnSpacer(0.005),
               Text(
@@ -52,7 +53,7 @@ class QrGenerateScreen extends StatelessWidget {
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.primaryBlackColor,
-                    fontFamily: "jost"),
+                    fontFamily: secondaryFontFamily),
               ),
               ColumnSpacer(0.05),
               MainButton(
