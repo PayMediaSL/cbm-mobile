@@ -1,4 +1,5 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
@@ -30,7 +31,9 @@ class DrawerChangePassword extends StatelessWidget {
         },
         backTitle: "Change Password",
         children: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+            padding: EdgeInsets.symmetric(
+                vertical: UI_Padding.PADDING_10,
+                horizontal: UI_Padding.PADDING_10),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,22 +41,21 @@ class DrawerChangePassword extends StatelessWidget {
                   ColumnSpacer(0.05),
                   Container(
                     padding: EdgeInsets.symmetric(
-                        vertical: 10.sp, horizontal: 15.sp),
+                        vertical: UI_Padding.PADDING_10,
+                        horizontal: UI_Padding.PADDING_15),
                     // height: ScreenUtils.height * 0.1,
                     width: ScreenUtils.width,
                     decoration: BoxDecoration(
                         color: AppColors.primaryWhiteColor,
-                        borderRadius: BorderRadius.circular(10.sp)),
+                        borderRadius: BorderRadius.circular(
+                            UI_Borderradius.COMMON_BORDER_RADIUS)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "New Password",
-                          style: commonTextStyle.copyWith(
-                              color: AppColors.primaryBlackColor,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500),
+                          style: commonTextStyle_black_500,
                         ),
                         ColumnSpacer(0.001),
                         Text(
@@ -140,7 +142,7 @@ class DrawerChangePassword extends StatelessWidget {
                           isMainButton: true,
                           btnOnPress: () {},
                           buttontitle: "Change Password",
-                          borderRadius: 10.sp,
+                          borderRadius: UI_Borderradius.COMMON_BORDER_RADIUS,
                         ),
                         ColumnSpacer(0.025),
                       ],

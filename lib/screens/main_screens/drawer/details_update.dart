@@ -1,12 +1,13 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/text_fields/custom_row_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DrawerDetailsUpdate extends StatelessWidget {
   const DrawerDetailsUpdate({super.key});
@@ -25,19 +26,24 @@ class DrawerDetailsUpdate extends StatelessWidget {
       },
       backTitle: "Details Update",
       children: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+        padding: EdgeInsets.symmetric(
+            vertical: UI_Padding.PADDING_10, horizontal: UI_Padding.PADDING_10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ColumnSpacer(0.05),
             Container(
-              padding: EdgeInsets.only(top: 15.sp, left: 10.sp, bottom: 10.sp),
+              padding: EdgeInsets.only(
+                  top: UI_Padding.PADDING_15,
+                  left: UI_Padding.PADDING_10,
+                  bottom: UI_Padding.PADDING_10),
               // height: ScreenUtils.height * 0.1,
               width: ScreenUtils.width,
               decoration: BoxDecoration(
                   color: AppColors.primaryWhiteColor,
-                  borderRadius: BorderRadius.circular(10.sp)),
+                  borderRadius: BorderRadius.circular(
+                      UI_Borderradius.COMMON_BORDER_RADIUS)),
 
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -46,7 +52,7 @@ class DrawerDetailsUpdate extends StatelessWidget {
                   Text(
                     "USER DETAIL",
                     style: commonTextStyle.copyWith(
-                        color: HexColor("#94A3B8"),
+                        color: AppColors.textFieldHintColor,
                         fontWeight: FontWeight.w500),
                   ),
                   ColumnSpacer(0.01),
@@ -74,7 +80,7 @@ class DrawerDetailsUpdate extends StatelessWidget {
                   Text(
                     "CONTACT DETAIL",
                     style: commonTextStyle.copyWith(
-                        color: HexColor("#94A3B8"),
+                        color: AppColors.textFieldHintColor,
                         fontWeight: FontWeight.w500),
                   ),
                   ColumnSpacer(0.01),
@@ -104,75 +110,6 @@ class DrawerDetailsUpdate extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CustomTextFieldRow extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String hintText;
-  final TextEditingController controller;
-  final double? height;
-  final int maxLines;
-
-  const CustomTextFieldRow({
-    Key? key,
-    required this.icon,
-    required this.label,
-    required this.hintText,
-    required this.controller,
-    this.height, // Default height
-    this.maxLines = 1, // Default to single-line TextField
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(icon, color: AppColors.primarySubBlackColor),
-            SizedBox(width: 8.sp),
-            Text(label,
-                style: commonTextStyle.copyWith(
-                    color: AppColors.primarySubBlackColor)),
-          ],
-        ),
-        SizedBox(
-          height: height ?? ScreenUtils.height * 0.06,
-          width: ScreenUtils.width * 0.6,
-          child: Transform.scale(
-            scale: 0.8, // Adjust scaling if needed
-            child: TextField(
-              controller: controller,
-              maxLines: maxLines,
-              textAlign: TextAlign.right, // Align entered text to the right
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.sp),
-                  borderSide: BorderSide(color: AppColors.textFieldBorderColor),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.sp),
-                  borderSide: BorderSide(color: AppColors.textFieldBorderColor),
-                ),
-                filled: true,
-                fillColor: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

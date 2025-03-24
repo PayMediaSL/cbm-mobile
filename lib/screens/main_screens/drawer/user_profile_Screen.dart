@@ -2,6 +2,7 @@
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
@@ -210,10 +211,11 @@ class UserProfileScreen extends StatelessWidget {
               right: 0,
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppColors.primaryBlueColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
+                    color: AppColors.primaryBlueColor,
+                    shape: BoxShape.circle,
+                    // border: Border.all(color: Colors.white, width: 2),
+                    border: UI_Border.defaultBorder(
+                        width: 2, color: AppColors.primaryWhiteColor)),
                 padding: const EdgeInsets.all(5),
                 child: Icon(
                   Icons.camera_alt_outlined,

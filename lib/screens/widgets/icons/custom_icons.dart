@@ -87,3 +87,19 @@ class CustomVisibility_OFF_Icon extends StatelessWidget {
     );
   }
 }
+
+class ForwardArrowIcon extends StatelessWidget {
+  final Color? color;
+  final double? size;
+
+  const ForwardArrowIcon({Key? key, this.color, this.size}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      Icons.arrow_forward_ios_rounded,
+      color: color ?? AppColors.primarySubBlackColor,
+      size: size,
+    );
+  }
+}

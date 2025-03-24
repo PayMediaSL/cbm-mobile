@@ -213,10 +213,7 @@ class DrawerSecuritySafety extends StatelessWidget {
                 children: [
                   Text(
                     "Login & Recovery",
-                    style: commonTextStyle.copyWith(
-                        color: AppColors.primaryBlackColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500),
+                    style: commonTextStyle_black_500,
                   ),
                   ColumnSpacer(0.001),
                   Text(

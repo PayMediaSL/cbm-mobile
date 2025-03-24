@@ -73,10 +73,7 @@ class DrawerHelpScreen extends StatelessWidget {
                 children: [
                   Text(
                     "FAQ",
-                    style: commonTextStyle.copyWith(
-                        color: AppColors.primaryBlackColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500),
+                    style: commonTextStyle_black_500,
                   ),
                   ColumnSpacer(0.02),
                   Expanded(

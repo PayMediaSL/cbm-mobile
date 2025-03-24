@@ -1,5 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, camel_case_types
 
+import 'dart:ui';
+
+import 'package:app/helpers/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UIFontFamily {
@@ -7,6 +11,22 @@ class UIFontFamily {
   static const String exo2 = "exo2";
   static const String spaceGrotesk = "spacegrotsek";
   static const String jost = "jost";
+}
+
+class UI_Border {
+  static Border defaultBorder({Color? color, double width = 1.0}) {
+    return Border.all(
+      color: color ?? AppColors.primaryGreyColor2,
+      style: BorderStyle.solid,
+      width: width,
+    );
+  }
+
+  static Border dynamicGridBorder({required bool isGridView}) {
+    return Border.all(
+      color: isGridView ? AppColors.onBoardActiveColor : AppColors.transparent,
+    );
+  }
 }
 
 class UI_Iconsize {
@@ -23,6 +43,9 @@ class UI_Icon {
 class UI_Borderradius {
   static double AUTH_LEADING_WIDGET_BORDERRADIUS = 25.sp;
   static double AUTH_LEADING_DROPDOWN_BORDERRADIUS = 25.sp;
+
+  static double COMMON_BORDER_RADIUS = 10.sp;
+  static double COMMON_BORDER_RADIUS_2 = 15.sp;
 }
 
 class UI_Borderwidth {
@@ -49,7 +72,6 @@ class UI_Padding {
   static double AUTHLAYOUT_BOTTOM_PADDING = 16.0.sp;
   static double AUTHLAYOUT_HORIZONTAL_PADDING = 20.0.sp;
   static double AUTHLAYOUT_VERTICAL_PADDING = 20.0.sp;
-
   //LeadingIcons
   static double AUTH_LEADING_WIDGET_HORIZONTAL = 8.sp;
 }

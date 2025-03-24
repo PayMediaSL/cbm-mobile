@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
@@ -36,14 +37,9 @@ class ESlipsScreen extends StatelessWidget {
               height: ScreenUtils.height * 0.13,
               width: ScreenUtils.width,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                border: Border.all(
-                  color: AppColors.primaryGreyColor2,
-                  style: BorderStyle.solid,
-                  width: 1.0,
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  border: UI_Border.defaultBorder()),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,14 +76,15 @@ class ESlipsScreen extends StatelessWidget {
               height: ScreenUtils.height * 0.13,
               width: ScreenUtils.width,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                border: Border.all(
-                  color: AppColors.primaryGreyColor2,
-                  style: BorderStyle.solid,
-                  width: 1.0,
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  border: UI_Border.defaultBorder()
+                  // border: Border.all(
+                  //   color: AppColors.primaryGreyColor2,
+                  //   style: BorderStyle.solid,
+                  //   width: 1.0,
+                  // ),
+                  ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

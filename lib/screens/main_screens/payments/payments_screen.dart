@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/povider_helper/common_provider.dart';
 import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
@@ -102,10 +103,12 @@ class PaymentScreen extends StatelessWidget {
                         color: !isGridView
                             ? AppColors.secondarySubBlueColor2
                             : AppColors.transparent,
-                        border: Border.all(
-                            color: !isGridView
-                                ? AppColors.transparent
-                                : AppColors.onBoardActiveColor),
+                        border:
+                            UI_Border.dynamicGridBorder(isGridView: isGridView),
+                        // border: Border.all(
+                        //     color: !isGridView
+                        //         ? AppColors.transparent
+                        //         : AppColors.onBoardActiveColor),
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(8.sp)),
                     child: Icon(
@@ -128,10 +131,12 @@ class PaymentScreen extends StatelessWidget {
                         color: isGridView
                             ? AppColors.secondarySubBlueColor2
                             : AppColors.transparent,
-                        border: Border.all(
-                            color: isGridView
-                                ? AppColors.transparent
-                                : AppColors.onBoardActiveColor),
+                        border:
+                            UI_Border.dynamicGridBorder(isGridView: isGridView),
+                        // border: Border.all(
+                        //     color: isGridView
+                        //         ? AppColors.transparent
+                        //         : AppColors.onBoardActiveColor),
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(8.sp)),
                     child: Icon(
