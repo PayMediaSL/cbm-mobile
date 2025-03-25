@@ -12,7 +12,6 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_search_bar.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
-import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 
 import 'package:app/services/screen_size_calculator.dart';
@@ -120,7 +119,7 @@ class MobileReloadScreen extends StatelessWidget {
                                 style: commonTextStyle.copyWith(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColors.primaryBlackColor),
+                                    color: AppColors.black),
                               ),
                               ColumnSpacer(0.004),
                               Text(
@@ -150,8 +149,7 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Mobile number",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color:
-                                                  AppColors.primaryBlackColor,
+                                              color: AppColors.black,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -199,12 +197,13 @@ class MobileReloadScreen extends StatelessWidget {
                                               child: Center(
                                                 child: Text(
                                                   "Save Contact",
-                                                  style: commonTextStyle.copyWith(
-                                                      fontSize: 11.sp,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: AppColors
-                                                          .primaryBlackColor),
+                                                  style:
+                                                      commonTextStyle.copyWith(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color:
+                                                              AppColors.black),
                                                 ),
                                               ),
                                             )
@@ -216,8 +215,7 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Amount",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color:
-                                                  AppColors.primaryBlackColor,
+                                              color: AppColors.black,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -242,8 +240,7 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Description",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color:
-                                                  AppColors.primaryBlackColor,
+                                              color: AppColors.black,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -264,8 +261,7 @@ class MobileReloadScreen extends StatelessWidget {
                                           "Pay From",
                                           style: commonTextStyle.copyWith(
                                               fontSize: 13.sp,
-                                              color:
-                                                  AppColors.primaryBlackColor,
+                                              color: AppColors.black,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         ColumnSpacer(0.005),
@@ -397,7 +393,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                 style: commonTextStyle.copyWith(
                     fontSize: 17.sp,
                     color: AppColors.primaryBlackColor,
-                    fontFamily: secondaryFontFamily,
+                    fontFamily: "jost",
                     fontWeight: FontWeight.w500),
               ),
               ColumnSpacer(0.01),
@@ -421,7 +417,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                           style: commonTextStyle.copyWith(
                             fontSize: 16.sp,
                             color: AppColors.onBoardSubTextStyleColor,
-                            fontFamily: secondaryFontFamily,
+                            fontFamily: "jost",
                           ),
                         ),
                       )
@@ -433,7 +429,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                           style: commonTextStyle.copyWith(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
-                              fontFamily: secondaryFontFamily,
+                              fontFamily: "jost",
                               color: AppColors.primaryBlackColor),
                         ),
                         itemBuilder: (context, contact) {
@@ -448,8 +444,8 @@ class _ContactsListPageState extends State<ContactsListPage> {
                                       contactsProvider
                                           .getContactInitials(contact.name),
                                       style: TextStyle(
-                                        color: AppColors.primaryAmberColor,
-                                        fontFamily: secondaryFontFamily,
+                                        color: Colors.amber,
+                                        fontFamily: "jost",
                                       ),
                                     ),
                                     backgroundColor: HexColor("#FEF9C3"),
@@ -458,14 +454,14 @@ class _ContactsListPageState extends State<ContactsListPage> {
                                     contact.name!,
                                     style: commonTextStyle.copyWith(
                                         fontSize: 16.sp,
-                                        fontFamily: secondaryFontFamily,
+                                        fontFamily: "jost",
                                         color: AppColors.primaryBlackColor),
                                   ),
                                   subtitle: Text(
                                     contact.mobileNumber ?? 'No phone number',
                                     style: commonTextStyle.copyWith(
                                         fontSize: 14.sp,
-                                        fontFamily: secondaryFontFamily,
+                                        fontFamily: "jost",
                                         color:
                                             AppColors.onBoardSubTextStyleColor),
                                   ),
@@ -481,8 +477,7 @@ class _ContactsListPageState extends State<ContactsListPage> {
                                   child: Text(
                                     "OneApp",
                                     style: commonTextStyle.copyWith(
-                                        fontSize: 9.sp,
-                                        color: AppColors.primaryBlackColor),
+                                        fontSize: 9.sp, color: AppColors.black),
                                   ),
                                 ),
                               )
@@ -500,161 +495,3 @@ class _ContactsListPageState extends State<ContactsListPage> {
     );
   }
 }
-
-
-// class ContactsListPage extends StatefulWidget {
-//   @override
-//   _ContactsListPageState createState() => _ContactsListPageState();
-// }
-
-// class _ContactsListPageState extends State<ContactsListPage> {
-//   TextEditingController _searchController = TextEditingController();
-//   List<MyContact> _filteredContacts = [];
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _searchController.addListener(() {
-//       _filterContacts(_searchController.text);
-//     });
-//   }
-
-//   void _filterContacts(String query) {  
-//     final contactsProvider = context.read<ContactsProvider>();
-//     final allContacts = contactsProvider.contacts;
-//     setState(() {
-//       _filteredContacts = allContacts.where((contact) {
-//         final nameLower = contact.name!.toLowerCase();
-//         final numberLower = contact.mobileNumber?.toLowerCase() ?? '';
-//         final queryLower = query.toLowerCase();
-
-//         return nameLower.contains(queryLower) ||
-//             numberLower.contains(queryLower);
-//       }).toList();
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Consumer<ContactsProvider>(
-//       builder: (context, contactsProvider, _) {
-//         if (contactsProvider.isLoading) {
-//           return Center(
-//             child: CircularProgressIndicator(),
-//           );
-//         }
-
-//         final contacts = _filteredContacts.isEmpty
-//             ? contactsProvider.contacts
-//             : _filteredContacts;
-
-//         if (contacts.isEmpty) {
-//           return Center(
-//             child: Text("No contacts found"),
-//           );
-//         }
-
-//         return Padding(
-//           padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 20.sp),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text(
-//                 "Search Contact",
-//                 style: commonTextStyle.copyWith(
-//                     fontSize: 17.sp,
-//                     color: AppColors.primaryBlackColor,
-//                     fontFamily: "jost",
-//                     fontWeight: FontWeight.w500),
-//               ),
-//               ColumnSpacer(0.01),
-//               SearchTextField(
-//                 controller: _searchController,
-//                 hintText: "Search by name or number",
-//                 fillColor: HexColor("#F8FAFC"),
-//                 hintTextColor: AppColors.onBoardSubTextStyleColor,
-//                 iconColor: AppColors.onBoardSubTextStyleColor,
-//                 heightFactor: 0.11,
-//                 widthFactor: 0.8,
-//                 borderRadius: 8.0.sp,
-//                 isBorderAvilable: true,
-//               ),
-//               ColumnSpacer(0.02),
-//               Expanded(
-//                 child: GroupedListView<MyContact, String>(
-//                   elements: contacts,
-//                   groupBy: (contact) => contact.name![0].toUpperCase(),
-//                   groupSeparatorBuilder: (String groupByValue) => Text(
-//                     groupByValue,
-//                     style: commonTextStyle.copyWith(
-//                         fontSize: 16.sp,
-//                         fontWeight: FontWeight.w600,
-//                         fontFamily: "jost",
-//                         color: AppColors.primaryBlackColor),
-//                   ),
-//                   itemBuilder: (context, contact) {
-//                     return Row(
-//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                       crossAxisAlignment: CrossAxisAlignment.center,
-//                       children: [
-//                         Expanded(
-//                           child: ListTile(
-//                             leading: CircleAvatar(
-//                               child: Text(
-//                                 contactsProvider
-//                                     .getContactInitials(contact.name),
-//                                 style: TextStyle(
-//                                   color: Colors.amber,
-//                                   fontFamily: "jost",
-//                                 ),
-//                               ),
-//                               backgroundColor: HexColor("#FEF9C3"),
-//                             ),
-//                             title: Text(
-//                               contact.name!,
-//                               style: commonTextStyle.copyWith(
-//                                   fontSize: 16.sp,
-//                                   fontFamily: "jost",
-//                                   color: AppColors.primaryBlackColor),
-//                             ),
-//                             subtitle: Text(
-//                               contact.mobileNumber ?? 'No phone number',
-//                               style: commonTextStyle.copyWith(
-//                                   fontSize: 14.sp,
-//                                   fontFamily: "jost",
-//                                   color: AppColors.onBoardSubTextStyleColor),
-//                             ),
-//                           ),
-//                         ),
-//                         Container(
-//                           height: ScreenUtils.height * 0.035,
-//                           width: ScreenUtils.width * 0.16,
-//                           decoration: BoxDecoration(
-//                               borderRadius: BorderRadius.circular(8.sp),
-//                               color: HexColor("#F3F4F6")),
-//                           child: Center(
-//                             child: Text(
-//                               "OneApp",
-//                               style: commonTextStyle.copyWith(
-//                                   fontSize: 9.sp, color: AppColors.black),
-//                             ),
-//                           ),
-//                         )
-//                       ],
-//                     );
-//                   },
-//                   itemComparator: (a, b) => a.name!.compareTo(b.name!),
-//                   order: GroupedListOrder.ASC,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }
-
-
-

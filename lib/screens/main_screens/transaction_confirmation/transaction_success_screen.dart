@@ -183,10 +183,9 @@ class TransactionSuccessScreen extends StatelessWidget {
               child: Text(
                 key,
                 style: keyStyle ??
-                    commonTextFieldTitleStyle.copyWith(
-                        fontSize: 14.sp,
-                        color: AppColors.primarySubBlackColor,
-                        fontWeight: FontWeight.w500),
+                    commonTextStyle_black_500_16sp.copyWith(
+                      fontSize: 14.sp,
+                    ),
               ),
             ),
             Expanded(

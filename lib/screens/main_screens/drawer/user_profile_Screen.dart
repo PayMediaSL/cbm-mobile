@@ -6,6 +6,7 @@ import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -52,9 +53,7 @@ class UserProfileScreen extends StatelessWidget {
                       children: [
                         Text(
                           "SWITCH ACCOUNT",
-                          style: commonTextStyle.copyWith(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500,
+                          style: commonTextStyle_black_500_12sp.copyWith(
                               color: AppColors.primarySubBlackColor),
                         ),
                         ColumnSpacer(0.005),
@@ -119,10 +118,7 @@ class UserProfileScreen extends StatelessWidget {
                           //! User Details
                           Text(
                             "USER DETAIL",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primarySubBlackColor),
+                            style: commonTextStyle_black_500_12sp,
                           ),
                           ColumnSpacer(0.005),
                           _buildVerificationRow(
@@ -136,9 +132,7 @@ class UserProfileScreen extends StatelessWidget {
                           ColumnSpacer(0.01),
                           Text(
                             "CONTACT DETAIL",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
+                            style: commonTextStyle_black_500_12sp.copyWith(
                                 color: AppColors.primarySubBlackColor),
                           ),
 
@@ -155,9 +149,7 @@ class UserProfileScreen extends StatelessWidget {
 //! Document
                           Text(
                             "YOUR DOCUMENT",
-                            style: commonTextStyle.copyWith(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
+                            style: commonTextStyle_black_500_12sp.copyWith(
                                 color: AppColors.primarySubBlackColor),
                           ),
                           ColumnSpacer(0.005),
@@ -201,10 +193,15 @@ class UserProfileScreen extends StatelessWidget {
         Stack(
           children: [
             // Circle Avatar
-            CircleAvatar(
+            CustomCircleAvatar(
               radius: 50.sp,
-              backgroundColor: Colors.blue[200],
+              backgroundColor: AppColors.primaryBlueColor,
             ),
+            // CircleAvatar(
+            //   //Need to Fetch Profile Image
+            //   radius: 50.sp,
+            //   backgroundColor: Colors.blue[200],
+            // ),
             // Camera Icon
             Positioned(
               bottom: 0,

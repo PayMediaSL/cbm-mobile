@@ -140,7 +140,8 @@ class CustomLanguageDropdown extends StatelessWidget {
       width: dwidth ?? ScreenUtils.width * 0.3,
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: UI_Padding.PADDING_10, horizontal: UI_Padding.PADDING_10),
+            vertical: UI_Padding.PRIMARY_COMMON_PADDING,
+            horizontal: UI_Padding.PRIMARY_COMMON_PADDING),
         child: DropdownButton<Locale>(
           value: _selectedLocale,
           isExpanded: true,

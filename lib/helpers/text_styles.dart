@@ -13,9 +13,15 @@ var commonTextStyle = TextStyle(
     color: AppColors.getStartedSubHeading,
     fontFamily: primaryFontFamily);
 
-var commonTextStyle_black_500 = TextStyle(
+var commonTextStyle_black_500_16sp = TextStyle(
     color: AppColors.primaryBlackColor,
     fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: primaryFontFamily);
+
+var commonTextStyle_black_500_12sp = TextStyle(
+    color: AppColors.primaryBlackColor,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w500,
     fontFamily: primaryFontFamily);
 

@@ -38,14 +38,15 @@ class ESlipsScreen extends StatelessWidget {
               width: ScreenUtils.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: AppColors.primaryWhiteColor,
                   border: UI_Border.defaultBorder()),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                      padding: EdgeInsets.all(20),
+                      padding:
+                          EdgeInsets.all(UI_Padding.PRIMARY_COMMON_PADDING_3),
                       child: Image.asset(ImageAsset().cashImg)),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -53,10 +54,7 @@ class ESlipsScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Cash Deposits",
-                        style: commonTextStyle.copyWith(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.primaryBlackColor),
+                        style: commonTextStyle_black_500_16sp,
                       ),
                       SizedBox(
                         width: ScreenUtils.width * 0.58,
@@ -77,7 +75,7 @@ class ESlipsScreen extends StatelessWidget {
               width: ScreenUtils.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: AppColors.primaryWhiteColor,
                   border: UI_Border.defaultBorder()
                   // border: Border.all(
                   //   color: AppColors.primaryGreyColor2,
@@ -98,10 +96,7 @@ class ESlipsScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Cheque Deposits",
-                        style: commonTextStyle.copyWith(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.primaryBlackColor),
+                        style: commonTextStyle_black_500_16sp,
                       ),
                       SizedBox(
                         width: ScreenUtils.width * 0.58,

@@ -1,4 +1,5 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
@@ -159,16 +160,16 @@ class NotificationScreen extends StatelessWidget {
           ),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
+              padding: EdgeInsets.symmetric(
+                  vertical: UI_Padding.PRIMARY_COMMON_PADDING_2,
+                  horizontal: UI_Padding.PRIMARY_COMMON_PADDING_2),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: commonTextStyle.copyWith(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
+                    style: commonTextStyle_black_500_12sp.copyWith(
                         color: AppColors.bottomNavIconColor),
                   ),
                   Column(

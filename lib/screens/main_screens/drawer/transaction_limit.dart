@@ -64,13 +64,9 @@ class DrawerTransactionLimit extends StatelessWidget {
                                   children: [
                                     SizedBox(
                                       width: ScreenUtils.width * 0.45,
-                                      child: Text(
-                                        data['title']!,
-                                        style: commonTextStyle.copyWith(
-                                            color: AppColors.primaryBlackColor,
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500),
-                                      ),
+                                      child: Text(data['title']!,
+                                          style:
+                                              commonTextStyle_black_500_12sp),
                                     ),
                                     SizedBox(
                                       width: ScreenUtils.width * 0.3,

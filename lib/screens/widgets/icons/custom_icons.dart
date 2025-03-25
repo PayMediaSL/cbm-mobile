@@ -3,6 +3,7 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomDropdownArrowIcon extends StatelessWidget {
   final Color? color;
@@ -100,6 +101,27 @@ class ForwardArrowIcon extends StatelessWidget {
       Icons.arrow_forward_ios_rounded,
       color: color ?? AppColors.primarySubBlackColor,
       size: size,
+    );
+  }
+}
+
+class ArrowIcon extends StatelessWidget {
+  final double size;
+  final double rightPadding;
+  final Color? color;
+
+  const ArrowIcon({
+    this.size = 18.0,
+    this.rightPadding = 10.0,
+    this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      Icons.arrow_forward_ios,
+      size: size.sp,
+      color: color ?? AppColors.primaryBlackColor,
     );
   }
 }

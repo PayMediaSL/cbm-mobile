@@ -46,6 +46,8 @@ class UI_Borderradius {
 
   static double COMMON_BORDER_RADIUS = 10.sp;
   static double COMMON_BORDER_RADIUS_2 = 15.sp;
+  static double TEXT_FORM_FIELD_RADIUS = 12.sp;
+  static double SMALL_BORDER_RADIUS = 10.sp;
 }
 
 class UI_Borderwidth {
@@ -64,6 +66,12 @@ class UI_Padding {
   static double PADDING_16X = PADDING * 16.sp;
   static double PADDING_20 = 20.sp;
   static double PADDING_15 = 15.sp;
+
+  static double PRIMARY_COMMON_PADDING = 10.sp;
+  static double PRIMARY_COMMON_PADDING_2 = 15.sp;
+  static double PRIMARY_COMMON_PADDING_3 = 20.sp;
+  // static double PRIMARY_COMMON_PADDING_2 = 10.sp;
+  // static double PRIMARY_COMMON_PADDING_3 = 20.sp;
   static double PADDING_10 = 10.sp;
   static double PADDING_12 = 12.sp;
 

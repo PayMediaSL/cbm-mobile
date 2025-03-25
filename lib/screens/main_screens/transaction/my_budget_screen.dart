@@ -96,11 +96,7 @@ class MyBudgetScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Transactions",
-                            style: commonTextStyle.copyWith(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.black,
-                            )),
+                            style: commonTextStyle_black_500_12sp),
                         SizedBox(
                           height: ScreenUtils.height * 0.45,
                           child: ListView.separated(

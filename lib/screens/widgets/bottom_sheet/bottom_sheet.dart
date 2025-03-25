@@ -1,7 +1,7 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/screens/widgets/calendar/calendar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void showDateTimePickerBottomSheet(BuildContext context, String dateKey) {
   showModalBottomSheet(
@@ -10,11 +10,16 @@ void showDateTimePickerBottomSheet(BuildContext context, String dateKey) {
     isScrollControlled: true,
     builder: (BuildContext context) {
       return Container(
-        margin: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
-        padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 20.sp),
+        margin: EdgeInsets.symmetric(
+            vertical: UI_Padding.PRIMARY_COMMON_PADDING_2,
+            horizontal: UI_Padding.PRIMARY_COMMON_PADDING_2),
+        padding: EdgeInsets.symmetric(
+            vertical: UI_Padding.PRIMARY_COMMON_PADDING_2,
+            horizontal: UI_Padding.PRIMARY_COMMON_PADDING_3),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(13.sp),
+          color: AppColors.primaryWhiteColor,
+          borderRadius:
+              BorderRadius.circular(UI_Borderradius.TEXT_FORM_FIELD_RADIUS),
         ),
         child: DateTimePickerWidget(dateKey: dateKey),
       );

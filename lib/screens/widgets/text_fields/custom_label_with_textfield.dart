@@ -3,11 +3,12 @@ import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LabelWithTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
-  final double borderRadius;
+  final double? borderRadius;
   final bool isSmallContentPadding;
   final String hint;
   final Widget? suffixIcon;
@@ -20,7 +21,7 @@ class LabelWithTextField extends StatelessWidget {
       {Key? key,
       required this.label,
       required this.controller,
-      required this.borderRadius,
+      this.borderRadius,
       required this.isSmallContentPadding,
       required this.hint,
       this.suffixIcon,
@@ -48,7 +49,7 @@ class LabelWithTextField extends StatelessWidget {
           autovalidate: autovalidate,
           validator: validator,
           controller,
-          borderradius: borderRadius,
+          borderradius: borderRadius ?? 12.sp,
           isSmallContentPadding: isSmallContentPadding,
           hint: hint,
           suffixIcon: suffixIcon,
@@ -60,7 +61,7 @@ class LabelWithTextField extends StatelessWidget {
 
 class LabelWithDropdown extends StatelessWidget {
   final String label;
-  final double borderRadius;
+  final double? borderRadius;
   final String dropdownKey;
   final List<String> items;
   final FormFieldValidator<String>? validator;
@@ -71,9 +72,9 @@ class LabelWithDropdown extends StatelessWidget {
   const LabelWithDropdown({
     Key? key,
     required this.label,
-    required this.borderRadius,
     required this.dropdownKey,
     required this.items,
+    this.borderRadius,
     this.validator,
     this.autovalidate,
     // this.autovalidateMode = AutovalidateMode.disabled,
@@ -93,7 +94,7 @@ class LabelWithDropdown extends StatelessWidget {
           autovalidate: autovalidate,
           // autovalidateMode: autovalidateMode,
           validator: validator,
-          borderradius: borderRadius,
+          borderradius: borderRadius ?? 12.sp,
           dropdownKey: dropdownKey,
           items: items,
         ),

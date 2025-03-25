@@ -11,6 +11,7 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
+import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -323,17 +324,24 @@ class PayBillMainScreen extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    CircleAvatar(
+                                    CustomCircleAvatar(
                                       radius: 25.sp,
                                       backgroundColor:
                                           AppColors.bottomNavBgColor,
-                                      child: Image(
-                                        image: AssetImage(items[index]
-                                                ['image'] ??
-                                            ImageAsset().iconImageGlobe),
-                                        height: 27.sp,
-                                      ),
+                                      imagePath: items[index]['image'] ??
+                                          ImageAsset().iconImageGlobe,
                                     ),
+                                    // CircleAvatar(
+                                    //   radius: 25.sp,
+                                    //   backgroundColor:
+                                    //       AppColors.bottomNavBgColor,
+                                    // child: Image(
+                                    //   image: AssetImage(items[index]
+                                    //           ['image'] ??
+                                    //       ImageAsset().iconImageGlobe),
+                                    //   height: 27.sp,
+                                    // ),
+                                    // ),
                                     SizedBox(height: 5.sp),
                                     Text(
                                       items[index]['title']!,

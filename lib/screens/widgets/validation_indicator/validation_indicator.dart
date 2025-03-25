@@ -58,10 +58,11 @@ class ValidationIndicator extends StatelessWidget {
         ? (isValid
             ? AppColors.primarypaleGreenColor
             : AppColors.primarypaleRedColor)
-        : Colors.grey;
+        : AppColors.primaryGreyColor;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: UI_Padding.PADDING_20),
+      padding:
+          EdgeInsets.symmetric(horizontal: UI_Padding.PRIMARY_COMMON_PADDING_3),
       child: Row(
         children: [
           Icon(Icons.circle,

@@ -32,7 +32,8 @@ class PinSignInScreen extends StatelessWidget {
       headerSubText: "OneApp for all your banking needs",
       container2CustomWidget: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: UI_Padding.PADDING_10, horizontal: UI_Padding.PADDING_20),
+            vertical: UI_Padding.PRIMARY_COMMON_PADDING,
+            horizontal: UI_Padding.PRIMARY_COMMON_PADDING_3),
         child: Column(
           children: [
             PinFeild(controller: pinController, onChanged: (value) {}),

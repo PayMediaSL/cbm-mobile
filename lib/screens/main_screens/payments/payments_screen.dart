@@ -7,6 +7,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -159,10 +160,13 @@ class PaymentScreen extends StatelessWidget {
               height: isGridView
                   ? ScreenUtils.height * 0.43
                   : ScreenUtils.height * 0.6,
-              padding: EdgeInsets.symmetric(vertical: 20.sp, horizontal: 10.sp),
+              padding: EdgeInsets.symmetric(
+                  vertical: UI_Padding.PADDING_20,
+                  horizontal: UI_Padding.PRIMARY_COMMON_PADDING),
               decoration: BoxDecoration(
                   color: AppColors.primaryWhiteColor,
-                  borderRadius: BorderRadius.circular(10.sp)),
+                  borderRadius: BorderRadius.circular(
+                      UI_Borderradius.COMMON_BORDER_RADIUS)),
               child: Expanded(
                 child: isGridView
                     ? GridView.builder(
@@ -180,15 +184,21 @@ class PaymentScreen extends StatelessWidget {
                             },
                             child: Column(
                               children: [
-                                CircleAvatar(
+                                CustomCircleAvatar(
                                   radius: 25.sp,
                                   backgroundColor: AppColors.bottomNavBgColor,
-                                  child: Image(
-                                    image: AssetImage(items[index]['image'] ??
-                                        ImageAsset().iconImageGlobe),
-                                    height: 27.sp,
-                                  ),
+                                  imagePath: items[index]['image'] ??
+                                      ImageAsset().iconImageGlobe,
                                 ),
+                                // CircleAvatar(
+                                //   radius: 25.sp,
+                                //   backgroundColor: AppColors.bottomNavBgColor,
+                                //   child: Image(
+                                //     image: AssetImage(items[index]['image'] ??
+                                //         ImageAsset().iconImageGlobe),
+                                //     height: 27.sp,
+                                //   ),
+                                // ),
                                 SizedBox(height: 5.sp),
                                 Text(
                                   items[index]['title']!,

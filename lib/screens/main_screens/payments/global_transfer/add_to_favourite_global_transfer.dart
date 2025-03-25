@@ -57,7 +57,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                               label: "Recipient’s account number",
                               controller:
                                   globalTransferFavouriteAccountController,
-                              borderRadius: 13.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. *******364",
                               autovalidate: true,
@@ -69,7 +68,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                             LabelWithTextField(
                               label: "Recipient’s name",
                               controller: globalTransferFavouriteNameController,
-                              borderRadius: 13.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. John Doe",
                               autovalidate: true,
@@ -82,7 +80,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                               label: "Recipient’s address / country",
                               controller:
                                   globalTransferFavouriteAddressCountryController,
-                              borderRadius: 13.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. France",
                               autovalidate: true,
@@ -93,7 +90,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                             ColumnSpacer(0.01),
                             LabelWithDropdown(
                               label: "Recipient’s code option",
-                              borderRadius: 13.sp,
                               dropdownKey: "global_favorite_receipient_code",
                               items: ["option1", "option2", "option3"],
                               autovalidate: true,
@@ -106,7 +102,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                               label: "Recipient’s bank country",
                               controller:
                                   globalTransferFavouriteBankCountryController,
-                              borderRadius: 13.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. France",
                               autovalidate: true,
@@ -119,7 +114,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                               label: "Recipient’s bank name",
                               controller:
                                   globalTransferFavouriteBankNameController,
-                              borderRadius: 13.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. Deuche Bank",
                               autovalidate: true,
@@ -132,7 +126,6 @@ class AddToFavouriteGlobalTransferScreen extends StatelessWidget {
                               label: "Recipient’s bank address",
                               controller:
                                   globalTransferFavouriteBankAddressController,
-                              borderRadius: 13.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. Deuche Bank, France",
                               autovalidate: true,

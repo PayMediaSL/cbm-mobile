@@ -160,11 +160,11 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         ),
       ),
       image: _buildImage(imageAsset),
-      decoration: const PageDecoration(
+      decoration: PageDecoration(
         imageFlex: 0,
-        titlePadding: EdgeInsets.only(left: 16, top: 16),
-        bodyPadding: EdgeInsets.only(left: 16, top: 10),
-        pageColor: Colors.white,
+        titlePadding: const EdgeInsets.only(left: 16, top: 16),
+        bodyPadding: const EdgeInsets.only(left: 16, top: 10),
+        pageColor: AppColors.primaryWhiteColor,
         imagePadding: EdgeInsets.zero,
       ),
     );

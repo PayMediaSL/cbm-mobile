@@ -6,6 +6,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/models/contacts/contacts_model.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -142,16 +143,25 @@ class ContactsListPage extends StatelessWidget {
           ),
           itemBuilder: (context, contact) {
             return ListTile(
-              leading: CircleAvatar(
-                child: Text(
-                  contactsProvider.getContactInitials(contact.name),
-                  style: TextStyle(
-                    color: AppColors.primaryWhiteColor,
-                    fontFamily: secondaryFontFamily,
-                  ),
-                ),
+              leading: CustomCircleAvatar(
                 backgroundColor: _getAvatarColor(contact.name),
+                text: contactsProvider.getContactInitials(
+                  contact.name,
+                ),
+                textStyle: commonTextStyle.copyWith(
+                    fontFamily: secondaryFontFamily,
+                    color: AppColors.primaryWhiteColor),
               ),
+              // leading: CircleAvatar(
+              //   child: Text(
+              //     contactsProvider.getContactInitials(contact.name),
+              //     style: TextStyle(
+              //       color: AppColors.primaryWhiteColor,
+              //       fontFamily: secondaryFontFamily,
+              //     ),
+              //   ),
+              //   backgroundColor: _getAvatarColor(contact.name),
+              // ),
               title: Text(
                 contact.name!,
                 style: commonTextStyle.copyWith(

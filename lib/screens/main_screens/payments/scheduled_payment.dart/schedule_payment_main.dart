@@ -119,7 +119,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                       icon: Icon(Icons.calendar_month_rounded)),
                   label: "Date",
                   controller: TextEditingController(),
-                  borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "12/23/14",
                   autovalidate: true,
@@ -130,7 +129,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 LabelWithTextField(
                   label: "Account Number",
                   controller: TextEditingController(),
-                  borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "e.g. ********127",
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -144,7 +142,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 LabelWithTextField(
                   label: "Account Name",
                   controller: TextEditingController(),
-                  borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "eg : john doe",
                   autovalidate: true,
@@ -155,7 +152,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 LabelWithTextField(
                   label: "Amount ",
                   controller: TextEditingController(),
-                  borderRadius: 12.sp,
                   isSmallContentPadding: true,
                   hint: "eg : 100,000",
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -168,7 +164,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 ColumnSpacer(0.01),
                 LabelWithDropdown(
                   label: "Billing Cycle",
-                  borderRadius: 12.sp,
                   dropdownKey: "schedule_payment_billing_cycle",
                   items: ["option1", "option2", "option3"],
                   validator: (input) =>

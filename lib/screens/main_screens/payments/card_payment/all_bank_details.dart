@@ -200,10 +200,9 @@ class AllBankDetails extends StatelessWidget {
             if (details.isNotEmpty)
               Text(
                 details,
-                style: commonTextStyle.copyWith(
-                    color: AppColors.bottomNavIconColor,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500),
+                style: commonTextStyle_black_500_12sp.copyWith(
+                  color: AppColors.bottomNavIconColor,
+                ),
                 textAlign: TextAlign.center,
               ),
           ],

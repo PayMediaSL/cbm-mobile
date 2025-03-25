@@ -386,7 +386,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Receipient's account number",
                 controller: TextEditingController(),
-                borderRadius: 12.sp,
                 isSmallContentPadding: true,
                 hint: "234563354",
                 autovalidate: true,
@@ -399,7 +398,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Recipient’s name",
                 controller: TextEditingController(),
-                borderRadius: 12.sp,
                 isSmallContentPadding: true,
                 hint: "eg : john doe",
                 autovalidate: true,
@@ -412,7 +410,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Amount",
                 controller: TextEditingController(),
-                borderRadius: 12.sp,
                 isSmallContentPadding: true,
                 hint: "eg:10,000",
                 keyboardType: TextInputType.number,
@@ -560,7 +557,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Personal note",
                 controller: TextEditingController(),
-                borderRadius: 12.sp,
                 isSmallContentPadding: true,
                 hint: "e.g. Transferred refreshment charges to Jane",
                 autovalidate: true,
@@ -572,7 +568,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Note to recipient",
                 controller: TextEditingController(),
-                borderRadius: 12.sp,
                 isSmallContentPadding: true,
                 hint: "e.g. Transferred refreshment charges",
                 autovalidate: true,
@@ -838,10 +833,9 @@ class LocalTransferMainScreen extends StatelessWidget {
             if (details.isNotEmpty)
               Text(
                 details,
-                style: commonTextStyle.copyWith(
-                    color: AppColors.bottomNavIconColor,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500),
+                style: commonTextStyle_black_500_12sp.copyWith(
+                  color: AppColors.bottomNavIconColor,
+                ),
                 textAlign: TextAlign.center,
               ),
           ],

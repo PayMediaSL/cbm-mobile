@@ -53,10 +53,7 @@ class DrawerInfoScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Locate Branch",
-                        style: commonTextStyle.copyWith(
-                            color: AppColors.primaryBlackColor,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500),
+                        style: commonTextStyle_black_500_16sp,
                       ),
                       //TODO need to add Controller
                       SearchTextField(
@@ -211,10 +208,7 @@ class RateSection extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: commonTextStyle.copyWith(
-                      color: AppColors.primaryBlackColor,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500),
+                  style: commonTextStyle_black_500_16sp,
                 ),
                 TextButton(
                   onPressed: () {
@@ -288,10 +282,7 @@ class RateSection extends StatelessWidget {
                 color: AppColors.onBoardSubTextStyleColor,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500)
-            : commonTextStyle.copyWith(
-                color: AppColors.primaryBlackColor,
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w500);
+            : commonTextStyle_black_500_12sp;
 
     // Return the text widget wrapped in a Container to center it
     return Padding(

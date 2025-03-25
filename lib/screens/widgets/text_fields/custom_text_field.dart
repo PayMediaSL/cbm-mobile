@@ -92,28 +92,28 @@ class CustomLableTextField extends StatelessWidget {
               ),
           counterText: '',
           border: OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
+            borderRadius: BorderRadius.circular(
+                borderradius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
+            borderRadius: BorderRadius.circular(
+                borderradius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
+            borderRadius: BorderRadius.circular(
+                borderradius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS),
             borderSide: BorderSide(color: AppColors.primaryRedColor),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
+            borderRadius: BorderRadius.circular(
+                borderradius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS),
             borderSide: BorderSide(color: AppColors.primaryRedColor),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(borderradius ?? UI.borderRadiusTextField),
+            borderRadius: BorderRadius.circular(
+                borderradius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS),
             borderSide: BorderSide(color: AppColors.textFieldBorderColor),
           ),
           contentPadding: isContentPadding
@@ -127,7 +127,7 @@ class CustomLableTextField extends StatelessWidget {
 
           // contentPadding: EdgeInsets.only(top: 10.sp, left: 10.sp),
           filled: true,
-          fillColor: AppColors.white,
+          fillColor: AppColors.primaryWhiteColor,
           suffixIcon: suffixIcon,
           suffixIconColor: AppColors.suffixIconColor,
           prefixIcon: prefixIcon),

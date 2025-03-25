@@ -7,6 +7,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -143,10 +144,12 @@ class MenuScreen extends StatelessWidget {
                         color: isGridView
                             ? AppColors.secondarySubBlueColor2
                             : AppColors.transparent,
-                        border: Border.all(
-                            color: isGridView
-                                ? AppColors.transparent
-                                : AppColors.onBoardActiveColor),
+                        border: UI_Border.dynamicGridBorder(
+                            isGridView: !isGridView),
+                        // border: Border.all(
+                        //     color: isGridView
+                        //         ? AppColors.transparent
+                        //         : AppColors.onBoardActiveColor),
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(8.sp)),
                     child: Icon(
@@ -188,15 +191,21 @@ class MenuScreen extends StatelessWidget {
                             },
                             child: Column(
                               children: [
-                                CircleAvatar(
-                                  radius: 25.sp,
+                                CustomCircleAvatar(
                                   backgroundColor: AppColors.bottomNavBgColor,
-                                  child: Image(
-                                    image: AssetImage(items[index]['image'] ??
-                                        ImageAsset().iconImageGlobe),
-                                    height: 27.sp,
-                                  ),
+                                  radius: 25.sp,
+                                  imagePath: items[index]['image'] ??
+                                      ImageAsset().iconImageGlobe,
                                 ),
+                                // CircleAvatar(
+                                //   radius: 25.sp,
+                                //   backgroundColor: AppColors.bottomNavBgColor,
+                                //   child: Image(
+                                //     image: AssetImage(items[index]['image'] ??
+                                //         ImageAsset().iconImageGlobe),
+                                //     height: 27.sp,
+                                //   ),
+                                // ),
                                 SizedBox(height: 5.sp),
                                 Text(
                                   items[index]['title']!,
@@ -218,15 +227,21 @@ class MenuScreen extends StatelessWidget {
                               _navigateToScreen(context, index);
                             },
                             child: ListTile(
-                              leading: CircleAvatar(
-                                radius: 25.sp,
+                              leading: CustomCircleAvatar(
                                 backgroundColor: AppColors.bottomNavBgColor,
-                                child: Image(
-                                  image: AssetImage(items[index]['image'] ??
-                                      ImageAsset().iconImageGlobe),
-                                  height: 27.sp,
-                                ),
+                                radius: 25.sp,
+                                imagePath: items[index]['image'] ??
+                                    ImageAsset().iconImageGlobe,
                               ),
+                              // leading: CircleAvatar(
+                              //   radius: 25.sp,
+                              //   backgroundColor: AppColors.bottomNavBgColor,
+                              //   child: Image(
+                              //     image: AssetImage(items[index]['image'] ??
+                              //         ImageAsset().iconImageGlobe),
+                              //     height: 27.sp,
+                              //   ),
+                              // ),
                               title: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,

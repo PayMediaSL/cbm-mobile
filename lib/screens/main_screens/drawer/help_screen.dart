@@ -38,10 +38,7 @@ class DrawerHelpScreen extends StatelessWidget {
             ColumnSpacer(0.04),
             Text(
               "Hi, How can we help you?",
-              style: commonTextStyle.copyWith(
-                  color: AppColors.primaryBlackColor,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500),
+              style: commonTextStyle_black_500_16sp,
             ),
             ColumnSpacer(0.02),
             //TODO Need to add Controllers
@@ -73,7 +70,7 @@ class DrawerHelpScreen extends StatelessWidget {
                 children: [
                   Text(
                     "FAQ",
-                    style: commonTextStyle_black_500,
+                    style: commonTextStyle_black_500_16sp,
                   ),
                   ColumnSpacer(0.02),
                   Expanded(
@@ -174,10 +171,7 @@ class DrawerHelpScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Education",
-                      style: commonTextStyle.copyWith(
-                          color: AppColors.primaryBlackColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500),
+                      style: commonTextStyle_black_500_16sp,
                     ),
                     ColumnSpacer(0.01),
                     Consumer<DrawerHelpDataProvider>(

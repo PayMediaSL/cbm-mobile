@@ -1,4 +1,5 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
@@ -265,7 +266,8 @@ class _MessageTileState extends State<MessageTile> {
               decoration: BoxDecoration(
                   color: widget.iconBackgroundColor,
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(10.sp)),
+                  borderRadius: BorderRadius.circular(
+                      UI_Borderradius.COMMON_BORDER_RADIUS)),
               // child: Icon(
               //   widget.icon,
               //   color: AppColors.primaryBlueColor,

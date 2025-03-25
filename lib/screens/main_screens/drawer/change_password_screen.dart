@@ -32,8 +32,8 @@ class DrawerChangePassword extends StatelessWidget {
         backTitle: "Change Password",
         children: Padding(
             padding: EdgeInsets.symmetric(
-                vertical: UI_Padding.PADDING_10,
-                horizontal: UI_Padding.PADDING_10),
+                vertical: UI_Padding.PRIMARY_COMMON_PADDING,
+                horizontal: UI_Padding.PRIMARY_COMMON_PADDING),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,8 +41,8 @@ class DrawerChangePassword extends StatelessWidget {
                   ColumnSpacer(0.05),
                   Container(
                     padding: EdgeInsets.symmetric(
-                        vertical: UI_Padding.PADDING_10,
-                        horizontal: UI_Padding.PADDING_15),
+                        vertical: UI_Padding.PRIMARY_COMMON_PADDING,
+                        horizontal: UI_Padding.PRIMARY_COMMON_PADDING_2),
                     // height: ScreenUtils.height * 0.1,
                     width: ScreenUtils.width,
                     decoration: BoxDecoration(
@@ -55,7 +55,7 @@ class DrawerChangePassword extends StatelessWidget {
                       children: [
                         Text(
                           "New Password",
-                          style: commonTextStyle_black_500,
+                          style: commonTextStyle_black_500_16sp,
                         ),
                         ColumnSpacer(0.001),
                         Text(

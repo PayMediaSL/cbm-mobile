@@ -27,7 +27,8 @@ class DrawerDetailsUpdate extends StatelessWidget {
       backTitle: "Details Update",
       children: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: UI_Padding.PADDING_10, horizontal: UI_Padding.PADDING_10),
+            vertical: UI_Padding.PRIMARY_COMMON_PADDING,
+            horizontal: UI_Padding.PRIMARY_COMMON_PADDING),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,9 +36,9 @@ class DrawerDetailsUpdate extends StatelessWidget {
             ColumnSpacer(0.05),
             Container(
               padding: EdgeInsets.only(
-                  top: UI_Padding.PADDING_15,
-                  left: UI_Padding.PADDING_10,
-                  bottom: UI_Padding.PADDING_10),
+                  top: UI_Padding.PRIMARY_COMMON_PADDING_2,
+                  left: UI_Padding.PRIMARY_COMMON_PADDING,
+                  bottom: UI_Padding.PRIMARY_COMMON_PADDING),
               // height: ScreenUtils.height * 0.1,
               width: ScreenUtils.width,
               decoration: BoxDecoration(

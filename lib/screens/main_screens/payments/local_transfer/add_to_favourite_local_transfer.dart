@@ -69,7 +69,6 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
                             LabelWithTextField(
                               label: "Receipient's account number",
                               controller: TextEditingController(),
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "eg:234563354",
                               keyboardType: TextInputType.number,
@@ -86,7 +85,6 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
                             LabelWithTextField(
                               label: "Recipient’s name",
                               controller: TextEditingController(),
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "eg : john doe",
                               autovalidate: true,

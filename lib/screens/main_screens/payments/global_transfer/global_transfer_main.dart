@@ -233,7 +233,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s account number",
                               controller:
                                   globalTransferReceipientAccountNumberController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. *******364",
                               autovalidate: true,
@@ -251,7 +250,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s name",
                               controller:
                                   globalTransferReceipientNameController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "eg: John Doe",
                               autovalidate: true,
@@ -264,7 +262,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s address / country",
                               controller:
                                   globalTransferReceipientAddressCountryController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "eg: France",
                               autovalidate: true,
@@ -275,7 +272,6 @@ class GlobalTransferMain extends StatelessWidget {
                             ColumnSpacer(0.01),
                             LabelWithDropdown(
                               label: "Recipient’s code option",
-                              borderRadius: 12.sp,
                               dropdownKey:
                                   "global_transfer_main_receipient_code",
                               items: ["option1", "option2", "option3"],
@@ -290,7 +286,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s bank country",
                               controller:
                                   globalTransferReceipientBankCountryController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "eg : France",
                               autovalidate: true,
@@ -303,7 +298,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s bank name",
                               controller:
                                   globalTransferReceipientBankNameController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. Deuche Bank",
                               autovalidate: true,
@@ -316,7 +310,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s bank address",
                               controller:
                                   globalTransferReceipientBankAddressController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint: "e.g. Deuche Bank,France",
                               autovalidate: true,
@@ -430,7 +423,7 @@ class GlobalTransferMain extends StatelessWidget {
                                 CustomDropdown(
                                   hint: "month",
                                   dropdownwidth: ScreenUtils.width * 0.24,
-                                  borderradius: 13.sp,
+                                  borderradius: 12.sp,
                                   dropdownKey: 'globaltransfermonth',
                                   items: ['1', '2', '3'],
                                   autovalidate: true,
@@ -464,7 +457,6 @@ class GlobalTransferMain extends StatelessWidget {
                             LabelWithTextField(
                               label: "Note to recipient",
                               controller: signInPasswordController,
-                              borderRadius: 12.sp,
                               isSmallContentPadding: true,
                               hint:
                                   "e.g. Transferred refreshment charges to Jane",

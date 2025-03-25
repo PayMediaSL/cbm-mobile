@@ -2,9 +2,9 @@
 
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCurvedContainer extends StatelessWidget {
   final double? height;
@@ -29,12 +29,14 @@ class CustomCurvedContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      padding:
-          padding ?? EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
+      padding: padding ??
+          EdgeInsets.symmetric(
+              vertical: UI_Padding.PRIMARY_COMMON_PADDING_2,
+              horizontal: UI_Padding.PRIMARY_COMMON_PADDING_2),
       height: height ?? ScreenUtils.height * 0.3,
       width: width ?? ScreenUtils.width,
       decoration: BoxDecoration(
-          color: color ?? AppColors.white,
+          color: color ?? AppColors.primaryWhiteColor,
           borderRadius: BorderRadius.circular(borderradius ?? UI.borderRadius)),
       child: child,
     );

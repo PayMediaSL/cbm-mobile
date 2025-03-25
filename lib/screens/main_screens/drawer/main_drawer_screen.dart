@@ -6,6 +6,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -147,18 +148,23 @@ class MainDrawerScreen extends StatelessWidget {
         Stack(
           children: [
             // Circle Avatar
-            CircleAvatar(
-              radius: 50.sp,
+            CustomCircleAvatar(
               backgroundColor: AppColors.primaryBlueColor.withOpacity(0.2),
-              // child: Text(
-              //   "SD",
-              //   style: TextStyle(
-              //     color: AppColors.primaryBlueColor,
-              //     fontSize: 24,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
+              radius: 50.sp,
             ),
+
+            // CircleAvatar(
+            //   radius: 50.sp,
+            //   backgroundColor: AppColors.primaryBlueColor.withOpacity(0.2),
+            //   // child: Text(
+            //   //   "SD",
+            //   //   style: TextStyle(
+            //   //     color: AppColors.primaryBlueColor,
+            //   //     fontSize: 24,
+            //   //     fontWeight: FontWeight.bold,
+            //   //   ),
+            //   // ),
+            // ),
             // Camera Icon
             Positioned(
               bottom: 0,

@@ -1,5 +1,7 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +33,7 @@ class ClarifyIdentityContainer extends StatelessWidget {
         height: ScreenUtils.height * 0.12,
         width: ScreenUtils.width,
         color: isCompleted
-            ? AppColors.transparent // Color changes when completed
+            ? AppColors.transparent
             : AppColors.SecondarysubGreyColor,
         child: Stack(
           children: [
@@ -50,7 +52,8 @@ class ClarifyIdentityContainer extends StatelessWidget {
                           color: AppColors.SecondarysubGreyColor,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: EdgeInsets.all(
+                              UI_Padding.PRIMARY_COMMON_PADDING_2),
                           child: Image(
                             image: AssetImage(imagePath),
                           ),
@@ -64,11 +67,7 @@ class ClarifyIdentityContainer extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                          style: commonTextStyle.copyWith(
-                            color: AppColors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
+                          style: commonTextStyle_black_500_16sp,
                         ),
                         SizedBox(
                           width: ScreenUtils.width * 0.6,
@@ -91,12 +90,9 @@ class ClarifyIdentityContainer extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: 10.sp),
-                  child: Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                  ),
-                ),
+                    padding: EdgeInsets.only(
+                        right: UI_Padding.PRIMARY_COMMON_PADDING),
+                    child: ArrowIcon()),
               ],
             ),
             if (isCompleted)

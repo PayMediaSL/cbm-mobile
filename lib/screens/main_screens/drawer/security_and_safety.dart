@@ -213,7 +213,7 @@ class DrawerSecuritySafety extends StatelessWidget {
                 children: [
                   Text(
                     "Login & Recovery",
-                    style: commonTextStyle_black_500,
+                    style: commonTextStyle_black_500_16sp,
                   ),
                   ColumnSpacer(0.001),
                   Text(
