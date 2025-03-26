@@ -59,7 +59,7 @@ class DrawerInviteFriendsScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Icon(
-                            AppIcons.share,
+                            ActionIcons.share,
                             size: 30.sp,
                           ),
                         ),

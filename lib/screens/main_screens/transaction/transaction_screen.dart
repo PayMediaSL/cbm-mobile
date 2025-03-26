@@ -319,7 +319,7 @@ class _DaysDropdownState extends State<DaysDropdown> {
     return DropdownButton<String>(
       value: selectedValue,
       icon: Icon(
-        AppIcons.dropdownArrow,
+        NavigationIcons.dropdownArrow,
         color: AppColors.secondarysubGreyColor3,
       ), // Dropdown icon
       iconSize: 25,

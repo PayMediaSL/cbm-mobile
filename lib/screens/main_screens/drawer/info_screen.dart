@@ -84,7 +84,7 @@ class DrawerInfoScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Icon(
-                          AppIcons.location,
+                          UtilityIcons.location,
                           size: 30.sp,
                         ),
                       ),

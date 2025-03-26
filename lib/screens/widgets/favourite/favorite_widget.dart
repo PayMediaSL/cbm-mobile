@@ -33,7 +33,7 @@ class FavoriteCard extends StatelessWidget {
                   ? AppColors.iconGreyColor
                   : AppColors.transparent,
               child: name == "Add"
-                  ? Icon(AppIcons.add,
+                  ? Icon(BaseIcons.add,
                       size: 30, color: AppColors.primaryBlackColor)
                   : null,
             ),

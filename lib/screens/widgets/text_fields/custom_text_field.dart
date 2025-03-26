@@ -1,5 +1,4 @@
 import 'package:app/helpers/colors.dart';
-import 'package:app/helpers/constants.dart';
 import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/input_formatter.dart';
@@ -27,7 +26,7 @@ class CustomLableTextField extends StatelessWidget {
       this.lable,
       this.onTap,
       this.isContentPadding = false,
-      this.isSmallContentPadding = false,
+      this.isSmallContentPadding = true,
       this.hintTextStyle,
       this.hintFontFamily,
       this.borderradius,
@@ -119,9 +118,12 @@ class CustomLableTextField extends StatelessWidget {
           contentPadding: isContentPadding
               ? contentPadding ??
                   EdgeInsets.symmetric(
-                      horizontal: UI.getPadding(2), vertical: 20)
+                      horizontal: UI_Padding.PRIMARY_COMMON_PADDING_2,
+                      vertical: UI_Padding.PRIMARY_COMMON_PADDING_3)
               : isSmallContentPadding
-                  ? EdgeInsets.symmetric(horizontal: 10.sp, vertical: 10.sp)
+                  ? EdgeInsets.symmetric(
+                      horizontal: UI_Padding.PRIMARY_COMMON_PADDING,
+                      vertical: UI_Padding.PRIMARY_COMMON_PADDING)
                   : null,
           errorStyle: TextStyle(color: AppColors.primaryRedColor),
 

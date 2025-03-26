@@ -103,7 +103,7 @@ class AboutYouScreen extends StatelessWidget {
                   }
                 },
                 icon: Icon(
-                  AppIcons.calendar,
+                  UtilityIcons.calendar,
                   color: AppColors.primaryGreyColor2,
                 ),
               ),

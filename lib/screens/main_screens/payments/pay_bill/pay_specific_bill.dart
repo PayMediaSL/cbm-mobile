@@ -66,7 +66,6 @@ class PaySpecificBill extends StatelessWidget {
                           LabelWithTextField(
                             label: "Mobile number",
                             controller: TextEditingController(),
-                            isSmallContentPadding: true,
                             hint: "e.g. 07641356",
                             keyboardType: TextInputType.number,
                             inputFormatters: [
@@ -82,7 +81,6 @@ class PaySpecificBill extends StatelessWidget {
                           LabelWithTextField(
                             label: "Amount",
                             controller: TextEditingController(),
-                            isSmallContentPadding: true,
                             hint: "e.g. 10,0000",
                             keyboardType: TextInputType.number,
                             inputFormatters: [
@@ -97,7 +95,6 @@ class PaySpecificBill extends StatelessWidget {
                           LabelWithTextField(
                             label: "Description",
                             controller: TextEditingController(),
-                            isSmallContentPadding: true,
                             hint: "e.g. Send Money",
                             autovalidate: true,
                             validator: (value) =>

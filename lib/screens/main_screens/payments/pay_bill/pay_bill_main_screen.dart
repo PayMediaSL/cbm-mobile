@@ -255,7 +255,7 @@ class PayBillMainScreen extends StatelessWidget {
                                 // color: Colors.red,
                                 borderRadius: BorderRadius.circular(8.sp)),
                             child: Icon(
-                              AppIcons.menu,
+                              KeyboardIcons.menu,
                               color: !isGridView
                                   ? AppColors.primaryWhiteColor
                                   : AppColors.primarySubBlackColor,
@@ -283,7 +283,7 @@ class PayBillMainScreen extends StatelessWidget {
                                 // color: Colors.red,
                                 borderRadius: BorderRadius.circular(8.sp)),
                             child: Icon(
-                              AppIcons.gridView,
+                              KeyboardIcons.gridView,
                               color: isGridView
                                   ? AppColors.primaryWhiteColor
                                   : AppColors.primarySubBlackColor,

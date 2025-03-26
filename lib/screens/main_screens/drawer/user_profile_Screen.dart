@@ -216,7 +216,7 @@ class UserProfileScreen extends StatelessWidget {
                         width: 2, color: AppColors.primaryWhiteColor)),
                 padding: const EdgeInsets.all(5),
                 child: Icon(
-                  AppIcons.camera,
+                  UtilityIcons.camera,
                   color: Colors.white,
                   size: 20.sp,
                 ),
@@ -406,7 +406,7 @@ class UserProfileScreen extends StatelessWidget {
                                 radius: 10.sp,
                                 backgroundColor: AppColors.primaryBlueColor,
                                 child: Icon(
-                                  AppIcons.check,
+                                  UtilityIcons.check,
                                   color: AppColors.white,
                                   size: 12.sp,
                                 ),
@@ -420,7 +420,7 @@ class UserProfileScreen extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                           backgroundColor: AppColors.primaryGreyColor,
-                          child: Icon(AppIcons.more)),
+                          child: Icon(UtilityIcons.more)),
                       title: const Text('See all'),
                       onTap: () {
                         setState(() {

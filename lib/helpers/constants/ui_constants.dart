@@ -45,9 +45,11 @@ class UI_Borderradius {
   static double AUTH_LEADING_DROPDOWN_BORDERRADIUS = 25.sp;
   static double COMMON_BORDER_RADIUS = 10.sp;
   static double COMMON_BORDER_RADIUS_2 = 15.sp;
+  static double SUB_BORDER_RADIUS = 8.sp;
   static double TEXT_FORM_FIELD_RADIUS = 12.sp;
   static double SMALL_BORDER_RADIUS = 10.sp;
   static double PRIMARY_COMMON_BORDER_RADIUS = 12.sp;
+  static double BUTTON_BORDER_RADIUS = 16.sp;
 }
 
 class UI_Borderwidth {

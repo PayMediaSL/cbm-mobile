@@ -80,6 +80,12 @@ var mainButtonTextStyle = TextStyle(
     color: AppColors.primaryWhiteColor,
     fontFamily: primaryFontFamily);
 
+var subButtonTextStyle = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryBlackColor,
+    fontFamily: primaryFontFamily);
+
 //Get Started Screen
 
 var getStartedHeadingStyle = TextStyle(

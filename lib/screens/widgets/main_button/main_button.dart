@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, use_super_parameters
 
 import 'package:app/helpers/colors.dart';
-import 'package:app/helpers/constants.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class MainButton extends StatelessWidget {
     // Size size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: isPaddingNeeded ? UI.PADDING_4X : 0,
+        horizontal: isPaddingNeeded ? UI_Padding.PADDING_4X : 0,
       ),
       child: SizedBox(
         width: ScreenUtils.width,
@@ -50,7 +50,7 @@ class MainButton extends StatelessWidget {
               fixedSize: Size(ScreenUtils.width * 0.88, 40.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                    borderRadius ?? UI.borderRadiusButton),
+                    borderRadius ?? UI_Borderradius.BUTTON_BORDER_RADIUS),
               ),
               backgroundColor: backgroundColor ??
                   (isMainButton
@@ -66,13 +66,7 @@ class MainButton extends StatelessWidget {
           child: Text(
             buttontitle,
             style: buttonTitleTextStyle ??
-                (isMainButton
-                    ? mainButtonTextStyle
-                    : mainButtonTextStyle.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.sp,
-                        color: AppColors.black,
-                      )),
+                (isMainButton ? mainButtonTextStyle : subButtonTextStyle),
           ),
         ),
       ),

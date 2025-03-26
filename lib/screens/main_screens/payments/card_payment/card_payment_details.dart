@@ -126,7 +126,6 @@ class CardPaymentDetails extends StatelessWidget {
                                 keyboardType: TextInputType.number,
                                 label: "Amount ",
                                 controller: cardPaymentAmountController,
-                                isSmallContentPadding: true,
                                 hint: "eg : 30000"),
                             ColumnSpacer(0.01),
                             LabelWithDropdown(
@@ -142,7 +141,6 @@ class CardPaymentDetails extends StatelessWidget {
                             LabelWithTextField(
                               label: "Card Holder Name ",
                               controller: cardPaymentCardHolderNameController,
-                              isSmallContentPadding: true,
                               hint: "eg : john doe",
                               autovalidate: true,
                               validator: (value) =>
@@ -153,7 +151,6 @@ class CardPaymentDetails extends StatelessWidget {
                             LabelWithTextField(
                               label: "Description ",
                               controller: cardPaymentDescriptionController,
-                              isSmallContentPadding: true,
                               hint: "eg : Card Payment",
                               autovalidate: true,
                               validator: (value) =>

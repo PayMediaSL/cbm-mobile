@@ -133,7 +133,7 @@ class _FaceCaptureCameraState extends State<FaceCaptureCamera> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularIconButton(
-                      icon: AppIcons.refresh,
+                      icon: ActionIcons.refresh,
                       onTap: () {
                         _retakePhoto();
                       },
@@ -144,7 +144,7 @@ class _FaceCaptureCameraState extends State<FaceCaptureCamera> {
                     ),
                     SizedBox(width: 20.w),
                     CircularIconButton(
-                      icon: AppIcons.refresh,
+                      icon: ActionIcons.refresh,
                       onTap: () {
                         widget.onTap;
                       },

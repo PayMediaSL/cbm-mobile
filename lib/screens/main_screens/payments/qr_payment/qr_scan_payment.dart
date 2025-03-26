@@ -121,7 +121,7 @@ class QrScannerScreen extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        AppIcons.backwardArrowIOS,
+                        NavigationIcons.backwardArrowIOS,
                         color: AppColors.primaryWhiteColor,
                       ),
                       Text(
@@ -141,18 +141,18 @@ class QrScannerScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
-                            AppIcons.flash,
+                            UtilityIcons.flash,
                             color: AppColors.primaryWhiteColor,
                           ),
                           RowSpacer(0.04),
                           Icon(
-                            AppIcons.copy,
+                            ActionIcons.copy,
                             color: AppColors.primaryWhiteColor,
                           )
                         ],
                       ),
                       Icon(
-                        AppIcons.close,
+                        BaseIcons.close,
                         color: AppColors.primaryWhiteColor,
                       )
                     ],
@@ -293,7 +293,7 @@ class ScannerErrorWidget extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(bottom: 16),
-              child: Icon(AppIcons.error, color: AppColors.primaryWhiteColor),
+              child: Icon(BaseIcons.error, color: AppColors.primaryWhiteColor),
             ),
             Text(
               errorMessage,

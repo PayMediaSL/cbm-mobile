@@ -1,15 +1,15 @@
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LabelWithTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final double? borderRadius;
-  final bool isSmallContentPadding;
+  final bool? isSmallContentPadding;
   final String hint;
   final Widget? suffixIcon;
   final String? Function(String? input)? validator;
@@ -22,7 +22,7 @@ class LabelWithTextField extends StatelessWidget {
       required this.label,
       required this.controller,
       this.borderRadius,
-      required this.isSmallContentPadding,
+      this.isSmallContentPadding = true,
       required this.hint,
       this.suffixIcon,
       this.validator,
@@ -49,8 +49,8 @@ class LabelWithTextField extends StatelessWidget {
           autovalidate: autovalidate,
           validator: validator,
           controller,
-          borderradius: borderRadius ?? 12.sp,
-          isSmallContentPadding: isSmallContentPadding,
+          borderradius: borderRadius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS,
+          isSmallContentPadding: isSmallContentPadding!,
           hint: hint,
           suffixIcon: suffixIcon,
         ),
@@ -94,7 +94,7 @@ class LabelWithDropdown extends StatelessWidget {
           autovalidate: autovalidate,
           // autovalidateMode: autovalidateMode,
           validator: validator,
-          borderradius: borderRadius ?? 12.sp,
+          borderradius: borderRadius ?? UI_Borderradius.TEXT_FORM_FIELD_RADIUS,
           dropdownKey: dropdownKey,
           items: items,
         ),

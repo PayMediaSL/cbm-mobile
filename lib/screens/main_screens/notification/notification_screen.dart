@@ -196,8 +196,8 @@ class NotificationScreen extends StatelessWidget {
           decoration: BoxDecoration(
               color: AppColors.bottomNavBgColor,
               borderRadius: BorderRadius.circular(10.sp)),
-          child:
-              Center(child: const Icon(AppIcons.receipt, color: Colors.blue))),
+          child: Center(
+              child: const Icon(UtilityIcons.receipt, color: Colors.blue))),
       title: Text(
         notification["title"]!,
         style: commonTextStyle.copyWith(

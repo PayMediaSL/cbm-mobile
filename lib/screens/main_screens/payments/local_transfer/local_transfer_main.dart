@@ -159,8 +159,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               ColumnSpacer(0.005),
               CustomLableTextField(
                 localTransferOwnAccountAmountController,
-                borderradius: 12.sp,
-                isSmallContentPadding: true,
                 hint: "e.g : 10,00,000",
                 autovalidate: true,
                 validator: (input) =>
@@ -375,7 +373,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               ColumnSpacer(0.01),
               LabelWithDropdown(
                 label: "Recipient’s bank",
-                borderRadius: 12.sp,
                 dropdownKey: "local_transfer_main_bank",
                 items: ["option1", "option2", "option3"],
                 autovalidate: true,
@@ -387,7 +384,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Receipient's account number",
                 controller: TextEditingController(),
-                isSmallContentPadding: true,
                 hint: "234563354",
                 autovalidate: true,
                 validator: (value) =>
@@ -399,7 +395,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Recipient’s name",
                 controller: TextEditingController(),
-                isSmallContentPadding: true,
                 hint: "eg : john doe",
                 autovalidate: true,
                 validator: (value) =>
@@ -411,7 +406,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Amount",
                 controller: TextEditingController(),
-                isSmallContentPadding: true,
                 hint: "eg:10,000",
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -434,7 +428,6 @@ class LocalTransferMainScreen extends StatelessWidget {
                     child: CustomLableTextField(
                       TextEditingController(),
                       borderradius: 12.sp,
-                      isSmallContentPadding: true,
                       hint: "mm/dd/yyyy",
                       suffixIcon: IconButton(
                           onPressed: () {
@@ -442,7 +435,7 @@ class LocalTransferMainScreen extends StatelessWidget {
                                 context, "local_payment_otherbank_date");
                           },
                           icon: Icon(
-                            AppIcons.calendar,
+                            UtilityIcons.calendar,
                             color: AppColors.textFieldHintColor,
                           )),
                       autovalidate: true,
@@ -534,7 +527,6 @@ class LocalTransferMainScreen extends StatelessWidget {
                     child: CustomLableTextField(
                       TextEditingController(),
                       borderradius: 12.sp,
-                      isSmallContentPadding: true,
                       hint: "mm/dd/yyyy",
                       suffixIcon: IconButton(
                           onPressed: () {
@@ -542,7 +534,7 @@ class LocalTransferMainScreen extends StatelessWidget {
                                 context, "local_payment_otherbank_until_date");
                           },
                           icon: Icon(
-                            AppIcons.calendar,
+                            UtilityIcons.calendar,
                             color: AppColors.textFieldHintColor,
                           )),
                       autovalidate: true,
@@ -558,7 +550,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Personal note",
                 controller: TextEditingController(),
-                isSmallContentPadding: true,
                 hint: "e.g. Transferred refreshment charges to Jane",
                 autovalidate: true,
                 validator: (value) =>
@@ -569,7 +560,6 @@ class LocalTransferMainScreen extends StatelessWidget {
               LabelWithTextField(
                 label: "Note to recipient",
                 controller: TextEditingController(),
-                isSmallContentPadding: true,
                 hint: "e.g. Transferred refreshment charges",
                 autovalidate: true,
                 validator: (value) =>
@@ -703,7 +693,6 @@ class LocalTransferMainScreen extends StatelessWidget {
                 label: "Mobile Number",
                 controller: TextEditingController(),
                 borderRadius: 12.sp,
-                isSmallContentPadding: true,
                 hint: "e.g. 0765342345",
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -718,7 +707,6 @@ class LocalTransferMainScreen extends StatelessWidget {
                 label: "Amount",
                 controller: TextEditingController(),
                 borderRadius: 12.sp,
-                isSmallContentPadding: true,
                 hint: "e.g. 10,0000",
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -731,7 +719,6 @@ class LocalTransferMainScreen extends StatelessWidget {
                 label: "Personal note",
                 controller: TextEditingController(),
                 borderRadius: 12.sp,
-                isSmallContentPadding: true,
                 hint: "e.g. Transferred refreshment charges to Jane",
                 autovalidate: true,
                 validator: (value) =>
@@ -742,7 +729,6 @@ class LocalTransferMainScreen extends StatelessWidget {
                 label: "Note to recipient",
                 controller: TextEditingController(),
                 borderRadius: 12.sp,
-                isSmallContentPadding: true,
                 hint: "e.g. Transferred refreshment charges",
                 autovalidate: true,
                 validator: (value) =>
@@ -820,8 +806,8 @@ class LocalTransferMainScreen extends StatelessWidget {
               backgroundColor: name == "Add"
                   ? AppColors.iconGreyColor
                   : AppColors.transparent,
-              child: Icon(name == "Add" ? AppIcons.add : null,
-                  size: 30, color: AppColors.black),
+              child: Icon(name == "Add" ? BaseIcons.add : null,
+                  size: 30, color: AppColors.primaryBlackColor),
             ),
             Text(
               name,

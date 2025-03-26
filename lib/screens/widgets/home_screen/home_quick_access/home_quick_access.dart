@@ -204,7 +204,7 @@ class QuickAccessWidget extends StatelessWidget {
                     Navigator.pop(context);
                     homeProvider.addItem(label, assetImage);
                   },
-            icon: Icon(AppIcons.addCircle,
+            icon: Icon(BaseIcons.addCircle,
                 color: isDisabled
                     ? AppColors.secondarySubBlackColor.withOpacity(0.3)
                     : AppColors.primaryBlueColor))

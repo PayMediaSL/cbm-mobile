@@ -85,7 +85,7 @@ class HomeMainLayout extends StatelessWidget {
                                 GestureDetector(
                                   onTap: onBackTap,
                                   child: Icon(
-                                    AppIcons.backwardArrowIOS,
+                                    NavigationIcons.backwardArrowIOS,
                                     color: AppColors.primaryWhiteColor,
                                   ),
                                 ),

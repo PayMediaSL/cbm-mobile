@@ -111,9 +111,9 @@ class MainMessageScreen extends StatelessWidget {
                               BorderRadius.circular(8.0), // Rounded corners
                         ),
                       ),
-                      icon: const Icon(
-                        AppIcons.edit,
-                        color: Colors.white, // Icon color
+                      icon: Icon(
+                        ActionIcons.edit,
+                        color: AppColors.primaryWhiteColor, // Icon color
                         size: 20.0,
                       ),
                       label: Text("Compose",

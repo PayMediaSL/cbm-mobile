@@ -133,7 +133,7 @@ class TransactionSuccessScreen extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Icon(AppIcons.download),
+                            Icon(ActionIcons.download),
                             RowSpacer(0.01),
                             Text(
                               "Download",
@@ -143,7 +143,7 @@ class TransactionSuccessScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(AppIcons.share),
+                            Icon(ActionIcons.share),
                             RowSpacer(0.01),
                             Text(
                               "Share",
@@ -153,7 +153,7 @@ class TransactionSuccessScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(AppIcons.share),
+                            Icon(ActionIcons.share),
                             RowSpacer(0.01),
                             Text(
                               "Splitt Bill",

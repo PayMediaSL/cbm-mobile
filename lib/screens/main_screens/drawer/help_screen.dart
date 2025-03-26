@@ -101,8 +101,8 @@ class DrawerHelpScreen extends StatelessWidget {
                                   },
                                   child: Icon(
                                     faqProvider.expandedStatus[index] ?? false
-                                        ? AppIcons.keyboardup
-                                        : AppIcons.keyboarddown,
+                                        ? KeyboardIcons.keyboardUp
+                                        : KeyboardIcons.keyboardDown,
                                     color: faqProvider.expandedStatus[index] ??
                                             false
                                         ? AppColors.secondarySubBlueColor2

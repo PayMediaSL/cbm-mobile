@@ -341,7 +341,7 @@ class ReusableRow extends StatelessWidget {
             ],
           ),
           Icon(
-            AppIcons.forwardArrowIOS,
+            NavigationIcons.forwardArrowIOS,
             size: 15.sp,
           ),
         ],

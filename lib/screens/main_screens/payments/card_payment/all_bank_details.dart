@@ -112,7 +112,7 @@ class AllBankDetails extends StatelessWidget {
                                 return _buildFavoriteCard(
                                   'Add',
                                   '',
-                                  AppIcons.add,
+                                  BaseIcons.add,
                                   onTap: () {
                                     pushScreen(context,
                                         ScreenRoutes.toCardPaymentDetail);
@@ -122,7 +122,7 @@ class AllBankDetails extends StatelessWidget {
                                 return _buildFavoriteCard(
                                   favorites[index]["name"].toString(),
                                   '***473${index + 3}',
-                                  AppIcons.creditCard,
+                                  UtilityIcons.creditCard,
                                 );
                               }
                             },

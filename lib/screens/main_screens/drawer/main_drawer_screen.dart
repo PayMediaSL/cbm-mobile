@@ -181,7 +181,7 @@ class MainDrawerScreen extends StatelessWidget {
                     ),
                 padding: const EdgeInsets.all(5),
                 child: Icon(
-                  AppIcons.camera,
+                  UtilityIcons.camera,
                   color: AppColors.primaryWhiteColor,
                   size: 20.sp,
                 ),

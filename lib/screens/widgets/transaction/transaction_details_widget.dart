@@ -108,8 +108,8 @@ class TransactionDetailsWidget extends StatelessWidget {
                             child: Center(
                               child: Icon(
                                 transaction["type"] == "Debit"
-                                    ? AppIcons.arrowBackward
-                                    : AppIcons.arrowForward,
+                                    ? NavigationIcons.arrowBackward
+                                    : NavigationIcons.arrowForward,
                                 color: transaction["type"] == "Debit"
                                     ? AppColors.primaryRedColor
                                     : AppColors.primaryGreenColor,
@@ -250,8 +250,8 @@ class TransactionDetailsWidget extends StatelessWidget {
                       child: Center(
                         child: Icon(
                           transaction["type"] == "Debit"
-                              ? AppIcons.arrowBackward
-                              : AppIcons.arrowForward,
+                              ? NavigationIcons.arrowBackward
+                              : NavigationIcons.arrowForward,
                           color: transaction["type"] == "Debit"
                               ? AppColors.primaryRedColor
                               : AppColors.primaryGreenColor,

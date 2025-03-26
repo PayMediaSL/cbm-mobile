@@ -7,7 +7,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/drawer/toggle_provider.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
-import 'package:app/screens/widgets/calendar/calendar_widget.dart';
+import 'package:app/screens/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
@@ -234,7 +234,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s account number",
                               controller:
                                   globalTransferReceipientAccountNumberController,
-                              isSmallContentPadding: true,
                               hint: "e.g. *******364",
                               autovalidate: true,
                               validator: (value) =>
@@ -251,7 +250,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s name",
                               controller:
                                   globalTransferReceipientNameController,
-                              isSmallContentPadding: true,
                               hint: "eg: John Doe",
                               autovalidate: true,
                               validator: (value) =>
@@ -263,7 +261,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s address / country",
                               controller:
                                   globalTransferReceipientAddressCountryController,
-                              isSmallContentPadding: true,
                               hint: "eg: France",
                               autovalidate: true,
                               validator: (value) =>
@@ -287,7 +284,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s bank country",
                               controller:
                                   globalTransferReceipientBankCountryController,
-                              isSmallContentPadding: true,
                               hint: "eg : France",
                               autovalidate: true,
                               validator: (value) =>
@@ -299,7 +295,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s bank name",
                               controller:
                                   globalTransferReceipientBankNameController,
-                              isSmallContentPadding: true,
                               hint: "e.g. Deuche Bank",
                               autovalidate: true,
                               validator: (value) =>
@@ -311,7 +306,6 @@ class GlobalTransferMain extends StatelessWidget {
                               label: "Recipient’s bank address",
                               controller:
                                   globalTransferReceipientBankAddressController,
-                              isSmallContentPadding: true,
                               hint: "e.g. Deuche Bank,France",
                               autovalidate: true,
                               validator: (value) =>
@@ -330,18 +324,19 @@ class GlobalTransferMain extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: CustomLableTextField(
+                                    isSmallContentPadding: true,
                                     signInPasswordController,
                                     borderradius: 12.sp,
-                                    isSmallContentPadding: true,
                                     hint: "mm/dd/yyyy",
                                     suffixIcon: IconButton(
                                         onPressed: () {
                                           showDateTimePickerBottomSheet(
-                                              context, "global_date_1");
+                                              context, "global_payment__date");
+
                                           //janu
                                         },
                                         icon: Icon(
-                                          AppIcons.calendar,
+                                          UtilityIcons.calendar,
                                           color: AppColors.textFieldHintColor,
                                         )),
                                     autovalidate: true,
@@ -435,14 +430,14 @@ class GlobalTransferMain extends StatelessWidget {
                                 RowSpacer(0.01),
                                 Expanded(
                                   child: CustomLableTextField(
+                                    isSmallContentPadding: true,
                                     globalTransferReceipientNoteController,
                                     borderradius: 12.sp,
-                                    isSmallContentPadding: true,
                                     hint: "mm/dd/yyyy",
                                     suffixIcon: IconButton(
                                         onPressed: () {},
                                         icon: Icon(
-                                          AppIcons.calendar,
+                                          UtilityIcons.calendar,
                                           color: AppColors.textFieldHintColor,
                                         )),
                                     autovalidate: true,
@@ -458,7 +453,6 @@ class GlobalTransferMain extends StatelessWidget {
                             LabelWithTextField(
                               label: "Note to recipient",
                               controller: signInPasswordController,
-                              isSmallContentPadding: true,
                               hint:
                                   "e.g. Transferred refreshment charges to Jane",
                               autovalidate: true,
@@ -523,24 +517,24 @@ class GlobalTransferMain extends StatelessWidget {
                 ])));
   }
 
-  void showDateTimePickerBottomSheet(BuildContext context, String dateKey) {
-    showModalBottomSheet(
-      backgroundColor: AppColors.subGreyColor,
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
-          padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 20.sp),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(13.sp),
-          ),
-          child: DateTimePickerWidget(dateKey: dateKey),
-        );
-      },
-    );
-  }
+  // void showDateTimePickerBottomSheet(BuildContext context, String dateKey) {
+  //   showModalBottomSheet(
+  //     backgroundColor: AppColors.subGreyColor,
+  //     context: context,
+  //     isScrollControlled: true,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         margin: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
+  //         padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 20.sp),
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           borderRadius: BorderRadius.circular(13.sp),
+  //         ),
+  //         child: DateTimePickerWidget(dateKey: dateKey),
+  //       );
+  //     },
+  //   );
+  // }
 }
 
 //! Print Selected Date and Time

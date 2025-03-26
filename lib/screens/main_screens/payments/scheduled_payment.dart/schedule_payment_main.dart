@@ -117,10 +117,9 @@ class ScheduledPaymentScreen extends StatelessWidget {
                         showDateTimePickerBottomSheet(
                             context, "schedule_payment_transfer_date");
                       },
-                      icon: Icon(AppIcons.calendar)),
+                      icon: Icon(UtilityIcons.calendar)),
                   label: "Date",
                   controller: TextEditingController(),
-                  isSmallContentPadding: true,
                   hint: "12/23/14",
                   autovalidate: true,
                   validator: (input) =>
@@ -130,7 +129,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 LabelWithTextField(
                   label: "Account Number",
                   controller: TextEditingController(),
-                  isSmallContentPadding: true,
                   hint: "e.g. ********127",
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   keyboardType: TextInputType.number,
@@ -143,7 +141,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 LabelWithTextField(
                   label: "Account Name",
                   controller: TextEditingController(),
-                  isSmallContentPadding: true,
                   hint: "eg : john doe",
                   autovalidate: true,
                   validator: (input) =>
@@ -153,7 +150,6 @@ class ScheduledPaymentScreen extends StatelessWidget {
                 LabelWithTextField(
                   label: "Amount ",
                   controller: TextEditingController(),
-                  isSmallContentPadding: true,
                   hint: "eg : 100,000",
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   keyboardType: TextInputType.number,
@@ -294,7 +290,7 @@ Widget buildExpandableSection({
               onTap: () => onItemTap(item),
               child: ListTile(
                 leading: CircleAvatar(
-                  child: Icon(AppIcons.wallet),
+                  child: Icon(UtilityIcons.wallet),
                   backgroundColor: AppColors.bottomNavBgColor,
                 ),
                 title: Text(
@@ -306,7 +302,7 @@ Widget buildExpandableSection({
                         fontFamily: secondaryFontFamily,
                         color: AppColors.secondarysubGreyColor4)),
                 trailing: showArrow
-                    ? Icon(AppIcons.forwardArrowIOS, size: 16)
+                    ? Icon(NavigationIcons.forwardArrowIOS, size: 16)
                     : Text(
                         item["account"] ?? "",
                         style: commonTextFieldTitleStyle.copyWith(

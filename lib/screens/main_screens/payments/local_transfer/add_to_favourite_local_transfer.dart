@@ -56,7 +56,6 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
 
                             LabelWithDropdown(
                               label: "Recipient’s bank",
-                              borderRadius: 12.sp,
                               dropdownKey: "local_transfer_favourite_bank",
                               items: ["option1", "option2", "option3"],
                               autovalidate: true,
@@ -69,7 +68,6 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
                             LabelWithTextField(
                               label: "Receipient's account number",
                               controller: TextEditingController(),
-                              isSmallContentPadding: true,
                               hint: "eg:234563354",
                               keyboardType: TextInputType.number,
                               inputFormatters: [
@@ -85,7 +83,6 @@ class AddToFavouriteLocalTransferScreen extends StatelessWidget {
                             LabelWithTextField(
                               label: "Recipient’s name",
                               controller: TextEditingController(),
-                              isSmallContentPadding: true,
                               hint: "eg : john doe",
                               autovalidate: true,
                               validator: (value) =>

@@ -128,7 +128,7 @@ class _MobileInputFieldState extends State<MobileInputField> {
                               _countryFuture = _loadCountriesFuture();
                             });
                           },
-                          icon: Icon(AppIcons.refresh),
+                          icon: Icon(ActionIcons.refresh),
                         ),
                       ),
                     );
@@ -176,7 +176,7 @@ class _MobileInputFieldState extends State<MobileInputField> {
                                 ),
                               ),
                               errorWidget: (context, url, error) =>
-                                  Icon(AppIcons.error),
+                                  Icon(BaseIcons.error),
                             ),
                             const SizedBox(width: UI.PADDING),
                             Text(country.countryCode ?? ''),
