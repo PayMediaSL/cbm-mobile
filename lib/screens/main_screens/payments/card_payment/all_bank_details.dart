@@ -5,6 +5,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +112,7 @@ class AllBankDetails extends StatelessWidget {
                                 return _buildFavoriteCard(
                                   'Add',
                                   '',
-                                  Icons.add,
+                                  AppIcons.add,
                                   onTap: () {
                                     pushScreen(context,
                                         ScreenRoutes.toCardPaymentDetail);
@@ -121,7 +122,7 @@ class AllBankDetails extends StatelessWidget {
                                 return _buildFavoriteCard(
                                   favorites[index]["name"].toString(),
                                   '***473${index + 3}',
-                                  Icons.credit_card,
+                                  AppIcons.creditCard,
                                 );
                               }
                             },

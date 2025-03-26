@@ -13,6 +13,12 @@ var commonTextStyle = TextStyle(
     color: AppColors.getStartedSubHeading,
     fontFamily: primaryFontFamily);
 
+var commonTextStyle_black_500_14 = TextStyle(
+    color: AppColors.primaryBlackColor,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: primaryFontFamily);
+
 var commonTextStyle_black_500_16sp = TextStyle(
     color: AppColors.primaryBlackColor,
     fontSize: 16.sp,
@@ -23,6 +29,12 @@ var commonTextStyle_black_500_12sp = TextStyle(
     color: AppColors.primaryBlackColor,
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
+    fontFamily: primaryFontFamily);
+
+var commonWhiteBoldStyle = TextStyle(
+    color: AppColors.primaryWhiteColor,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.bold,
     fontFamily: primaryFontFamily);
 
 var commonTextHeadingStyle = TextStyle(

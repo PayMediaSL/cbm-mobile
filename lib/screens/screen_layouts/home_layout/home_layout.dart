@@ -3,6 +3,7 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,7 +85,7 @@ class HomeMainLayout extends StatelessWidget {
                                 GestureDetector(
                                   onTap: onBackTap,
                                   child: Icon(
-                                    Icons.arrow_back_ios_rounded,
+                                    AppIcons.backwardArrowIOS,
                                     color: AppColors.primaryWhiteColor,
                                   ),
                                 ),

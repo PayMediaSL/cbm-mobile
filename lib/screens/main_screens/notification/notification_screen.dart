@@ -3,6 +3,7 @@ import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -195,8 +196,8 @@ class NotificationScreen extends StatelessWidget {
           decoration: BoxDecoration(
               color: AppColors.bottomNavBgColor,
               borderRadius: BorderRadius.circular(10.sp)),
-          child: Center(
-              child: const Icon(Icons.receipt_long, color: Colors.blue))),
+          child:
+              Center(child: const Icon(AppIcons.receipt, color: Colors.blue))),
       title: Text(
         notification["title"]!,
         style: commonTextStyle.copyWith(

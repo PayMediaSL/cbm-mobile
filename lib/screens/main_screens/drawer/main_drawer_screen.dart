@@ -6,6 +6,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
@@ -149,7 +150,8 @@ class MainDrawerScreen extends StatelessWidget {
           children: [
             // Circle Avatar
             CustomCircleAvatar(
-              backgroundColor: AppColors.primaryBlueColor.withOpacity(0.2),
+              // backgroundColor: AppColors.primaryBlueColor.withOpacity(0.2),
+              backgroundColor: AppColors.primaryGreyColor2,
               radius: 50.sp,
             ),
 
@@ -179,8 +181,8 @@ class MainDrawerScreen extends StatelessWidget {
                     ),
                 padding: const EdgeInsets.all(5),
                 child: Icon(
-                  Icons.camera_alt_outlined,
-                  color: Colors.white,
+                  AppIcons.camera,
+                  color: AppColors.primaryWhiteColor,
                   size: 20.sp,
                 ),
               ),

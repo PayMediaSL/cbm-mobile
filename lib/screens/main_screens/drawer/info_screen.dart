@@ -5,6 +5,7 @@ import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/drawer/info_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/text_fields/custom_search_bar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -83,7 +84,7 @@ class DrawerInfoScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Icon(
-                          Icons.location_on_outlined,
+                          AppIcons.location,
                           size: 30.sp,
                         ),
                       ),

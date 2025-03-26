@@ -2,6 +2,7 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/transaction/transaction_data_provider.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:flutter/material.dart';
@@ -107,8 +108,8 @@ class TransactionDetailsWidget extends StatelessWidget {
                             child: Center(
                               child: Icon(
                                 transaction["type"] == "Debit"
-                                    ? Icons.arrow_back
-                                    : Icons.arrow_forward,
+                                    ? AppIcons.arrowBackward
+                                    : AppIcons.arrowForward,
                                 color: transaction["type"] == "Debit"
                                     ? AppColors.primaryRedColor
                                     : AppColors.primaryGreenColor,
@@ -249,8 +250,8 @@ class TransactionDetailsWidget extends StatelessWidget {
                       child: Center(
                         child: Icon(
                           transaction["type"] == "Debit"
-                              ? Icons.arrow_back
-                              : Icons.arrow_forward,
+                              ? AppIcons.arrowBackward
+                              : AppIcons.arrowForward,
                           color: transaction["type"] == "Debit"
                               ? AppColors.primaryRedColor
                               : AppColors.primaryGreenColor,

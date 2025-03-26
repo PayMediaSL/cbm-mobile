@@ -11,6 +11,7 @@ import 'package:app/screens/widgets/calendar/calendar_widget.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
@@ -340,7 +341,7 @@ class GlobalTransferMain extends StatelessWidget {
                                           //janu
                                         },
                                         icon: Icon(
-                                          Icons.calendar_month_rounded,
+                                          AppIcons.calendar,
                                           color: AppColors.textFieldHintColor,
                                         )),
                                     autovalidate: true,
@@ -441,7 +442,7 @@ class GlobalTransferMain extends StatelessWidget {
                                     suffixIcon: IconButton(
                                         onPressed: () {},
                                         icon: Icon(
-                                          Icons.calendar_month_rounded,
+                                          AppIcons.calendar,
                                           color: AppColors.textFieldHintColor,
                                         )),
                                     autovalidate: true,

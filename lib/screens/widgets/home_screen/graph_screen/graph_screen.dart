@@ -102,7 +102,8 @@ class BalanceSummaryChart extends StatelessWidget {
                     ),
                     borderData: FlBorderData(
                       show: true,
-                      border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                      border: Border.all(
+                          color: AppColors.primaryGreyColor.withOpacity(0.2)),
                     ),
                     lineBarsData: [
                       LineChartBarData(

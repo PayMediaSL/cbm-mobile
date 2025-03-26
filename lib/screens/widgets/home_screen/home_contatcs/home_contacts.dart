@@ -1,4 +1,3 @@
-import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -37,34 +36,22 @@ class ContactItem extends StatelessWidget {
             child: Center(
               child: Text(
                 initials,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: commonWhiteBoldStyle,
               ),
             ),
           ),
           ColumnSpacer(0.01),
           Column(
             children: [
-              Text(
-                contactName,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: commonTextStyle.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12.sp,
-                    color: AppColors.primaryBlackColor),
-              ),
+              Text(contactName,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: commonTextStyle_black_500_12sp),
               Text(
                 bank,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: commonTextStyle.copyWith(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.sp,
-                    color: AppColors.primaryBlackColor),
+                style: commonTextStyle_black_500_12sp,
               ),
             ],
           )

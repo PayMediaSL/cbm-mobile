@@ -3,6 +3,7 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants.dart';
 import 'package:app/models/sign_up/country_model.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/utils/log_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -127,7 +128,7 @@ class _MobileInputFieldState extends State<MobileInputField> {
                               _countryFuture = _loadCountriesFuture();
                             });
                           },
-                          icon: const Icon(Icons.refresh_rounded),
+                          icon: Icon(AppIcons.refresh),
                         ),
                       ),
                     );
@@ -175,7 +176,7 @@ class _MobileInputFieldState extends State<MobileInputField> {
                                 ),
                               ),
                               errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
+                                  Icon(AppIcons.error),
                             ),
                             const SizedBox(width: UI.PADDING),
                             Text(country.countryCode ?? ''),

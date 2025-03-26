@@ -77,6 +77,7 @@ class AppColors {
   static Color secondarysubGreyColor3 = HexColor("#9CA3AF");
   static Color secondarysubGreyColor4 = HexColor("#6B7280");
   static Color secondarysubGreyColor5 = HexColor("#E2E8F0");
+  static Color? secondarysubGreyColor6 = Colors.grey[200];
 
   //bottom Navigation bgColor
 

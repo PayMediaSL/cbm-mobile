@@ -4,6 +4,7 @@ import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/drawer/toggle_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 import 'package:flutter/cupertino.dart';
@@ -340,7 +341,7 @@ class ReusableRow extends StatelessWidget {
             ],
           ),
           Icon(
-            Icons.arrow_forward_ios_outlined,
+            AppIcons.forwardArrowIOS,
             size: 15.sp,
           ),
         ],

@@ -5,6 +5,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/transaction/transaction_details_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
@@ -318,7 +319,7 @@ class _DaysDropdownState extends State<DaysDropdown> {
     return DropdownButton<String>(
       value: selectedValue,
       icon: Icon(
-        Icons.arrow_drop_down_rounded,
+        AppIcons.dropdownArrow,
         color: AppColors.secondarysubGreyColor3,
       ), // Dropdown icon
       iconSize: 25,

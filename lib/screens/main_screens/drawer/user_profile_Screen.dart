@@ -6,6 +6,7 @@ import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
@@ -195,7 +196,7 @@ class UserProfileScreen extends StatelessWidget {
             // Circle Avatar
             CustomCircleAvatar(
               radius: 50.sp,
-              backgroundColor: AppColors.primaryBlueColor,
+              backgroundColor: AppColors.primaryGreyColor2,
             ),
             // CircleAvatar(
             //   //Need to Fetch Profile Image
@@ -215,7 +216,7 @@ class UserProfileScreen extends StatelessWidget {
                         width: 2, color: AppColors.primaryWhiteColor)),
                 padding: const EdgeInsets.all(5),
                 child: Icon(
-                  Icons.camera_alt_outlined,
+                  AppIcons.camera,
                   color: Colors.white,
                   size: 20.sp,
                 ),
@@ -404,9 +405,8 @@ class UserProfileScreen extends StatelessWidget {
                             ? CircleAvatar(
                                 radius: 10.sp,
                                 backgroundColor: AppColors.primaryBlueColor,
-
                                 child: Icon(
-                                  Icons.check,
+                                  AppIcons.check,
                                   color: AppColors.white,
                                   size: 12.sp,
                                 ),
@@ -420,7 +420,7 @@ class UserProfileScreen extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                           backgroundColor: AppColors.primaryGreyColor,
-                          child: Icon(Icons.more_horiz)),
+                          child: Icon(AppIcons.more)),
                       title: const Text('See all'),
                       onTap: () {
                         setState(() {

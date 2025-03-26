@@ -2,6 +2,7 @@ import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/home_screen/quick_access_data_provider.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class QuickAccessWidget extends StatelessWidget {
         height: ScreenUtils.height * 0.11,
         width: ScreenUtils.width * 0.9,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.primaryWhiteColor,
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Consumer<QuickAccessProvider>(
@@ -203,7 +204,7 @@ class QuickAccessWidget extends StatelessWidget {
                     Navigator.pop(context);
                     homeProvider.addItem(label, assetImage);
                   },
-            icon: Icon(Icons.add_circle,
+            icon: Icon(AppIcons.addCircle,
                 color: isDisabled
                     ? AppColors.secondarySubBlackColor.withOpacity(0.3)
                     : AppColors.primaryBlueColor))

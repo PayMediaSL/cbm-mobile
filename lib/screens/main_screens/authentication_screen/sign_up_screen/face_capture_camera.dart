@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/circular_button.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -132,7 +133,7 @@ class _FaceCaptureCameraState extends State<FaceCaptureCamera> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularIconButton(
-                      icon: Icons.refresh,
+                      icon: AppIcons.refresh,
                       onTap: () {
                         _retakePhoto();
                       },
@@ -143,7 +144,7 @@ class _FaceCaptureCameraState extends State<FaceCaptureCamera> {
                     ),
                     SizedBox(width: 20.w),
                     CircularIconButton(
-                      icon: Icons.refresh,
+                      icon: AppIcons.refresh,
                       onTap: () {
                         widget.onTap;
                       },

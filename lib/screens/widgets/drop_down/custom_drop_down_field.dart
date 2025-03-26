@@ -117,7 +117,9 @@ class CustomDropdown extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
+                  padding: EdgeInsets.only(
+                      left: UI_Padding.PRIMARY_COMMON_PADDING,
+                      right: UI_Padding.PRIMARY_COMMON_PADDING),
                   height: dropdownheight ?? ScreenUtils.height * 0.055,
                   width: dropdownwidth ?? ScreenUtils.width,
                   decoration: BoxDecoration(
@@ -169,7 +171,8 @@ class CustomDropdown extends StatelessWidget {
                 ),
                 if (formFieldState.hasError)
                   Padding(
-                    padding: EdgeInsets.only(top: 3.sp, left: 12.sp),
+                    padding: EdgeInsets.only(
+                        top: 3.sp, left: UI_Padding.SECONDARY_COMMON_PADDING),
                     child: Text(
                       formFieldState.errorText ?? '',
                       style: TextStyle(

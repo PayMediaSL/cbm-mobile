@@ -10,6 +10,7 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/screens/widgets/text_style/font_family.dart';
@@ -116,7 +117,7 @@ class ScheduledPaymentScreen extends StatelessWidget {
                         showDateTimePickerBottomSheet(
                             context, "schedule_payment_transfer_date");
                       },
-                      icon: Icon(Icons.calendar_month_rounded)),
+                      icon: Icon(AppIcons.calendar)),
                   label: "Date",
                   controller: TextEditingController(),
                   isSmallContentPadding: true,
@@ -293,7 +294,7 @@ Widget buildExpandableSection({
               onTap: () => onItemTap(item),
               child: ListTile(
                 leading: CircleAvatar(
-                  child: Icon(Icons.account_balance_wallet),
+                  child: Icon(AppIcons.wallet),
                   backgroundColor: AppColors.bottomNavBgColor,
                 ),
                 title: Text(
@@ -305,7 +306,7 @@ Widget buildExpandableSection({
                         fontFamily: secondaryFontFamily,
                         color: AppColors.secondarysubGreyColor4)),
                 trailing: showArrow
-                    ? Icon(Icons.arrow_forward_ios, size: 16)
+                    ? Icon(AppIcons.forwardArrowIOS, size: 16)
                     : Text(
                         item["account"] ?? "",
                         style: commonTextFieldTitleStyle.copyWith(

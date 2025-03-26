@@ -1,4 +1,5 @@
 import 'package:app/helpers/colors.dart';
+import 'package:app/helpers/constants/ui_constants.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -21,8 +22,9 @@ class CustomTabBarwidget extends StatelessWidget {
       height: ScreenUtils.height * 0.05,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.secondarysubGreyColor6,
+        borderRadius:
+            BorderRadius.circular(UI_Borderradius.PRIMARY_COMMON_BORDER_RADIUS),
       ),
       child: Row(
         children: List.generate(tabs.length, (index) {
@@ -35,16 +37,17 @@ class CustomTabBarwidget extends StatelessWidget {
                 height: ScreenUtils.height * 0.4,
                 decoration: BoxDecoration(
                   color: provider.selectedIndex == index
-                      ? Colors.white
-                      : Colors.grey[200],
-                  borderRadius: BorderRadius.circular(12),
+                      ? AppColors.primaryWhiteColor
+                      : AppColors.secondarysubGreyColor6,
+                  borderRadius: BorderRadius.circular(
+                      UI_Borderradius.PRIMARY_COMMON_BORDER_RADIUS),
                 ),
                 child: Center(
                   child: Text(tabs[index],
                       style: commonTextStyle.copyWith(
                         color: provider.selectedIndex == index
-                            ? Colors.black
-                            : Colors.grey,
+                            ? AppColors.primaryBlackColor
+                            : AppColors.primaryGreyColor,
                       )),
                 ),
               ),
@@ -97,12 +100,12 @@ class CustomTabBarwidgetCurved extends StatelessWidget {
                 child: Center(
                   child: Text(
                     tabs[index],
-                    style: commonTextStyle.copyWith(
-                        color: provider.getSelectedIndex(tabKey) == index
-                            ? Colors.white
-                            : Colors.black,
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w500),
+                    style: commonTextStyle_black_500_12sp.copyWith(
+                      color: provider.getSelectedIndex(tabKey) == index
+                          ? AppColors.primaryWhiteColor
+                          : AppColors.primaryBlackColor,
+                      fontSize: 13.sp,
+                    ),
                   ),
                 ),
               ),

@@ -6,6 +6,7 @@ import 'package:app/helpers/text_styles.dart';
 import 'package:app/models/contacts/contacts_model.dart';
 import 'package:app/providers/home_screen/contacts_data_provider.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
@@ -58,7 +59,7 @@ class DrawerInviteFriendsScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Icon(
-                            Icons.share,
+                            AppIcons.share,
                             size: 30.sp,
                           ),
                         ),

@@ -5,6 +5,7 @@ import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -132,7 +133,7 @@ class TransactionSuccessScreen extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.download),
+                            Icon(AppIcons.download),
                             RowSpacer(0.01),
                             Text(
                               "Download",
@@ -142,7 +143,7 @@ class TransactionSuccessScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.share),
+                            Icon(AppIcons.share),
                             RowSpacer(0.01),
                             Text(
                               "Share",
@@ -152,7 +153,7 @@ class TransactionSuccessScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.share),
+                            Icon(AppIcons.share),
                             RowSpacer(0.01),
                             Text(
                               "Splitt Bill",

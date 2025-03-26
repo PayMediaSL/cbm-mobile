@@ -13,6 +13,7 @@ import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
 import 'package:app/screens/widgets/drop_down/custom_drop_down_field.dart';
 import 'package:app/screens/widgets/favourite/favorite_widget.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/main_button/main_button.dart';
 import 'package:app/screens/widgets/text_fields/custom_label_with_textfield.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
@@ -441,7 +442,7 @@ class LocalTransferMainScreen extends StatelessWidget {
                                 context, "local_payment_otherbank_date");
                           },
                           icon: Icon(
-                            Icons.calendar_month_rounded,
+                            AppIcons.calendar,
                             color: AppColors.textFieldHintColor,
                           )),
                       autovalidate: true,
@@ -541,7 +542,7 @@ class LocalTransferMainScreen extends StatelessWidget {
                                 context, "local_payment_otherbank_until_date");
                           },
                           icon: Icon(
-                            Icons.calendar_month_rounded,
+                            AppIcons.calendar,
                             color: AppColors.textFieldHintColor,
                           )),
                       autovalidate: true,
@@ -819,7 +820,7 @@ class LocalTransferMainScreen extends StatelessWidget {
               backgroundColor: name == "Add"
                   ? AppColors.iconGreyColor
                   : AppColors.transparent,
-              child: Icon(name == "Add" ? Icons.add : null,
+              child: Icon(name == "Add" ? AppIcons.add : null,
                   size: 30, color: AppColors.black),
             ),
             Text(

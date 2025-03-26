@@ -160,7 +160,8 @@ class CustomLanguageDropdown extends StatelessWidget {
               context.setLocale(locale);
             }
           },
-          style: commonTextStyle.copyWith(color: HexColor("#475569")),
+          style:
+              commonTextStyle.copyWith(color: AppColors.primarySubBlackColor),
           underline: SizedBox(), // Hides the default underline
           isDense: true,
           itemHeight: dropdownHeight, // Adjust dropdown height

@@ -76,6 +76,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/payments/qr_payment_provider.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
 
@@ -120,7 +121,7 @@ class QrScannerScreen extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.arrow_back_ios,
+                        AppIcons.backwardArrowIOS,
                         color: AppColors.primaryWhiteColor,
                       ),
                       Text(
@@ -131,7 +132,7 @@ class QrScannerScreen extends StatelessWidget {
                   ),
                   const Divider(),
                   const ColumnSpacer(0.02),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -140,19 +141,19 @@ class QrScannerScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
-                            Icons.flash_auto,
-                            color: AppColors.white,
+                            AppIcons.flash,
+                            color: AppColors.primaryWhiteColor,
                           ),
                           RowSpacer(0.04),
                           Icon(
-                            Icons.copy,
-                            color: AppColors.white,
+                            AppIcons.copy,
+                            color: AppColors.primaryWhiteColor,
                           )
                         ],
                       ),
                       Icon(
-                        Icons.close,
-                        color: AppColors.white,
+                        AppIcons.close,
+                        color: AppColors.primaryWhiteColor,
                       )
                     ],
                   ),
@@ -290,17 +291,17 @@ class ScannerErrorWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 16),
-              child: Icon(Icons.error, color: Colors.white),
+              child: Icon(AppIcons.error, color: AppColors.primaryWhiteColor),
             ),
             Text(
               errorMessage,
-              style: const TextStyle(color: Colors.white),
+              style: TextStyle(color: AppColors.primaryWhiteColor),
             ),
             Text(
               error.errorDetails?.message ?? '',
-              style: const TextStyle(color: Colors.white),
+              style: TextStyle(color: AppColors.primaryWhiteColor),
             ),
           ],
         ),

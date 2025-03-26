@@ -192,6 +192,7 @@
 // }
 
 import 'package:app/helpers/colors.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavBarExample extends StatefulWidget {
@@ -204,11 +205,11 @@ class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
   int _selectedIndex = 0;
 
   final List<Map<String, dynamic>> _navItems = [
-    {"icon": Icons.home, "label": "Home"},
-    {"icon": Icons.payment, "label": "Payments"},
-    {"icon": Icons.grid_view, "label": "Lifestyle"},
-    {"icon": Icons.swap_horiz, "label": "Transactions"},
-    {"icon": Icons.menu, "label": "Menu"},
+    {"icon": BottomNavIcons.home, "label": "Home"},
+    {"icon": BottomNavIcons.payment, "label": "Payments"},
+    {"icon": BottomNavIcons.lifestyle, "label": "Lifestyle"},
+    {"icon": BottomNavIcons.transactions, "label": "Transactions"},
+    {"icon": BottomNavIcons.menu, "label": "Menu"},
   ];
 
   void _onItemTapped(int index) {
@@ -264,7 +265,7 @@ class _CustomBottomNavBarExampleState extends State<CustomBottomNavBarExample> {
                           style: TextStyle(
                             color: isSelected
                                 ? AppColors.primaryBlueColor
-                                : Colors.grey,
+                                : AppColors.primaryGreyColor,
                             fontSize: 11,
                             fontWeight: FontWeight.w500,
                           ),

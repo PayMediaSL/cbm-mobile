@@ -8,6 +8,7 @@ import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/circular_image_text.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/visa_card/visa_card_widget.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -222,8 +223,8 @@ class LoanDetailsScreen extends StatelessWidget {
                         child: Center(
                           child: Icon(
                             transaction["type"] == "Debit"
-                                ? Icons.arrow_back
-                                : Icons.arrow_forward,
+                                ? AppIcons.arrowBackward
+                                : AppIcons.arrowForward,
                             color: transaction["type"] == "Debit"
                                 ? AppColors.primaryRedColor
                                 : AppColors.primaryGreenColor,

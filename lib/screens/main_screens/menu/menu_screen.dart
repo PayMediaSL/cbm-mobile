@@ -7,6 +7,7 @@ import 'package:app/helpers/routes.dart';
 import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/image/custom_avatar.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
@@ -125,7 +126,7 @@ class MenuScreen extends StatelessWidget {
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(8.sp)),
                     child: Icon(
-                      Icons.menu_rounded,
+                      AppIcons.menu,
                       color: !isGridView
                           ? AppColors.primaryWhiteColor
                           : AppColors.primarySubBlackColor,
@@ -153,7 +154,7 @@ class MenuScreen extends StatelessWidget {
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(8.sp)),
                     child: Icon(
-                      Icons.grid_view,
+                      AppIcons.gridView,
                       color: isGridView
                           ? AppColors.primaryWhiteColor
                           : AppColors.primarySubBlackColor,

@@ -1,7 +1,7 @@
 import 'package:app/helpers/colors.dart';
 import 'package:app/helpers/text_styles.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FavoriteCard extends StatelessWidget {
   final String name;
@@ -22,7 +22,8 @@ class FavoriteCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.2, // ScreenUtils.width * 0.2
+        width:
+            MediaQuery.of(context).size.width * 0.2, // ScreenUtils.width * 0.2
         child: Column(
           children: [
             CircleAvatar(
@@ -32,14 +33,13 @@ class FavoriteCard extends StatelessWidget {
                   ? AppColors.iconGreyColor
                   : AppColors.transparent,
               child: name == "Add"
-                  ? Icon(Icons.add, size: 30, color: AppColors.black)
+                  ? Icon(AppIcons.add,
+                      size: 30, color: AppColors.primaryBlackColor)
                   : null,
             ),
             Text(
               name,
-              style: commonTextStyle.copyWith(
-                color: AppColors.primaryBlackColor,
-                fontSize: 12.sp,
+              style: commonTextStyle_black_500_12sp.copyWith(
                 fontWeight: FontWeight.w600,
               ),
               textAlign: TextAlign.center,
@@ -47,11 +47,7 @@ class FavoriteCard extends StatelessWidget {
             if (details.isNotEmpty)
               Text(
                 details,
-                style: commonTextStyle.copyWith(
-                  color: AppColors.bottomNavIconColor,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: commonTextStyle_black_500_12sp,
                 textAlign: TextAlign.center,
               ),
           ],

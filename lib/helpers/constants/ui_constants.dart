@@ -43,11 +43,11 @@ class UI_Icon {
 class UI_Borderradius {
   static double AUTH_LEADING_WIDGET_BORDERRADIUS = 25.sp;
   static double AUTH_LEADING_DROPDOWN_BORDERRADIUS = 25.sp;
-
   static double COMMON_BORDER_RADIUS = 10.sp;
   static double COMMON_BORDER_RADIUS_2 = 15.sp;
   static double TEXT_FORM_FIELD_RADIUS = 12.sp;
   static double SMALL_BORDER_RADIUS = 10.sp;
+  static double PRIMARY_COMMON_BORDER_RADIUS = 12.sp;
 }
 
 class UI_Borderwidth {
@@ -70,6 +70,7 @@ class UI_Padding {
   static double PRIMARY_COMMON_PADDING = 10.sp;
   static double PRIMARY_COMMON_PADDING_2 = 15.sp;
   static double PRIMARY_COMMON_PADDING_3 = 20.sp;
+  static double SECONDARY_COMMON_PADDING = 20.sp;
   // static double PRIMARY_COMMON_PADDING_2 = 10.sp;
   // static double PRIMARY_COMMON_PADDING_3 = 20.sp;
   static double PADDING_10 = 10.sp;

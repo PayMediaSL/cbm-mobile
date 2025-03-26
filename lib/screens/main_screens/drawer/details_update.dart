@@ -4,6 +4,7 @@ import 'package:app/helpers/spacers.dart';
 import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/text_fields/custom_row_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/navigation_util.dart';
@@ -59,21 +60,21 @@ class DrawerDetailsUpdate extends StatelessWidget {
                   ColumnSpacer(0.01),
                   CustomTextFieldRow(
                     controller: drawerNameController,
-                    icon: Icons.person_outline_rounded,
+                    icon: AppIcons.name,
                     label: 'Name',
                     hintText: 'Ragnar lothbrok',
                   ),
                   ColumnSpacer(0.01),
                   CustomTextFieldRow(
                     controller: drawerNameController,
-                    icon: Icons.email_outlined,
+                    icon: AppIcons.email,
                     label: 'Email',
                     hintText: 'ragnar@gmail.com',
                   ),
                   ColumnSpacer(0.01),
                   CustomTextFieldRow(
                     controller: drawerNameController,
-                    icon: Icons.calendar_month_outlined,
+                    icon: AppIcons.birthday,
                     label: 'Birthday',
                     hintText: '12-23-2024',
                   ),
@@ -87,13 +88,13 @@ class DrawerDetailsUpdate extends StatelessWidget {
                   ColumnSpacer(0.01),
                   CustomTextFieldRow(
                     controller: drawerNameController,
-                    icon: Icons.phone_outlined,
+                    icon: AppIcons.mobile,
                     label: 'Mobile',
                     hintText: '+94627534886',
                   ),
                   CustomTextFieldRow(
                     controller: drawerNameController,
-                    icon: Icons.person,
+                    icon: AppIcons.nic,
                     label: 'NIC',
                     hintText: '769345774v',
                   ),
@@ -101,7 +102,7 @@ class DrawerDetailsUpdate extends StatelessWidget {
                     maxLines: 4,
                     height: ScreenUtils.height * 0.1,
                     controller: drawerNameController,
-                    icon: Icons.person_outline_rounded,
+                    icon: AppIcons.address,
                     label: 'Address',
                     hintText: 'Colombo 06',
                   ),

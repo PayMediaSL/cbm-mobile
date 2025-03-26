@@ -70,8 +70,7 @@ class HomeAccountTile extends StatelessWidget {
             children: [
               Text(
                 amount,
-                style: commonTextStyle.copyWith(
-                    color: AppColors.primaryBlackColor, fontSize: 15.sp),
+                style: commonTextStyle_black_500_14.copyWith(fontSize: 15.sp),
               ),
               Text("${holdTitle} ${holds}",
                   style: commonTextStyle.copyWith(

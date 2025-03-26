@@ -6,6 +6,7 @@ import 'package:app/helpers/text_editing_controllers.dart';
 import 'package:app/helpers/text_styles.dart';
 import 'package:app/providers/other_provider/common_provider.dart';
 import 'package:app/screens/screen_layouts/authentication_layout/authentication_layout.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/text_fields/custom_text_field.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/services/validation_service.dart';
@@ -102,7 +103,7 @@ class AboutYouScreen extends StatelessWidget {
                   }
                 },
                 icon: Icon(
-                  Icons.calendar_month,
+                  AppIcons.calendar,
                   color: AppColors.primaryGreyColor2,
                 ),
               ),

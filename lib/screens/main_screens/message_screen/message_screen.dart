@@ -6,6 +6,7 @@ import 'package:app/providers/payments/mobile_reload.dart';
 import 'package:app/screens/screen_layouts/home_layout/home_layout.dart';
 import 'package:app/screens/widgets/container/customer_curved_container.dart';
 import 'package:app/screens/widgets/custom_tab/custom_tab_bar.dart';
+import 'package:app/screens/widgets/icons/custom_icons.dart';
 import 'package:app/screens/widgets/text_style/font_family.dart';
 import 'package:app/services/screen_size_calculator.dart';
 import 'package:app/utils/assest_image.dart';
@@ -111,7 +112,7 @@ class MainMessageScreen extends StatelessWidget {
                         ),
                       ),
                       icon: const Icon(
-                        Icons.edit,
+                        AppIcons.edit,
                         color: Colors.white, // Icon color
                         size: 20.0,
                       ),
